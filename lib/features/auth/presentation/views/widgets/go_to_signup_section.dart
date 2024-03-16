@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/services/navigate_services.dart';
 import '../../../../../core/widgets/default_text_button.dart';
+import '../register_view.dart';
 
 class GoToSignUp extends StatelessWidget {
   const GoToSignUp({super.key});
@@ -19,7 +21,7 @@ class GoToSignUp extends StatelessWidget {
         ),
         DefaultTextButton(
           onPressed: () {
-            // navigateTo(context, const RegisterView());
+            navigateTo(context, const RegisterView());
           },
           text: 'signup',
         ),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "897850775671",
+    "project_id": "greenoville-8f9c1",
+    "storage_bucket": "greenoville-8f9c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897850775671:android:b53d1a5963d11580ee0e72",
+        "android_client_info": {
+          "package_name": "com.example.greenoville_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPV2eDgr3AV1mWTHVb7HqU8RNjoy7_FZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
