@@ -16,10 +16,12 @@ class DefaultTextField extends StatelessWidget {
     this.isPassword,
     this.radius = 30.0,
     this.length,
+    this.focusNode,
   });
 
   final TextEditingController? controller;
   final TextInputType? type;
+  final FocusNode? focusNode;
   final TextCapitalization? capitalization;
   final String? Function(String?)? validate;
   final Function(String)? onChanged;
@@ -34,6 +36,7 @@ class DefaultTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focusNode,
       controller: controller,
       obscureText: isPassword == true ? true : false,
       keyboardType: type,

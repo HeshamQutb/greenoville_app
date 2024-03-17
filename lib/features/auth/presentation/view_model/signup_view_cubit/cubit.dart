@@ -5,15 +5,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:greenoville_app/features/auth/presentation/view_model/register_view_cubit/states.dart';
+import 'package:greenoville_app/features/auth/presentation/view_model/signup_view_cubit/states.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../data/models/user_model.dart';
 
-class RegisterCubit extends Cubit<RegisterStates> {
-  RegisterCubit() : super(RegisterInitialState());
+class SignUpCubit extends Cubit<SignUpStates> {
+  SignUpCubit() : super(SignUpInitialState());
 
-  static RegisterCubit get(context) => BlocProvider.of(context);
+  static SignUpCubit get(context) => BlocProvider.of(context);
 
   String? uploadedImage;
   File? profileImage;
@@ -64,13 +63,13 @@ class RegisterCubit extends Cubit<RegisterStates> {
     }
   }
 
-  void userRegister({
+  void userSignUp({
     required String email,
     required String name,
     required String password,
     required String phone,
   }) {
-    emit(RegisterLoadingState());
+    emit(SignUpLoadingState());
 
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
@@ -82,16 +81,18 @@ class RegisterCubit extends Cubit<RegisterStates> {
           password: password,
           phone: phone,
           uId: value.user!.uid,
-          image: imageURL ?? 'https://erollaw.com/wp-content/uploads/2021/03/unknown.png',
+          image: imageURL ??
+              'https://erollaw.com/wp-content/uploads/2021/03/unknown.png',
         );
+        sendEmailVerification();
         print(value.user?.email);
         print(value.user?.uid);
-        emit(RegisterSuccessState());
+        emit(SignUpSuccessState());
       }).catchError((error) {
-        emit(RegisterErrorState(error.toString()));
+        emit(SignUpErrorState(error.toString()));
       });
     }).catchError((error) {
-      emit(RegisterErrorState(error.toString()));
+      emit(SignUpErrorState(error.toString()));
     });
   }
 
@@ -108,7 +109,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       phone = phone,
       email = email,
       uId = uId,
-      image =image,
+      image = image,
     );
 
     FirebaseFirestore.instance
@@ -122,14 +123,22 @@ class RegisterCubit extends Cubit<RegisterStates> {
     });
   }
 
+  void sendEmailVerification() {
+    FirebaseAuth.instance.currentUser?.sendEmailVerification().then((value) {
+      emit(SendEmailVerificationSuccessState());
+    }).catchError((error) {
+      emit(SendEmailVerificationErrorState(error));
+      print(error.toString());
+    });
+  }
+
   bool isPassword = true;
-  IconData suffix = Icons.visibility;
+  IconData suffix = Icons.visibility_off;
   void changePasswordVisibility() {
     isPassword = !isPassword;
     isPassword == true
-        ? suffix = Icons.visibility
-        : suffix = Icons.visibility_off;
-    emit(RegisterChangePasswordVisibilityState());
+        ? suffix = Icons.visibility_off
+        : suffix = Icons.visibility;
+    emit(SignUpChangePasswordVisibilityState());
   }
-
 }

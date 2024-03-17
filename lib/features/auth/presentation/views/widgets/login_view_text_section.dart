@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/gradient_text.dart';
 
-class LoginTextSection extends StatelessWidget {
-  const LoginTextSection({super.key});
+class LoginViewTextSection extends StatelessWidget {
+  const LoginViewTextSection({super.key});
 
   @override
   Widget build(BuildContext context) {

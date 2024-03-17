@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
-import 'package:greenoville_app/features/auth/presentation/views/register_view.dart';
+import 'package:greenoville_app/features/auth/presentation/views/signup_view.dart';
+import 'package:greenoville_app/features/welcome/presentation/views/splash_view.dart';
 import 'bloc_observer.dart';
 import 'core/network/local/cache_helper.dart';
 import 'firebase_options.dart';
@@ -38,10 +39,10 @@ class MyApp extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-        ));
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.dark
+          ));
           return MaterialApp(
-
             debugShowCheckedModeBanner: false,
             locale: const Locale('en'),
             localizationsDelegates: const [
@@ -51,10 +52,8 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
-            theme: ThemeData(
-
-            ),
-            home: const RegisterView(),
+            theme: ThemeData(),
+            home: const SplashView(),
           );
         },
       ),

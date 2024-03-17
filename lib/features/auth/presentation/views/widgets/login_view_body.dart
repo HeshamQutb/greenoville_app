@@ -10,10 +10,10 @@ import '../../../../../core/services/toast_services.dart';
 import '../../../../../core/widgets/custom_progress.dart';
 import '../../../../../core/widgets/default_button.dart';
 import '../../../../../core/widgets/default_text_button.dart';
-import '../../../../../core/widgets/default_text_field.dart';
 import '../../../../root/presentation/views/root_view.dart';
-import 'go_to_signup_section.dart';
-import 'login_text_section.dart';
+import '../signup_view.dart';
+import 'login_view_text_field_section.dart';
+import 'login_view_text_section.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({
@@ -32,7 +32,7 @@ class LoginViewBody extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginStates>(listener: (context, state) {
       if (state is LoginErrorState) {
         showToast(
-          message: 'It seems like you haven\'t registered yet.',
+          message: state.error.toString(),
           state: ToastState.error,
         );
       }
@@ -53,102 +53,85 @@ class LoginViewBody extends StatelessWidget {
       }
     }, builder: (context, state) {
       var loginCubit = LoginCubit.get(context);
-      return Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: kHorizontalPadding,
-              vertical: kVerticalPadding,
-            ),
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    child: Image.asset(
-                      AssetsData.login,
+      return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: kHorizontalPadding,
+            vertical: kVerticalPadding,
+          ),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  child: Image.asset(
+                    AssetsData.login,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const LoginViewTextSection(),
+                const SizedBox(
+                  height: 20,
+                ),
+                LoginTextFieldSection(
+                  emailController: emailController,
+                  passwordController: passwordController,
+                  formKey: formKey,
+                  loginCubit: loginCubit,
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: DefaultTextButton(
+                    onPressed: () {},
+                    text: 'Forgot Password?',
+                    isUpperCase: false,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                state is! LoginLoadingState
+                    ? DefaultButton(
+                        function: () {
+                          if (formKey.currentState!.validate()) {
+                            loginCubit.userLogin(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                          }
+                        },
+                        text: 'Login',
+                      )
+                    : const CustomProgressIndicator(),
+                const SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Don\'t have an account !',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const LoginTextSection(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  DefaultTextField(
-                    controller: emailController,
-                    type: TextInputType.emailAddress,
-                    validate: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please Enter Email Address!';
-                      }
-                      return null;
-                    },
-                    label: 'Email Address',
-                    prefixIcon: Icons.email_outlined,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  DefaultTextField(
-                    onFieldSubmitted: (value) {
-                      if (formKey.currentState!.validate()) {
-                        loginCubit.userLogin(
-                          email: emailController.text,
-                          password: passwordController.text,
+                    DefaultTextButton(
+                      onPressed: () {
+                        navigateTo(
+                          context,
+                          const SignUpView(),
                         );
-                      }
-                    },
-                    controller: passwordController,
-                    type: TextInputType.text,
-                    validate: (value) {
-                      if (value!.isEmpty) {
-                        return 'Password is too short!';
-                      }
-                      return null;
-                    },
-                    label: 'Password',
-                    prefixIcon: Icons.lock,
-                    onPressedSuffix: () {
-                      loginCubit.changePasswordVisibility();
-                    },
-                    suffix: loginCubit.suffix,
-                    isPassword: loginCubit.isPassword,
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: DefaultTextButton(
-                      onPressed: () {},
-                      text: 'Forgot Password?',
-                      isUpperCase: false,
+                      },
+                      text: 'sign up',
                     ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  state is! LoginLoadingState
-                      ? DefaultButton(
-                          function: () {
-                            if (formKey.currentState!.validate()) {
-                              loginCubit.userLogin(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                            }
-                          },
-                          text: 'Login',
-                          radius: 10,
-                        )
-                      : const CustomProgressIndicator(),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const GoToSignUp(),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
