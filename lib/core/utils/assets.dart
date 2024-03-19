@@ -7,4 +7,6 @@ class AssetsData {
 
   static const unknownUser = 'assets/images/unknown user.png';
 
+  static const testTomato = 'assets/images/Tomato.png';
+
 }
