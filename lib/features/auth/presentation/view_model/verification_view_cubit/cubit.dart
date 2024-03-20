@@ -22,7 +22,6 @@ class VerificationCubit extends Cubit<VerificationStates> {
         emit(CheckEmailVerificationSuccessState());
       }).catchError((error) {
         emit(CheckEmailVerificationErrorState(error));
-        print(error.toString());
       });
     }
   }
@@ -32,7 +31,6 @@ class VerificationCubit extends Cubit<VerificationStates> {
       emit(ResendEmailVerificationSuccessState());
     }).catchError((error) {
       emit(ResendEmailVerificationErrorState(error));
-      print(error.toString());
     });
   }
 }

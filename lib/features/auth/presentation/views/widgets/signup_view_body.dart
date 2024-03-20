@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:greenoville_app/features/auth/presentation/views/verification_view.dart';
 
 import 'package:greenoville_app/features/auth/presentation/views/widgets/signup_view_text_section.dart';
 import 'package:greenoville_app/features/auth/presentation/views/widgets/signup_view_pick_image_section.dart';
+import 'package:greenoville_app/features/root/presentation/views/root_view.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/services/navigate_services.dart';
 import '../../../../../core/services/toast_services.dart';
+import '../../../../../core/widgets/custom_progress.dart';
 import '../../../../../core/widgets/default_button.dart';
 import '../../../../../core/widgets/default_text_button.dart';
 import '../../view_model/signup_view_cubit/cubit.dart';
@@ -33,9 +34,9 @@ class SignUpViewBody extends StatelessWidget {
     return BlocConsumer<SignUpCubit, SignUpStates>(
       listener: (context, state) {
         if (state is SignUpSuccessState) {
-          navigateTo(context, const VerificationView());
+          navigateAndFinish(context, const RootView());
           showToast(
-            message: 'Check your mail',
+            message: 'Sign Up Successfully',
             state: ToastState.success,
           );
         }
@@ -82,20 +83,22 @@ class SignUpViewBody extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  DefaultButton(
-                    function: () {
-                      if (formKey.currentState!.validate()) {
-                        signUpCubit.userSignUp(
-                          email: emailController.text,
-                          password: passwordController.text,
-                          name: nameController.text,
-                          phone: phoneController.text,
-                        );
-                      }
-                    },
-                    text: 'Sign up',
-                    isUpperCase: false,
-                  ),
+                  state is! SignUpLoadingState
+                      ? DefaultButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              signUpCubit.userSignUp(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                name: nameController.text,
+                                phone: phoneController.text,
+                              );
+                            }
+                          },
+                          text: 'Sign up',
+                          isUpperCase: false,
+                        )
+                      : const CustomProgressIndicator(),
                   const SizedBox(
                     height: 25.0,
                   ),

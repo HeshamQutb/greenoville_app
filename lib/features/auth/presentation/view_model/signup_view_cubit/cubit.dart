@@ -24,7 +24,6 @@ class SignUpCubit extends Cubit<SignUpStates> {
       emit(GetUserImageSuccessState());
     } else {
       emit(GetUserImageErrorState());
-      print('No image selected!');
     }
   }
 
@@ -37,7 +36,6 @@ class SignUpCubit extends Cubit<SignUpStates> {
       emit(GetUserImageSuccessState());
     } else {
       emit(GetUserImageErrorState());
-      print('No image selected!');
     }
   }
 
@@ -84,8 +82,6 @@ class SignUpCubit extends Cubit<SignUpStates> {
               'https://erollaw.com/wp-content/uploads/2021/03/unknown.png',
         );
         sendEmailVerification();
-        print(value.user?.email);
-        print(value.user?.uid);
         emit(SignUpSuccessState());
       }).catchError((error) {
         emit(SignUpErrorState(error.toString()));
@@ -127,7 +123,6 @@ class SignUpCubit extends Cubit<SignUpStates> {
       emit(SendEmailVerificationSuccessState());
     }).catchError((error) {
       emit(SendEmailVerificationErrorState(error));
-      print(error.toString());
     });
   }
 

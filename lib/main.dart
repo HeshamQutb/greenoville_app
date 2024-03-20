@@ -17,8 +17,6 @@ void main() async {
   await CacheHelper.init();
   Bloc.observer = MyBlocObserver();
 
-  bool? onBoarding = CacheHelper.getData(key: 'onBoarding');
-  print('onBoarding = $onBoarding');
 
   runApp(const MyApp());
 }
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AppCubit()..getNextScreen(),
+          create: (context) => AppCubit()..getSplashNextScreen(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(

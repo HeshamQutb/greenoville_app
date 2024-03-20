@@ -21,7 +21,6 @@ class LoginTextFieldSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FocusNode passwordFocusNode = FocusNode();
     return BlocConsumer<LoginCubit, LoginStates>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -38,15 +37,11 @@ class LoginTextFieldSection extends StatelessWidget {
               },
               label: 'Email Address',
               prefixIcon: Icons.email_outlined,
-              onFieldSubmitted: (_) {
-                FocusScope.of(context).requestFocus(passwordFocusNode);
-              },
             ),
             const SizedBox(
               height: 20,
             ),
             DefaultTextField(
-              focusNode: passwordFocusNode,
               onFieldSubmitted: (value) {
                 if (formKey.currentState!.validate()) {
                   loginCubit.userLogin(

@@ -17,7 +17,7 @@ class MarketPricesTitleSection extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            appCubit.changeNavBar(4);
+            appCubit.setPage(4);
           },
           child: const Text(
             'See all',

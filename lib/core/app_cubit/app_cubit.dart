@@ -12,13 +12,14 @@ import '../../views/learn_view.dart';
 import '../../views/market_view.dart';
 import '../../views/soil_view.dart';
 import '../network/local/cache_helper.dart';
+import '../services/navigate_services.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitState());
 
   static AppCubit get(context) => BlocProvider.of(context);
 
-  Widget getNextScreen(){
+  Widget getSplashNextScreen() {
     uId = CacheHelper.getData(key: 'uId');
 
     if (CacheHelper.getData(key: 'onBoarding') != null) {
@@ -31,7 +32,6 @@ class AppCubit extends Cubit<AppStates> {
       return const OnBoardingView();
     }
   }
-
 
   int currentIndex = 0;
   List<Widget> screens = [
@@ -47,6 +47,22 @@ class AppCubit extends Cubit<AppStates> {
     emit(AppChangeNavBarState());
   }
 
+  final PageController pageController = PageController();
+  void setPage(int index) {
+    pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 1),
+      curve: Curves.easeInOut,
+    );
+  }
 
 
+  void signOut(context){
+    CacheHelper.removeData(key: 'uId').then((value) {
+      if(value){
+        navigateAndFinish(context, const LoginView());
+      }
+      emit(AppSignOutState());
+    });
+  }
 }

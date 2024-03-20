@@ -14,10 +14,9 @@ class HomeView extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        var appCubit = AppCubit.get(context);
         return const SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(kDefaultPadding),
+            padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: HomeViewBody(),
           ),
         );

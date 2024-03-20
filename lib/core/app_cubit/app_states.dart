@@ -6,3 +6,5 @@ class AppChangeModeState extends AppStates{}
 
 class AppChangeNavBarState extends AppStates{}
 
+class AppSignOutState extends AppStates{}
+

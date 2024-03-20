@@ -22,7 +22,6 @@ class OnBoardingCubit extends Cubit<OnBoardingStates> {
         );
       }
       emit(OnBoardingGetStartSubmittedState());
-      print('onBoarding = ${value.toString()}');
     });
   }
 }

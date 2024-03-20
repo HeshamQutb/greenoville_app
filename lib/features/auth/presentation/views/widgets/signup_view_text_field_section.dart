@@ -21,9 +21,6 @@ class SignUpViewTextFieldSection extends StatelessWidget {
   final SignUpCubit signUpCubit;
   @override
   Widget build(BuildContext context) {
-    final FocusNode emailFocusNode = FocusNode();
-    final FocusNode phoneFocusNode = FocusNode();
-    final FocusNode passwordFocusNode = FocusNode();
     return Column(
       children: [
         DefaultTextField(
@@ -37,15 +34,11 @@ class SignUpViewTextFieldSection extends StatelessWidget {
           },
           label: 'Name',
           prefixIcon: Icons.person,
-          onFieldSubmitted: (_) {
-            FocusScope.of(context).requestFocus(emailFocusNode);
-          },
         ),
         const SizedBox(
           height: 15,
         ),
         DefaultTextField(
-          focusNode: emailFocusNode,
           controller: emailController,
           type: TextInputType.emailAddress,
           validate: (value) {
@@ -56,15 +49,11 @@ class SignUpViewTextFieldSection extends StatelessWidget {
           },
           label: 'Email Address',
           prefixIcon: Icons.email_outlined,
-          onFieldSubmitted: (_) {
-            FocusScope.of(context).requestFocus(passwordFocusNode);
-          },
         ),
         const SizedBox(
           height: 15,
         ),
         DefaultTextField(
-          focusNode: passwordFocusNode,
           controller: passwordController,
           type: TextInputType.text,
           validate: (value) {
@@ -80,15 +69,11 @@ class SignUpViewTextFieldSection extends StatelessWidget {
           },
           suffix: signUpCubit.suffix,
           isPassword: signUpCubit.isPassword,
-          onFieldSubmitted: (_) {
-            FocusScope.of(context).requestFocus(phoneFocusNode);
-          },
         ),
         const SizedBox(
           height: 15,
         ),
         DefaultTextField(
-          focusNode: phoneFocusNode,
           controller: phoneController,
           type: TextInputType.phone,
           validate: (value) {

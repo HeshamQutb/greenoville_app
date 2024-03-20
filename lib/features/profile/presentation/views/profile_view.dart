@@ -1,55 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../core/widgets/default_button.dart';
+import '../../../../core/widgets/default_button.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
   @override
-  _ProfileViewState createState() => _ProfileViewState();
+  State<ProfileView> createState() => _ProfileViewState();
 }
 
-class _ProfileViewState extends State<ProfileView>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
+class _ProfileViewState extends State<ProfileView> {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
-    return
-      // appBar: AppBar(
-      //   title: Text(
-      //     'Profile',
-      //     style: TextStyle(
-      //       foreground: Paint()
-      //         ..shader = const LinearGradient(
-      //           colors: [Colors.green, Colors.blue],
-      //         ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0)),
-      //     ),
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       icon: const Icon(Icons.settings),
-      //       onPressed: () {
-      //         // Handle search action
-      //       },
-      //     ),
-      //   ],
-      //   bottom: TabBar(
-      //     controller: _tabController,
-      //     tabs: const [
-      //       Tab(text: 'User Profile'),
-      //       Tab(text: 'My Farm Data'),
-      //     ],
-      //   ),
-      // ),
-      SingleChildScrollView(
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -73,10 +43,10 @@ class _ProfileViewState extends State<ProfileView>
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   radius: 62,
                   child: const CircleAvatar(
-                      radius: 60,
-                      backgroundImage: AssetImage('assets/images/profile.png'),
-                    ),
+                    radius: 60,
+                    backgroundImage: AssetImage('assets/images/profile.png'),
                   ),
+                ),
               ],
             ),
             // User Profile
@@ -96,14 +66,30 @@ class _ProfileViewState extends State<ProfileView>
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        QuickStatItem(label: 'Farm Size', value: '50 acres'), // Replace with actual data
-                        SizedBox(width: 20,),
-                        QuickStatItem(label: 'Harvest Yields', value: '1200 kg'), // Replace with actual data
-                        SizedBox(width: 20,),
-                        QuickStatItem(label: 'Sustainability Score', value: '95'), // Replace with actual data
-                        SizedBox(width: 20,),
-                        QuickStatItem(label: 'Followers', value: '1200'), // Replace with actual data
-                        SizedBox(width: 20,),
+                        QuickStatItem(
+                            label: 'Farm Size',
+                            value: '50 acres'), // Replace with actual data
+                        SizedBox(
+                          width: 20,
+                        ),
+                        QuickStatItem(
+                            label: 'Harvest Yields',
+                            value: '1200 kg'), // Replace with actual data
+                        SizedBox(
+                          width: 20,
+                        ),
+                        QuickStatItem(
+                            label: 'Sustainability Score',
+                            value: '95'), // Replace with actual data
+                        SizedBox(
+                          width: 20,
+                        ),
+                        QuickStatItem(
+                            label: 'Followers',
+                            value: '1200'), // Replace with actual data
+                        SizedBox(
+                          width: 20,
+                        ),
                       ],
                     ),
                   ),
@@ -112,26 +98,22 @@ class _ProfileViewState extends State<ProfileView>
                   LinearProgressIndicator(
                     value: 0.7,
                     backgroundColor: Colors.grey[300],
-                    valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
+                    valueColor:
+                        const AlwaysStoppedAnimation<Color>(Colors.green),
                   ),
                   const SizedBox(height: 16),
                   aboutMeBioSection(),
                   // Achievements Showcase
                   achievementsShowcaseSection(),
                   // Edit Profile Button
-                  DefaultButton(function: (){}, text: 'Edit Profile'),
+                  DefaultButton(onPressed: () {}, text: 'Edit Profile'),
                 ],
               ),
             ),
           ],
         ),
-      );
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+      ),
+    );
   }
 }
 
@@ -167,7 +149,6 @@ class QuickStatItem extends StatelessWidget {
   }
 }
 
-
 // Connections Section
 Widget connectionsSection() {
   return const Column(
@@ -183,7 +164,8 @@ Widget connectionsSection() {
       ListTile(
         leading: CircleAvatar(
           radius: 24,
-          backgroundImage: AssetImage('assets/images/profile.png'), // Replace with actual images
+          backgroundImage: AssetImage(
+              'assets/images/profile.png'), // Replace with actual images
         ),
         title: Text('Jane Doe'), // Replace with actual names
         subtitle: Text('Friend since 2020'), // Additional details
@@ -192,7 +174,8 @@ Widget connectionsSection() {
       ListTile(
         leading: CircleAvatar(
           radius: 24,
-          backgroundImage: AssetImage('assets/images/profile.png'), // Replace with actual images
+          backgroundImage: AssetImage(
+              'assets/images/profile.png'), // Replace with actual images
         ),
         title: Text('Bob Smith'), // Replace with actual names
         subtitle: Text('Colleague'), // Additional details
@@ -255,7 +238,7 @@ Widget aboutMeBioSection() {
       ),
       Text(
         'Passionate farmer exploring sustainable farming practices. '
-            'Join me on this journey towards a greener future.',
+        'Join me on this journey towards a greener future.',
         style: TextStyle(fontSize: 16),
       ),
     ],

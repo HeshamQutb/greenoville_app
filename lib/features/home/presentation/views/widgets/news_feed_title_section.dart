@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
-import 'package:greenoville_app/features/home/presentation/views/news_feed_view.dart';
+
+import '../../../../news_feed/presentation/views/news_feed_view.dart';
 
 class NewsFeedTitleSection extends StatelessWidget {
   const NewsFeedTitleSection(

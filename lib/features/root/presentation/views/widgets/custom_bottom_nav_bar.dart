@@ -16,7 +16,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       selectedItemColor: Colors.green,
       currentIndex: appCubit.currentIndex,
       onTap: (index) {
-        appCubit.changeNavBar(index);
+        appCubit.setPage(index);
       },
       items: const [
         BottomNavigationBarItem(

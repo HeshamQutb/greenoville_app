@@ -96,7 +96,7 @@ class LoginViewBody extends StatelessWidget {
                 ),
                 state is! LoginLoadingState
                     ? DefaultButton(
-                        function: () {
+                        onPressed: () {
                           if (formKey.currentState!.validate()) {
                             loginCubit.userLogin(
                               email: emailController.text,

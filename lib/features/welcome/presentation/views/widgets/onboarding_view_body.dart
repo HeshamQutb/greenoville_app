@@ -47,7 +47,7 @@ class OnBoardingViewBody extends StatelessWidget {
                   height: 30,
                 ),
                 DefaultButton(
-                  function: () {
+                  onPressed: () {
                     OnBoardingCubit.get(context).getStartedSubmitted(context);
                   },
                   text: 'Get Started',
