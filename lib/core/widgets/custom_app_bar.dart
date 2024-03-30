@@ -19,13 +19,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 0.0,
       leading: leadingAction != null
           ? IconButton(
-        onPressed: leadingAction,
-        icon: const Icon(
-          Icons.arrow_back_ios,
-          color:
-          kPrimaryColor, // Assuming kPrimaryColor is defined somewhere
-        ),
-      )
+              onPressed: leadingAction,
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color:
+                    kPrimaryColor, // Assuming kPrimaryColor is defined somewhere
+              ),
+            )
           : null,
       title: GradientText(
         fontSize: 23,

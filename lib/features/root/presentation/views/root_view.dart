@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
@@ -32,19 +32,18 @@ class RootView extends StatelessWidget {
           bottomNavigationBar: CustomBottomNavigationBar(
             appCubit: appCubit,
           ),
-          body: Padding(
-            padding: const EdgeInsets.only(top: 38.0),
-            child: PageView(
-              controller: appCubit.pageController,
-              children: appCubit.screens,
-              onPageChanged: (index) {
-                appCubit.changeNavBar(index);
-              },
-            ),
+          body: PageView(
+            controller: appCubit.pageController,
+            children: appCubit.screens,
+            onPageChanged: (index) {
+              appCubit.changeNavBar(index);
+            },
           ),
           floatingActionButton: ChatBotFAB(
             onPressed: () {
-              print('Chat bot button pressed');
+              if (kDebugMode) {
+                print('Chat bot button pressed');
+              }
             },
             iconPath:
                 'assets/images/chatbot.png', // Replace with your icon path

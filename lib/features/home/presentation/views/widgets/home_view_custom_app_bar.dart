@@ -19,8 +19,6 @@ class HomeViewCustomAppBar extends StatelessWidget {
           },
           icon: const Icon(
             Icons.menu,
-            size: 30,
-            color: Colors.grey,
           ),
         ),
         const GradientText(
