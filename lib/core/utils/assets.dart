@@ -1,5 +1,9 @@
 class AssetsData {
 
+  static const arefRuqaaFont = 'ArefRuqaa';
+
+  static const katibehFont = 'Katibeh';
+
   static const caveatFont = 'Caveat';
 
   static const madimiOne = 'MadimiOne';

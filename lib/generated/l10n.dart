@@ -49,6 +49,96 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `GreeNoville`
+  String get appName {
+    return Intl.message(
+      'GreeNoville',
+      name: 'appName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Luxor`
+  String get location {
+    return Intl.message(
+      'Luxor',
+      name: 'location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunny`
+  String get weather {
+    return Intl.message(
+      'Sunny',
+      name: 'weather',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Learn Tips`
+  String get quickActionLearnTips {
+    return Intl.message(
+      'Learn Tips',
+      name: 'quickActionLearnTips',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ask Expert`
+  String get quickActionAskExpert {
+    return Intl.message(
+      'Ask Expert',
+      name: 'quickActionAskExpert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sell Produce`
+  String get quickActionSellProduce {
+    return Intl.message(
+      'Sell Produce',
+      name: 'quickActionSellProduce',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See all`
+  String get seeAll {
+    return Intl.message(
+      'See all',
+      name: 'seeAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Latest News`
+  String get latestNews {
+    return Intl.message(
+      'Latest News',
+      name: 'latestNews',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Market Prices`
+  String get marketPrices {
+    return Intl.message(
+      'Market Prices',
+      name: 'marketPrices',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

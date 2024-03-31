@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class HomeViewNewsFeedListViewItem extends StatelessWidget {
+class HomeViewLatestNewsListViewItem extends StatelessWidget {
   final String title;
   final String content;
   final String image;
 
-  const HomeViewNewsFeedListViewItem({
+  const HomeViewLatestNewsListViewItem({
     super.key,
     required this.title,
     required this.content,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class NewsFeedListViewItem extends StatelessWidget {
+class LatestNewsListViewItem extends StatelessWidget {
   final String title;
   final String content;
   final String image;
 
-  const NewsFeedListViewItem({
+  const LatestNewsListViewItem({
     super.key,
     required this.title,
     required this.content,

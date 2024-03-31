@@ -1,1 +1,12 @@
-{}
+{
+  "appName" : "GreeNoville",
+  "location" : "Luxor",
+  "weather": "Sunny",
+  "quickActionLearnTips": "Learn Tips",
+  "quickActionAskExpert": "Ask Expert",
+  "quickActionSellProduce": "Sell Produce",
+  "seeAll": "See all",
+  "latestNews": "Latest News",
+  "marketPrices": "Market Prices"
+
+}

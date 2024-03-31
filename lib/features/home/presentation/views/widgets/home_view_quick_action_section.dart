@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/quick_action_button.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class HomeViewQuickActionSection extends StatelessWidget {
   const HomeViewQuickActionSection({super.key, required this.appCubit});
   final AppCubit appCubit;
@@ -13,7 +15,8 @@ class HomeViewQuickActionSection extends StatelessWidget {
         children: [
           QuickActionButton(
             icon: Icons.lightbulb_outline,
-            label: 'Learn Tips',
+            label: S.of(context).quickActionLearnTips,
+            fontSize: appCubit.isArabic() ? 20 : null,
             onPressed: () {
               appCubit.setPage(3);
             },
@@ -21,7 +24,8 @@ class HomeViewQuickActionSection extends StatelessWidget {
           const SizedBox(width: 8),
           QuickActionButton(
             icon: Icons.question_answer,
-            label: 'Ask Expert',
+            label: S.of(context).quickActionAskExpert,
+            fontSize: 20,
             onPressed: () {
               appCubit.setPage(2);
             },
@@ -29,7 +33,8 @@ class HomeViewQuickActionSection extends StatelessWidget {
           const SizedBox(width: 8),
           QuickActionButton(
             icon: Icons.shopping_cart,
-            label: 'Sell Produce',
+            label: S.of(context).quickActionSellProduce,
+            fontSize: 20,
             onPressed: () {
               appCubit.setPage(4);
             },

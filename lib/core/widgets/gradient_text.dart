@@ -10,6 +10,7 @@ class GradientText extends StatelessWidget {
     required this.width,
     required this.height,
     this.fontSize,
+    this.fontFamily,
   });
   final String text;
   final List<Color> colors;
@@ -18,6 +19,7 @@ class GradientText extends StatelessWidget {
   final double width;
   final double height;
   final double? fontSize;
+  final String? fontFamily;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -30,6 +32,7 @@ class GradientText extends StatelessWidget {
             Rect.fromLTWH(left, top, width, height),
           ),
         fontSize: fontSize ?? 50,
+        fontFamily: fontFamily,
       ),
     );
   }

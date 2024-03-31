@@ -1,1 +1,13 @@
-{}
+{
+  "appName" : "جرينوڤيل",
+  "location" : "الأقصر",
+  "weather": "مشمس",
+  "quickActionLearnTips": "تعلم النصائح",
+  "quickActionAskExpert": "استشر خبير",
+  "quickActionSellProduce": "تسوق منتجاتك",
+  "seeAll": "الكـل",
+  "latestNews": "أخـر الأخبــار",
+  "marketPrices": "أسعـــار الســـــوق"
+
+
+}

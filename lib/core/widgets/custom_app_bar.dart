@@ -33,7 +33,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         colors: const [Colors.green, Colors.blue],
         left: 0.0,
         top: 0.0,
-        width: 300.0,
+        width: 500.0,
         height: 70.0,
       ),
     );

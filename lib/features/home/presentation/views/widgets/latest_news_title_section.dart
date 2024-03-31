@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
+import 'package:greenoville_app/core/services/navigate_services.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../latest_news/presentation/views/latest_news_view.dart';
 
-class MarketPricesTitleSection extends StatelessWidget {
-  const MarketPricesTitleSection(
-      {super.key, required this.title, required this.appCubit});
+class LatestNewsTitleSection extends StatelessWidget {
+  const LatestNewsTitleSection(
+      {super.key,
+      required this.title,
+      required this.widget,
+      required this.appCubit});
   final String title;
+  final Widget widget;
   final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {
@@ -15,11 +21,14 @@ class MarketPricesTitleSection extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         InkWell(
           onTap: () {
-            appCubit.setPage(4);
+            navigateTo(context, const LatestNewsView());
           },
           child: Text(
             S.of(context).seeAll,

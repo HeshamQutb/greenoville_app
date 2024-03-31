@@ -15,8 +15,11 @@ class SplashViewBody extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
+        var appCubit = AppCubit.get(context);
         return AnimatedSplashScreen(
-          splash: const AnimatedSplashScreenContent(),
+          splash: AnimatedSplashScreenContent(
+            appCubit: appCubit,
+          ),
           nextScreen: AppCubit.get(context).getSplashNextScreen(),
           splashIconSize: 500,
           pageTransitionType: PageTransitionType.bottomToTop,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_news_feed_list_view_item.dart';
+import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_latest_news_list_view_item.dart';
 
-class HomeViewNewsFeedListView extends StatelessWidget {
-  const HomeViewNewsFeedListView({super.key});
+class HomeViewLatestNewsListView extends StatelessWidget {
+  const HomeViewLatestNewsListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class HomeViewNewsFeedListView extends StatelessWidget {
         padding: EdgeInsets.zero,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: 2,
-        itemBuilder: (context, index) => const HomeViewNewsFeedListViewItem(
+        itemBuilder: (context, index) => const HomeViewLatestNewsListViewItem(
           title: 'New Farming Techniques',
           content: 'Explore the latest sustainable farming methods.',
           image:

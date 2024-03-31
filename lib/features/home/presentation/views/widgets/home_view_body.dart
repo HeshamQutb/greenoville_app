@@ -6,11 +6,12 @@ import 'package:greenoville_app/features/home/presentation/views/widgets/home_vi
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_custom_app_bar.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_location_and_weather_section.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_quick_action_section.dart';
-import 'package:greenoville_app/features/home/presentation/views/widgets/news_feed_title_section.dart';
+import 'package:greenoville_app/features/home/presentation/views/widgets/latest_news_title_section.dart';
+import 'package:greenoville_app/features/latest_news/presentation/views/latest_news_view.dart';
 
-import '../../../../news_feed/presentation/views/news_feed_view.dart';
+import '../../../../../generated/l10n.dart';
 import 'market_prices_product_list_view.dart';
-import 'home_view_news_feed_list_view.dart';
+import 'home_view_latest_news_list_view.dart';
 import 'market_prices_title_section.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -32,7 +33,9 @@ class HomeViewBody extends StatelessWidget {
               appCubit: appCubit,
             ),
             const SizedBox(height: 16),
-            const HomeViewBannerSection(),
+            HomeViewBannerSection(
+              appCubit: appCubit,
+            ),
             const SizedBox(height: 16),
             const LocationAndWeatherSection(),
             const SizedBox(height: 16),
@@ -40,15 +43,16 @@ class HomeViewBody extends StatelessWidget {
               appCubit: appCubit,
             ),
             const SizedBox(height: 16),
-            const NewsFeedTitleSection(
-              title: 'Personalized News Feed',
-              widget: NewsFeedView(),
+            LatestNewsTitleSection(
+              appCubit:appCubit,
+              title: S.of(context).latestNews,
+              widget: const LatestNewsView(),
             ),
             const SizedBox(height: 16),
-            const HomeViewNewsFeedListView(),
+            const HomeViewLatestNewsListView(),
             const SizedBox(height: 16),
             MarketPricesTitleSection(
-              title: 'Market Prices',
+              title: S.of(context).marketPrices,
               appCubit: appCubit,
             ),
             const SizedBox(height: 16),

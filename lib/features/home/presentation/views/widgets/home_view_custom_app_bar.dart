@@ -5,6 +5,7 @@ import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
 import 'package:greenoville_app/features/profile/presentation/views/profile_view.dart';
 import '../../../../../core/widgets/gradient_text.dart';
+import '../../../../../generated/l10n.dart';
 
 class HomeViewCustomAppBar extends StatelessWidget {
   const HomeViewCustomAppBar({super.key, required this.appCubit});
@@ -21,13 +22,13 @@ class HomeViewCustomAppBar extends StatelessWidget {
             Icons.menu,
           ),
         ),
-        const GradientText(
-          fontSize: 23,
-          text: 'GreeNoville',
-          colors: [Colors.green, Colors.blue],
+        GradientText(
+          fontSize: appCubit.isArabic() ? 30 : 23,
+          text: S.of(context).appName,
+          colors: const [Colors.green, Colors.blue],
           left: 0.0,
           top: 0.0,
-          width: 300.0,
+          width: 500.0,
           height: 70.0,
         ),
         const Spacer(),

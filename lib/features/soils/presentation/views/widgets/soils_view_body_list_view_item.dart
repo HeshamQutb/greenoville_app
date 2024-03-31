@@ -24,7 +24,7 @@ class SoilsViewBodyListViewItem extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       backgroundImage: AssetImage(soilImage),
-                      radius: 65,
+                      radius: 60,
                     ),
                     const Spacer(),
                     Text(

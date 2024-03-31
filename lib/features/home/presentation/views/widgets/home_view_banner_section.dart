@@ -1,9 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 
 class HomeViewBannerSection extends StatelessWidget {
-  const HomeViewBannerSection({super.key});
-
+  const HomeViewBannerSection({super.key, required this.appCubit});
+  final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
@@ -27,7 +28,7 @@ class HomeViewBannerSection extends StatelessWidget {
         initialPage: 0,
         enableInfiniteScroll: true,
         viewportFraction: 1,
-        reverse: false,
+        reverse: appCubit.isArabic() ? true : false,
         autoPlay: true,
         autoPlayInterval: const Duration(seconds: 3),
         autoPlayAnimationDuration: const Duration(milliseconds: 800),

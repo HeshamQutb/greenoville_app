@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/features/root/presentation/views/root_view.dart';
+import 'package:intl/intl.dart';
 import '../../constants.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
@@ -55,6 +56,10 @@ class AppCubit extends Cubit<AppStates> {
     );
   }
 
+  bool isArabic(){
+    return Intl.getCurrentLocale() == 'ar';
+  }
+
   void signOut(context) {
     CacheHelper.removeData(key: 'uId').then((value) {
       if (value) {
@@ -63,4 +68,9 @@ class AppCubit extends Cubit<AppStates> {
       emit(AppSignOutState());
     });
   }
+
+
+
+
+
 }
