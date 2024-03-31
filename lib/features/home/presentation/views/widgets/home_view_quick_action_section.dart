@@ -25,7 +25,7 @@ class HomeViewQuickActionSection extends StatelessWidget {
           QuickActionButton(
             icon: Icons.question_answer,
             label: S.of(context).quickActionAskExpert,
-            fontSize: 20,
+            fontSize: appCubit.isArabic() ? 20 : null,
             onPressed: () {
               appCubit.setPage(2);
             },
@@ -34,7 +34,7 @@ class HomeViewQuickActionSection extends StatelessWidget {
           QuickActionButton(
             icon: Icons.shopping_cart,
             label: S.of(context).quickActionSellProduce,
-            fontSize: 20,
+            fontSize: appCubit.isArabic() ? 20 : null,
             onPressed: () {
               appCubit.setPage(4);
             },
