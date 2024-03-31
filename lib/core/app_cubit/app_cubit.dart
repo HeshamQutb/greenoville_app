@@ -19,6 +19,10 @@ class AppCubit extends Cubit<AppStates> {
 
   static AppCubit get(context) => BlocProvider.of(context);
 
+  void getAppLanguage(){
+    appLanguage = CacheHelper.getData(key: 'appLanguage');
+  }
+
   Widget getSplashNextScreen() {
     uId = CacheHelper.getData(key: 'uId');
 

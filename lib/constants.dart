@@ -9,3 +9,5 @@ const kHorizontalPadding = 16.0;
 const kVerticalPadding = 50.0;
 
 String? uId;
+
+String? appLanguage;

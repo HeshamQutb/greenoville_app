@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
@@ -29,7 +30,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AppCubit()..getSplashNextScreen(),
+          create: (context) => AppCubit()
+            ..getAppLanguage()
+            ..getSplashNextScreen(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
               statusBarIconBrightness: Brightness.dark));
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            locale: const Locale('ar'),
+            locale: Locale(appLanguage ?? 'en'),
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
