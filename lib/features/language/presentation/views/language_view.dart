@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
+import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/features/language/presentation/views/widgets/language_view_body.dart';
+import 'package:greenoville_app/features/root/presentation/views/root_view.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../generated/l10n.dart';
 
@@ -16,7 +18,7 @@ class LanguageView extends StatelessWidget {
         appBar: CustomAppBar(
           title: S.of(context).language,
           leadingAction: () {
-            Navigator.pop(context);
+            navigateAndFinish(context, const RootView());
           },
         ),
         body:  LanguageViewBody(appCubit: appCubit,),

@@ -14,8 +14,6 @@ class SelectLanguageState extends AppStates {
   SelectLanguageState(this.language);
 }
 
-class GetAppLanguageState extends AppStates {}
-
 
 class AppGetUserLoadingState extends AppStates{}
 
