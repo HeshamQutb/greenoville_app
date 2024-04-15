@@ -22,18 +22,116 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about": MessageLookupByLibrary.simpleMessage("حول"),
+        "addPhoto": MessageLookupByLibrary.simpleMessage("اختر صورة"),
+        "addPost": MessageLookupByLibrary.simpleMessage("اضافة منشور"),
         "appName": MessageLookupByLibrary.simpleMessage("جرينوڤيل"),
-        "latestNews": MessageLookupByLibrary.simpleMessage("أخـر الأخبــار"),
+        "appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
+        "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "chooseFromGallery":
+            MessageLookupByLibrary.simpleMessage("اختر من المعرض"),
+        "claySoil": MessageLookupByLibrary.simpleMessage("التربــة الطينية"),
+        "collapseText": MessageLookupByLibrary.simpleMessage("عرض أقل"),
+        "comment": MessageLookupByLibrary.simpleMessage("تعليق"),
+        "communityTitle": MessageLookupByLibrary.simpleMessage("المجتمع"),
+        "cropper": MessageLookupByLibrary.simpleMessage("قص الصورة"),
+        "dark": MessageLookupByLibrary.simpleMessage("مضئ"),
+        "defaultSignInFailed": MessageLookupByLibrary.simpleMessage(
+            "فشلت عملية المصادقة. يرجى المحاولة مرة أخرى في وقت لاحق."),
+        "defaultSignUpFailed": MessageLookupByLibrary.simpleMessage(
+            "فشل التسجيل. يرجى المحاولة مرة أخرى في وقت لاحق."),
+        "dontHaveAccount":
+            MessageLookupByLibrary.simpleMessage("ليس لديك حساب!"),
+        "emailAddress":
+            MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+        "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "الحساب موجود بالفعل لهذا البريد الإلكتروني."),
+        "english": MessageLookupByLibrary.simpleMessage("الأنجليزية"),
+        "enterEmailPassword": MessageLookupByLibrary.simpleMessage(
+            "ادخل بريدك الإلكتروني وكلمة المرور"),
+        "expandText": MessageLookupByLibrary.simpleMessage("اقرأ المزيد"),
+        "expert": MessageLookupByLibrary.simpleMessage("خبير"),
+        "farmer": MessageLookupByLibrary.simpleMessage("مزارع"),
+        "farmingPractices": MessageLookupByLibrary.simpleMessage(
+            "واكتشف ممارسات الزراعة المستدامة"),
+        "fertilizers": MessageLookupByLibrary.simpleMessage("الأسمدة"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+        "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+        "haveAccount": MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
+        "helpSupport": MessageLookupByLibrary.simpleMessage("المساعدة والدعم"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage(
+            "عنوان البريد الإلكتروني غير صالح."),
+        "itsPost": MessageLookupByLibrary.simpleMessage("منشور"),
+        "joinGreeNovilleCommunity":
+            MessageLookupByLibrary.simpleMessage("انضم إلى مجتمع جرينوڤيل"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "latestNews": MessageLookupByLibrary.simpleMessage("أخـر الأخبـار"),
+        "light": MessageLookupByLibrary.simpleMessage("مظلم"),
+        "like": MessageLookupByLibrary.simpleMessage("إعجاب"),
+        "loamSoil": MessageLookupByLibrary.simpleMessage("التربــة الفخارية"),
         "location": MessageLookupByLibrary.simpleMessage("الأقصر"),
-        "marketPrices":
-            MessageLookupByLibrary.simpleMessage("أسعـــار الســـــوق"),
+        "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "marketPrices": MessageLookupByLibrary.simpleMessage("أسعـار السـوق"),
+        "myAddress": MessageLookupByLibrary.simpleMessage("عنواني"),
+        "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "newAccount": MessageLookupByLibrary.simpleMessage("حساب جديد"),
+        "noThing": MessageLookupByLibrary.simpleMessage("لا يوجد شئ لنشرّه"),
+        "onBoardingText": MessageLookupByLibrary.simpleMessage(
+            "أعط قوة لحصادك، وأطلق العنان لمستقبلك"),
+        "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "passwordIsTooShort":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور قصيرة جدًا"),
+        "phone": MessageLookupByLibrary.simpleMessage("الهاتف"),
+        "plants": MessageLookupByLibrary.simpleMessage("النباتات"),
+        "pleaseEnterEmailAddress": MessageLookupByLibrary.simpleMessage(
+            "الرجاء إدخال عنوان البريد الإلكتروني"),
+        "pleaseEnterPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم الهاتف"),
+        "pleaseEnterYourName":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسمك"),
+        "post": MessageLookupByLibrary.simpleMessage("نشر"),
+        "privacySecurity":
+            MessageLookupByLibrary.simpleMessage("الخصوصية والأمان"),
+        "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+        "public": MessageLookupByLibrary.simpleMessage("العامة"),
         "quickActionAskExpert":
             MessageLookupByLibrary.simpleMessage("استشر خبير"),
         "quickActionLearnTips":
             MessageLookupByLibrary.simpleMessage("تعلم النصائح"),
         "quickActionSellProduce":
             MessageLookupByLibrary.simpleMessage("تسوق منتجاتك"),
-        "seeAll": MessageLookupByLibrary.simpleMessage("الكـل"),
-        "weather": MessageLookupByLibrary.simpleMessage("مشمس")
+        "sandySoil": MessageLookupByLibrary.simpleMessage("التربــة الرملية"),
+        "searchNow": MessageLookupByLibrary.simpleMessage("ابحث الأن"),
+        "seeAll": MessageLookupByLibrary.simpleMessage("المزيـد"),
+        "share": MessageLookupByLibrary.simpleMessage("مشاركة"),
+        "signOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "signUp": MessageLookupByLibrary.simpleMessage("التسجل"),
+        "signUpSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تم التسجيل بنجاح"),
+        "siltySoil": MessageLookupByLibrary.simpleMessage("التربــة المالحة"),
+        "soilsTitle": MessageLookupByLibrary.simpleMessage("التربـة"),
+        "successfullyLogin":
+            MessageLookupByLibrary.simpleMessage("الدخول بنجاح"),
+        "successfullyPost":
+            MessageLookupByLibrary.simpleMessage("تم النشر بنجاح"),
+        "takePhoto": MessageLookupByLibrary.simpleMessage("قم بالتقاط صورة"),
+        "tips": MessageLookupByLibrary.simpleMessage("النصائح"),
+        "tools": MessageLookupByLibrary.simpleMessage("الأدوات"),
+        "userDisabled": MessageLookupByLibrary.simpleMessage(
+            "تم تعطيل حسابك. الرجاء الاتصال بالدعم."),
+        "userNotFound": MessageLookupByLibrary.simpleMessage(
+            "عنوان البريد الإلكتروني غير مسجل."),
+        "weakPassword": MessageLookupByLibrary.simpleMessage(
+            "كلمة المرور التي أدخلتها ضعيفة جدًا."),
+        "weather": MessageLookupByLibrary.simpleMessage("مشمس"),
+        "welcomeTo": MessageLookupByLibrary.simpleMessage("مرحبًا بك في"),
+        "whatIsYourMind":
+            MessageLookupByLibrary.simpleMessage("ماذا يدور في ذهنك؟"),
+        "writeAComment":
+            MessageLookupByLibrary.simpleMessage("أكتب تعليقاً..."),
+        "wrongPasswordEmail": MessageLookupByLibrary.simpleMessage(
+            "البريد الإلكتروني أو كلمة المرور غير صحيحة.")
       };
 }

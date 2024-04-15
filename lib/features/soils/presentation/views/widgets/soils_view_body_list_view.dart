@@ -1,57 +1,93 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
-import 'package:greenoville_app/features/silty_soil/presentation/views/silty_soil_view.dart';
 import 'package:greenoville_app/features/soils/presentation/views/widgets/soils_view_body_list_view_item.dart';
-import '../../../../clay_soil/presentation/views/clay_soil_view.dart';
-import '../../../../loam_soil/presentation/views/loam_soil_view.dart';
-import '../../../../sandy_soil/presentation/views/sandy_soil_view.dart';
+import 'package:greenoville_app/features/soils/presentation/views/widgets/soils_view_custom_app_bar.dart';
+
+import '../../../../../generated/l10n.dart';
+import '../../../../soil_type/presentation/views/soil_type_view.dart';
 
 class SoilsViewBodyListView extends StatelessWidget {
-  const SoilsViewBodyListView({super.key});
+  const SoilsViewBodyListView({super.key, required this.appCubit});
+  final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SoilsViewCustomAppBar(
+          appCubit: appCubit,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
         GestureDetector(
           onTap: () {
-            navigateTo(context, const ClaySoilView());
+            navigateTo(
+              context,
+              SoilTypeView(
+                soilTypeName: S.of(context).claySoil,
+                soilImage: AssetsData.clay,
+                appCubit: appCubit,
+              ),
+            );
           },
-          child: const SoilsViewBodyListViewItem(
+          child: SoilsViewBodyListViewItem(
             soilImage: AssetsData.claySoil,
-            soilName: 'Clay Soil',
+            soilName: S.of(context).claySoil,
             imageRight: true,
           ),
         ),
         GestureDetector(
           onTap: () {
-            navigateTo(context, const SandySoilView());
+            navigateTo(
+              context,
+              SoilTypeView(
+                soilTypeName: S.of(context).sandySoil,
+                soilImage: AssetsData.sandy,
+                appCubit: appCubit,
+              ),
+            );
           },
-          child: const SoilsViewBodyListViewItem(
+          child: SoilsViewBodyListViewItem(
             soilImage: AssetsData.sandySoil,
-            soilName: 'Sandy Soil',
+            soilName: S.of(context).sandySoil,
             imageRight: false,
           ),
         ),
         GestureDetector(
           onTap: () {
-            navigateTo(context, const SiltySoilView());
+            navigateTo(
+              context,
+              SoilTypeView(
+                soilTypeName: S.of(context).siltySoil,
+                soilImage: AssetsData.silty,
+                appCubit: appCubit,
+              ),
+            );
           },
-          child: const SoilsViewBodyListViewItem(
+          child: SoilsViewBodyListViewItem(
             soilImage: AssetsData.siltySoil,
-            soilName: 'Silty Soil',
+            soilName: S.of(context).siltySoil,
             imageRight: true,
           ),
         ),
         GestureDetector(
           onTap: () {
-            navigateTo(context, const LoamSoilView());
+            navigateTo(
+              context,
+              SoilTypeView(
+                soilTypeName: S.of(context).loamSoil,
+                soilImage: AssetsData.loam,
+                appCubit: appCubit,
+              ),
+            );
           },
-          child: const SoilsViewBodyListViewItem(
+          child: SoilsViewBodyListViewItem(
             soilImage: AssetsData.loamSoil,
-            soilName: 'Loam Soil',
+            soilName: S.of(context).loamSoil,
             imageRight: false,
           ),
         ),

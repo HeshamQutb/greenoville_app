@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/constants.dart';
-import 'package:greenoville_app/core/widgets/custom_app_bar.dart';
+import '../../../../core/app_cubit/app_cubit.dart';
 import 'widgets/soils_view_body.dart';
 
 class SoilsView extends StatelessWidget {
@@ -8,20 +9,25 @@ class SoilsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    var appCubit = AppCubit.get(context);
+    return Column(
       children: [
-        CustomAppBar(
-          title: 'Soils',
+        const SizedBox(
+          height: 38,
         ),
-        SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: SoilsViewBody(),
+        Expanded(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+              child: SoilsViewBody(
+                appCubit: appCubit,
+              ),
+            ),
           ),
         ),
       ],
     );
   }
 }
-

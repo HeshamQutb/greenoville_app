@@ -38,3 +38,10 @@ class GetUserImageErrorState extends SignUpStates{}
 
 class UploadUserImageSuccessState extends SignUpStates{}
 class UploadUserImageErrorState extends SignUpStates{}
+
+
+class SelectUserRoleState extends SignUpStates{
+  final String role;
+
+  SelectUserRoleState(this.role);
+}

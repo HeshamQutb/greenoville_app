@@ -34,7 +34,7 @@ class LatestNewsTitleSection extends StatelessWidget {
             S.of(context).seeAll,
             style: TextStyle(
               color: Colors.green,
-              fontSize: appCubit.isArabic() ? 24 : null,
+              fontSize: appCubit.isArabic() ? 20 : null,
             ),
           ),
         ),

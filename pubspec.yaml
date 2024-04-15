@@ -48,11 +48,14 @@ dependencies:
   fluttertoast: ^8.2.4
   cached_network_image: ^3.3.1
   intl: ^0.18.1
+  expandable_text: ^2.3.0
+  image_cropper: ^5.0.1
+  uuid: ^4.4.0
 
-  firebase_core: ^2.27.2
-  firebase_auth: ^4.18.0
-  cloud_firestore: ^4.15.10
-  firebase_storage: ^11.6.11
+  firebase_core: ^2.28.0
+  firebase_auth: ^4.19.0
+  cloud_firestore: ^4.16.0
+  firebase_storage: ^11.7.0
 
   flutter_localizations:
     sdk: flutter
@@ -97,19 +100,18 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Caveat
-      fonts:
-        - asset: assets/fonts/Caveat-VariableFont_wght.ttf
     - family: MadimiOne
       fonts:
         - asset: assets/fonts/MadimiOne-Regular.ttf
     - family: ArefRuqaa
       fonts:
         - asset: assets/fonts/ArefRuqaa-Regular.ttf
-    - family: Katibeh
+    - family: Almarai
       fonts:
-        - asset: assets/fonts/Katibeh-Regular.ttf
-
+        - asset: assets/fonts/Almarai-Bold.ttf
+    - family: IconBroken
+      fonts:
+        - asset: assets/fonts/icons.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_intl:

@@ -5,11 +5,13 @@ import 'package:greenoville_app/features/auth/presentation/views/widgets/signup_
 import 'package:greenoville_app/features/auth/presentation/views/widgets/signup_view_pick_image_section.dart';
 import 'package:greenoville_app/features/root/presentation/views/root_view.dart';
 import '../../../../../constants.dart';
+import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/navigate_services.dart';
 import '../../../../../core/services/toast_services.dart';
 import '../../../../../core/widgets/custom_progress.dart';
 import '../../../../../core/widgets/default_button.dart';
 import '../../../../../core/widgets/default_text_button.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view_model/signup_view_cubit/cubit.dart';
 import '../../view_model/signup_view_cubit/states.dart';
 import 'signup_view_text_field_section.dart';
@@ -22,7 +24,9 @@ class SignUpViewBody extends StatelessWidget {
     required this.passwordController,
     required this.phoneController,
     required this.formKey,
+    required this.appCubit,
   });
+  final AppCubit appCubit;
   final TextEditingController nameController;
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -36,13 +40,13 @@ class SignUpViewBody extends StatelessWidget {
         if (state is SignUpSuccessState) {
           navigateAndFinish(context, const RootView());
           showToast(
-            message: 'Sign Up Successfully',
+            message: S.of(context).signUpSuccessfully,
             state: ToastState.success,
           );
         }
         if (state is SignUpErrorState) {
           showToast(
-            message: state.error.toString(),
+            message: state.error,
             state: ToastState.error,
           );
         }
@@ -61,16 +65,19 @@ class SignUpViewBody extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(child: SignUpViewTextSection()),
+                  Center(
+                      child: SignUpViewTextSection(
+                    appCubit: appCubit,
+                  )),
                   const SizedBox(
-                    height: 20.0,
+                    height: 15.0,
                   ),
                   SignUpViewPickImageSection(
                     signUpCubit: signUpCubit,
                     profileImage: profileImage,
                   ),
                   const SizedBox(
-                    height: 20.0,
+                    height: 15.0,
                   ),
                   SignUpViewTextFieldSection(
                     nameController: nameController,
@@ -79,9 +86,13 @@ class SignUpViewBody extends StatelessWidget {
                     phoneController: phoneController,
                     formKey: formKey,
                     signUpCubit: signUpCubit,
+                    role: signUpCubit.role,
+                  ),
+                  SelectUserRoleSection(
+                    signUpCubit: signUpCubit,
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 15,
                   ),
                   state is! SignUpLoadingState
                       ? DefaultButton(
@@ -92,22 +103,24 @@ class SignUpViewBody extends StatelessWidget {
                                 password: passwordController.text,
                                 name: nameController.text,
                                 phone: phoneController.text,
+                                role: signUpCubit.role,
+                                context: context,
                               );
                             }
                           },
-                          text: 'Sign up',
+                          text: S.of(context).signUp,
                           isUpperCase: false,
                         )
                       : const CustomProgressIndicator(),
                   const SizedBox(
-                    height: 25.0,
+                    height: 15.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'have an account !',
-                        style: TextStyle(
+                      Text(
+                        S.of(context).haveAccount,
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
@@ -116,7 +129,7 @@ class SignUpViewBody extends StatelessWidget {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        text: 'Login',
+                        text: S.of(context).login,
                       )
                     ],
                   )
@@ -126,6 +139,42 @@ class SignUpViewBody extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class SelectUserRoleSection extends StatelessWidget {
+  const SelectUserRoleSection({super.key, required this.signUpCubit});
+  final SignUpCubit signUpCubit;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Flexible(
+          child: RadioListTile<String>(
+            title: Text(S.of(context).farmer),
+            value: S.of(context).farmer,
+            groupValue: signUpCubit.role,
+            onChanged: (value) {
+              signUpCubit.selectUserRole(value!);
+            },
+            contentPadding: EdgeInsets.zero,
+            activeColor: kPrimaryColor,
+          ),
+        ),
+        Flexible(
+          child: RadioListTile<String>(
+            title: Text(S.of(context).expert),
+            value: S.of(context).expert,
+            groupValue: signUpCubit.role,
+            onChanged: (value) {
+              signUpCubit.selectUserRole(value!);
+            },
+            contentPadding: EdgeInsets.zero,
+            activeColor: kPrimaryColor,
+          ),
+        ),
+      ],
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class OnBoardingViewText extends StatelessWidget {
   const OnBoardingViewText({super.key});
 
@@ -8,7 +10,7 @@ class OnBoardingViewText extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Welcome to',
+          S.of(context).welcomeTo,
           style: TextStyle(
             color: Colors.white,
             fontSize: 30,
@@ -25,7 +27,7 @@ class OnBoardingViewText extends StatelessWidget {
           height: 10,
         ),
         Text(
-          'GreeNoville',
+          S.of(context).appName,
           style: TextStyle(
             color: Colors.white,
             fontSize: 40,
@@ -42,7 +44,7 @@ class OnBoardingViewText extends StatelessWidget {
           height: 10,
         ), // Increased spacing
         Text(
-          'Empower Your Harvest, Empower Your Future',
+          S.of(context).onBoardingText,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,

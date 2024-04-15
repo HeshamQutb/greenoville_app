@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
-
 import '../../../../../generated/l10n.dart';
 
 class MarketPricesTitleSection extends StatelessWidget {
@@ -15,7 +14,10 @@ class MarketPricesTitleSection extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         InkWell(
           onTap: () {
@@ -25,7 +27,7 @@ class MarketPricesTitleSection extends StatelessWidget {
             S.of(context).seeAll,
             style: TextStyle(
               color: Colors.green,
-              fontSize: appCubit.isArabic() ? 24 : null,
+              fontSize: appCubit.isArabic() ? 20 : null,
             ),
           ),
         ),

@@ -1,12 +1,10 @@
 class AssetsData {
+  // App Font
+  static const almaraiFont = 'Almarai';
 
-  static const arefRuqaaFont = 'ArefRuqaa';
-
-  static const katibehFont = 'Katibeh';
-
-  static const caveatFont = 'Caveat';
-
+  // Soil Font
   static const madimiOne = 'MadimiOne';
+  static const arefRuqaaFont = 'ArefRuqaa';
 
   static const logo = 'assets/images/Logo.png';
 
@@ -43,4 +41,12 @@ class AssetsData {
 
   static const testProfileImage =
       'https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg';
+
+
+  static const testPostImage =
+      'https://thumbs.dreamstime.com/b/agriculture-vegetable-field-landscape-view-freshly-growing-84090367.jpg';
+
+
+
+
 }

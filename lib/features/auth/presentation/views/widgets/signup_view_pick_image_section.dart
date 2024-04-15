@@ -5,9 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
 import 'package:greenoville_app/features/auth/presentation/view_model/signup_view_cubit/cubit.dart';
 import 'package:greenoville_app/features/auth/presentation/view_model/signup_view_cubit/states.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/default_text_button.dart';
+import '../../../../../generated/l10n.dart';
 
 class SignUpViewPickImageSection extends StatelessWidget {
   const SignUpViewPickImageSection({
@@ -42,9 +44,9 @@ class SignUpViewPickImageSection extends StatelessWidget {
                           visualDensity:
                               const VisualDensity(horizontal: 0, vertical: -2),
                           leading: const Icon(Icons.camera_alt),
-                          title: const Text('Take a photo'),
+                          title:  Text(S.of(context).takePhoto),
                           onTap: () {
-                            signUpCubit.getProfileImageCamera();
+                            signUpCubit.getProfileImage(ImageSource.camera);
                             Navigator.pop(context);
                           },
                         ),
@@ -57,9 +59,9 @@ class SignUpViewPickImageSection extends StatelessWidget {
                           visualDensity:
                               const VisualDensity(horizontal: 0, vertical: -4),
                           leading: const Icon(Icons.image),
-                          title: const Text('Choose from gallery'),
+                          title:  Text(S.of(context).chooseFromGallery),
                           onTap: () {
-                            signUpCubit.getProfileImageGallery();
+                            signUpCubit.getProfileImage(ImageSource.gallery);
                             Navigator.pop(context);
                           },
                         ),
@@ -72,7 +74,7 @@ class SignUpViewPickImageSection extends StatelessWidget {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          text: 'Cancel',
+                          text: S.of(context).cancel,
                           size: 15,
                         )
                       ],
@@ -86,17 +88,17 @@ class SignUpViewPickImageSection extends StatelessWidget {
               children: [
                 CircleAvatar(
                   backgroundColor: kPrimaryColor,
-                  radius: 40,
+                  radius: 35,
                   backgroundImage: profileImage == null
                       ? const AssetImage(AssetsData.unknownUser)
                       : FileImage(profileImage!) as ImageProvider,
                 ),
                 const CircleAvatar(
                   backgroundColor: Colors.green,
-                  radius: 10,
+                  radius: 8,
                   child: Icon(
                     Icons.add,
-                    size: 18,
+                    size: 16,
                     color: Colors.white,
                   ),
                 )

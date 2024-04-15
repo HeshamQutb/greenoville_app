@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
+import 'package:greenoville_app/features/community/presentation/view_model/community_cubit/community_cubit.dart';
 import 'package:greenoville_app/features/welcome/presentation/views/splash_view.dart';
 import 'bloc_observer.dart';
 import 'core/network/local/cache_helper.dart';
@@ -18,7 +20,10 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await CacheHelper.init();
   Bloc.observer = MyBlocObserver();
-
+  uId = CacheHelper.getData(key: 'uId');
+  if (kDebugMode) {
+    print(uId);
+  }
   runApp(const MyApp());
 }
 
@@ -30,21 +35,25 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AppCubit()
-            ..getAppLanguage()
-            ..getSplashNextScreen(),
+          create: (context) => AppCubit()..getSplashNextScreen(),
+        ),
+        BlocProvider(
+          create: (context) => CommunityCubit()..getPost(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
           var appCubit = AppCubit.get(context);
-          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+          SystemChrome.setSystemUIOverlayStyle(
+            const SystemUiOverlayStyle(
               statusBarColor: Colors.white,
-              statusBarIconBrightness: Brightness.dark));
+              statusBarIconBrightness: Brightness.dark,
+            ),
+          );
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            locale: Locale(appLanguage ?? 'en'),
+            locale: Locale(appCubit.getAppLanguage() ?? 'ar'),
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -53,7 +62,7 @@ class MyApp extends StatelessWidget {
             ],
             supportedLocales: S.delegate.supportedLocales,
             theme: ThemeData(
-              fontFamily: appCubit.isArabic() ? AssetsData.arefRuqaaFont : null,
+              fontFamily: AssetsData.almaraiFont,
             ),
             home: const SplashView(),
           );

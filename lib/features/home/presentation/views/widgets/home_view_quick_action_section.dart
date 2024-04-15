@@ -16,7 +16,6 @@ class HomeViewQuickActionSection extends StatelessWidget {
           QuickActionButton(
             icon: Icons.lightbulb_outline,
             label: S.of(context).quickActionLearnTips,
-            fontSize: appCubit.isArabic() ? 20 : null,
             onPressed: () {
               appCubit.setPage(3);
             },
@@ -25,7 +24,6 @@ class HomeViewQuickActionSection extends StatelessWidget {
           QuickActionButton(
             icon: Icons.question_answer,
             label: S.of(context).quickActionAskExpert,
-            fontSize: appCubit.isArabic() ? 20 : null,
             onPressed: () {
               appCubit.setPage(2);
             },
@@ -34,7 +32,6 @@ class HomeViewQuickActionSection extends StatelessWidget {
           QuickActionButton(
             icon: Icons.shopping_cart,
             label: S.of(context).quickActionSellProduce,
-            fontSize: appCubit.isArabic() ? 20 : null,
             onPressed: () {
               appCubit.setPage(4);
             },

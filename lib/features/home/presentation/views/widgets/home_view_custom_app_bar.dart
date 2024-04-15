@@ -23,7 +23,7 @@ class HomeViewCustomAppBar extends StatelessWidget {
           ),
         ),
         GradientText(
-          fontSize: appCubit.isArabic() ? 30 : 23,
+          fontSize: 23,
           text: S.of(context).appName,
           colors: const [Colors.green, Colors.blue],
           left: 0.0,

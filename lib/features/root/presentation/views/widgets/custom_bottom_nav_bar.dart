@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
-
 import '../../../../../core/app_cubit/app_cubit.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -12,12 +11,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       selectedLabelStyle: appCubit.isArabic()
           ? const TextStyle(
-              fontFamily: AssetsData.arefRuqaaFont,
+              fontFamily: AssetsData.almaraiFont,
               fontWeight: FontWeight.bold,
             )
           : null,
       unselectedLabelStyle: appCubit.isArabic()
-          ? const TextStyle(fontFamily: AssetsData.arefRuqaaFont)
+          ? const TextStyle(
+              fontFamily: AssetsData.almaraiFont,
+              fontWeight: FontWeight.bold,
+            )
           : null,
       selectedFontSize: appCubit.isArabic() ? 16 : 13,
       unselectedFontSize: appCubit.isArabic() ? 14 : 12,

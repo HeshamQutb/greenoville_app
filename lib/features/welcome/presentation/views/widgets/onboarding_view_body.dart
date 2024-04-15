@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/features/welcome/presentation/view_model/onboarding_view_cubit/onboarding_view_cubit.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/default_button.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view_model/onboarding_view_cubit/onboarding_view_state.dart';
 import 'onboarding_view_text.dart';
 
@@ -17,10 +18,14 @@ class OnBoardingViewBody extends StatelessWidget {
         return Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             image: DecorationImage(
+              colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5),
+                BlendMode.srcOver,
+              ),
               fit: BoxFit.cover,
-              image: AssetImage(
+              image: const AssetImage(
                 'assets/images/agricultural-workers.jpg',
               ),
             ),
@@ -50,7 +55,7 @@ class OnBoardingViewBody extends StatelessWidget {
                   onPressed: () {
                     OnBoardingCubit.get(context).getStartedSubmitted(context);
                   },
-                  text: 'Get Started',
+                  text: S.of(context).getStarted,
                 ),
               ],
             ),

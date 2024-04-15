@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/widgets/default_text_field.dart';
+import '../../../../../core/widgets/default_text_form_field.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view_model/login_view_cubit/cubit.dart';
 import '../../view_model/login_view_cubit/states.dart';
 
@@ -26,27 +27,28 @@ class LoginTextFieldSection extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
-            DefaultTextField(
+            DefaultTextFormField(
               controller: emailController,
               type: TextInputType.emailAddress,
               validate: (value) {
                 if (value!.isEmpty) {
-                  return 'Please Enter Email Address!';
+                  return S.of(context).pleaseEnterEmailAddress;
                 }
                 return null;
               },
-              label: 'Email Address',
+              label: S.of(context).emailAddress,
               prefixIcon: Icons.email_outlined,
             ),
             const SizedBox(
               height: 20,
             ),
-            DefaultTextField(
+            DefaultTextFormField(
               onFieldSubmitted: (value) {
                 if (formKey.currentState!.validate()) {
                   loginCubit.userLogin(
                     email: emailController.text,
                     password: passwordController.text,
+                    context: context,
                   );
                 }
               },
@@ -54,11 +56,11 @@ class LoginTextFieldSection extends StatelessWidget {
               type: TextInputType.text,
               validate: (value) {
                 if (value!.isEmpty) {
-                  return 'Password is too short!';
+                  return S.of(context).passwordIsTooShort;
                 }
                 return null;
               },
-              label: 'Password',
+              label: S.of(context).password,
               prefixIcon: Icons.lock,
               onPressedSuffix: () {
                 loginCubit.changePasswordVisibility();

@@ -11,34 +11,37 @@ class RootView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit, AppStates>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        var appCubit = AppCubit.get(context);
-        return Scaffold(
-          drawer: Padding(
-            padding: const EdgeInsets.only(top: 38.0),
-            child: Drawer(
-              child: Padding(
-                padding: const EdgeInsets.all(kDefaultPadding),
-                child: DrawerBody(
-                  appCubit: appCubit,
+    return BlocProvider(
+      create: (context) => AppCubit()..getUserData(),
+      child: BlocConsumer<AppCubit, AppStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var appCubit = AppCubit.get(context);
+          return Scaffold(
+            drawer: Padding(
+              padding: const EdgeInsets.only(top: 38.0),
+              child: Drawer(
+                child: Padding(
+                  padding: const EdgeInsets.all(kDefaultPadding),
+                  child: DrawerBody(
+                    appCubit: appCubit,
+                  ),
                 ),
               ),
             ),
-          ),
-          bottomNavigationBar: CustomBottomNavigationBar(
-            appCubit: appCubit,
-          ),
-          body: PageView(
-            controller: appCubit.pageController,
-            children: appCubit.screens,
-            onPageChanged: (index) {
-              appCubit.changeNavBar(index);
-            },
-          ),
-        );
-      },
+            bottomNavigationBar: CustomBottomNavigationBar(
+              appCubit: appCubit,
+            ),
+            body: PageView(
+              controller: appCubit.pageController,
+              children: appCubit.screens,
+              onPageChanged: (index) {
+                appCubit.changeNavBar(index);
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

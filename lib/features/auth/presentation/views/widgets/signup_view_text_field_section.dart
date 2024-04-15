@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/features/auth/presentation/view_model/signup_view_cubit/cubit.dart';
 
-import '../../../../../core/widgets/default_text_field.dart';
+import '../../../../../core/widgets/default_text_form_field.dart';
+import '../../../../../generated/l10n.dart';
 
 class SignUpViewTextFieldSection extends StatelessWidget {
   const SignUpViewTextFieldSection({
@@ -12,57 +13,59 @@ class SignUpViewTextFieldSection extends StatelessWidget {
     required this.phoneController,
     required this.formKey,
     required this.signUpCubit,
+    required this.role,
   });
   final TextEditingController nameController;
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final TextEditingController phoneController;
+  final String role;
   final GlobalKey<FormState> formKey;
   final SignUpCubit signUpCubit;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        DefaultTextField(
+        DefaultTextFormField(
           controller: nameController,
           type: TextInputType.name,
           validate: (value) {
             if (value!.isEmpty) {
-              return 'Please Enter Your Name!';
+              return S.of(context).pleaseEnterYourName;
             }
             return null;
           },
-          label: 'Name',
+          label: S.of(context).name,
           prefixIcon: Icons.person,
         ),
         const SizedBox(
           height: 15,
         ),
-        DefaultTextField(
+        DefaultTextFormField(
           controller: emailController,
           type: TextInputType.emailAddress,
           validate: (value) {
             if (value!.isEmpty) {
-              return 'Please Enter Email Address!';
+              return S.of(context).pleaseEnterEmailAddress;
             }
             return null;
           },
-          label: 'Email Address',
+          label: S.of(context).emailAddress,
           prefixIcon: Icons.email_outlined,
         ),
         const SizedBox(
           height: 15,
         ),
-        DefaultTextField(
+        DefaultTextFormField(
           controller: passwordController,
           type: TextInputType.text,
           validate: (value) {
             if (value!.isEmpty) {
-              return 'Password is too short!';
+              return S.of(context).passwordIsTooShort;
             }
             return null;
           },
-          label: 'Password',
+          label: S.of(context).password,
           prefixIcon: Icons.lock,
           onPressedSuffix: () {
             signUpCubit.changePasswordVisibility();
@@ -73,24 +76,26 @@ class SignUpViewTextFieldSection extends StatelessWidget {
         const SizedBox(
           height: 15,
         ),
-        DefaultTextField(
+        DefaultTextFormField(
           controller: phoneController,
           type: TextInputType.phone,
           validate: (value) {
             if (value!.isEmpty) {
-              return 'Please Enter Phone Number!';
+              return S.of(context).pleaseEnterPhoneNumber;
             }
             return null;
           },
-          label: 'Phone',
+          label: S.of(context).phone,
           prefixIcon: Icons.phone,
           onFieldSubmitted: (value) {
             if (formKey.currentState!.validate()) {
               signUpCubit.userSignUp(
+                context: context,
                 email: emailController.text,
                 password: passwordController.text,
                 name: nameController.text,
                 phone: phoneController.text,
+                role: role,
               );
             }
           },

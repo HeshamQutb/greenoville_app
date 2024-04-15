@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
-
+import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/widgets/gradient_text.dart';
+import '../../../../../generated/l10n.dart';
 
 class SignUpViewTextSection extends StatelessWidget {
-  const SignUpViewTextSection({super.key});
-
+  const SignUpViewTextSection({super.key, required this.appCubit});
+  final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         GradientText(
-          text: 'Sign Up',
-          colors: [Colors.green, Colors.blue],
+          text: S.of(context).newAccount,
+          colors: const [Colors.green, Colors.blue],
           left: 0,
           top: 0,
           width: 500,
           height: 0,
+          fontSize: appCubit.isArabic() ? 30 : 40,
         ),
-        SizedBox(
-          height: 15.0,
+        const SizedBox(
+          height: 10.0,
         ),
         GradientText(
-          text: 'Join GreeNoville Community',
-          colors: [Colors.green, Colors.blue],
+          text: S.of(context).joinGreeNovilleCommunity,
+          colors: const [Colors.green, Colors.blue],
           left: 0,
           top: 0,
           width: 500,
@@ -30,8 +32,8 @@ class SignUpViewTextSection extends StatelessWidget {
           fontSize: 14,
         ),
         GradientText(
-          text: 'Discover Sustainable Farming Practices!',
-          colors: [Colors.green, Colors.blue],
+          text: S.of(context).farmingPractices,
+          colors: const [Colors.green, Colors.blue],
           left: 0,
           top: 0,
           width: 500,

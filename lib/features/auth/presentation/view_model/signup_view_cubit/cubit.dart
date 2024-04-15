@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/features/auth/presentation/view_model/signup_view_cubit/states.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../../../constants.dart';
+import '../../../../../core/network/local/cache_helper.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/user_model.dart';
 
 class SignUpCubit extends Cubit<SignUpStates> {
@@ -13,26 +16,22 @@ class SignUpCubit extends Cubit<SignUpStates> {
 
   static SignUpCubit get(context) => BlocProvider.of(context);
 
-  String? uploadedImage;
-  File? profileImage;
-  Future<void> getProfileImageGallery() async {
-    final returnedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+  String role = S.current.farmer;
 
-    if (returnedImage != null) {
-      profileImage = File(returnedImage.path);
-      emit(GetUserImageSuccessState());
-    } else {
-      emit(GetUserImageErrorState());
-    }
+  void selectUserRole(String selectedRole) {
+    role = selectedRole;
+    emit(SelectUserRoleState(role));
   }
 
-  Future<void> getProfileImageCamera() async {
-    final returnedImage =
-        await ImagePicker().pickImage(source: ImageSource.camera);
+  String? uploadedImage;
+  File? profileImage;
 
-    if (returnedImage != null) {
-      profileImage = File(returnedImage.path);
+  Future<void> getProfileImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      profileImage = File(pickedFile.path);
       emit(GetUserImageSuccessState());
     } else {
       emit(GetUserImageErrorState());
@@ -55,40 +54,59 @@ class SignUpCubit extends Cubit<SignUpStates> {
         return null;
       }
     } else {
-      // If profile image is null, return a default image URL or handle as required
       return null;
     }
   }
 
-  void userSignUp({
+  Future<void> userSignUp({
     required String email,
     required String name,
     required String password,
     required String phone,
-  }) {
+    required String role,
+    required BuildContext context,
+  }) async {
     emit(SignUpLoadingState());
-
-    FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password)
-        .then((value) {
-      uploadProfileImage().then((imageURL) {
-        userCreate(
-          email: email,
-          name: name,
-          password: password,
-          phone: phone,
-          uId: value.user!.uid,
-          image: imageURL ??
-              'https://erollaw.com/wp-content/uploads/2021/03/unknown.png',
-        );
-        sendEmailVerification();
-        emit(SignUpSuccessState());
-      }).catchError((error) {
-        emit(SignUpErrorState(error.toString()));
-      });
-    }).catchError((error) {
-      emit(SignUpErrorState(error.toString()));
-    });
+    try {
+      final UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      final imageURL = await uploadProfileImage();
+      userCreate(
+        email: email,
+        name: name,
+        password: password,
+        phone: phone,
+        uId: userCredential.user!.uid,
+        image: imageURL ??
+            'https://erollaw.com/wp-content/uploads/2021/03/unknown.png',
+        role: role,
+      );
+      CacheHelper.setData(
+        key: 'uId',
+        value: FirebaseAuth.instance.currentUser?.uid,
+      );
+      uId = CacheHelper.getData(key: 'uId');
+      await sendEmailVerification();
+      emit(SignUpSuccessState());
+    } catch (error) {
+      String errorMessage = S.of(context).defaultSignUpFailed;
+      if (error is FirebaseAuthException) {
+        switch (error.code) {
+          case 'weak-password':
+            errorMessage = S.of(context).weakPassword;
+            break;
+          case 'email-already-in-use':
+            errorMessage = S.of(context).emailAlreadyInUse;
+            break;
+          case 'invalid-email':
+            errorMessage = S.of(context).invalidEmail;
+            break;
+          default:
+            errorMessage = S.of(context).defaultSignUpFailed;
+        }
+      }
+      emit(SignUpErrorState(errorMessage));
+    }
   }
 
   void userCreate({
@@ -98,36 +116,40 @@ class SignUpCubit extends Cubit<SignUpStates> {
     required String phone,
     required String uId,
     required String image,
+    required String role,
   }) {
     UserModel model = UserModel(
-      name = name,
-      phone = phone,
-      email = email,
-      uId = uId,
-      image = image,
+      name: name,
+      phone: phone,
+      email: email,
+      uId: uId,
+      image: image,
+      role: role,
     );
 
     FirebaseFirestore.instance
         .collection('users')
         .doc(uId)
         .set(model.toMap())
-        .then((value) {
+        .then((_) {
       emit(CreateUserSuccessState());
     }).catchError((error) {
       emit(CreateUserErrorState(error.toString()));
     });
   }
 
-  void sendEmailVerification() {
-    FirebaseAuth.instance.currentUser?.sendEmailVerification().then((value) {
+  Future<void> sendEmailVerification() async {
+    try {
+      await FirebaseAuth.instance.currentUser?.sendEmailVerification();
       emit(SendEmailVerificationSuccessState());
-    }).catchError((error) {
-      emit(SendEmailVerificationErrorState(error));
-    });
+    } catch (error) {
+      emit(SendEmailVerificationErrorState(error.toString()));
+    }
   }
 
   bool isPassword = true;
   IconData suffix = Icons.visibility_off;
+
   void changePasswordVisibility() {
     isPassword = !isPassword;
     isPassword == true

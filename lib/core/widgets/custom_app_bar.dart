@@ -4,18 +4,20 @@ import '../../constants.dart';
 import 'gradient_text.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
-  final Function()? leadingAction;
-
   const CustomAppBar({
     super.key,
     required this.title,
     this.leadingAction,
+    this.centerTitle,
   });
 
+  final String title;
+  final Function()? leadingAction;
+  final bool? centerTitle;
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: centerTitle,
       titleSpacing: 0.0,
       leading: leadingAction != null
           ? IconButton(

@@ -29,7 +29,7 @@ class SoilsViewBodyListViewItem extends StatelessWidget {
                     const Spacer(),
                     Text(
                       soilName,
-                      style: const TextStyle(fontSize: 30),
+                      style: const TextStyle(fontSize: 25),
                     ),
                   ],
                 ),
@@ -47,7 +47,7 @@ class SoilsViewBodyListViewItem extends StatelessWidget {
                   children: [
                     Text(
                       soilName,
-                      style: const TextStyle(fontSize: 30),
+                      style: const TextStyle(fontSize: 25),
                     ),
                     const Spacer(),
                     CircleAvatar(
