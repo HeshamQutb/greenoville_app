@@ -10,7 +10,7 @@ The **Sustainable Farming Platform** addresses this need by offering a user-frie
 
 1. **Information and Education**: Access comprehensive information on sustainable farming practices, organic certifications, soil health management, crop rotation, pest control methods, water conservation, and more.
 
-2. **Expert Advice and Guidance**: Interact with experienced farmers, agricultural specialists, and agronomists through forums, live Q&A sessions, and community-driven discussions.
+2. **Expert Advice and Guidance**: Interact with experienced farmers, agricultural specialists, and agronomists through forums, and community-driven discussions.
 
 3. **Tips and Best Practices**: Explore practical tips and best practices for sustainable farming, including composting, natural fertilizers, integrated pest management, and precision agriculture techniques.
 
