@@ -1,4 +1,4 @@
-# Sustainable Farming Platform (# Greenoville )
+# Sustainable Farming Platform ( Greenoville )
 
 ## Description
 
