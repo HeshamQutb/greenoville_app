@@ -26,6 +26,6 @@ The **Sustainable Farming Platform** addresses this need by offering a user-frie
 
 ## Contact
 
-For questions or feedback, please contact [Hesham Qutb ](heshsaker9@gmail.com).
+For questions or feedback, please contact [Hesham Qutb](mailto:heshamsaker9@gmail.com).
 
 ---
