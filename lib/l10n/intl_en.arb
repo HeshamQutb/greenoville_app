@@ -51,6 +51,7 @@
   "takePhoto": "Take a photo",
   "chooseFromGallery":"Choose from gallery",
   "cancel": "Cancel",
+  "removeImage": "Remove Image",
   "name": "Name",
   "pleaseEnterYourName": "Please Enter Your Name",
   "phone": "Phone",
@@ -86,8 +87,12 @@
   "weakPassword": "The password provided is too weak.",
   "emailAlreadyInUse": "The account already exists for that email.",
   "invalidEmail": "The email address is not valid.",
-  "defaultSignUpFailed": "Sign up failed. Please try again later."
-
+  "defaultSignUpFailed": "Sign up failed. Please try again later.",
+  "noPostsAvailable": "No posts available.",
+  "error": "Error:",
+  "noComments": "No comments yet.",
+  "noLikes": "No likes yet.",
+  "peopleWhoReacted": "People Who Reacted"
 
 
 

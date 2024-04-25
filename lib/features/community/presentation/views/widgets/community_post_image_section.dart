@@ -17,7 +17,7 @@ class CommunityPostImageSection extends StatelessWidget {
           borderRadius: BorderRadiusDirectional.circular(12),
           image:  DecorationImage(
             image: CachedNetworkImageProvider(
-              post.postImage,
+              post.postImage ?? '',
             ),
             fit: BoxFit.cover,
           ),

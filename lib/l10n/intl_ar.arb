@@ -51,6 +51,7 @@
   "takePhoto":"قم بالتقاط صورة",
   "chooseFromGallery":"اختر من المعرض",
   "cancel": "إلغاء",
+  "removeImage": "حذف الصورة",
   "name": "الاسم",
   "pleaseEnterYourName": "الرجاء إدخال اسمك",
   "phone": "الهاتف",
@@ -86,8 +87,12 @@
   "weakPassword": "كلمة المرور التي أدخلتها ضعيفة جدًا.",
   "emailAlreadyInUse": "الحساب موجود بالفعل لهذا البريد الإلكتروني.",
   "invalidEmail": "عنوان البريد الإلكتروني غير صالح.",
-  "defaultSignUpFailed": "فشل التسجيل. يرجى المحاولة مرة أخرى في وقت لاحق."
-
+  "defaultSignUpFailed": "فشل التسجيل. يرجى المحاولة مرة أخرى في وقت لاحق.",
+  "noPostsAvailable": "لا توجد منشورات.",
+  "error": "خطأ:",
+  "noComments": "لا توجد تعليقات بعد.",
+  "noLikes": "لا توجد اعجابات بعد.",
+  "peopleWhoReacted": "الأشخاص الذين تفاعلوا"
 
 
 

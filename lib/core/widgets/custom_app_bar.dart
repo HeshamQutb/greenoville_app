@@ -9,11 +9,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.leadingAction,
     this.centerTitle,
+    this.fontSize,
   });
 
   final String title;
   final Function()? leadingAction;
   final bool? centerTitle;
+  final double? fontSize;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -30,7 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : null,
       title: GradientText(
-        fontSize: 23,
+        fontSize: fontSize ?? 23,
         text: title,
         colors: const [Colors.green, Colors.blue],
         left: 0.0,

@@ -8,7 +8,6 @@ import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
-import 'package:greenoville_app/features/community/presentation/view_model/community_cubit/community_cubit.dart';
 import 'package:greenoville_app/features/welcome/presentation/views/splash_view.dart';
 import 'bloc_observer.dart';
 import 'core/network/local/cache_helper.dart';
@@ -35,10 +34,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AppCubit()..getSplashNextScreen(),
-        ),
-        BlocProvider(
-          create: (context) => CommunityCubit()..getPost(),
+          create: (context) => AppCubit()
+            ..getSplashNextScreen()
+            ..getUserData(context),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(

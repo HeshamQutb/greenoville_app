@@ -1,53 +1,60 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:greenoville_app/features/community/data/models/community_comment_model.dart';
+import 'community_like_model.dart';
+
+
 class CommunityPostModel {
-  dynamic name;
-  dynamic uId;
-  dynamic image;
-  dynamic postImage;
-  dynamic dateTime;
-  dynamic clockTime;
-  dynamic description;
-  List<dynamic>? likes;
-  dynamic postId;
+  final String userName;
+  final String uId;
+  final String userImage;
+  final String? postImage;
+  final Timestamp timestamp;
+  final String? description;
+  final String postId;
+  final List<CommunityLikeModel> likes;
+  final List<CommunityCommentModel> comments;
 
   CommunityPostModel({
-    this.name,
-    this.uId,
-    this.image,
+    required this.userName,
+    required this.uId,
+    required this.userImage,
     this.postImage,
-    this.dateTime,
-    this.clockTime,
+    required this.timestamp,
     this.description,
-    this.likes,
-    this.postId,
+    required this.postId,
+    required this.likes,
+    required this.comments,
   });
 
-  CommunityPostModel.fromJson(Map<String, dynamic>? json) {
-    name = json?['name'];
-    uId = json?['uId'];
-    image = json?['image'];
-    postImage = json?['postImage'];
-    dateTime = json?['dateTime'];
-    clockTime = json?['clockTime'];
-    description = json?['text'];
-    likes = json?['likes'];
-    postId = json?['postId'];
-  }
-
-  int getLikesCount() {
-    return likes?.length ?? 0;
+  factory CommunityPostModel.fromJson(Map<String, dynamic>? json) {
+    return CommunityPostModel(
+      userName: json?['userName'],
+      uId: json?['uId'],
+      userImage: json?['userImage'],
+      postImage: json?['postImage'],
+      timestamp: json?['timestamp'],
+      description: json?['text'],
+      postId: json?['postId'],
+      likes: (json?['likes'] as List<dynamic>?)
+          ?.map((likeJson) => CommunityLikeModel.fromJson(likeJson as Map<String, dynamic>))
+          .toList() ?? [],
+      comments: (json?['comments'] as List<dynamic>?)
+          ?.map((commentJson) => CommunityCommentModel.fromJson(commentJson as Map<String, dynamic>))
+          .toList() ?? [],
+    );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'name': name,
+      'userName': userName,
       'uId': uId,
-      'image': image,
+      'userImage': userImage,
       'postImage': postImage,
-      'dateTime': dateTime,
-      'clockTime': clockTime,
+      'timestamp': timestamp,
       'text': description,
-      'likes': likes,
       'postId': postId,
+      'likes': likes.map((like) => like.toMap()).toList(),
+      'comments': comments.map((comment) => comment.toMap()).toList()
     };
   }
 }

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/services/format_time_stamp.dart';
 import '../../../data/models/community_post_model.dart';
 
 class CommunityPostHeadingSection extends StatelessWidget {
@@ -12,7 +13,7 @@ class CommunityPostHeadingSection extends StatelessWidget {
       children: [
          CircleAvatar(
           backgroundImage: CachedNetworkImageProvider(
-            post.image,
+            post.userImage,
           ),
           radius: 25,
         ),
@@ -26,7 +27,7 @@ class CommunityPostHeadingSection extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    post.name,
+                    post.userName,
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium
@@ -43,7 +44,7 @@ class CommunityPostHeadingSection extends StatelessWidget {
                 ],
               ),
               Text(
-                post.dateTime,
+                formatTimestamp(post.timestamp),
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall

@@ -13,6 +13,8 @@ class CustomTextField extends StatelessWidget {
     this.textInputAction,
     this.autofocus = false,
     this.textAlignVertical,
+    this.onPressedSuffix,
+    this.suffixColor,
   });
 
   final TextEditingController controller;
@@ -25,7 +27,8 @@ class CustomTextField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final bool autofocus;
   final TextAlignVertical? textAlignVertical;
-
+  final Function()? onPressedSuffix;
+  final Color? suffixColor;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,7 +40,14 @@ class CustomTextField extends StatelessWidget {
           constraints: BoxConstraints(
             maxHeight: maxLines != null && maxLines! > 1
                 ? 10
-                : (5 * (Theme.of(context).textTheme.titleMedium!.fontSize ?? 14) + 16).toDouble(),
+                : (5 *
+                            (Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .fontSize ??
+                                14) +
+                        16)
+                    .toDouble(),
           ),
           child: TextFormField(
             controller: controller,
@@ -46,15 +56,20 @@ class CustomTextField extends StatelessWidget {
             onFieldSubmitted: onFieldSubmitted,
             maxLines: maxLines,
             autofocus: autofocus,
-            textAlignVertical: maxLines == null || maxLines == 1 ? null : textAlignVertical,
+            textAlignVertical:
+                maxLines == null || maxLines == 1 ? null : textAlignVertical,
             decoration: InputDecoration(
               hintText: hintText,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              suffixIcon: Icon(suffixIcon),
+              suffixIcon: IconButton(
+                color: suffixColor,
+                onPressed: onPressedSuffix,
+                icon: Icon(suffixIcon),
+              ),
               contentPadding:
-              const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+                  const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
             ),
           ),
         ),

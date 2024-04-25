@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
@@ -14,10 +14,16 @@ class HomeView extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        return const SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            child: HomeViewBody(),
+        return ConditionalBuilder(
+          condition: state is! AppGetUserLoadingState,
+          builder: (context) => const SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+              child: HomeViewBody(),
+            ),
+          ),
+          fallback: (context) => const Center(
+            child: CircularProgressIndicator(),
           ),
         );
       },

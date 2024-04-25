@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "english": MessageLookupByLibrary.simpleMessage("الأنجليزية"),
         "enterEmailPassword": MessageLookupByLibrary.simpleMessage(
             "ادخل بريدك الإلكتروني وكلمة المرور"),
+        "error": MessageLookupByLibrary.simpleMessage("خطأ:"),
         "expandText": MessageLookupByLibrary.simpleMessage("اقرأ المزيد"),
         "expert": MessageLookupByLibrary.simpleMessage("خبير"),
         "farmer": MessageLookupByLibrary.simpleMessage("مزارع"),
@@ -77,12 +78,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "myAddress": MessageLookupByLibrary.simpleMessage("عنواني"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "newAccount": MessageLookupByLibrary.simpleMessage("حساب جديد"),
+        "noComments":
+            MessageLookupByLibrary.simpleMessage("لا توجد تعليقات بعد."),
+        "noLikes": MessageLookupByLibrary.simpleMessage("لا توجد اعجابات بعد."),
+        "noPostsAvailable":
+            MessageLookupByLibrary.simpleMessage("لا توجد منشورات."),
         "noThing": MessageLookupByLibrary.simpleMessage("لا يوجد شئ لنشرّه"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "أعط قوة لحصادك، وأطلق العنان لمستقبلك"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordIsTooShort":
             MessageLookupByLibrary.simpleMessage("كلمة المرور قصيرة جدًا"),
+        "peopleWhoReacted":
+            MessageLookupByLibrary.simpleMessage("الأشخاص الذين تفاعلوا"),
         "phone": MessageLookupByLibrary.simpleMessage("الهاتف"),
         "plants": MessageLookupByLibrary.simpleMessage("النباتات"),
         "pleaseEnterEmailAddress": MessageLookupByLibrary.simpleMessage(
@@ -102,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تعلم النصائح"),
         "quickActionSellProduce":
             MessageLookupByLibrary.simpleMessage("تسوق منتجاتك"),
+        "removeImage": MessageLookupByLibrary.simpleMessage("حذف الصورة"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("التربــة الرملية"),
         "searchNow": MessageLookupByLibrary.simpleMessage("ابحث الأن"),
         "seeAll": MessageLookupByLibrary.simpleMessage("المزيـد"),

@@ -4,7 +4,8 @@ import 'package:greenoville_app/core/utils/assets.dart';
 import '../../../../../core/app_cubit/app_cubit.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({super.key, required this.appCubit});
+  const CustomBottomNavigationBar(
+      {super.key, required this.appCubit});
   final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {

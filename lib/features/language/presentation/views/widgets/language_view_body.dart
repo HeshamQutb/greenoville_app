@@ -18,7 +18,7 @@ class LanguageViewBody extends StatelessWidget {
               value: 'ar',
               groupValue: appCubit.getAppLanguage() ?? 'ar',
               onChanged: (value) {
-                appCubit.selectLanguage(value!);
+                appCubit.selectLanguage(selectedLanguage: value!);
               },
               contentPadding: EdgeInsets.zero,
               activeColor: kPrimaryColor,
@@ -30,8 +30,7 @@ class LanguageViewBody extends StatelessWidget {
               value: 'en',
               groupValue: appCubit.getAppLanguage() ?? 'ar',
               onChanged: (value) {
-                appCubit.selectLanguage(value!);
-
+                appCubit.selectLanguage(selectedLanguage: value!);
               },
               contentPadding: EdgeInsets.zero,
               activeColor: kPrimaryColor,

@@ -27,7 +27,7 @@ class SignUpViewPickImageSection extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Center(
-          child: GestureDetector(
+          child: InkWell(
             onTap: () {
               showModalBottomSheet(
                 shape: RoundedRectangleBorder(
@@ -36,39 +36,52 @@ class SignUpViewPickImageSection extends StatelessWidget {
                 context: context,
                 builder: (BuildContext context) {
                   return SizedBox(
-                    height: 140,
+                    height: profileImage != null ? 190 : 140,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        if(profileImage != null)
+                          ListTile(
+                          visualDensity:
+                              const VisualDensity(horizontal: 0, vertical: -2),
+                          leading: const Icon(Icons.no_photography),
+                          title: Text(S.of(context).removeImage),
+                          onTap: () {
+                            signUpCubit.removeProfileImage();
+                            Navigator.pop(context);
+                          },
+                        ),
+                        if(profileImage != null)
+                          const Divider(
+                          height: 1.0,
+                        ),
                         ListTile(
                           visualDensity:
                               const VisualDensity(horizontal: 0, vertical: -2),
                           leading: const Icon(Icons.camera_alt),
-                          title:  Text(S.of(context).takePhoto),
+                          title: Text(S.of(context).takePhoto),
                           onTap: () {
-                            signUpCubit.getProfileImage(ImageSource.camera);
+                            signUpCubit.getProfileImage(
+                                source: ImageSource.camera, context: context);
                             Navigator.pop(context);
                           },
                         ),
-                        Container(
-                          width: double.infinity,
-                          height: 0.5,
-                          color: Colors.grey,
+                        const Divider(
+                          height: 1.0,
                         ),
                         ListTile(
                           visualDensity:
                               const VisualDensity(horizontal: 0, vertical: -4),
                           leading: const Icon(Icons.image),
-                          title:  Text(S.of(context).chooseFromGallery),
+                          title: Text(S.of(context).chooseFromGallery),
                           onTap: () {
-                            signUpCubit.getProfileImage(ImageSource.gallery);
+                            signUpCubit.getProfileImage(
+                                source: ImageSource.gallery, context: context);
                             Navigator.pop(context);
                           },
                         ),
-                        Container(
-                          width: double.infinity,
-                          height: 0.5,
-                          color: Colors.grey,
+                        const Divider(
+                          height: 1.0,
                         ),
                         DefaultTextButton(
                           onPressed: () {

@@ -49,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "enterEmailPassword": MessageLookupByLibrary.simpleMessage(
             "Enter Your Email and Password"),
+        "error": MessageLookupByLibrary.simpleMessage("Error:"),
         "expandText": MessageLookupByLibrary.simpleMessage("Read more"),
         "expert": MessageLookupByLibrary.simpleMessage("Expert"),
         "farmer": MessageLookupByLibrary.simpleMessage("Farmer"),
@@ -77,12 +78,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "myAddress": MessageLookupByLibrary.simpleMessage("My Address"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newAccount": MessageLookupByLibrary.simpleMessage("New Account"),
+        "noComments": MessageLookupByLibrary.simpleMessage("No comments yet."),
+        "noLikes": MessageLookupByLibrary.simpleMessage("No likes yet."),
+        "noPostsAvailable":
+            MessageLookupByLibrary.simpleMessage("No posts available."),
         "noThing": MessageLookupByLibrary.simpleMessage("No thing to share!"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "Empower Your Harvest, Empower Your Future"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordIsTooShort":
             MessageLookupByLibrary.simpleMessage("Password is too short"),
+        "peopleWhoReacted":
+            MessageLookupByLibrary.simpleMessage("People Who Reacted"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "plants": MessageLookupByLibrary.simpleMessage("Plants"),
         "pleaseEnterEmailAddress":
@@ -102,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Learn Tips"),
         "quickActionSellProduce":
             MessageLookupByLibrary.simpleMessage("Sell Produce"),
+        "removeImage": MessageLookupByLibrary.simpleMessage("Remove Image"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("SandySoil"),
         "searchNow": MessageLookupByLibrary.simpleMessage("Search now"),
         "seeAll": MessageLookupByLibrary.simpleMessage("See all"),

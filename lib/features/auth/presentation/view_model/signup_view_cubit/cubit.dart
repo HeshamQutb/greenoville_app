@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/features/auth/presentation/view_model/signup_view_cubit/states.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/network/local/cache_helper.dart';
@@ -16,6 +17,11 @@ class SignUpCubit extends Cubit<SignUpStates> {
 
   static SignUpCubit get(context) => BlocProvider.of(context);
 
+  String defaultSignUpFailed = S.current.defaultSignUpFailed;
+  String weakPassword = S.current.weakPassword;
+  String emailAlreadyInUse = S.current.emailAlreadyInUse;
+  String invalidEmail = S.current.invalidEmail;
+
   String role = S.current.farmer;
 
   void selectUserRole(String selectedRole) {
@@ -25,17 +31,57 @@ class SignUpCubit extends Cubit<SignUpStates> {
 
   String? uploadedImage;
   File? profileImage;
-
-  Future<void> getProfileImage(ImageSource source) async {
+  String cropper = S.current.cropper;
+  Future<void> getProfileImage({required ImageSource source, required BuildContext context}) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
 
     if (pickedFile != null) {
-      profileImage = File(pickedFile.path);
-      emit(GetUserImageSuccessState());
+      try {
+        final croppedFile = await ImageCropper.platform.cropImage(
+          sourcePath: pickedFile.path,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.square,
+            CropAspectRatioPreset.ratio3x2,
+            CropAspectRatioPreset.original,
+            CropAspectRatioPreset.ratio4x3,
+            CropAspectRatioPreset.ratio16x9,
+          ],
+          uiSettings: [
+            AndroidUiSettings(
+              toolbarTitle: cropper,
+              toolbarColor: kPrimaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false,
+            ),
+            IOSUiSettings(
+              minimumAspectRatio: 1.0,
+            ),
+          ],
+        );
+
+        if (croppedFile != null) {
+          profileImage = File(croppedFile.path);
+          emit(GetUserImageSuccessState());
+        } else {
+          // User canceled cropping
+          emit(GetUserImageCancelledState()); // New state for user cancellation
+        }
+      } on Exception catch (e) {
+        // Handle any exceptions that might occur during cropping
+        debugPrint('Error cropping image: $e'); // Log for debugging
+        emit(GetUserImageErrorState());
+      }
     } else {
-      emit(GetUserImageErrorState());
+      // User canceled image selection
+      emit(GetUserImageCancelledState()); // New state for user cancellation
     }
+  }
+
+  void removeProfileImage() {
+    profileImage = null;
+    emit(RemoveUserImageSuccessState());
   }
 
   Future<String?> uploadProfileImage() async {
@@ -78,7 +124,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
         phone: phone,
         uId: userCredential.user!.uid,
         image: imageURL ??
-            'https://erollaw.com/wp-content/uploads/2021/03/unknown.png',
+            'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04',
         role: role,
       );
       CacheHelper.setData(
@@ -89,20 +135,20 @@ class SignUpCubit extends Cubit<SignUpStates> {
       await sendEmailVerification();
       emit(SignUpSuccessState());
     } catch (error) {
-      String errorMessage = S.of(context).defaultSignUpFailed;
+      String errorMessage = defaultSignUpFailed;
       if (error is FirebaseAuthException) {
         switch (error.code) {
           case 'weak-password':
-            errorMessage = S.of(context).weakPassword;
+            errorMessage = weakPassword;
             break;
           case 'email-already-in-use':
-            errorMessage = S.of(context).emailAlreadyInUse;
+            errorMessage = emailAlreadyInUse;
             break;
           case 'invalid-email':
-            errorMessage = S.of(context).invalidEmail;
+            errorMessage = invalidEmail;
             break;
           default:
-            errorMessage = S.of(context).defaultSignUpFailed;
+            errorMessage = defaultSignUpFailed;
         }
       }
       emit(SignUpErrorState(errorMessage));

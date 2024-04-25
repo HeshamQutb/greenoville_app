@@ -8,11 +8,10 @@ import 'package:greenoville_app/features/root/presentation/views/widgets/drawer_
 
 class RootView extends StatelessWidget {
   const RootView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubit()..getUserData(),
+      create: (context) => AppCubit()..getUserData(context),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {

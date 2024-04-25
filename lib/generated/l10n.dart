@@ -540,6 +540,16 @@ class S {
     );
   }
 
+  /// `Remove Image`
+  String get removeImage {
+    return Intl.message(
+      'Remove Image',
+      name: 'removeImage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Name`
   String get name {
     return Intl.message(
@@ -865,6 +875,56 @@ class S {
     return Intl.message(
       'Sign up failed. Please try again later.',
       name: 'defaultSignUpFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No posts available.`
+  String get noPostsAvailable {
+    return Intl.message(
+      'No posts available.',
+      name: 'noPostsAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error:`
+  String get error {
+    return Intl.message(
+      'Error:',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No comments yet.`
+  String get noComments {
+    return Intl.message(
+      'No comments yet.',
+      name: 'noComments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No likes yet.`
+  String get noLikes {
+    return Intl.message(
+      'No likes yet.',
+      name: 'noLikes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `People Who Reacted`
+  String get peopleWhoReacted {
+    return Intl.message(
+      'People Who Reacted',
+      name: 'peopleWhoReacted',
       desc: '',
       args: [],
     );

@@ -6,7 +6,7 @@ class AssetsData {
   static const madimiOne = 'MadimiOne';
   static const arefRuqaaFont = 'ArefRuqaa';
 
-  static const logo = 'assets/images/Logo.png';
+  static const logo = 'assets/images/logo.png';
 
   static const login = 'assets/images/login.jpg';
 

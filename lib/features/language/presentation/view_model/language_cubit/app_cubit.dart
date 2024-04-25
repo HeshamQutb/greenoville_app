@@ -14,7 +14,6 @@ class LanguageCubit extends Cubit<LanguageStates> {
       key: 'appLanguage',
       value: selectedLanguage,
     ).then((value) {
-      print(selectedLanguage);
       emit(SelectLanguageState(selectedLanguage));
     });
   }
