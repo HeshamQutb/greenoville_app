@@ -46,7 +46,7 @@ class AddPostBottomSection extends StatelessWidget {
                     description: textController.text,
                     context: context,
                     // userName: userModel?.name,
-                    uId: userModel?.uId,
+                    uId: userModel!.uId,
                     // userImage: userModel?.image,
                   );
                 } else {
@@ -55,7 +55,7 @@ class AddPostBottomSection extends StatelessWidget {
                     description: textController.text,
                     context: context,
                     // userName: userModel?.name,
-                    uId: userModel?.uId,
+                    uId: userModel!.uId,
                     // userImage: userModel?.image,
                   );
                 }
@@ -66,7 +66,7 @@ class AddPostBottomSection extends StatelessWidget {
                     description: textController.text,
                     context: context,
                     // userName: userModel?.name,
-                    uId: userModel?.uId,
+                    uId: userModel!.uId,
                     // userImage: userModel?.image,
                   );
                 } else {
@@ -75,7 +75,7 @@ class AddPostBottomSection extends StatelessWidget {
                     description: textController.text,
                     context: context,
                     // userName: userModel?.name,
-                    uId: userModel?.uId,
+                    uId: userModel!.uId,
                     // userImage: userModel?.image,
                   );
                 }

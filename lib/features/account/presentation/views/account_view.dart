@@ -3,14 +3,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/widgets/default_button.dart';
 
-class ProfileView extends StatefulWidget {
-  const ProfileView({super.key});
+class AccountView extends StatefulWidget {
+  const AccountView({super.key});
 
   @override
-  State<ProfileView> createState() => _ProfileViewState();
+  State<AccountView> createState() => _AccountViewState();
 }
 
-class _ProfileViewState extends State<ProfileView> {
+class _AccountViewState extends State<AccountView> {
   @override
   void initState() {
     super.initState();
@@ -264,7 +264,7 @@ Widget achievementsShowcaseSection() {
 }
 
 // Edit Profile Button
-Widget editProfileButton() {
+Widget editAccountButton() {
   return ElevatedButton(
     onPressed: () {
       // Implement action to navigate to the edit profile screen
@@ -272,3 +272,4 @@ Widget editProfileButton() {
     child: const Text('Edit Profile'),
   );
 }
+

@@ -160,6 +160,26 @@ class S {
     );
   }
 
+  /// `Learn`
+  String get learnTitle {
+    return Intl.message(
+      'Learn',
+      name: 'learnTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Market`
+  String get marketTitle {
+    return Intl.message(
+      'Market',
+      name: 'marketTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `ClaySoil`
   String get claySoil {
     return Intl.message(
@@ -320,6 +340,16 @@ class S {
     );
   }
 
+  /// `Replay`
+  String get replay {
+    return Intl.message(
+      'Replay',
+      name: 'replay',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Share`
   String get share {
     return Intl.message(
@@ -335,6 +365,16 @@ class S {
     return Intl.message(
       'write a comment...',
       name: 'writeAComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `write a replay...`
+  String get writeAReplay {
+    return Intl.message(
+      'write a replay...',
+      name: 'writeAReplay',
       desc: '',
       args: [],
     );
@@ -905,6 +945,16 @@ class S {
     return Intl.message(
       'No comments yet.',
       name: 'noComments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No replies yet.`
+  String get noReplies {
+    return Intl.message(
+      'No replies yet.',
+      name: 'noReplies',
       desc: '',
       args: [],
     );

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/app_cubit/app_cubit.dart';
+import '../../../../../core/services/navigate_services.dart';
 import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_like_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../likes_view.dart';
 
 class PostLikesAndCommentsSection extends StatelessWidget {
-  const PostLikesAndCommentsSection({super.key, required this.post});
+  const PostLikesAndCommentsSection({super.key, required this.post, required this.appCubit});
   final CommunityPostModel post;
+  final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,7 +25,14 @@ class PostLikesAndCommentsSection extends StatelessWidget {
               builder: (context, snapshot) {
                 int likesCount = snapshot.data?.length ?? 0;
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    navigateTo(
+                        context,
+                        LikesView(
+                        appCubit: appCubit,
+                        post: post,
+                    ),);
+                  },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5.0),
                     child: Row(

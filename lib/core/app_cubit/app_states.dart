@@ -64,7 +64,7 @@ class CommunityGetPostErrorState extends AppStates {
   CommunityGetPostErrorState(this.error);
 }
 
-// Like states
+// Like Post states
 class CommunityUnlikePostSuccessState extends AppStates {}
 
 class CommunityLikePostSuccessState extends AppStates {}
@@ -76,9 +76,7 @@ class CommunityLikePostErrorState extends AppStates {
 }
 
 // Get Likes states
-class CommunityGetPostLikesSuccessState extends AppStates {
-
-}
+class CommunityGetPostLikesSuccessState extends AppStates {}
 
 class CommunityGetPostLikesErrorState extends AppStates {
   final String error;
@@ -106,4 +104,69 @@ class CommunityGetPostCommentErrorState extends AppStates {
   final String error;
 
   CommunityGetPostCommentErrorState(this.error);
+}
+
+// Like Comment states
+class CommunityUnlikeCommentSuccessState extends AppStates {}
+
+class CommunityLikeCommentSuccessState extends AppStates {}
+
+class CommunityLikeCommentErrorState extends AppStates {
+  final String error;
+
+  CommunityLikeCommentErrorState(this.error);
+}
+
+// Get Comment Likes State
+class CommunityGetCommentLikesSuccessState extends AppStates {}
+
+class CommunityGetCommentLikesErrorState extends AppStates {
+  final String error;
+
+  CommunityGetCommentLikesErrorState(this.error);
+}
+
+
+//////////////
+
+// Replay states
+
+class CommunityReplayToCommentSuccessState extends AppStates {}
+
+class CommunityReplayToCommentErrorState extends AppStates {
+  final String error;
+
+  CommunityReplayToCommentErrorState(this.error);
+}
+
+// Get Replies states
+class CommunityGetReplaySuccessState extends AppStates {
+  List<CommunityPostModel> comments;
+  CommunityGetReplaySuccessState(this.comments);
+}
+
+class CommunityGetReplayErrorState extends AppStates {
+  final String error;
+
+  CommunityGetReplayErrorState(this.error);
+}
+
+// Like Replay states
+class CommunityUnlikeReplaySuccessState extends AppStates {}
+
+class CommunityLikeReplaySuccessState extends AppStates {}
+
+class CommunityLikeReplayErrorState extends AppStates {
+  final String error;
+
+  CommunityLikeReplayErrorState(this.error);
+}
+
+// Get Replay Likes states
+class CommunityGetReplayLikesSuccessState extends AppStates {}
+
+class CommunityGetReplayLikesErrorState extends AppStates {
+  final String error;
+
+  CommunityGetReplayLikesErrorState(this.error);
 }

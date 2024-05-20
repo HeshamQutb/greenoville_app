@@ -11,7 +11,7 @@ class PostImageSection extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Container(
         width: double.infinity,
-        height: 250,
+        height: 200,
         decoration: BoxDecoration(
           borderRadius: BorderRadiusDirectional.circular(12),
           image:  DecorationImage(

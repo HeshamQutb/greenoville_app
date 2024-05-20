@@ -10,6 +10,8 @@
   "marketPrices": "أسعـار السـوق",
   "soilsTitle": "التربـة",
   "communityTitle": "المجتمع",
+  "learnTitle": "التعلم",
+  "marketTitle": "السوق",
 
   "claySoil": "التربــة الطينية",
   "sandySoil": "التربــة الرملية",
@@ -28,8 +30,10 @@
   "itsPost": "منشور",
   "like": "إعجاب",
   "comment": "تعليق",
+  "replay": "رد",
   "share": "مشاركة",
   "writeAComment": "أكتب تعليقاً...",
+  "writeAReplay": "أكتب رداً...",
   "welcomeTo": "مرحبًا بك في",
   "onBoardingText": "أعط قوة لحصادك، وأطلق العنان لمستقبلك",
   "getStarted": "ابدأ الآن",
@@ -91,6 +95,7 @@
   "noPostsAvailable": "لا توجد منشورات.",
   "error": "خطأ:",
   "noComments": "لا توجد تعليقات بعد.",
+  "noReplies": "لا توجد ردود بعد.",
   "noLikes": "لا توجد اعجابات بعد.",
   "peopleWhoReacted": "الأشخاص الذين تفاعلوا"
 

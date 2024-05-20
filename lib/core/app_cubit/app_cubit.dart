@@ -15,8 +15,8 @@ import '../../features/community/presentation/views/community_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/soils/presentation/views/soils_view.dart';
 import '../../features/welcome/presentation/views/onboarding_view.dart';
-import '../../views/learn_view.dart';
-import '../../views/market_view.dart';
+import '../../features/learn/presentation/views/learn_view.dart';
+import '../../features/market/presentation/views/market_view.dart';
 import '../models/comment_model.dart';
 import '../models/ike_model.dart';
 import '../network/local/cache_helper.dart';
@@ -62,16 +62,13 @@ class AppCubit extends Cubit<AppStates> {
   void getUserData(context) async {
     if (uId != null) {
       emit(AppGetUserLoadingState());
-
       try {
         final DocumentSnapshot<Map<String, dynamic>> snapshot =
             await FirebaseFirestore.instance.collection('users').doc(uId).get();
-
         if (snapshot.exists) {
           var userData = snapshot.data();
           print(uId);
           print(userData);
-
           userModel = UserModel.fromJson(userData!);
           emit(AppGetUserSuccessState());
         } else {
@@ -135,8 +132,9 @@ class AppCubit extends Cubit<AppStates> {
             var userData = userDoc.data() as Map<String, dynamic>;
             var post = CommunityPostModel.fromJson({
               ...data,
-              'userName': userData['name'],
-              'userImage': userData['image'],
+              'isVerified': userData['isVerified'],
+              'userName': userData['userName'],
+              'userImage': userData['userImage'],
             });
             posts.add(post);
           }
@@ -189,6 +187,7 @@ class AppCubit extends Cubit<AppStates> {
         .collection('posts')
         .doc(postId)
         .collection('likes')
+        .orderBy('timestamp', descending: true)
         .snapshots()
         .asyncMap((snapshot) async {
       if (snapshot.docs.isEmpty) {
@@ -207,8 +206,10 @@ class AppCubit extends Cubit<AppStates> {
             var userData = userDoc.data() as Map<String, dynamic>;
             var like = CommunityLikeModel.fromJson({
               ...data,
-              'userName': userData['name'],
-              'userImage': userData['image'],
+              'isVerified': userData['isVerified'],
+              'userName': userData['userName'],
+              'userRole': userData['userRole'],
+              'userImage': userData['userImage'],
             });
             likes.add(like);
           }
@@ -234,6 +235,7 @@ class AppCubit extends Cubit<AppStates> {
 
       CommentModel comment = CommentModel(
         uId: uId!,
+        commentId: commentRef.id,
         timestamp: Timestamp.now(),
         content: content,
       );
@@ -268,8 +270,9 @@ class AppCubit extends Cubit<AppStates> {
             var userData = userDoc.data() as Map<String, dynamic>;
             var comment = CommunityCommentModel.fromJson({
               ...data,
-              'userName': userData['name'],
-              'userImage': userData['image'],
+              'isVerified': userData['isVerified'],
+              'userName': userData['userName'],
+              'userImage': userData['userImage'],
             });
             comments.add(comment);
           }
@@ -279,5 +282,206 @@ class AppCubit extends Cubit<AppStates> {
     }).handleError((error) {
       emit(CommunityGetPostCommentErrorState(error.toString()));
     });
+  }
+
+  // Like Comment
+  Future<void> likeComment({
+    required String postId,
+    required String commentId,
+  }) async {
+    try {
+      DocumentReference likeRef = FirebaseFirestore.instance
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc(commentId)
+          .collection('commentLikes')
+          .doc(uId);
+
+      // Check if the user has already liked the post
+      DocumentSnapshot likeSnapshot = await likeRef.get();
+
+      if (likeSnapshot.exists) {
+        // User has already liked the post, so remove the like
+        await likeRef.delete();
+        emit(CommunityUnlikeCommentSuccessState());
+      } else {
+        // User hasn't liked the post yet, so add the like
+        LikeModel like = LikeModel(
+          uId: uId!,
+          timestamp: Timestamp.now(),
+        );
+        await likeRef.set(like.toMap());
+        emit(CommunityLikeCommentSuccessState());
+      }
+    } catch (error) {
+      emit(CommunityLikeCommentErrorState(error.toString()));
+    }
+  }
+
+  // Get Likes for a Comment
+  Stream<List<CommunityLikeModel>> getCommentLikes({
+    required String postId,
+    required String commentId,
+  }) {
+    try {
+      return FirebaseFirestore.instance
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc(commentId)
+          .collection('commentLikes')
+          .snapshots()
+          .map((snapshot) {
+        return snapshot.docs.map((doc) {
+          return CommunityLikeModel.fromJson(doc.data());
+        }).toList();
+      }).handleError((error) {
+        emit(CommunityGetCommentLikesErrorState(error.toString()));
+      });
+    } catch (error) {
+      emit(CommunityGetCommentLikesErrorState(error.toString()));
+      rethrow;
+    }
+  }
+
+
+// Replay to Comment
+  Future<void> replayToComment({
+    required String postId,
+    required String commentId,
+    required String content,
+  }) async {
+    try {
+      DocumentReference replayRef = FirebaseFirestore.instance
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc(commentId)
+          .collection('replies')
+          .doc();
+
+      CommentModel replay = CommentModel(
+        uId: uId!,
+        commentId: replayRef.id,
+        timestamp: Timestamp.now(),
+        content: content,
+      );
+      await replayRef.set(replay.toMap());
+      emit(CommunityReplayToCommentSuccessState());
+    } catch (error) {
+      emit(CommunityReplayToCommentErrorState(error.toString()));
+    }
+  }
+
+  // Get Replies for a comments
+  Stream<List<CommunityCommentModel>> getReplies({
+    required String postId,
+    required String commentId,
+  }) {
+    return FirebaseFirestore.instance
+        .collection('posts')
+        .doc(postId)
+        .collection('comments')
+        .doc(commentId)
+        .collection('replies')
+        .orderBy('timestamp', descending: true)
+        .snapshots()
+        .asyncMap((snapshot) async {
+      if (snapshot.docs.isEmpty) {
+        return <CommunityCommentModel>[];
+      } else {
+        List<CommunityCommentModel> replies = [];
+        for (var doc in snapshot.docs) {
+          var data = doc.data();
+          final uId = data['uId'];
+          var userDoc = await FirebaseFirestore.instance
+              .collection('users')
+              .doc(uId)
+              .get();
+          if (userDoc.exists) {
+            var userData = userDoc.data() as Map<String, dynamic>;
+            var replay = CommunityCommentModel.fromJson({
+              ...data,
+              'isVerified': userData['isVerified'],
+              'userName': userData['userName'],
+              'userImage': userData['userImage'],
+            });
+            replies.add(replay);
+          }
+        }
+        return replies;
+      }
+    }).handleError((error) {
+      emit(CommunityGetReplayErrorState(error.toString()));
+    });
+  }
+
+
+  // Like Replay
+  Future<void> likeReplay({
+    required String postId,
+    required String commentId,
+    required String replayId,
+  }) async {
+    try {
+      DocumentReference likeRef = FirebaseFirestore.instance
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc(commentId)
+          .collection('replies')
+          .doc(replayId)
+          .collection('replayLikes')
+          .doc(uId);
+
+      // Check if the user has already liked the post
+      DocumentSnapshot likeSnapshot = await likeRef.get();
+
+      if (likeSnapshot.exists) {
+        // User has already liked the post, so remove the like
+        await likeRef.delete();
+        emit(CommunityUnlikeReplaySuccessState());
+      } else {
+        // User hasn't liked the post yet, so add the like
+        LikeModel like = LikeModel(
+          uId: uId!,
+          timestamp: Timestamp.now(),
+        );
+        await likeRef.set(like.toMap());
+        emit(CommunityLikeReplaySuccessState());
+      }
+    } catch (error) {
+      emit(CommunityLikeReplayErrorState(error.toString()));
+    }
+  }
+
+  // Get Likes for a Replies
+  Stream<List<CommunityLikeModel>> getRepliesLikes({
+    required String postId,
+    required String commentId,
+    required String replayId,
+  }) {
+    try {
+      return FirebaseFirestore.instance
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc(commentId)
+          .collection('replies')
+          .doc(replayId)
+          .collection('replayLikes')
+          .snapshots()
+          .map((snapshot) {
+        return snapshot.docs.map((doc) {
+          return CommunityLikeModel.fromJson(doc.data());
+        }).toList();
+      }).handleError((error) {
+        emit(CommunityGetReplayLikesErrorState(error.toString()));
+      });
+    } catch (error) {
+      emit(CommunityGetReplayLikesErrorState(error.toString()));
+      rethrow;
+    }
   }
 }

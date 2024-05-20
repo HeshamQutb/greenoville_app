@@ -69,12 +69,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Join GreeNoville Community"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "latestNews": MessageLookupByLibrary.simpleMessage("Latest News"),
+        "learnTitle": MessageLookupByLibrary.simpleMessage("Learn"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "like": MessageLookupByLibrary.simpleMessage("Like"),
         "loamSoil": MessageLookupByLibrary.simpleMessage("LoamSoil"),
         "location": MessageLookupByLibrary.simpleMessage("Luxor"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "marketPrices": MessageLookupByLibrary.simpleMessage("Market Prices"),
+        "marketTitle": MessageLookupByLibrary.simpleMessage("Market"),
         "myAddress": MessageLookupByLibrary.simpleMessage("My Address"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newAccount": MessageLookupByLibrary.simpleMessage("New Account"),
@@ -82,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noLikes": MessageLookupByLibrary.simpleMessage("No likes yet."),
         "noPostsAvailable":
             MessageLookupByLibrary.simpleMessage("No posts available."),
+        "noReplies": MessageLookupByLibrary.simpleMessage("No replies yet."),
         "noThing": MessageLookupByLibrary.simpleMessage("No thing to share!"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "Empower Your Harvest, Empower Your Future"),
@@ -110,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quickActionSellProduce":
             MessageLookupByLibrary.simpleMessage("Sell Produce"),
         "removeImage": MessageLookupByLibrary.simpleMessage("Remove Image"),
+        "replay": MessageLookupByLibrary.simpleMessage("Replay"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("SandySoil"),
         "searchNow": MessageLookupByLibrary.simpleMessage("Search now"),
         "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
@@ -139,6 +143,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("what is your mind,?"),
         "writeAComment":
             MessageLookupByLibrary.simpleMessage("write a comment..."),
+        "writeAReplay":
+            MessageLookupByLibrary.simpleMessage("write a replay..."),
         "wrongPasswordEmail":
             MessageLookupByLibrary.simpleMessage("Invalid email or password.")
       };

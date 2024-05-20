@@ -18,7 +18,8 @@ class AddPostUserInfoSection extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundImage: CachedNetworkImageProvider(
-            userModel?.image,
+            userModel!.userImage??
+                'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04',
           ),
           radius: 25,
         ),
@@ -28,11 +29,25 @@ class AddPostUserInfoSection extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              userModel?.name,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                height: 1.4,
-              ),
+            Row(
+              children: [
+                Text(
+                  userModel!.userName,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    height: 1.4,
+                  ),
+                ),
+                if (userModel?.isVerified == true)
+                  const SizedBox(
+                    width: 5,
+                  ),
+                if (userModel?.isVerified == true)
+                  const Icon(
+                    Icons.check_circle_sharp,
+                    color: Colors.blueAccent,
+                    size: 13,
+                  )
+              ],
             ),
             Text(
               S.of(context).public,

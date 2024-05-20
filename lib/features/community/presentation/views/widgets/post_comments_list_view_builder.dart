@@ -25,7 +25,7 @@ class PostCommentsListViewBuilder extends StatelessWidget {
         } else if (snapshot.hasError) {
           return SliverFillRemaining(
             child: Center(
-              child: Text('${S.of(context).noComments} ${snapshot.error}'),
+              child: Text('${S.of(context).error} ${snapshot.error}'),
             ),
           );
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {

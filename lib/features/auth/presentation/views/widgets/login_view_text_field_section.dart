@@ -46,7 +46,7 @@ class LoginTextFieldSection extends StatelessWidget {
               onFieldSubmitted: (value) {
                 if (formKey.currentState!.validate()) {
                   loginCubit.userLogin(
-                    email: emailController.text,
+                    userEmail: emailController.text,
                     password: passwordController.text,
                     context: context,
                   );

@@ -69,12 +69,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("انضم إلى مجتمع جرينوڤيل"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "latestNews": MessageLookupByLibrary.simpleMessage("أخـر الأخبـار"),
+        "learnTitle": MessageLookupByLibrary.simpleMessage("التعلم"),
         "light": MessageLookupByLibrary.simpleMessage("مظلم"),
         "like": MessageLookupByLibrary.simpleMessage("إعجاب"),
         "loamSoil": MessageLookupByLibrary.simpleMessage("التربــة الفخارية"),
         "location": MessageLookupByLibrary.simpleMessage("الأقصر"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "marketPrices": MessageLookupByLibrary.simpleMessage("أسعـار السـوق"),
+        "marketTitle": MessageLookupByLibrary.simpleMessage("السوق"),
         "myAddress": MessageLookupByLibrary.simpleMessage("عنواني"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "newAccount": MessageLookupByLibrary.simpleMessage("حساب جديد"),
@@ -83,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noLikes": MessageLookupByLibrary.simpleMessage("لا توجد اعجابات بعد."),
         "noPostsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد منشورات."),
+        "noReplies": MessageLookupByLibrary.simpleMessage("لا توجد ردود بعد."),
         "noThing": MessageLookupByLibrary.simpleMessage("لا يوجد شئ لنشرّه"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "أعط قوة لحصادك، وأطلق العنان لمستقبلك"),
@@ -111,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quickActionSellProduce":
             MessageLookupByLibrary.simpleMessage("تسوق منتجاتك"),
         "removeImage": MessageLookupByLibrary.simpleMessage("حذف الصورة"),
+        "replay": MessageLookupByLibrary.simpleMessage("رد"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("التربــة الرملية"),
         "searchNow": MessageLookupByLibrary.simpleMessage("ابحث الأن"),
         "seeAll": MessageLookupByLibrary.simpleMessage("المزيـد"),
@@ -140,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ماذا يدور في ذهنك؟"),
         "writeAComment":
             MessageLookupByLibrary.simpleMessage("أكتب تعليقاً..."),
+        "writeAReplay": MessageLookupByLibrary.simpleMessage("أكتب رداً..."),
         "wrongPasswordEmail": MessageLookupByLibrary.simpleMessage(
             "البريد الإلكتروني أو كلمة المرور غير صحيحة.")
       };

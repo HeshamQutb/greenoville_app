@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:greenoville_app/features/auth/presentation/views/widgets/select_user_role_section.dart';
 
 import 'package:greenoville_app/features/auth/presentation/views/widgets/signup_view_text_section.dart';
 import 'package:greenoville_app/features/auth/presentation/views/widgets/signup_view_pick_image_section.dart';
@@ -99,11 +100,11 @@ class SignUpViewBody extends StatelessWidget {
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               signUpCubit.userSignUp(
-                                email: emailController.text,
+                                userEmail: emailController.text,
                                 password: passwordController.text,
-                                name: nameController.text,
-                                phone: phoneController.text,
-                                role: signUpCubit.role,
+                                userName: nameController.text,
+                                userPhone: phoneController.text,
+                                userRole: signUpCubit.role,
                                 context: context,
                               );
                             }
@@ -139,42 +140,6 @@ class SignUpViewBody extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class SelectUserRoleSection extends StatelessWidget {
-  const SelectUserRoleSection({super.key, required this.signUpCubit});
-  final SignUpCubit signUpCubit;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Flexible(
-          child: RadioListTile<String>(
-            title: Text(S.of(context).farmer),
-            value: S.of(context).farmer,
-            groupValue: signUpCubit.role,
-            onChanged: (value) {
-              signUpCubit.selectUserRole(value!);
-            },
-            contentPadding: EdgeInsets.zero,
-            activeColor: kPrimaryColor,
-          ),
-        ),
-        Flexible(
-          child: RadioListTile<String>(
-            title: Text(S.of(context).expert),
-            value: S.of(context).expert,
-            groupValue: signUpCubit.role,
-            onChanged: (value) {
-              signUpCubit.selectUserRole(value!);
-            },
-            contentPadding: EdgeInsets.zero,
-            activeColor: kPrimaryColor,
-          ),
-        ),
-      ],
     );
   }
 }

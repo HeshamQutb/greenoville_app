@@ -12,7 +12,7 @@ class AddPostImageSection extends StatelessWidget {
       alignment: AlignmentDirectional.topEnd,
       children: [
         Container(
-          height: 250,
+          height: 200,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),

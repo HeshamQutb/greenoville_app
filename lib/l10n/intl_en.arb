@@ -10,6 +10,8 @@
   "marketPrices": "Market Prices",
   "soilsTitle": "Soils",
   "communityTitle": "Community",
+  "learnTitle": "Learn",
+  "marketTitle": "Market",
 
   "claySoil": "ClaySoil",
   "sandySoil": "SandySoil",
@@ -28,8 +30,10 @@
   "itsPost": "Post",
   "like": "Like",
   "comment": "Comment",
+  "replay": "Replay",
   "share": "Share",
   "writeAComment": "write a comment...",
+  "writeAReplay": "write a replay...",
   "welcomeTo": "Welcome To",
   "onBoardingText": "Empower Your Harvest, Empower Your Future",
   "getStarted": "Get Started",
@@ -91,6 +95,7 @@
   "noPostsAvailable": "No posts available.",
   "error": "Error:",
   "noComments": "No comments yet.",
+  "noReplies": "No replies yet.",
   "noLikes": "No likes yet.",
   "peopleWhoReacted": "People Who Reacted"
 

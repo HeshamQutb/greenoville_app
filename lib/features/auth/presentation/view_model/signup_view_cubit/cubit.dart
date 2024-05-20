@@ -105,27 +105,28 @@ class SignUpCubit extends Cubit<SignUpStates> {
   }
 
   Future<void> userSignUp({
-    required String email,
-    required String name,
+    required String userName,
+    required String userPhone,
+    required String userEmail,
+    required String userRole,
     required String password,
-    required String phone,
-    required String role,
     required BuildContext context,
   }) async {
     emit(SignUpLoadingState());
     try {
       final UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+          .createUserWithEmailAndPassword(email: userEmail, password: password);
       final imageURL = await uploadProfileImage();
       userCreate(
-        email: email,
-        name: name,
-        password: password,
-        phone: phone,
+        userName: userName,
+        userPhone: userPhone,
+        userEmail: userEmail,
         uId: userCredential.user!.uid,
-        image: imageURL ??
+        userImage: imageURL ??
             'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04',
-        role: role,
+        userRole: userRole,
+        isVerified: false,
+        password: password,
       );
       CacheHelper.setData(
         key: 'uId',
@@ -156,28 +157,30 @@ class SignUpCubit extends Cubit<SignUpStates> {
   }
 
   void userCreate({
-    required String email,
-    required String name,
-    required String password,
-    required String phone,
+    required String userName,
+    required String userPhone,
+    required String userEmail,
     required String uId,
-    required String image,
-    required String role,
+    required String userImage,
+    required String userRole,
+    required bool isVerified,
+    required String password,
   }) {
-    UserModel model = UserModel(
-      name: name,
-      phone: phone,
-      email: email,
+    UserModel userModel = UserModel(
+      userName: userName,
+      userPhone: userPhone,
+      userEmail: userEmail,
       uId: uId,
-      image: image,
-      role: role,
+      userImage: userImage,
+      userRole: userRole,
+      isVerified: isVerified,
     );
 
     FirebaseFirestore.instance
         .collection('users')
         .doc(uId)
-        .set(model.toMap())
-        .then((_) {
+        .set(userModel.toMap())
+        .then((value) {
       emit(CreateUserSuccessState());
     }).catchError((error) {
       emit(CreateUserErrorState(error.toString()));

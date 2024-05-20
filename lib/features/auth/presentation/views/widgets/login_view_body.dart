@@ -108,7 +108,7 @@ class LoginViewBody extends StatelessWidget {
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               loginCubit.userLogin(
-                                email: emailController.text,
+                                userEmail: emailController.text,
                                 password: passwordController.text,
                                 context: context,
                               );

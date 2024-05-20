@@ -3,11 +3,11 @@ import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/features/appearance/presentation/views/appearance_view.dart';
 import 'package:greenoville_app/features/language/presentation/views/language_view.dart';
-import 'package:greenoville_app/features/profile/presentation/views/profile_view.dart';
 
 import '../../../../../core/services/sign_out.dart';
 import '../../../../../core/widgets/default_button.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../account/presentation/views/account_view.dart';
 import 'darwer_item.dart';
 import 'drawer_header.dart';
 
@@ -18,7 +18,9 @@ class DrawerBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const DrawerHeaderSection(),
+        DrawerHeaderSection(
+          appCubit: appCubit,
+        ),
         const SizedBox(
           height: 30,
         ),
@@ -27,15 +29,13 @@ class DrawerBody extends StatelessWidget {
           title: S.of(context).profile,
           onTap: () {
             Navigator.pop(context);
-            navigateTo(context, const ProfileView());
+            navigateTo(context, const AccountView());
           },
         ),
         DrawerItem(
           leadingIcon: Icons.location_on_outlined,
           title: S.of(context).myAddress,
-          onTap: () {
-
-          },
+          onTap: () {},
         ),
         DrawerItem(
           leadingIcon: Icons.visibility_outlined,
@@ -50,7 +50,7 @@ class DrawerBody extends StatelessWidget {
           title: S.of(context).language,
           onTap: () {
             Navigator.pop(context);
-            navigateTo(context,  const LanguageView());
+            navigateTo(context, const LanguageView());
           },
         ),
         DrawerItem(

@@ -80,7 +80,7 @@ class SignUpViewTextFieldSection extends StatelessWidget {
           controller: phoneController,
           type: TextInputType.phone,
           validate: (value) {
-            if (value!.isEmpty) {
+            if (value!.length != 11) {
               return S.of(context).pleaseEnterPhoneNumber;
             }
             return null;
@@ -91,11 +91,11 @@ class SignUpViewTextFieldSection extends StatelessWidget {
             if (formKey.currentState!.validate()) {
               signUpCubit.userSignUp(
                 context: context,
-                email: emailController.text,
+                userEmail: emailController.text,
                 password: passwordController.text,
-                name: nameController.text,
-                phone: phoneController.text,
-                role: role,
+                userName: nameController.text,
+                userPhone: phoneController.text,
+                userRole: signUpCubit.role,
               );
             }
           },

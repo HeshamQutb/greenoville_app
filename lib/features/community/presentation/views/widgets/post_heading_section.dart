@@ -32,14 +32,16 @@ class PostHeadingSection extends StatelessWidget {
                         .bodyMedium
                         ?.copyWith(height: 1.4),
                   ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Icon(
-                    Icons.check_circle_sharp,
-                    color: Colors.blueAccent,
-                    size: 13,
-                  )
+                  if (post.isVerified == true)
+                    const SizedBox(
+                      width: 5,
+                    ),
+                  if (post.isVerified == true)
+                    const Icon(
+                      Icons.check_circle_sharp,
+                      color: Colors.blueAccent,
+                      size: 13,
+                    )
                 ],
               ),
               Text(

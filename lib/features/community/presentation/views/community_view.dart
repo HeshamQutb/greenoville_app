@@ -30,9 +30,6 @@ class _CommunityViewState extends State<CommunityView> {
         var appCubit = AppCubit.get(context);
         return Column(
           children: [
-            const SizedBox(
-              height: 38,
-            ),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: kHorizontalPadding,

@@ -22,12 +22,11 @@ class LikesView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-        child: LikesViewBody(appCubit: appCubit, post: post,),
+        child: LikesViewBody(
+          appCubit: appCubit,
+          post: post,
+        ),
       ),
     );
   }
 }
-
-
-
-

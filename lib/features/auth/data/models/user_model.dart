@@ -1,36 +1,43 @@
 class UserModel {
-  dynamic name;
-  dynamic phone;
-  dynamic email;
-  dynamic uId;
-  dynamic image;
-  dynamic role;
+  final String userName;
+  final String userPhone;
+  final String userEmail;
+  final String uId;
+  final String? userImage;
+  final String userRole;
+  final bool isVerified;
   UserModel({
-    this.name,
-    this.phone,
-    this.email,
-    this.uId,
-    this.image,
-    this.role,
+    required this.userName,
+    required this.userPhone,
+    required this.userEmail,
+    required this.uId,
+    required this.userImage,
+    required this.userRole,
+    required this.isVerified,
   });
 
-  UserModel.fromJson(Map<String, dynamic>? json) {
-    name = json?['name'];
-    phone = json?['phone'];
-    email = json?['email'];
-    uId = json?['uId'];
-    image = json?['image'];
-    role = json?['role'];
+  factory UserModel.fromJson(Map<String, dynamic>? json) {
+    return UserModel(
+      userName: json?['userName'],
+      userPhone: json?['userPhone'],
+      userEmail: json?['userEmail'],
+      uId: json?['uId'],
+      userImage: json?['userImage'] ??
+          'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04',
+      userRole: json?['userRole'],
+      isVerified: json?['isVerified'],
+    );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'name': name,
-      'phone': phone,
-      'email': email,
+      'userName': userName,
+      'userPhone': userPhone,
+      'userEmail': userEmail,
       'uId': uId,
-      'image': image,
-      'role': role,
+      'userImage': userImage,
+      'userRole': userRole,
+      'isVerified': isVerified,
     };
   }
 }

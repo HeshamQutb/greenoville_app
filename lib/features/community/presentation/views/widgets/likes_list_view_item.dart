@@ -20,11 +20,25 @@ class LikesListViewItem extends StatelessWidget {
     return ListTile(
       leading: CircleAvatar(
         backgroundImage: CachedNetworkImageProvider(
-          like.userImage,
+          like.userImage!,
         ),
       ),
-      title: Text(
-        like.userName,
+      title: Row(
+        children: [
+          Text(
+            like.userName!,
+          ),
+          if (like.isVerified == true)
+            const SizedBox(
+              width: 5,
+            ),
+          if (like.isVerified == true)
+            const Icon(
+              Icons.check_circle_sharp,
+              color: Colors.blueAccent,
+              size: 13,
+            )
+        ],
       ),
       trailing: const Icon(
         IconBroken.Heart,

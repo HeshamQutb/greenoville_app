@@ -31,12 +31,15 @@ class RootView extends StatelessWidget {
             bottomNavigationBar: CustomBottomNavigationBar(
               appCubit: appCubit,
             ),
-            body: PageView(
-              controller: appCubit.pageController,
-              children: appCubit.screens,
-              onPageChanged: (index) {
-                appCubit.changeNavBar(index);
-              },
+            body: Padding(
+              padding: const EdgeInsets.only(top: 38.0),
+              child: PageView(
+                controller: appCubit.pageController,
+                children: appCubit.screens,
+                onPageChanged: (index) {
+                  appCubit.changeNavBar(index);
+                },
+              ),
             ),
           );
         },

@@ -12,9 +12,6 @@ class SoilsView extends StatelessWidget {
     var appCubit = AppCubit.get(context);
     return Column(
       children: [
-        const SizedBox(
-          height: 38,
-        ),
         Expanded(
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
