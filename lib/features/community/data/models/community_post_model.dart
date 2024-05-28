@@ -4,8 +4,11 @@ import 'community_like_model.dart';
 
 class CommunityPostModel {
   final bool isVerified;
+  final String userRole;
   final String userName;
   final String uId;
+  final String bio;
+  final String coverImage;
   final String userImage;
   final String? postImage;
   final Timestamp timestamp;
@@ -16,8 +19,11 @@ class CommunityPostModel {
 
   CommunityPostModel({
     required this.isVerified,
+    required this.userRole,
     required this.userName,
     required this.uId,
+    required this.bio,
+    required this.coverImage,
     required this.userImage,
     this.postImage,
     required this.timestamp,
@@ -30,8 +36,11 @@ class CommunityPostModel {
   factory CommunityPostModel.fromJson(Map<String, dynamic>? json) {
     return CommunityPostModel(
       isVerified: json?['isVerified'],
+      userRole: json?['userRole'],
       userName: json?['userName'],
       uId: json?['uId'],
+      bio: json?['bio'],
+      coverImage: json?['coverImage'],
       userImage: json?['userImage'],
       postImage: json?['postImage'],
       timestamp: json?['timestamp'],
@@ -53,8 +62,11 @@ class CommunityPostModel {
   Map<String, dynamic> toMap() {
     return {
       'isVerified': isVerified,
+      'userRole': userRole,
       'userName': userName,
       'uId': uId,
+      'bio': bio,
+      'coverImage': coverImage,
       'userImage': userImage,
       'postImage': postImage,
       'timestamp': timestamp,

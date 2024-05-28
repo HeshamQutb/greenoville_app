@@ -114,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sell Produce"),
         "removeImage": MessageLookupByLibrary.simpleMessage("Remove Image"),
         "replay": MessageLookupByLibrary.simpleMessage("Replay"),
+        "replies": MessageLookupByLibrary.simpleMessage("Replies"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("SandySoil"),
         "searchNow": MessageLookupByLibrary.simpleMessage("Search now"),
         "seeAll": MessageLookupByLibrary.simpleMessage("See all"),

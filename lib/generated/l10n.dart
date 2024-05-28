@@ -350,6 +350,16 @@ class S {
     );
   }
 
+  /// `Replies`
+  String get replies {
+    return Intl.message(
+      'Replies',
+      name: 'replies',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Share`
   String get share {
     return Intl.message(

@@ -11,7 +11,7 @@ class DefaultButton extends StatelessWidget {
     this.width,
     this.background,
     this.buttonTextColor,
-    this.isUpperCase,
+    this.isUpperCase, this.iconColor,
   });
   final double? width;
   final Color? background;
@@ -19,6 +19,7 @@ class DefaultButton extends StatelessWidget {
   final void Function()? onPressed;
   final String text;
   final Color? buttonTextColor;
+  final Color? iconColor;
   final bool? isUpperCase;
   final double? radius;
   final double? fontSize;
@@ -31,10 +32,32 @@ class DefaultButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(radius ?? 16)),
       child: MaterialButton(
         onPressed: onPressed,
-        child: Text(
-          isUpperCase ?? true == true ? text.toUpperCase() : text,
-          style: TextStyle(
-              color: buttonTextColor ?? Colors.white, fontSize: fontSize ?? 18),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: icon != null
+              ? [
+                  Icon(
+                    icon,
+                    color: iconColor,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    isUpperCase ?? true == true ? text.toUpperCase() : text,
+                    style: TextStyle(
+                        color: buttonTextColor ?? Colors.white,
+                        fontSize: fontSize ?? 18),
+                  ),
+                ]
+              : [
+                  Text(
+                    isUpperCase ?? true == true ? text.toUpperCase() : text,
+                    style: TextStyle(
+                        color: buttonTextColor ?? Colors.white,
+                        fontSize: fontSize ?? 18),
+                  ),
+                ],
         ),
       ),
     );

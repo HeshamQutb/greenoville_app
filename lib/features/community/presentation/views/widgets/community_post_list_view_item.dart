@@ -29,7 +29,7 @@ class CommunityPostListViewItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CommunityPostHeadingSection(
-              post: post,
+              post: post, appCubit: appCubit,
             ),
             const CustomDivider(
               top: 12,

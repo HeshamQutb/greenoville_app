@@ -6,13 +6,13 @@ import 'gradient_text.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
-    required this.title,
+    this.title,
     this.leadingAction,
     this.centerTitle,
     this.fontSize,
   });
 
-  final String title;
+  final String? title;
   final Function()? leadingAction;
   final bool? centerTitle;
   final double? fontSize;
@@ -33,7 +33,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       title: GradientText(
         fontSize: fontSize ?? 23,
-        text: title,
+        text: title ?? '',
         colors: const [Colors.green, Colors.blue],
         left: 0.0,
         top: 0.0,

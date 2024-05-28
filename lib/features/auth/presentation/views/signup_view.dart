@@ -20,7 +20,6 @@ class SignUpView extends StatelessWidget {
       create: (context) => SignUpCubit(),
       child: Scaffold(
         appBar: CustomAppBar(
-          title: '',
           leadingAction: () {
             Navigator.pop(context);
           },

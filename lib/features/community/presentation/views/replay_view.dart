@@ -3,6 +3,7 @@ import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/widgets/custom_app_bar.dart';
 import 'package:greenoville_app/features/community/presentation/views/widgets/replay_view_body.dart';
+import '../../../../generated/l10n.dart';
 import '../../data/models/community_comment_model.dart';
 import '../../data/models/community_post_model.dart';
 
@@ -27,7 +28,7 @@ class ReplayView extends StatelessWidget {
         leadingAction: () {
           Navigator.pop(context);
         },
-        title: 'Replies',
+        title: S.of(context).replies,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),

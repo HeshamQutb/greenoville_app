@@ -115,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تسوق منتجاتك"),
         "removeImage": MessageLookupByLibrary.simpleMessage("حذف الصورة"),
         "replay": MessageLookupByLibrary.simpleMessage("رد"),
+        "replies": MessageLookupByLibrary.simpleMessage("الردود"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("التربــة الرملية"),
         "searchNow": MessageLookupByLibrary.simpleMessage("ابحث الأن"),
         "seeAll": MessageLookupByLibrary.simpleMessage("المزيـد"),

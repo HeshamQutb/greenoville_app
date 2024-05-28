@@ -38,7 +38,11 @@ class RepliedComment extends StatelessWidget {
                   RepliedCommentContentSection(
                     comment: comment,
                   ),
-                  RepliedCommentBottomSection(comment: comment, appCubit: appCubit, post: post),
+                  RepliedCommentBottomSection(
+                    comment: comment,
+                    appCubit: appCubit,
+                    post: post,
+                  ),
                 ],
               ),
             ),
@@ -54,5 +58,3 @@ class RepliedComment extends StatelessWidget {
     );
   }
 }
-
-

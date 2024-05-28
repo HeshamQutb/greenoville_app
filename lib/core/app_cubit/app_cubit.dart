@@ -59,7 +59,7 @@ class AppCubit extends Cubit<AppStates> {
 
   UserModel? userModel;
   // Get User Data
-  void getUserData(context) async {
+  Future<void> getUserData(context) async {
     if (uId != null) {
       emit(AppGetUserLoadingState());
       try {
@@ -70,6 +70,7 @@ class AppCubit extends Cubit<AppStates> {
           print(uId);
           print(userData);
           userModel = UserModel.fromJson(userData!);
+          kUserModel = userModel;
           emit(AppGetUserSuccessState());
         } else {
           signOut(context);
@@ -108,7 +109,7 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   // Get Posts
-  Future<List<CommunityPostModel>> getPosts() async {
+  Future<List<CommunityPostModel>> getPosts({String? uid}) async {
     emit(CommunityGetPostLoadingState());
     try {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
@@ -133,10 +134,17 @@ class AppCubit extends Cubit<AppStates> {
             var post = CommunityPostModel.fromJson({
               ...data,
               'isVerified': userData['isVerified'],
+              'bio': userData['bio'],
+              'coverImage': userData['coverImage'],
+              'userRole': userData['userRole'],
               'userName': userData['userName'],
               'userImage': userData['userImage'],
             });
-            posts.add(post);
+
+            // Filter posts based on uid (if provided)
+            if (uid == null || data['uId'] == uid) {
+              posts.add(post);
+            }
           }
         }
         emit(CommunityGetPostSuccessState(posts));
@@ -345,7 +353,6 @@ class AppCubit extends Cubit<AppStates> {
     }
   }
 
-
 // Replay to Comment
   Future<void> replayToComment({
     required String postId,
@@ -417,7 +424,6 @@ class AppCubit extends Cubit<AppStates> {
     });
   }
 
-
   // Like Replay
   Future<void> likeReplay({
     required String postId,
@@ -483,5 +489,31 @@ class AppCubit extends Cubit<AppStates> {
       emit(CommunityGetReplayLikesErrorState(error.toString()));
       rethrow;
     }
+  }
+
+  // Get Total Comments and Replies counts
+  Stream<int> getTotalCommentsAndReplies({required String postId}) {
+    final commentsStream = FirebaseFirestore.instance
+        .collection('posts')
+        .doc(postId)
+        .collection('comments')
+        .snapshots();
+
+    return commentsStream.asyncMap((commentsSnapshot) async {
+      int totalReplies = 0;
+
+      for (var commentDoc in commentsSnapshot.docs) {
+        final repliesSnapshot = await FirebaseFirestore.instance
+            .collection('posts')
+            .doc(postId)
+            .collection('comments')
+            .doc(commentDoc.id)
+            .collection('replies')
+            .get();
+        totalReplies += repliesSnapshot.docs.length;
+      }
+
+      return commentsSnapshot.docs.length + totalReplies;
+    });
   }
 }

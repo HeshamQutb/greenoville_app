@@ -29,7 +29,12 @@ class DrawerBody extends StatelessWidget {
           title: S.of(context).profile,
           onTap: () {
             Navigator.pop(context);
-            navigateTo(context, const AccountView());
+            navigateTo(
+              context,
+              AccountView(
+                appCubit: appCubit,
+              ),
+            );
           },
         ),
         DrawerItem(

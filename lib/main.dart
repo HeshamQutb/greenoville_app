@@ -60,8 +60,8 @@ class MyApp extends StatelessWidget {
             ],
             supportedLocales: S.delegate.supportedLocales,
             theme: ThemeData(
-              fontFamily: AssetsData.almaraiFont,
-            ),
+                fontFamily: AssetsData.almaraiFont,
+                scaffoldBackgroundColor: Colors.white),
             home: const SplashView(),
           );
         },

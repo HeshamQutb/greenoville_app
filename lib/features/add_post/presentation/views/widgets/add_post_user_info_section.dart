@@ -18,8 +18,7 @@ class AddPostUserInfoSection extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundImage: CachedNetworkImageProvider(
-            userModel!.userImage??
-                'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04',
+            userModel!.userImage,
           ),
           radius: 25,
         ),

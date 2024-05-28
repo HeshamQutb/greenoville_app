@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/constants.dart';
+import 'package:greenoville_app/core/utils/icon_broken.dart';
 import 'package:greenoville_app/core/widgets/custom_app_bar.dart';
-import 'package:greenoville_app/features/account/presentation/views/widgets/account_view_header.dart';
+import 'package:greenoville_app/core/widgets/default_button.dart';
+import 'package:greenoville_app/features/profile/presentation/views/widgets/posts_tap_bar_view.dart';
+import 'package:greenoville_app/features/profile/presentation/views/widgets/profile_view_header.dart';
+
 import '../../../../core/app_cubit/app_cubit.dart';
-import '../../../../core/widgets/default_button.dart';
 import '../../../../generated/l10n.dart';
 import '../../../community/data/models/community_post_model.dart';
-import '../../../profile/presentation/views/widgets/posts_tap_bar_view.dart';
 
-class AccountView extends StatefulWidget {
-  const AccountView({super.key, required this.appCubit});
-  final AppCubit appCubit;
+class ProfileView extends StatefulWidget {
+  const ProfileView({
+    super.key,
+    required this.post,
+  });
+  final CommunityPostModel post;
   @override
-  State<AccountView> createState() => _AccountViewState();
+  State<ProfileView> createState() => _ProfileViewState();
 }
 
-class _AccountViewState extends State<AccountView>
+class _ProfileViewState extends State<ProfileView>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   late Future<List<CommunityPostModel>> future;
+
   @override
   void initState() {
     super.initState();
-    future = AppCubit.get(context).getPosts(uid: uId);
+    future = AppCubit.get(context).getPosts(uid: widget.post.uId);
     _tabController = TabController(length: 2, vsync: this);
   }
 
@@ -50,26 +56,21 @@ class _AccountViewState extends State<AccountView>
                 ),
                 child: Column(
                   children: [
-                    AccountViewHeader(
-                      coverPictureUrl: widget.appCubit.userModel!.coverImage,
-                      profilePictureUrl: widget.appCubit.userModel!.userImage,
-                      name: widget.appCubit.userModel!.userName,
-                      isVerified: widget.appCubit.userModel!.isVerified,
-                      bio: widget.appCubit.userModel!.bio,
+                    ProfileViewHeader(
+                      post: widget.post,
                     ),
                     const SizedBox(height: 16),
                     const DefaultButton(
                       iconColor: Colors.white,
-                      icon: Icons.edit,
-                      text: 'edit profile',
+                      icon: IconBroken.Message,
+                      text: 'Message',
                     ),
                     const SizedBox(height: 16),
                     TabBar(
                       labelColor: kPrimaryColor,
                       indicatorColor: kPrimaryColor,
                       controller: _tabController,
-                      tabs: widget.appCubit.userModel!.userRole ==
-                              S.of(context).farmer
+                      tabs: widget.post.userRole == S.of(context).farmer
                           ? const [
                               Tab(text: 'Posts'),
                               Tab(text: 'Farm'),
@@ -92,28 +93,27 @@ class _AccountViewState extends State<AccountView>
           ),
           child: TabBarView(
             controller: _tabController,
-            children:
-                widget.appCubit.userModel!.userRole == S.of(context).farmer
-                    ? [
-                        PostsTapBarView(
-                          future: future,
-                        ),
-                        const Center(
-                          child: Text(
-                            'Farm Information',
-                          ),
-                        ),
-                      ]
-                    : [
-                        PostsTapBarView(
-                          future: future,
-                        ),
-                        const Center(
-                          child: Text(
-                            'Expert Tips',
-                          ),
-                        ),
-                      ],
+            children: widget.post.userRole == S.of(context).farmer
+                ? [
+                    PostsTapBarView(
+                      future: future,
+                    ),
+                    const Center(
+                      child: Text(
+                        'Farm Information',
+                      ),
+                    ),
+                  ]
+                : [
+                    PostsTapBarView(
+                      future: future,
+                    ),
+                    const Center(
+                      child: Text(
+                        'Expert Tips',
+                      ),
+                    ),
+                  ],
           ),
         ),
       ),

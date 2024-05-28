@@ -12,8 +12,7 @@ class DrawerHeaderSection extends StatelessWidget {
         CircleAvatar(
           radius: 30,
           backgroundImage: CachedNetworkImageProvider(
-            appCubit.userModel!.userImage??
-                'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04',
+            appCubit.userModel!.userImage,
           ),
         ),
         const SizedBox(

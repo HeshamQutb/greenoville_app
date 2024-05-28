@@ -25,7 +25,8 @@ class _CommunityViewState extends State<CommunityView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppStates>(
+    return BlocConsumer<AppCubit, AppStates>(
+      listener: (context, state) {},
       builder: (context, state) {
         var appCubit = AppCubit.get(context);
         return Column(

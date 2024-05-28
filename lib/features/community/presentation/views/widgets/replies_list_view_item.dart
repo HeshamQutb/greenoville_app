@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/app_cubit/app_cubit.dart';
@@ -67,30 +65,4 @@ class RepliesListViewItem extends StatelessWidget {
     );
   }
 }
-
-
-
-class FacebookCommentArrow extends StatelessWidget {
-  final double size;
-  final Color color;
-
-  const FacebookCommentArrow({super.key, this.size = 12.0, this.color = Colors.grey});
-
-  @override
-  Widget build(BuildContext context) {
-    return Transform(
-      alignment: Alignment.center,
-      transform: Matrix4.rotationZ(45.0 * (pi / 180.0)),
-      child: Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(size / 2.0),
-        ),
-      ),
-    );
-  }
-}
-
 

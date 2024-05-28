@@ -1,15 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:greenoville_app/constants.dart';
+import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
-import 'package:greenoville_app/features/profile/presentation/views/farmer_profile_view.dart';
+import 'package:greenoville_app/features/account/presentation/views/account_view.dart';
 
 import '../../../../../core/services/format_time_stamp.dart';
-import '../../../../profile/presentation/views/expert_profile_view.dart';
+import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_post_model.dart';
 
 class CommunityPostHeadingSection extends StatelessWidget {
-  const CommunityPostHeadingSection({super.key, required this.post});
+  const CommunityPostHeadingSection({super.key, required this.post, required this.appCubit});
   final CommunityPostModel post;
+  final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,15 +21,11 @@ class CommunityPostHeadingSection extends StatelessWidget {
           onTap: () {
             navigateTo(
               context,
-              const ExpertProfileView(
-                name: '',
-                title: '',
-                bio: '',
-                email: '',
-                phone: '',
-                expertise: [],
-                posts: [],
-              ),
+              post.uId == uId
+                  ? AccountView(appCubit: appCubit,)
+                  : ProfileView(
+                      post: post,
+                    ),
             );
           },
           child: CircleAvatar(
@@ -44,15 +43,11 @@ class CommunityPostHeadingSection extends StatelessWidget {
             onTap: () {
               navigateTo(
                 context,
-                const FarmerProfileView(
-                  name: '',
-                  farmName: '',
-                  bio: '',
-                  location: '',
-                  contactNumber: '',
-                  produceItems: [],
-                  posts: [],
-                ),
+                post.uId == uId
+                    ? AccountView(appCubit: appCubit,)
+                    : ProfileView(
+                        post: post,
+                      ),
               );
             },
             child: Column(

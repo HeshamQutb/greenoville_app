@@ -52,6 +52,7 @@ dependencies:
   image_cropper: ^6.0.0
   uuid: ^4.4.0
   conditional_builder_null_safety: ^0.0.6
+  shimmer: ^3.0.0
 
   google_generative_ai: ^0.4.0
 

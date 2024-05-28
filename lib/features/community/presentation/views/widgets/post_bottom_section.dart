@@ -10,8 +10,11 @@ import '../../../data/models/community_like_model.dart';
 import '../../../data/models/community_post_model.dart';
 
 class PostBottomSection extends StatelessWidget {
-  const PostBottomSection(
-      {super.key, required this.appCubit, required this.post});
+  const PostBottomSection({
+    super.key,
+    required this.appCubit,
+    required this.post,
+  });
   final AppCubit appCubit;
   final CommunityPostModel post;
 
@@ -19,6 +22,11 @@ class PostBottomSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppStates>(
       builder: (BuildContext context, state) {
+        // if (appCubit.userModel == null) {
+        //   // Show a loading indicator while user data is being fetched
+        //   return const Center(child: CircularProgressIndicator());
+        // }
+
         return StreamBuilder<List<CommunityLikeModel>>(
           stream: appCubit.getLikes(
             postId: post.postId,
@@ -33,8 +41,7 @@ class PostBottomSection extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         backgroundImage: CachedNetworkImageProvider(
-                          appCubit.userModel!.userImage ??
-                              'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04',
+                          kUserModel!.userImage,
                         ),
                         radius: 20,
                       ),

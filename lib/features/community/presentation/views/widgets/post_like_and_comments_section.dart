@@ -4,7 +4,6 @@ import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/navigate_services.dart';
 import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_like_model.dart';
 import '../../../data/models/community_post_model.dart';
 import '../likes_view.dart';
@@ -57,10 +56,10 @@ class PostLikesAndCommentsSection extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: StreamBuilder<List<CommunityCommentModel>>(
-              stream: context.read<AppCubit>().getComments(postId: post.postId),
+            child: StreamBuilder<int>(
+              stream: appCubit.getTotalCommentsAndReplies(postId: post.postId),
               builder: (context, snapshot) {
-                int commentsCount = snapshot.data?.length ?? 0;
+                int totalCommentsAndReplies = snapshot.data ?? 0;
                 return InkWell(
                   onTap: () {},
                   child: Padding(
@@ -77,7 +76,7 @@ class PostLikesAndCommentsSection extends StatelessWidget {
                           width: 5,
                         ),
                         Text(
-                          '$commentsCount ${S.of(context).comment}',
+                          '$totalCommentsAndReplies ${S.of(context).comment}',
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],

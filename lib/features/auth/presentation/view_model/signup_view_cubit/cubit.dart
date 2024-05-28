@@ -32,7 +32,8 @@ class SignUpCubit extends Cubit<SignUpStates> {
   String? uploadedImage;
   File? profileImage;
   String cropper = S.current.cropper;
-  Future<void> getProfileImage({required ImageSource source, required BuildContext context}) async {
+  Future<void> getProfileImage(
+      {required ImageSource source, required BuildContext context}) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
 
@@ -127,6 +128,8 @@ class SignUpCubit extends Cubit<SignUpStates> {
         userRole: userRole,
         isVerified: false,
         password: password,
+        coverImage:
+            'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/noImage.jpg?alt=media&token=a6f9a0db-ab6f-417f-b813-a33acdc5d045',
       );
       CacheHelper.setData(
         key: 'uId',
@@ -162,6 +165,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
     required String userEmail,
     required String uId,
     required String userImage,
+    required String coverImage,
     required String userRole,
     required bool isVerified,
     required String password,
@@ -172,8 +176,9 @@ class SignUpCubit extends Cubit<SignUpStates> {
       userEmail: userEmail,
       uId: uId,
       userImage: userImage,
+      coverImage: coverImage,
       userRole: userRole,
-      isVerified: isVerified,
+      isVerified: isVerified, bio: '',
     );
 
     FirebaseFirestore.instance

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
-import 'package:greenoville_app/features/community/data/models/community_comment_model.dart';
 import 'package:greenoville_app/features/community/presentation/views/likes_view.dart';
 import 'package:greenoville_app/features/community/presentation/views/post_view.dart';
 import '../../../../../core/app_cubit/app_cubit.dart';
@@ -60,10 +59,10 @@ class CommunityPostLikesAndCommentsSection extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: StreamBuilder<List<CommunityCommentModel>>(
-              stream: context.read<AppCubit>().getComments(postId: post.postId),
+            child: StreamBuilder<int>(
+              stream: appCubit.getTotalCommentsAndReplies(postId: post.postId),
               builder: (context, snapshot) {
-                int commentsCount = snapshot.data?.length ?? 0;
+                int totalCommentsAndReplies = snapshot.data ?? 0;
                 return InkWell(
                   onTap: () {
                     navigateTo(
@@ -89,7 +88,7 @@ class CommunityPostLikesAndCommentsSection extends StatelessWidget {
                           width: 5,
                         ),
                         Text(
-                          '$commentsCount ${S.of(context).comment}',
+                          '$totalCommentsAndReplies ${S.of(context).comment}',
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
