@@ -1,6 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import '../../../../../constants.dart';
 import '../../../../../core/app_cubit/app_cubit.dart';
+import '../../../../../core/services/navigate_services.dart';
+import '../../../../account/presentation/views/account_view.dart';
+import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_post_model.dart';
 import 'replay_item_bottom_section.dart';
@@ -31,11 +35,23 @@ class RepliesListViewItem extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CircleAvatar(
-                backgroundImage: CachedNetworkImageProvider(
-                  replay.userImage,
+              InkWell(
+                onTap: (){
+                  navigateTo(
+                    context,
+                    replay.uId == uId
+                        ? AccountView(appCubit: appCubit,)
+                        : ProfileView(
+                      post: post,
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  backgroundImage: CachedNetworkImageProvider(
+                    replay.userImage,
+                  ),
+                  radius: 25,
                 ),
-                radius: 25,
               ),
               const SizedBox(width: 5),
               Expanded(

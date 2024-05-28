@@ -6,6 +6,8 @@ import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/features/community/presentation/views/replay_view.dart';
 import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../account/presentation/views/account_view.dart';
+import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_post_model.dart';
 import 'comment_item_bottom_section.dart';
@@ -30,11 +32,23 @@ class PostCommentsListViewItem extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              backgroundImage: CachedNetworkImageProvider(
-                comment.userImage,
+            InkWell(
+              onTap: (){
+                navigateTo(
+                  context,
+                  comment.uId == uId
+                      ? AccountView(appCubit: appCubit,)
+                      : ProfileView(
+                    post: post,
+                  ),
+                );
+              },
+              child: CircleAvatar(
+                backgroundImage: CachedNetworkImageProvider(
+                  comment.userImage,
+                ),
+                radius: 25,
               ),
-              radius: 25,
             ),
             const SizedBox(
               width: 5,
