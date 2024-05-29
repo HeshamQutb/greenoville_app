@@ -51,11 +51,11 @@ class _AccountViewState extends State<AccountView>
                 child: Column(
                   children: [
                     AccountViewHeader(
-                      coverPictureUrl: widget.appCubit.userModel!.coverImage,
-                      profilePictureUrl: widget.appCubit.userModel!.userImage,
-                      name: widget.appCubit.userModel!.userName,
-                      isVerified: widget.appCubit.userModel!.isVerified,
-                      bio: widget.appCubit.userModel!.bio,
+                      coverPictureUrl: kUserModel!.coverImage,
+                      profilePictureUrl: kUserModel!.userImage,
+                      name: kUserModel!.userName,
+                      isVerified: kUserModel!.isVerified,
+                      bio: kUserModel!.bio,
                     ),
                     const SizedBox(height: 16),
                     const DefaultButton(
@@ -68,7 +68,7 @@ class _AccountViewState extends State<AccountView>
                       labelColor: kPrimaryColor,
                       indicatorColor: kPrimaryColor,
                       controller: _tabController,
-                      tabs: widget.appCubit.userModel!.userRole ==
+                      tabs: kUserModel!.userRole ==
                               S.of(context).farmer
                           ? const [
                               Tab(text: 'Posts'),
@@ -93,7 +93,7 @@ class _AccountViewState extends State<AccountView>
           child: TabBarView(
             controller: _tabController,
             children:
-                widget.appCubit.userModel!.userRole == S.of(context).farmer
+                kUserModel!.userRole == S.of(context).farmer
                     ? [
                         PostsTapBarView(
                           future: future,

@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 
+import '../../../../../constants.dart';
+
 class DrawerHeaderSection extends StatelessWidget {
   const DrawerHeaderSection({super.key, required this.appCubit});
   final AppCubit appCubit;
@@ -12,7 +14,7 @@ class DrawerHeaderSection extends StatelessWidget {
         CircleAvatar(
           radius: 30,
           backgroundImage: CachedNetworkImageProvider(
-            appCubit.userModel!.userImage,
+            kUserModel!.userImage,
           ),
         ),
         const SizedBox(
@@ -24,14 +26,14 @@ class DrawerHeaderSection extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  appCubit.userModel!.userName,
+                  kUserModel!.userName,
                   style: const TextStyle(fontSize: 16),
                 ),
-                if (appCubit.userModel!.isVerified)
+                if (kUserModel!.isVerified)
                   const SizedBox(
                     width: 5,
                   ),
-                if (appCubit.userModel!.isVerified)
+                if (kUserModel!.isVerified)
                   const Icon(
                     Icons.check_circle_sharp,
                     color: Colors.blueAccent,
@@ -40,7 +42,7 @@ class DrawerHeaderSection extends StatelessWidget {
               ],
             ),
             Text(
-              appCubit.userModel!.userEmail,
+              kUserModel!.userEmail,
               style: const TextStyle(color: Colors.grey),
             )
           ],

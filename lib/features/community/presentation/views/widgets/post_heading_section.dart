@@ -1,20 +1,44 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import '../../../../../constants.dart';
+import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/format_time_stamp.dart';
+import '../../../../../core/services/navigate_services.dart';
+import '../../../../account/presentation/views/account_view.dart';
+import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_post_model.dart';
 
 class PostHeadingSection extends StatelessWidget {
-  const PostHeadingSection({super.key, required this.post});
+  const PostHeadingSection({
+    super.key,
+    required this.post,
+    required this.appCubit,
+  });
   final CommunityPostModel post;
+  final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CircleAvatar(
-          backgroundImage: CachedNetworkImageProvider(
-            post.userImage,
+        InkWell(
+          onTap: () {
+            navigateTo(
+              context,
+              post.uId == uId
+                  ? AccountView(
+                      appCubit: appCubit,
+                    )
+                  : ProfileView(
+                      post: post,
+                    ),
+            );
+          },
+          child: CircleAvatar(
+            backgroundImage: CachedNetworkImageProvider(
+              post.userImage,
+            ),
+            radius: 25,
           ),
-          radius: 25,
         ),
         const SizedBox(
           width: 10,

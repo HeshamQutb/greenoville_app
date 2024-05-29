@@ -31,7 +31,7 @@ class AddPostViewBody extends StatelessWidget {
       child: Column(
         children: [
           if (state is AddPostLoadingState) const AddPostLoadingSection(),
-          AddPostUserInfoSection(userModel: appCubit.userModel),
+          AddPostUserInfoSection(userModel: kUserModel),
           const SizedBox(
             height: 10,
           ),
@@ -54,7 +54,7 @@ class AddPostViewBody extends StatelessWidget {
           ),
           AddPostBottomSection(
             textController: textController,
-            userModel: appCubit.userModel,
+            userModel: kUserModel,
           )
         ],
       ),

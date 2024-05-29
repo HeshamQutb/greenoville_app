@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
+import '../../../../../constants.dart';
 import '../../../../../core/widgets/gradient_text.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../account/presentation/views/account_view.dart';
@@ -42,7 +43,7 @@ class HomeViewCustomAppBar extends StatelessWidget {
           },
           child: CircleAvatar(
             backgroundImage: CachedNetworkImageProvider(
-              appCubit.userModel!.userImage,
+              kUserModel!.userImage,
             ),
           ),
         ),

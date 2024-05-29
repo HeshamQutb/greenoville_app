@@ -33,6 +33,7 @@ class PostViewBody extends StatelessWidget {
                     children: [
                       PostHeadingSection(
                         post: post,
+                        appCubit: appCubit,
                       ),
                       const CustomDivider(
                         top: 12,
@@ -81,7 +82,8 @@ class PostViewBody extends StatelessWidget {
             );
             commentController.clear();
             FocusScope.of(context).unfocus();
-          }, hintText: S.of(context).writeAComment,
+          },
+          hintText: S.of(context).writeAComment,
         )
       ],
     );
