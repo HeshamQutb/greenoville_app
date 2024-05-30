@@ -127,8 +127,6 @@ class CommunityGetCommentLikesErrorState extends AppStates {
 }
 
 
-//////////////
-
 // Replay states
 
 class CommunityReplayToCommentSuccessState extends AppStates {}

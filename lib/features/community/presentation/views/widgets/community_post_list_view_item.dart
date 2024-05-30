@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/features/community/data/models/community_post_model.dart';
 import '../../../../../core/widgets/custom_divider.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 import 'community_post_bottom_section.dart';
 import 'community_post_heading_section.dart';
 import 'community_post_image_section.dart';
@@ -11,10 +11,10 @@ import 'community_post_text_section.dart';
 class CommunityPostListViewItem extends StatelessWidget {
   const CommunityPostListViewItem({
     super.key,
-    required this.appCubit,
     required this.post,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class CommunityPostListViewItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CommunityPostHeadingSection(
-              post: post, appCubit: appCubit,
+              post: post,
             ),
             const CustomDivider(
               top: 12,
@@ -45,14 +45,14 @@ class CommunityPostListViewItem extends StatelessWidget {
               ),
             CommunityPostLikesAndCommentsSection(
               post: post,
-              appCubit: appCubit,
+              communityCubit: communityCubit,
             ),
             const CustomDivider(
               bottom: 10,
             ),
             CommunityPostBottomSection(
-              appCubit: appCubit,
               post: post,
+              communityCubit: communityCubit,
             ),
           ],
         ),

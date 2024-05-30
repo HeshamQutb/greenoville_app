@@ -1,23 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/navigate_services.dart';
 import '../../../../account/presentation/views/account_view.dart';
 import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 import 'replied_comment_bottom_section.dart';
 import 'replied_comment_content_section.dart';
 
 class RepliedComment extends StatelessWidget {
   const RepliedComment({
     super.key,
-    required this.appCubit,
     required this.post,
     required this.comment,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   final CommunityCommentModel comment;
   @override
@@ -30,14 +30,14 @@ class RepliedComment extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InkWell(
-              onTap: (){
+              onTap: () {
                 navigateTo(
                   context,
                   comment.uId == uId
-                      ? AccountView(appCubit: appCubit,)
+                      ? const AccountView()
                       : ProfileView(
-                    post: post,
-                  ),
+                          post: post,
+                        ),
                 );
               },
               child: CircleAvatar(
@@ -56,8 +56,8 @@ class RepliedComment extends StatelessWidget {
                   ),
                   RepliedCommentBottomSection(
                     comment: comment,
-                    appCubit: appCubit,
                     post: post,
+                    communityCubit: communityCubit,
                   ),
                 ],
               ),

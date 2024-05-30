@@ -8,28 +8,24 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_like_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 import '../post_view.dart';
 import '../../../data/models/community_post_model.dart';
 
 class CommunityPostBottomSection extends StatelessWidget {
   const CommunityPostBottomSection({
     super.key,
-    required this.appCubit,
     required this.post,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppStates>(
       builder: (BuildContext context, state) {
-        // if (appCubit.userModel == null) {
-        //   // Show a loading indicator while user data is being fetched
-        //   return const Center(child: CircularProgressIndicator());
-        // }
-
         return StreamBuilder<List<CommunityLikeModel>>(
-          stream: appCubit.getLikes(postId: post.postId),
+          stream: communityCubit.getLikes(postId: post.postId),
           builder: (context, snapshot) {
             final likes = snapshot.data ?? [];
             final isLiked = likes.any((like) => like.uId == uId);
@@ -52,8 +48,8 @@ class CommunityPostBottomSection extends StatelessWidget {
                           navigateTo(
                             context,
                             PostView(
-                              appCubit: appCubit,
                               post: post,
+                              communityCubit: communityCubit,
                             ),
                           );
                         },
@@ -70,7 +66,7 @@ class CommunityPostBottomSection extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    appCubit.likePost(
+                    communityCubit.likePost(
                       postId: post.postId,
                     );
                   },

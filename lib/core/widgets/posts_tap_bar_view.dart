@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
-import '../../../../../core/app_cubit/app_states.dart';
 import '../../features/community/data/models/community_post_model.dart';
+import '../../features/community/presentation/view_model/community_cubit/community_cubit.dart';
+import '../../features/community/presentation/view_model/community_cubit/community_states.dart';
 import '../../features/community/presentation/views/widgets/community_view_body.dart';
 
 class PostsTapBarView extends StatelessWidget {
@@ -14,9 +14,9 @@ class PostsTapBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppStates>(
+    return BlocBuilder<CommunityCubit, CommunityStates>(
       builder: (context, state) {
-        var appCubit = AppCubit.get(context);
+        var communityCubit = CommunityCubit.get(context);
         return Column(
           children: [
             Expanded(
@@ -24,8 +24,8 @@ class PostsTapBarView extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 slivers: [
                   CommunityViewBody(
-                    appCubit: appCubit,
                     future: future,
+                    communityCubit: communityCubit,
                   ),
                 ],
               ),

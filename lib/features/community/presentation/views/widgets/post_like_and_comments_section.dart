@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/navigate_services.dart';
 import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_like_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 import '../likes_view.dart';
 
 class PostLikesAndCommentsSection extends StatelessWidget {
-  const PostLikesAndCommentsSection({super.key, required this.post, required this.appCubit});
+  const PostLikesAndCommentsSection({
+    super.key,
+    required this.post,
+    required this.communityCubit,
+  });
   final CommunityPostModel post;
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,17 +24,19 @@ class PostLikesAndCommentsSection extends StatelessWidget {
         children: [
           Expanded(
             child: StreamBuilder<List<CommunityLikeModel>>(
-              stream: context.read<AppCubit>().getLikes(postId: post.postId),
+              stream:
+                  context.read<CommunityCubit>().getLikes(postId: post.postId),
               builder: (context, snapshot) {
                 int likesCount = snapshot.data?.length ?? 0;
                 return InkWell(
                   onTap: () {
                     navigateTo(
-                        context,
-                        LikesView(
-                        appCubit: appCubit,
+                      context,
+                      LikesView(
+                        communityCubit: communityCubit,
                         post: post,
-                    ),);
+                      ),
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -57,7 +63,8 @@ class PostLikesAndCommentsSection extends StatelessWidget {
           ),
           Expanded(
             child: StreamBuilder<int>(
-              stream: appCubit.getTotalCommentsAndReplies(postId: post.postId),
+              stream: communityCubit.getTotalCommentsAndReplies(
+                  postId: post.postId),
               builder: (context, snapshot) {
                 int totalCommentsAndReplies = snapshot.data ?? 0;
                 return InkWell(

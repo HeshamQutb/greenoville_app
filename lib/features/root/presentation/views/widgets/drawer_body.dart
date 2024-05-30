@@ -31,9 +31,7 @@ class DrawerBody extends StatelessWidget {
             Navigator.pop(context);
             navigateTo(
               context,
-              AccountView(
-                appCubit: appCubit,
-              ),
+              const AccountView(),
             );
           },
         ),

@@ -4,23 +4,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/features/community/presentation/views/replay_view.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../account/presentation/views/account_view.dart';
 import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 import 'comment_item_bottom_section.dart';
 import 'comment_item_content_section.dart';
 
 class PostCommentsListViewItem extends StatelessWidget {
   const PostCommentsListViewItem({
     super.key,
-    required this.appCubit,
     required this.post,
     required this.comment,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   final CommunityCommentModel comment;
   @override
@@ -33,14 +33,14 @@ class PostCommentsListViewItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InkWell(
-              onTap: (){
+              onTap: () {
                 navigateTo(
                   context,
                   comment.uId == uId
-                      ? AccountView(appCubit: appCubit,)
+                      ? const AccountView()
                       : ProfileView(
-                    post: post,
-                  ),
+                          post: post,
+                        ),
                 );
               },
               child: CircleAvatar(
@@ -55,7 +55,7 @@ class PostCommentsListViewItem extends StatelessWidget {
             ),
             Expanded(
               child: StreamBuilder<List<CommunityCommentModel>>(
-                stream: context.read<AppCubit>().getReplies(
+                stream: context.read<CommunityCubit>().getReplies(
                       postId: post.postId,
                       commentId: comment.commentId,
                     ),
@@ -65,37 +65,38 @@ class PostCommentsListViewItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CommentItemContentSection(
-                        appCubit: appCubit,
                         post: post,
                         comment: comment,
+                        communityCubit: communityCubit,
                       ),
                       CommentItemBottomSection(
-                        appCubit: appCubit,
                         post: post,
                         comment: comment,
+                        communityCubit: communityCubit,
                       ),
-                      if(repliesCount > 0)
+                      if (repliesCount > 0)
                         InkWell(
-                        onTap: () {
-                          navigateTo(
-                            context,
-                            ReplayView(
-                              appCubit: appCubit,
-                              post: post,
-                              comment: comment,
-                            ),
-                          );
-                        },
-                        child:  Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text(
-                            '$repliesCount ${S.of(context).replay}',
-                            style: const TextStyle(
-                              color: kPrimaryColor,
+                          onTap: () {
+                            navigateTo(
+                              context,
+                              ReplayView(
+                                post: post,
+                                comment: comment,
+                                communityCubit: communityCubit,
+                              ),
+                            );
+                          },
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Text(
+                              '$repliesCount ${S.of(context).replay}',
+                              style: const TextStyle(
+                                color: kPrimaryColor,
+                              ),
                             ),
                           ),
                         ),
-                      ),
                     ],
                   );
                 },

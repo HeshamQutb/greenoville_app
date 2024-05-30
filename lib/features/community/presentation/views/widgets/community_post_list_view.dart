@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 import 'community_post_list_view_item.dart';
 
 class CommunityListView extends StatelessWidget {
   const CommunityListView({
     super.key,
     required this.posts,
-    required this.appCubit,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final List<CommunityPostModel> posts;
   @override
   Widget build(BuildContext context) {
@@ -17,13 +17,12 @@ class CommunityListView extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (context, index) {
           return CommunityPostListViewItem(
-            appCubit: appCubit,
+            communityCubit: communityCubit,
             post: posts[index],
           );
         },
         childCount: posts.length,
       ),
     );
-
   }
 }

@@ -3,22 +3,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/features/community/presentation/views/replay_view.dart';
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/format_time_stamp.dart';
 import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_like_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 
 class CommentItemBottomSection extends StatelessWidget {
   const CommentItemBottomSection({
     super.key,
-    required this.appCubit,
     required this.post,
     required this.comment,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   final CommunityCommentModel comment;
   @override
@@ -34,7 +34,7 @@ class CommentItemBottomSection extends StatelessWidget {
           const SizedBox(width: 15),
           InkWell(
             onTap: () {
-              appCubit.likeComment(
+              communityCubit.likeComment(
                 postId: post.postId,
                 commentId: comment.commentId,
               );
@@ -51,9 +51,9 @@ class CommentItemBottomSection extends StatelessWidget {
               navigateTo(
                 context,
                 ReplayView(
-                  appCubit: appCubit,
                   post: post,
                   comment: comment,
+                  communityCubit: communityCubit,
                 ),
               );
             },
@@ -65,7 +65,7 @@ class CommentItemBottomSection extends StatelessWidget {
           ),
           const Spacer(),
           StreamBuilder<List<CommunityLikeModel>>(
-            stream: context.read<AppCubit>().getCommentLikes(
+            stream: context.read<CommunityCubit>().getCommentLikes(
                   postId: post.postId,
                   commentId: comment.commentId,
                 ),

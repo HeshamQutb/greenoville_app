@@ -8,12 +8,11 @@ import '../../../../../generated/l10n.dart';
 import '../../../../add_post/presentation/views/add_post_view.dart';
 
 class CommunityViewCustomAppBar extends StatelessWidget {
-  const CommunityViewCustomAppBar({super.key, required this.appCubit});
-  final AppCubit appCubit;
+  const CommunityViewCustomAppBar({super.key});
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0,bottom: 18),
+      padding: const EdgeInsets.only(top: 10.0, bottom: 18),
       child: Row(
         children: [
           GradientText(
@@ -28,7 +27,10 @@ class CommunityViewCustomAppBar extends StatelessWidget {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              navigateTo(context, AddPostView(appCubit: appCubit,));
+              navigateTo(
+                context,
+                AddPostView(),
+              );
             },
             child: Container(
               height: 35,

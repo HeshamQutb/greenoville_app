@@ -28,7 +28,7 @@ class _ProfileViewState extends State<ProfileView>
   @override
   void initState() {
     super.initState();
-    future = AppCubit.get(context).getPosts(uid: widget.post.uId);
+    // future = AppCubit.get(context).getPosts(uid: widget.post.uId);
     _tabController = TabController(length: 2, vsync: this);
   }
 

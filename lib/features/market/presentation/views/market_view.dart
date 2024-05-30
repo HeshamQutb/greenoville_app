@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class MarketView extends StatefulWidget {
   const MarketView({super.key});
 
@@ -11,122 +10,47 @@ class MarketView extends StatefulWidget {
 class _MarketViewState extends State<MarketView> {
   @override
   Widget build(BuildContext context) {
-    return
-      // appBar: AppBar(
-      //   title: Text(
-      //     'Market',
-      //     style: TextStyle(
-      //       foreground: Paint()
-      //         ..shader = const LinearGradient(
-      //           colors: [Colors.green, Colors.blue],
-      //         ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0)),
-      //     ),
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       icon: const Icon(Icons.filter_list),
-      //       onPressed: () {
-      //         // Implement filtering action
-      //       },
-      //     ),
-      //     IconButton(
-      //       icon: const Icon(Icons.sort),
-      //       onPressed: () {
-      //         // Implement sorting action
-      //       },
-      //     ),
-      //   ],
-      // ),
-      const SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Search TextField
-            Padding(
+    return const SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Search TextField
+          Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
-              child: SearchBar()
-            ),
-            // Farm List
-            FarmCard(
-              farmName: 'Green Acres Farm',
-              farmerName: 'Hassan Ali', // Real example name
-              distance: '2.5 km',
-              contactNumber: '+1 123-456-7890', // Real example number
-              produceItems: [
-                ProduceItem(
-                  name: 'Tomatoes',
-                  price: '\$2.50/kg',
-                  image: 'assets/images/Tomato.png',
-                ),
-                ProduceItem(
-                  name: 'Apples',
-                  price: '\$2.80/kg',
-                  image: 'assets/images/apples.png',
-                ),
-                ProduceItem(
-                  name: 'Carrots',
-                  price: '\$4.00/kg',
-                  image: 'assets/images/Carrots.png',
-                ),
-                ProduceItem(
-                  name: 'Onion',
-                  price: '\$1.50/kg',
-                  image: 'assets/images/onion.png',
-                ),
-                // Add more produce items as needed
-              ],
-            ),
-            FarmCard(
-              farmName: 'Green Acres Farm',
-              farmerName: 'John Doe', // Real example name
-              distance: '2.5 km',
-              contactNumber: '+1 123-456-7890', // Real example number
-              produceItems: [
-                ProduceItem(
-                  name: 'Tomatoes',
-                  price: '\$2.50/kg',
-                  image: 'assets/images/SOIL-HEALTH.jpg',
-                ),
-                ProduceItem(
-                  name: 'Apples',
-                  price: '\$1.80/kg',
-                  image: 'assets/images/SOIL-HEALTH.jpg',
-                ),
-                // Add more produce items as needed
-              ],
-            ),
-            FarmCard(
-              farmName: 'Green Acres Farm',
-              farmerName: 'John Doe', // Real example name
-              distance: '2.5 km',
-              contactNumber: '+1 123-456-7890', // Real example number
-              produceItems: [
-                ProduceItem(
-                  name: 'Tomatoes',
-                  price: '\$2.50/kg',
-                  image: 'assets/images/SOIL-HEALTH.jpg',
-                ),
-                ProduceItem(
-                  name: 'Apples',
-                  price: '\$1.80/kg',
-                  image: 'assets/images/SOIL-HEALTH.jpg',
-                ),
-                ProduceItem(
-                  name: 'Tomatoes',
-                  price: '\$2.50/kg',
-                  image: 'assets/images/SOIL-HEALTH.jpg',
-                ),
-                ProduceItem(
-                  name: 'Apples',
-                  price: '\$1.80/kg',
-                  image: 'assets/images/SOIL-HEALTH.jpg',
-                ),
-                // Add more produce items as needed
-              ],
-            )
-          ],
-        ),
-      );
+              child: SearchBar()),
+          // Farm List
+          FarmCard(
+            farmName: 'Green Acres Farm',
+            farmerName: 'Hassan Ali', // Real example name
+            distance: '2.5 km',
+            contactNumber: '+1 123-456-7890', // Real example number
+            produceItems: [
+              ProduceItem(
+                name: 'Tomatoes',
+                price: '\$2.50/kg',
+                image: 'assets/images/Tomato.png',
+              ),
+              ProduceItem(
+                name: 'Apples',
+                price: '\$2.80/kg',
+                image: 'assets/images/apples.png',
+              ),
+              ProduceItem(
+                name: 'Carrots',
+                price: '\$4.00/kg',
+                image: 'assets/images/Carrots.png',
+              ),
+              ProduceItem(
+                name: 'Onion',
+                price: '\$1.50/kg',
+                image: 'assets/images/onion.png',
+              ),
+              // Add more produce items as needed
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -137,7 +61,8 @@ class FarmCard extends StatelessWidget {
   final String contactNumber;
   final List<ProduceItem> produceItems;
 
-  const FarmCard({super.key,
+  const FarmCard({
+    super.key,
     required this.farmName,
     required this.farmerName,
     required this.distance,
@@ -187,7 +112,10 @@ class FarmCard extends StatelessWidget {
                   onPressed: () {
                     // Implement contact farm action
                   },
-                  child: Text('Contact $farmerName',style: const TextStyle(color: Colors.green),),
+                  child: Text(
+                    'Contact $farmerName',
+                    style: const TextStyle(color: Colors.green),
+                  ),
                 ),
               ],
             ),
@@ -211,7 +139,10 @@ class FarmCard extends StatelessWidget {
             onPressed: () {
               // Implement see more action
             },
-            child: const Text('See More',style: TextStyle(color: Colors.green),),
+            child: const Text(
+              'See More',
+              style: TextStyle(color: Colors.green),
+            ),
           ),
         ],
       ),
@@ -247,7 +178,8 @@ class ProduceItem extends StatelessWidget {
   final String price;
   final String image;
 
-  const ProduceItem({super.key,
+  const ProduceItem({
+    super.key,
     required this.name,
     required this.price,
     required this.image,
@@ -272,7 +204,8 @@ class ProduceItem extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Text(price),
               ],

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/format_time_stamp.dart';
 import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_like_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 
 class ReplayItemBottomSection extends StatelessWidget {
   const ReplayItemBottomSection({
     super.key,
-    required this.appCubit,
     required this.post,
     required this.replay,
     required this.comment,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityCommentModel comment;
   final CommunityPostModel post;
   final CommunityCommentModel replay;
@@ -34,7 +34,7 @@ class ReplayItemBottomSection extends StatelessWidget {
           const SizedBox(width: 15),
           InkWell(
             onTap: () {
-              appCubit.likeReplay(
+              communityCubit.likeReplay(
                 postId: post.postId,
                 commentId: comment.commentId,
                 replayId: replay.commentId,
@@ -49,7 +49,7 @@ class ReplayItemBottomSection extends StatelessWidget {
           const SizedBox(width: 15),
           const Spacer(),
           StreamBuilder<List<CommunityLikeModel>>(
-            stream: context.read<AppCubit>().getRepliesLikes(
+            stream: context.read<CommunityCubit>().getRepliesLikes(
                   postId: post.postId,
                   commentId: comment.commentId,
                   replayId: replay.commentId,

@@ -1,21 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/format_time_stamp.dart';
 import '../../../../../core/services/navigate_services.dart';
 import '../../../../account/presentation/views/account_view.dart';
 import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 
 class PostHeadingSection extends StatelessWidget {
   const PostHeadingSection({
     super.key,
     required this.post,
-    required this.appCubit,
+    required this.communityCubit,
   });
   final CommunityPostModel post;
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,9 +25,7 @@ class PostHeadingSection extends StatelessWidget {
             navigateTo(
               context,
               post.uId == uId
-                  ? AccountView(
-                      appCubit: appCubit,
-                    )
+                  ? const AccountView()
                   : ProfileView(
                       post: post,
                     ),

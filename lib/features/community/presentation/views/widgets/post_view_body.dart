@@ -7,15 +7,19 @@ import 'package:greenoville_app/features/community/presentation/views/widgets/po
 import 'package:greenoville_app/features/community/presentation/views/widgets/post_image_section.dart';
 import 'package:greenoville_app/features/community/presentation/views/widgets/post_like_and_comments_section.dart';
 import 'package:greenoville_app/features/community/presentation/views/widgets/post_text_section.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/widgets/custom_divider.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 
 class PostViewBody extends StatelessWidget {
-  const PostViewBody(
-      {super.key, required this.appCubit, required this.post, this.autofocus});
-  final AppCubit appCubit;
+  const PostViewBody({
+    super.key,
+    required this.post,
+    this.autofocus,
+    required this.communityCubit,
+  });
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   final bool? autofocus;
   @override
@@ -25,58 +29,58 @@ class PostViewBody extends StatelessWidget {
       children: [
         Expanded(
           child: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      PostHeadingSection(
-                        post: post,
-                        appCubit: appCubit,
-                      ),
-                      const CustomDivider(
-                        top: 12,
-                        bottom: 12,
-                      ),
-                      if (post.description != '')
-                        PostTextSection(
-                          post: post,
-                        ),
-                      if (post.postImage != '')
-                        PostImageSection(
-                          post: post,
-                        ),
-                      PostLikesAndCommentsSection(
-                        post: post,
-                        appCubit: appCubit,
-                      ),
-                      const CustomDivider(
-                        bottom: 10,
-                      ),
-                      PostBottomSection(
-                        appCubit: appCubit,
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PostHeadingSection(
+                      post: post,
+                      communityCubit: communityCubit,
+                    ),
+                    const CustomDivider(
+                      top: 12,
+                      bottom: 12,
+                    ),
+                    if (post.description != '')
+                      PostTextSection(
                         post: post,
                       ),
-                      const CustomDivider(
-                        top: 10,
-                        bottom: 30,
+                    if (post.postImage != '')
+                      PostImageSection(
+                        post: post,
                       ),
-                    ],
-                  ),
+                    PostLikesAndCommentsSection(
+                      post: post,
+                      communityCubit: communityCubit,
+                    ),
+                    const CustomDivider(
+                      bottom: 10,
+                    ),
+                    PostBottomSection(
+                      post: post,
+                      communityCubit: communityCubit,
+                    ),
+                    const CustomDivider(
+                      top: 10,
+                      bottom: 30,
+                    ),
+                  ],
                 ),
-                PostCommentsListViewBuilder(
-                  appCubit: appCubit,
-                  post: post,
-                ),
-              ]),
+              ),
+              PostCommentsListViewBuilder(
+                post: post,
+                communityCubit: communityCubit,
+              ),
+            ],
+          ),
         ),
         CustomCommentField(
           autofocus: autofocus,
           commentController: commentController,
-          appCubit: appCubit,
           onPressedSuffix: () {
-            appCubit.commentOnPost(
+            communityCubit.commentOnPost(
               postId: post.postId,
               content: commentController.text,
             );

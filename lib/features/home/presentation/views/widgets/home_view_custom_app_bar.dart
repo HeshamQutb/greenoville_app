@@ -36,9 +36,7 @@ class HomeViewCustomAppBar extends StatelessWidget {
           onTap: () {
             navigateTo(
               context,
-              AccountView(
-                appCubit: appCubit,
-              ),
+              const AccountView(),
             );
           },
           child: CircleAvatar(

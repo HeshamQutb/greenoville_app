@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 import 'likes_list_view_builder.dart';
 
 class LikesViewBody extends StatelessWidget {
   const LikesViewBody({
     super.key,
-    required this.appCubit,
     required this.post,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class LikesViewBody extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             slivers: [
               LikesListViewBuilder(
-                appCubit: appCubit,
                 post: post,
+                communityCubit: communityCubit,
               )
             ],
           ),

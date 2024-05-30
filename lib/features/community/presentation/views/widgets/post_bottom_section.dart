@@ -8,27 +8,23 @@ import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_like_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 
 class PostBottomSection extends StatelessWidget {
   const PostBottomSection({
     super.key,
-    required this.appCubit,
     required this.post,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppStates>(
       builder: (BuildContext context, state) {
-        // if (appCubit.userModel == null) {
-        //   // Show a loading indicator while user data is being fetched
-        //   return const Center(child: CircularProgressIndicator());
-        // }
-
         return StreamBuilder<List<CommunityLikeModel>>(
-          stream: appCubit.getLikes(
+          stream: communityCubit.getLikes(
             postId: post.postId,
           ),
           builder: (context, snapshot) {
@@ -50,7 +46,7 @@ class PostBottomSection extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    appCubit.likePost(
+                    communityCubit.likePost(
                       postId: post.postId,
                     );
                   },

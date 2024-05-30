@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/features/community/presentation/views/widgets/replies_list_view.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 
 class RepliesListViewBuilder extends StatelessWidget {
   const RepliesListViewBuilder({
     super.key,
-    required this.appCubit,
     required this.post,
     required this.comment,
+    required this.communityCubit,
   });
 
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   final CommunityCommentModel comment;
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<CommunityCommentModel>>(
-      stream: appCubit.getReplies(
+      stream: communityCubit.getReplies(
         postId: post.postId,
         commentId: comment.commentId,
       ),
@@ -47,9 +47,9 @@ class RepliesListViewBuilder extends StatelessWidget {
           final replies = snapshot.data!;
           return RepliesListView(
             replies: replies,
-            appCubit: appCubit,
             post: post,
             comment: comment,
+            communityCubit: communityCubit,
           );
         }
       },

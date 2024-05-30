@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
-import 'package:greenoville_app/core/app_cubit/app_states.dart';
-import 'package:greenoville_app/features/community/presentation/views/widgets/community_view_custom_app_bar.dart';
-import '../../../../core/app_cubit/app_cubit.dart';
 import '../../data/models/community_post_model.dart';
+import '../view_model/community_cubit/community_cubit.dart';
+import '../view_model/community_cubit/community_states.dart';
 import 'widgets/community_view_body.dart';
+import 'widgets/community_view_custom_app_bar.dart';
 
 class CommunityView extends StatefulWidget {
   const CommunityView({super.key});
@@ -20,51 +20,52 @@ class _CommunityViewState extends State<CommunityView> {
   @override
   void initState() {
     super.initState();
-    future = AppCubit.get(context).getPosts();
+    future = CommunityCubit.get(context).getPosts();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit, AppStates>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        var appCubit = AppCubit.get(context);
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: kHorizontalPadding,
+    return BlocProvider(
+      create: (context) => CommunityCubit()..getPosts(),
+      child: BlocConsumer<CommunityCubit, CommunityStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var communityCubit = CommunityCubit.get(context);
+          return Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: kHorizontalPadding,
+                ),
+                child: CommunityViewCustomAppBar(),
               ),
-              child: CommunityViewCustomAppBar(
-                appCubit: appCubit,
-              ),
-            ),
-            Expanded(
-              child: RefreshIndicator(
-                onRefresh: () async {
-                  setState(() {
-                    future = appCubit.getPosts();
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: kHorizontalPadding,
-                  ),
-                  child: CustomScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    slivers: [
-                      CommunityViewBody(
-                        appCubit: appCubit,
-                        future: future,
-                      ),
-                    ],
+              Expanded(
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    setState(() {
+                      future = communityCubit.getPosts();
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: kHorizontalPadding,
+                    ),
+                    child: CustomScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      slivers: [
+                        CommunityViewBody(
+                          communityCubit: communityCubit,
+                          future: future,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        );
-      },
+            ],
+          );
+        },
+      ),
     );
   }
 }

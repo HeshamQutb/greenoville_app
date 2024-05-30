@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 import 'community_post_list_view.dart';
 
 class CommunityPostListViewBuilder extends StatelessWidget {
   const CommunityPostListViewBuilder({
     super.key,
-    required this.appCubit,
     required this.future,
+    required this.communityCubit,
   });
 
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final Future<List<CommunityPostModel>> future;
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class CommunityPostListViewBuilder extends StatelessWidget {
         } else {
           return CommunityListView(
             posts: snapshot.data!,
-            appCubit: appCubit,
+            communityCubit: communityCubit,
           );
         }
       },

@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/features/community/data/models/community_like_model.dart';
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/navigate_services.dart';
 import '../../../../../core/utils/icon_broken.dart';
 import '../../../../account/presentation/views/account_view.dart';
@@ -13,11 +12,9 @@ class LikesListViewItem extends StatelessWidget {
   const LikesListViewItem({
     super.key,
     required this.like,
-    required this.appCubit,
     required this.post,
   });
   final CommunityLikeModel like;
-  final AppCubit appCubit;
   final CommunityPostModel post;
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,7 @@ class LikesListViewItem extends StatelessWidget {
         navigateTo(
           context,
           post.uId == uId
-              ? AccountView(appCubit: appCubit,)
+              ? const AccountView()
               : ProfileView(
             post: post,
           ),

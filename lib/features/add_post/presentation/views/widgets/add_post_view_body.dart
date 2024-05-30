@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../view_model/add_post_cubit/add_post_cubit.dart';
 import '../../view_model/add_post_cubit/add_post_states.dart';
 import 'add_post_bottom_section.dart';
@@ -15,9 +13,7 @@ class AddPostViewBody extends StatelessWidget {
     super.key,
     required this.textController,
     required this.state,
-    required this.appCubit,
   });
-  final AppCubit appCubit;
   final TextEditingController textController;
   final AddPostStates state;
   @override

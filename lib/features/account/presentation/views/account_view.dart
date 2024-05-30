@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/widgets/custom_app_bar.dart';
 import 'package:greenoville_app/features/account/presentation/views/widgets/account_view_header.dart';
-import '../../../../core/app_cubit/app_cubit.dart';
+import 'package:greenoville_app/features/account/presentation/views/widgets/no_farm_section.dart';
 import '../../../../core/widgets/default_button.dart';
 import '../../../../core/widgets/posts_tap_bar_view.dart';
 import '../../../../generated/l10n.dart';
 import '../../../community/data/models/community_post_model.dart';
 
 class AccountView extends StatefulWidget {
-  const AccountView({super.key, required this.appCubit});
-  final AppCubit appCubit;
+  const AccountView({
+    super.key,
+  });
   @override
   State<AccountView> createState() => _AccountViewState();
 }
@@ -22,7 +23,7 @@ class _AccountViewState extends State<AccountView>
   @override
   void initState() {
     super.initState();
-    future = AppCubit.get(context).getPosts(uid: uId);
+    // future = AppCubit.get(context).getPosts(uid: uId);
     _tabController = TabController(length: 2, vsync: this);
   }
 
@@ -68,8 +69,7 @@ class _AccountViewState extends State<AccountView>
                       labelColor: kPrimaryColor,
                       indicatorColor: kPrimaryColor,
                       controller: _tabController,
-                      tabs: kUserModel!.userRole ==
-                              S.of(context).farmer
+                      tabs: kUserModel!.userRole == S.of(context).farmer
                           ? const [
                               Tab(text: 'Posts'),
                               Tab(text: 'Farm'),
@@ -92,29 +92,23 @@ class _AccountViewState extends State<AccountView>
           ),
           child: TabBarView(
             controller: _tabController,
-            children:
-                kUserModel!.userRole == S.of(context).farmer
-                    ? [
-                        PostsTapBarView(
-                          future: future,
-                        ),
-                        const Column(
-
-                          children: [
-
-                          ],
-                        ),
-                      ]
-                    : [
-                        PostsTapBarView(
-                          future: future,
-                        ),
-                        const Center(
-                          child: Text(
-                            'Expert Tips',
-                          ),
-                        ),
-                      ],
+            children: kUserModel!.userRole == S.of(context).farmer
+                ? [
+                    PostsTapBarView(
+                      future: future,
+                    ),
+                    const NoFarmSection(),
+                  ]
+                : [
+                    PostsTapBarView(
+                      future: future,
+                    ),
+                    const Center(
+                      child: Text(
+                        'Expert Tips',
+                      ),
+                    ),
+                  ],
           ),
         ),
       ),

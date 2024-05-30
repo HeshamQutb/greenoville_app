@@ -1,20 +1,17 @@
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_post_model.dart';
 
 class ReplayItemContentSection extends StatelessWidget {
-  const ReplayItemContentSection(
-      {super.key,
-      required this.appCubit,
-      required this.post,
-      required this.replay,
-      });
-  final AppCubit appCubit;
+  const ReplayItemContentSection({
+    super.key,
+    required this.post,
+    required this.replay,
+  });
+
   final CommunityPostModel post;
   final CommunityCommentModel replay;
   @override

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/core/widgets/default_text_form_field.dart';
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/widgets/default_button.dart';
 import '../../../../../generated/l10n.dart';
 import '../../view_model/add_post_cubit/create_farm_cubit.dart';
@@ -13,9 +12,7 @@ class CreateFarmViewBody extends StatefulWidget {
   const CreateFarmViewBody({
     super.key,
     required this.state,
-    required this.appCubit,
   });
-  final AppCubit appCubit;
   final CreateFarmStates state;
 
   @override
@@ -101,33 +98,33 @@ class _CreateFarmViewBodyState extends State<CreateFarmViewBody> {
               ),
               state is CreateFarmLoadingState
                   ? const Center(
-                child: CircularProgressIndicator(),
-              )
+                      child: CircularProgressIndicator(),
+                    )
                   : DefaultButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    if (createFarmCubit.farmImage != null) {
-                      createFarmCubit.uploadFarmImage(
-                        context: context,
-                        uId: kUserModel!.uId,
-                        farmName: farmNameController.text,
-                        farmOwnerName: farmOwnerNameController.text,
-                        farmLocation: farmLocationController.text,
-                        farmId: kUserModel!.uId,
-                      );
-                    } else {
-                      createFarmCubit.createFarm(
-                        context: context,
-                        uId: kUserModel!.uId,
-                        farmName: farmNameController.text,
-                        farmOwnerName: farmOwnerNameController.text,
-                        farmLocation: farmLocationController.text,
-                      );
-                    }
-                  }
-                },
-                text: S.of(context).createFarm,
-              ),
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          if (createFarmCubit.farmImage != null) {
+                            createFarmCubit.uploadFarmImage(
+                              context: context,
+                              uId: kUserModel!.uId,
+                              farmName: farmNameController.text,
+                              farmOwnerName: farmOwnerNameController.text,
+                              farmLocation: farmLocationController.text,
+                              farmId: kUserModel!.uId,
+                            );
+                          } else {
+                            createFarmCubit.createFarm(
+                              context: context,
+                              uId: kUserModel!.uId,
+                              farmName: farmNameController.text,
+                              farmOwnerName: farmOwnerNameController.text,
+                              farmLocation: farmLocationController.text,
+                            );
+                          }
+                        }
+                      },
+                      text: S.of(context).createFarm,
+                    ),
             ],
           ),
         );

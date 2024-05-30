@@ -1,31 +1,31 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../core/services/navigate_services.dart';
 import '../../../../account/presentation/views/account_view.dart';
 import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 import 'replay_item_bottom_section.dart';
 import 'replay_item_content_section.dart';
 
 class RepliesListViewItem extends StatelessWidget {
   const RepliesListViewItem({
     super.key,
-    required this.appCubit,
     required this.post,
     required this.replay,
     required this.comment,
+    required this.communityCubit,
   });
-  final AppCubit appCubit;
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   final CommunityCommentModel replay;
   final CommunityCommentModel comment;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: appCubit.isArabic()
+      padding: communityCubit.isArabic()
           ? const EdgeInsets.only(right: 56)
           : const EdgeInsets.only(left: 56),
       child: Column(
@@ -36,14 +36,14 @@ class RepliesListViewItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               InkWell(
-                onTap: (){
+                onTap: () {
                   navigateTo(
                     context,
                     replay.uId == uId
-                        ? AccountView(appCubit: appCubit,)
+                        ? const AccountView()
                         : ProfileView(
-                      post: post,
-                    ),
+                            post: post,
+                          ),
                   );
                 },
                 child: CircleAvatar(
@@ -58,15 +58,14 @@ class RepliesListViewItem extends StatelessWidget {
                 child: Column(
                   children: [
                     ReplayItemContentSection(
-                      appCubit: appCubit,
                       post: post,
                       replay: replay,
                     ),
                     ReplayItemBottomSection(
-                      appCubit: appCubit,
                       post: post,
                       replay: replay,
                       comment: comment,
+                      communityCubit: communityCubit,
                     ),
                   ],
                 ),
@@ -81,4 +80,3 @@ class RepliesListViewItem extends StatelessWidget {
     );
   }
 }
-

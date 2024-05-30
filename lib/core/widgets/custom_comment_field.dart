@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/constants.dart';
-
-import '../app_cubit/app_cubit.dart';
 import '../utils/icon_broken.dart';
 import 'custom_text_field.dart';
 
@@ -9,12 +7,11 @@ class CustomCommentField extends StatelessWidget {
   const CustomCommentField({
     super.key,
     required this.commentController,
-    required this.appCubit,
     this.autofocus,
     required this.onPressedSuffix,
     required this.hintText,
   });
-  final AppCubit appCubit;
+
   final TextEditingController commentController;
   final bool? autofocus;
   final String hintText;

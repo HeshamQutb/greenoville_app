@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/constants.dart';
-import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/features/account/presentation/views/account_view.dart';
 
@@ -10,9 +9,11 @@ import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_post_model.dart';
 
 class CommunityPostHeadingSection extends StatelessWidget {
-  const CommunityPostHeadingSection({super.key, required this.post, required this.appCubit});
+  const CommunityPostHeadingSection({
+    super.key,
+    required this.post,
+  });
   final CommunityPostModel post;
-  final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -22,7 +23,7 @@ class CommunityPostHeadingSection extends StatelessWidget {
             navigateTo(
               context,
               post.uId == uId
-                  ? AccountView(appCubit: appCubit,)
+                  ? const AccountView()
                   : ProfileView(
                       post: post,
                     ),
@@ -44,7 +45,7 @@ class CommunityPostHeadingSection extends StatelessWidget {
               navigateTo(
                 context,
                 post.uId == uId
-                    ? AccountView(appCubit: appCubit,)
+                    ? const AccountView()
                     : ProfileView(
                         post: post,
                       ),

@@ -2,20 +2,20 @@ import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/features/community/presentation/views/replay_view.dart';
-
 import '../../../../../constants.dart';
-import '../../../../../core/app_cubit/app_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_post_model.dart';
+import '../../view_model/community_cubit/community_cubit.dart';
 
 class CommentItemContentSection extends StatelessWidget {
-  const CommentItemContentSection(
-      {super.key,
-      required this.appCubit,
-      required this.post,
-      required this.comment});
-  final AppCubit appCubit;
+  const CommentItemContentSection({
+    super.key,
+    required this.post,
+    required this.comment,
+    required this.communityCubit,
+  });
+  final CommunityCubit communityCubit;
   final CommunityPostModel post;
   final CommunityCommentModel comment;
   @override
@@ -36,9 +36,9 @@ class CommentItemContentSection extends StatelessWidget {
               navigateTo(
                 context,
                 ReplayView(
-                  appCubit: appCubit,
                   post: post,
                   comment: comment,
+                  communityCubit: communityCubit,
                 ),
               );
             },
