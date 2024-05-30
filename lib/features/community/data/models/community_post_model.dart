@@ -44,7 +44,7 @@ class CommunityPostModel {
       userImage: json?['userImage'],
       postImage: json?['postImage'],
       timestamp: json?['timestamp'],
-      description: json?['text'],
+      description: json?['description'],
       postId: json?['postId'],
       likes: (json?['likes'] as List<dynamic>?)
               ?.map((likeJson) =>
@@ -70,7 +70,7 @@ class CommunityPostModel {
       'userImage': userImage,
       'postImage': postImage,
       'timestamp': timestamp,
-      'text': description,
+      'description': description,
       'postId': postId,
       'likes': likes.map((like) => like.toMap()).toList(),
       'comments': comments.map((comment) => comment.toMap()).toList()

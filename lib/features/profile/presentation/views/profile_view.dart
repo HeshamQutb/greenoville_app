@@ -3,10 +3,10 @@ import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/utils/icon_broken.dart';
 import 'package:greenoville_app/core/widgets/custom_app_bar.dart';
 import 'package:greenoville_app/core/widgets/default_button.dart';
-import 'package:greenoville_app/features/profile/presentation/views/widgets/posts_tap_bar_view.dart';
 import 'package:greenoville_app/features/profile/presentation/views/widgets/profile_view_header.dart';
 
 import '../../../../core/app_cubit/app_cubit.dart';
+import '../../../../core/widgets/posts_tap_bar_view.dart';
 import '../../../../generated/l10n.dart';
 import '../../../community/data/models/community_post_model.dart';
 

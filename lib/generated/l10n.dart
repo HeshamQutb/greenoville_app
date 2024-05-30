@@ -989,6 +989,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Add Product`
+  String get addProduct {
+    return Intl.message(
+      'Add Product',
+      name: 'addProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successfully Add Product`
+  String get successfullyAddProduct {
+    return Intl.message(
+      'Successfully Add Product',
+      name: 'successfullyAddProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successfully Create Farm`
+  String get successfullyCreateFarm {
+    return Intl.message(
+      'Successfully Create Farm',
+      name: 'successfullyCreateFarm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Farm`
+  String get createFarm {
+    return Intl.message(
+      'Create Farm',
+      name: 'createFarm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Farm Name`
+  String get farmName {
+    return Intl.message(
+      'Farm Name',
+      name: 'farmName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Owner Name`
+  String get ownerName {
+    return Intl.message(
+      'Owner Name',
+      name: 'ownerName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Farm Location`
+  String get farmLocation {
+    return Intl.message(
+      'Farm Location',
+      name: 'farmLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Farm Name`
+  String get pleaseEnterFarmName {
+    return Intl.message(
+      'Please Enter Farm Name',
+      name: 'pleaseEnterFarmName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Owner Name`
+  String get pleaseEnterOwnerName {
+    return Intl.message(
+      'Please Enter Owner Name',
+      name: 'pleaseEnterOwnerName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Farm Location`
+  String get pleaseEnterFarmLocation {
+    return Intl.message(
+      'Please Enter Farm Location',
+      name: 'pleaseEnterFarmLocation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

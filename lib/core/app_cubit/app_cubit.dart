@@ -108,6 +108,14 @@ class AppCubit extends Cubit<AppStates> {
     );
   }
 
+
+  // Create farm
+
+
+
+
+
+
   // Get Posts
   Future<List<CommunityPostModel>> getPosts({String? uid}) async {
     emit(CommunityGetPostLoadingState());

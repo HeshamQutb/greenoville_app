@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "about": MessageLookupByLibrary.simpleMessage("About"),
         "addPhoto": MessageLookupByLibrary.simpleMessage("Add Photo"),
         "addPost": MessageLookupByLibrary.simpleMessage("Add Post"),
+        "addProduct": MessageLookupByLibrary.simpleMessage("Add Product"),
         "appName": MessageLookupByLibrary.simpleMessage("GreeNoville"),
         "appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
@@ -35,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "collapseText": MessageLookupByLibrary.simpleMessage("Show less"),
         "comment": MessageLookupByLibrary.simpleMessage("Comment"),
         "communityTitle": MessageLookupByLibrary.simpleMessage("Community"),
+        "createFarm": MessageLookupByLibrary.simpleMessage("Create Farm"),
         "cropper": MessageLookupByLibrary.simpleMessage("Cropper"),
         "dark": MessageLookupByLibrary.simpleMessage("Dark"),
         "defaultSignInFailed": MessageLookupByLibrary.simpleMessage(
@@ -52,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Error:"),
         "expandText": MessageLookupByLibrary.simpleMessage("Read more"),
         "expert": MessageLookupByLibrary.simpleMessage("Expert"),
+        "farmLocation": MessageLookupByLibrary.simpleMessage("Farm Location"),
+        "farmName": MessageLookupByLibrary.simpleMessage("Farm Name"),
         "farmer": MessageLookupByLibrary.simpleMessage("Farmer"),
         "farmingPractices": MessageLookupByLibrary.simpleMessage(
             "Discover Sustainable Farming Practices"),
@@ -88,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noThing": MessageLookupByLibrary.simpleMessage("No thing to share!"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "Empower Your Harvest, Empower Your Future"),
+        "ownerName": MessageLookupByLibrary.simpleMessage("Owner Name"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordIsTooShort":
             MessageLookupByLibrary.simpleMessage("Password is too short"),
@@ -97,6 +102,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "plants": MessageLookupByLibrary.simpleMessage("Plants"),
         "pleaseEnterEmailAddress":
             MessageLookupByLibrary.simpleMessage("Please Enter Email Address"),
+        "pleaseEnterFarmLocation":
+            MessageLookupByLibrary.simpleMessage("Please Enter Farm Location"),
+        "pleaseEnterFarmName":
+            MessageLookupByLibrary.simpleMessage("Please Enter Farm Name"),
+        "pleaseEnterOwnerName":
+            MessageLookupByLibrary.simpleMessage("Please Enter Owner Name"),
         "pleaseEnterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Please Enter Phone Number"),
         "pleaseEnterYourName":
@@ -125,6 +136,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign Up Successfully"),
         "siltySoil": MessageLookupByLibrary.simpleMessage("SiltySoil"),
         "soilsTitle": MessageLookupByLibrary.simpleMessage("Soils"),
+        "successfullyAddProduct":
+            MessageLookupByLibrary.simpleMessage("Successfully Add Product"),
+        "successfullyCreateFarm":
+            MessageLookupByLibrary.simpleMessage("Successfully Create Farm"),
         "successfullyLogin":
             MessageLookupByLibrary.simpleMessage("Successfully Login"),
         "successfullyPost":

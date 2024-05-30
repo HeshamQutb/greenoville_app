@@ -98,7 +98,20 @@
   "noComments": "No comments yet.",
   "noReplies": "No replies yet.",
   "noLikes": "No likes yet.",
-  "peopleWhoReacted": "People Who Reacted"
+  "peopleWhoReacted": "People Who Reacted",
+
+  "addProduct": "Add Product",
+  "successfullyAddProduct": "Successfully Add Product",
+
+  "successfullyCreateFarm": "Successfully Create Farm",
+  "createFarm": "Create Farm",
+  "farmName": "Farm Name",
+  "ownerName": "Owner Name",
+  "farmLocation": "Farm Location",
+  "pleaseEnterFarmName": "Please Enter Farm Name",
+  "pleaseEnterOwnerName": "Please Enter Owner Name",
+  "pleaseEnterFarmLocation": "Please Enter Farm Location"
+
 
 
 

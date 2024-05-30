@@ -55,88 +55,94 @@ class SignUpViewBody extends StatelessWidget {
       builder: (context, state) {
         var signUpCubit = SignUpCubit.get(context);
         var profileImage = SignUpCubit.get(context).profileImage;
-        return SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: kHorizontalPadding,
-            ),
-            child: Form(
-              key: formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                      child: SignUpViewTextSection(
-                    appCubit: appCubit,
-                  )),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  SignUpViewPickImageSection(
-                    signUpCubit: signUpCubit,
-                    profileImage: profileImage,
-                  ),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  SignUpViewTextFieldSection(
-                    nameController: nameController,
-                    emailController: emailController,
-                    passwordController: passwordController,
-                    phoneController: phoneController,
-                    formKey: formKey,
-                    signUpCubit: signUpCubit,
-                    role: signUpCubit.role,
-                  ),
-                  SelectUserRoleSection(
-                    signUpCubit: signUpCubit,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  state is! SignUpLoadingState
-                      ? DefaultButton(
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              signUpCubit.userSignUp(
-                                userEmail: emailController.text,
-                                password: passwordController.text,
-                                userName: nameController.text,
-                                userPhone: phoneController.text,
-                                userRole: signUpCubit.role,
-                                context: context,
-                              );
-                            }
-                          },
-                          text: S.of(context).signUp,
-                          isUpperCase: false,
-                        )
-                      : const CustomProgressIndicator(),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        S.of(context).haveAccount,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+        return Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: kHorizontalPadding,
+          ),
+          child: Column(
+            children: [
+              Flexible(
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                            child: SignUpViewTextSection(
+                          appCubit: appCubit,
+                        ),),
+                        const SizedBox(
+                          height: 15.0,
                         ),
-                      ),
-                      DefaultTextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        text: S.of(context).login,
-                      )
-                    ],
+                        SignUpViewPickImageSection(
+                          signUpCubit: signUpCubit,
+                          profileImage: profileImage,
+                        ),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        SignUpViewTextFieldSection(
+                          nameController: nameController,
+                          emailController: emailController,
+                          passwordController: passwordController,
+                          phoneController: phoneController,
+                          formKey: formKey,
+                          signUpCubit: signUpCubit,
+                          role: signUpCubit.role,
+                        ),
+                        SelectUserRoleSection(
+                          signUpCubit: signUpCubit,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              state is! SignUpLoadingState
+                  ? DefaultButton(
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    signUpCubit.userSignUp(
+                      userEmail: emailController.text,
+                      password: passwordController.text,
+                      userName: nameController.text,
+                      userPhone: phoneController.text,
+                      userRole: signUpCubit.role,
+                      context: context,
+                    );
+                  }
+                },
+                text: S.of(context).signUp,
+                isUpperCase: false,
+              )
+                  : const CustomProgressIndicator(),
+              const SizedBox(
+                height: 15.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    S.of(context).haveAccount,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  DefaultTextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    text: S.of(context).login,
                   )
                 ],
               ),
-            ),
+            ],
           ),
         );
       },

@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "about": MessageLookupByLibrary.simpleMessage("حول"),
         "addPhoto": MessageLookupByLibrary.simpleMessage("اختر صورة"),
         "addPost": MessageLookupByLibrary.simpleMessage("اضافة منشور"),
+        "addProduct": MessageLookupByLibrary.simpleMessage("إضافة منتج"),
         "appName": MessageLookupByLibrary.simpleMessage("جرينوڤيل"),
         "appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
@@ -35,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "collapseText": MessageLookupByLibrary.simpleMessage("عرض أقل"),
         "comment": MessageLookupByLibrary.simpleMessage("تعليق"),
         "communityTitle": MessageLookupByLibrary.simpleMessage("المجتمع"),
+        "createFarm": MessageLookupByLibrary.simpleMessage("إنشاء المزرعة"),
         "cropper": MessageLookupByLibrary.simpleMessage("قص الصورة"),
         "dark": MessageLookupByLibrary.simpleMessage("مضئ"),
         "defaultSignInFailed": MessageLookupByLibrary.simpleMessage(
@@ -53,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("خطأ:"),
         "expandText": MessageLookupByLibrary.simpleMessage("اقرأ المزيد"),
         "expert": MessageLookupByLibrary.simpleMessage("خبير"),
+        "farmLocation": MessageLookupByLibrary.simpleMessage("عنوان المزرعة"),
+        "farmName": MessageLookupByLibrary.simpleMessage("اسم المزرعة"),
         "farmer": MessageLookupByLibrary.simpleMessage("مزارع"),
         "farmingPractices": MessageLookupByLibrary.simpleMessage(
             "واكتشف ممارسات الزراعة المستدامة"),
@@ -89,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noThing": MessageLookupByLibrary.simpleMessage("لا يوجد شئ لنشرّه"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "أعط قوة لحصادك، وأطلق العنان لمستقبلك"),
+        "ownerName": MessageLookupByLibrary.simpleMessage("اسم المالك"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordIsTooShort":
             MessageLookupByLibrary.simpleMessage("كلمة المرور قصيرة جدًا"),
@@ -98,6 +103,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "plants": MessageLookupByLibrary.simpleMessage("النباتات"),
         "pleaseEnterEmailAddress": MessageLookupByLibrary.simpleMessage(
             "الرجاء إدخال عنوان البريد الإلكتروني"),
+        "pleaseEnterFarmLocation":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال عنوان المزرعة"),
+        "pleaseEnterFarmName":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسم المزرعة"),
+        "pleaseEnterOwnerName":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسم المالك"),
         "pleaseEnterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم الهاتف"),
         "pleaseEnterYourName":
@@ -126,8 +137,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم التسجيل بنجاح"),
         "siltySoil": MessageLookupByLibrary.simpleMessage("التربــة المالحة"),
         "soilsTitle": MessageLookupByLibrary.simpleMessage("التربـة"),
+        "successfullyAddProduct":
+            MessageLookupByLibrary.simpleMessage("تم إضافة المنتج بنجاح"),
+        "successfullyCreateFarm":
+            MessageLookupByLibrary.simpleMessage("تم إنشاء المزرعة بنجاح"),
         "successfullyLogin":
-            MessageLookupByLibrary.simpleMessage("الدخول بنجاح"),
+            MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
         "successfullyPost":
             MessageLookupByLibrary.simpleMessage("تم النشر بنجاح"),
         "takePhoto": MessageLookupByLibrary.simpleMessage("قم بالتقاط صورة"),

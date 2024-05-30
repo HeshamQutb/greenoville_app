@@ -29,11 +29,12 @@ class SignUpCubit extends Cubit<SignUpStates> {
     emit(SelectUserRoleState(role));
   }
 
-  String? uploadedImage;
   File? profileImage;
   String cropper = S.current.cropper;
-  Future<void> getProfileImage(
-      {required ImageSource source, required BuildContext context}) async {
+  Future<void> getProfileImage({
+    required ImageSource source,
+    required BuildContext context,
+  }) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: source);
 
@@ -41,6 +42,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
       try {
         final croppedFile = await ImageCropper.platform.cropImage(
           sourcePath: pickedFile.path,
+          cropStyle: CropStyle.circle,
           aspectRatioPresets: [
             CropAspectRatioPreset.square,
             CropAspectRatioPreset.ratio3x2,
@@ -75,8 +77,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
         emit(GetUserImageErrorState());
       }
     } else {
-      // User canceled image selection
-      emit(GetUserImageCancelledState()); // New state for user cancellation
+      emit(GetUserImageCancelledState());
     }
   }
 
@@ -178,7 +179,8 @@ class SignUpCubit extends Cubit<SignUpStates> {
       userImage: userImage,
       coverImage: coverImage,
       userRole: userRole,
-      isVerified: isVerified, bio: '',
+      isVerified: isVerified,
+      bio: '',
     );
 
     FirebaseFirestore.instance

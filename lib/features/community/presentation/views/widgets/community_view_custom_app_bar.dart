@@ -5,7 +5,7 @@ import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/core/utils/icon_broken.dart';
 import '../../../../../core/widgets/gradient_text.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../add_post/presentation/views/add_post.dart';
+import '../../../../add_post/presentation/views/add_post_view.dart';
 
 class CommunityViewCustomAppBar extends StatelessWidget {
   const CommunityViewCustomAppBar({super.key, required this.appCubit});

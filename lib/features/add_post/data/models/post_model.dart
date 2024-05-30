@@ -21,7 +21,7 @@ class PostModel {
       uId: json?['uId'],
       postImage: json?['postImage'],
       timestamp: json?['timestamp'],
-      description: json?['text'],
+      description: json?['description'],
       postId: json?['postId'],
     );
   }
@@ -31,7 +31,7 @@ class PostModel {
       'uId': uId,
       'postImage': postImage,
       'timestamp': timestamp,
-      'text': description,
+      'description': description,
       'postId': postId,
     };
   }

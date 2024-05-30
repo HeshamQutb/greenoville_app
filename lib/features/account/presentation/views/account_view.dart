@@ -4,9 +4,9 @@ import 'package:greenoville_app/core/widgets/custom_app_bar.dart';
 import 'package:greenoville_app/features/account/presentation/views/widgets/account_view_header.dart';
 import '../../../../core/app_cubit/app_cubit.dart';
 import '../../../../core/widgets/default_button.dart';
+import '../../../../core/widgets/posts_tap_bar_view.dart';
 import '../../../../generated/l10n.dart';
 import '../../../community/data/models/community_post_model.dart';
-import '../../../profile/presentation/views/widgets/posts_tap_bar_view.dart';
 
 class AccountView extends StatefulWidget {
   const AccountView({super.key, required this.appCubit});
@@ -98,10 +98,11 @@ class _AccountViewState extends State<AccountView>
                         PostsTapBarView(
                           future: future,
                         ),
-                        const Center(
-                          child: Text(
-                            'Farm Information',
-                          ),
+                        const Column(
+
+                          children: [
+
+                          ],
                         ),
                       ]
                     : [

@@ -38,7 +38,7 @@
   "welcomeTo": "مرحبًا بك في",
   "onBoardingText": "أعط قوة لحصادك، وأطلق العنان لمستقبلك",
   "getStarted": "ابدأ الآن",
-  "successfullyLogin": "الدخول بنجاح",
+  "successfullyLogin": "تم تسجيل الدخول بنجاح",
   "login": "تسجيل الدخول",
   "enterEmailPassword": "ادخل بريدك الإلكتروني وكلمة المرور",
   "emailAddress": "البريد الإلكتروني",
@@ -98,11 +98,18 @@
   "noComments": "لا توجد تعليقات بعد.",
   "noReplies": "لا توجد ردود بعد.",
   "noLikes": "لا توجد اعجابات بعد.",
-  "peopleWhoReacted": "الأشخاص الذين تفاعلوا"
+  "peopleWhoReacted": "الأشخاص الذين تفاعلوا",
 
+  "addProduct": "إضافة منتج",
+  "successfullyAddProduct": "تم إضافة المنتج بنجاح",
 
-
-
-
+  "successfullyCreateFarm": "تم إنشاء المزرعة بنجاح",
+  "createFarm": "إنشاء المزرعة",
+  "farmName": "اسم المزرعة",
+  "ownerName": "اسم المالك",
+  "farmLocation": "عنوان المزرعة",
+  "pleaseEnterFarmName": "الرجاء إدخال اسم المزرعة",
+  "pleaseEnterOwnerName": "الرجاء إدخال اسم المالك",
+  "pleaseEnterFarmLocation": "الرجاء إدخال عنوان المزرعة"
 
 }
