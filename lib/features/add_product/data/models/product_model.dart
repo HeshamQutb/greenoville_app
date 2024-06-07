@@ -2,18 +2,20 @@
 class ProductModel {
   final String? productImage;
   final String productName;
-  final String productDescription;
+  final String? productDescription;
   final String productId;
   final double productPrice;
-  final int productAmount;
+  final String productUnit;
+  final int productQuantity;
 
   ProductModel({
     this.productImage,
     required this.productName,
-    required this.productDescription,
+    this.productDescription,
     required this.productId,
     required this.productPrice,
-    required this.productAmount,
+    required this.productUnit,
+    required this.productQuantity,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic>? json) {
@@ -23,7 +25,8 @@ class ProductModel {
       productDescription: json?['productDescription'],
       productId: json?['productId'],
       productPrice: json?['productPrice'],
-      productAmount: json?['productAmount'],
+      productUnit: json?['productUnit'],
+      productQuantity: json?['productQuantity'],
     );
   }
 
@@ -34,7 +37,8 @@ class ProductModel {
       'productDescription': productDescription,
       'productId': productId,
       'productPrice': productPrice,
-      'productAmount': productAmount,
+      'productUnit': productUnit,
+      'productQuantity': productQuantity,
     };
   }
 }

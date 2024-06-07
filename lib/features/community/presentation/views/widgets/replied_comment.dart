@@ -36,7 +36,7 @@ class RepliedComment extends StatelessWidget {
                   comment.uId == uId
                       ? const AccountView()
                       : ProfileView(
-                          post: post,
+                          uId: comment.uId,
                         ),
                 );
               },

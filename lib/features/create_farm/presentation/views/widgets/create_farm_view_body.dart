@@ -36,6 +36,10 @@ class _CreateFarmViewBodyState extends State<CreateFarmViewBody> {
           ),
           child: Column(
             children: [
+              if(state is CreateFarmLoadingState)
+                const LinearProgressIndicator(),
+              if(state is CreateFarmLoadingState)
+                const SizedBox(height: 8,),
               Flexible(
                 child: SingleChildScrollView(
                   child: Form(
@@ -85,6 +89,28 @@ class _CreateFarmViewBodyState extends State<CreateFarmViewBody> {
                               return S.of(context).pleaseEnterFarmLocation;
                             }
                             return null;
+                          },
+                          onFieldSubmitted: (String value){
+                            if (formKey.currentState!.validate()) {
+                              if (createFarmCubit.farmImage != null) {
+                                createFarmCubit.uploadFarmImage(
+                                  context: context,
+                                  uId: kUserModel!.uId,
+                                  farmName: farmNameController.text,
+                                  farmOwnerName: farmOwnerNameController.text,
+                                  farmLocation: farmLocationController.text,
+                                  farmId: kUserModel!.uId,
+                                );
+                              } else {
+                                createFarmCubit.createFarm(
+                                  context: context,
+                                  uId: kUserModel!.uId,
+                                  farmName: farmNameController.text,
+                                  farmOwnerName: farmOwnerNameController.text,
+                                  farmLocation: farmLocationController.text,
+                                );
+                              }
+                            }
                           },
                           label: S.of(context).farmLocation,
                         ),

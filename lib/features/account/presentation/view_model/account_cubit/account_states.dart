@@ -1,121 +1,54 @@
-import '../../../data/models/community_post_model.dart';
+import 'package:greenoville_app/features/market/data/market_farm_model.dart';
 
-abstract class CommunityStates {}
+import '../../../../community/data/models/community_post_model.dart';
 
-class CommunityInitState extends CommunityStates {}
+abstract class AccountStates {}
 
-// Community States
-class CommunityGetPostLoadingState extends CommunityStates {}
+class AccountInitState extends AccountStates {}
 
-class CommunityGetPostSuccessState extends CommunityStates {
+// Get User Data States
+class AccountGetUserLoadingState extends AccountStates {}
+
+class AccountGetUserSuccessState extends AccountStates {}
+
+class AccountGetUserErrorState extends AccountStates {
+  final String error;
+
+  AccountGetUserErrorState(this.error);
+}
+
+class AccountGetUserNullState extends AccountStates {
+  final String error;
+
+  AccountGetUserNullState(this.error);
+}
+
+
+// Get Post states
+class AccountGetPostLoadingState extends AccountStates {}
+
+class AccountGetPostSuccessState extends AccountStates {
   List<CommunityPostModel> posts;
-  CommunityGetPostSuccessState(this.posts);
+  AccountGetPostSuccessState(this.posts);
 }
 
-class CommunityGetPostErrorState extends CommunityStates {
+class AccountGetPostErrorState extends AccountStates {
   final String error;
 
-  CommunityGetPostErrorState(this.error);
+  AccountGetPostErrorState(this.error);
 }
 
-// Like Post states
-class CommunityUnlikePostSuccessState extends CommunityStates {}
 
-class CommunityLikePostSuccessState extends CommunityStates {}
+// Get Farms states
+class AccountGetFarmLoadingState extends AccountStates {}
 
-class CommunityLikePostErrorState extends CommunityStates {
+class AccountGetFarmSuccessState extends AccountStates {
+  List<MarketFarmModel> posts;
+  AccountGetFarmSuccessState(this.posts);
+}
+
+class AccountGetFarmErrorState extends AccountStates {
   final String error;
 
-  CommunityLikePostErrorState(this.error);
-}
-
-// Get Likes states
-class CommunityGetPostLikesSuccessState extends CommunityStates {}
-
-class CommunityGetPostLikesErrorState extends CommunityStates {
-  final String error;
-
-  CommunityGetPostLikesErrorState(this.error);
-}
-
-// Comment states
-class CommunityCommentPostSuccessState extends CommunityStates {}
-
-class CommunityCommentPostErrorState extends CommunityStates {
-  final String error;
-
-  CommunityCommentPostErrorState(this.error);
-}
-
-// Get Comments states
-class CommunityGetPostCommentSuccessState extends CommunityStates {
-  List<CommunityPostModel> comments;
-  CommunityGetPostCommentSuccessState(this.comments);
-}
-
-class CommunityGetPostCommentErrorState extends CommunityStates {
-  final String error;
-
-  CommunityGetPostCommentErrorState(this.error);
-}
-
-// Like Comment states
-class CommunityUnlikeCommentSuccessState extends CommunityStates {}
-
-class CommunityLikeCommentSuccessState extends CommunityStates {}
-
-class CommunityLikeCommentErrorState extends CommunityStates {
-  final String error;
-
-  CommunityLikeCommentErrorState(this.error);
-}
-
-// Get Comment Likes State
-class CommunityGetCommentLikesSuccessState extends CommunityStates {}
-
-class CommunityGetCommentLikesErrorState extends CommunityStates {
-  final String error;
-
-  CommunityGetCommentLikesErrorState(this.error);
-}
-
-// Replay states
-class CommunityReplayToCommentSuccessState extends CommunityStates {}
-
-class CommunityReplayToCommentErrorState extends CommunityStates {
-  final String error;
-
-  CommunityReplayToCommentErrorState(this.error);
-}
-
-// Get Replies states
-class CommunityGetReplaySuccessState extends CommunityStates {
-  List<CommunityPostModel> comments;
-  CommunityGetReplaySuccessState(this.comments);
-}
-
-class CommunityGetReplayErrorState extends CommunityStates {
-  final String error;
-
-  CommunityGetReplayErrorState(this.error);
-}
-
-// Like Replay states
-class CommunityUnlikeReplaySuccessState extends CommunityStates {}
-
-class CommunityLikeReplaySuccessState extends CommunityStates {}
-
-class CommunityLikeReplayErrorState extends CommunityStates {
-  final String error;
-
-  CommunityLikeReplayErrorState(this.error);
-}
-
-// Get Replay Likes states
-class CommunityGetReplayLikesSuccessState extends CommunityStates {}
-
-class CommunityGetReplayLikesErrorState extends CommunityStates {
-  final String error;
-
-  CommunityGetReplayLikesErrorState(this.error);
+  AccountGetFarmErrorState(this.error);
 }

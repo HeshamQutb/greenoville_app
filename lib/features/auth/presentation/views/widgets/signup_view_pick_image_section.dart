@@ -40,21 +40,21 @@ class SignUpViewPickImageSection extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if(profileImage != null)
+                        if (profileImage != null)
                           ListTile(
-                          visualDensity:
-                              const VisualDensity(horizontal: 0, vertical: -2),
-                          leading: const Icon(Icons.no_photography),
-                          title: Text(S.of(context).removeImage),
-                          onTap: () {
-                            signUpCubit.removeProfileImage();
-                            Navigator.pop(context);
-                          },
-                        ),
-                        if(profileImage != null)
+                            visualDensity: const VisualDensity(
+                                horizontal: 0, vertical: -2),
+                            leading: const Icon(Icons.no_photography),
+                            title: Text(S.of(context).removeImage),
+                            onTap: () {
+                              signUpCubit.removeProfileImage();
+                              Navigator.pop(context);
+                            },
+                          ),
+                        if (profileImage != null)
                           const Divider(
-                          height: 1.0,
-                        ),
+                            height: 1.0,
+                          ),
                         ListTile(
                           visualDensity:
                               const VisualDensity(horizontal: 0, vertical: -2),
@@ -62,7 +62,9 @@ class SignUpViewPickImageSection extends StatelessWidget {
                           title: Text(S.of(context).takePhoto),
                           onTap: () {
                             signUpCubit.getProfileImage(
-                                source: ImageSource.camera, context: context);
+                              source: ImageSource.camera,
+                              context: context,
+                            );
                             Navigator.pop(context);
                           },
                         ),
@@ -76,7 +78,9 @@ class SignUpViewPickImageSection extends StatelessWidget {
                           title: Text(S.of(context).chooseFromGallery),
                           onTap: () {
                             signUpCubit.getProfileImage(
-                                source: ImageSource.gallery, context: context);
+                              source: ImageSource.gallery,
+                              context: context,
+                            );
                             Navigator.pop(context);
                           },
                         ),

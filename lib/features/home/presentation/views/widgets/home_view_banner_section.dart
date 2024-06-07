@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 
 class HomeViewBannerSection extends StatelessWidget {
-  const HomeViewBannerSection({super.key, required this.appCubit});
+  const HomeViewBannerSection({
+    super.key,
+    required this.appCubit,
+  });
   final AppCubit appCubit;
   @override
   Widget build(BuildContext context) {

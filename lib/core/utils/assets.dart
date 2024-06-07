@@ -24,6 +24,8 @@ class AssetsData {
 
   static const unknownUser = 'assets/images/unknown user.png';
 
+  static const addImage = 'assets/images/addImage.jpg';
+
   static const testTomato = 'assets/images/Tomato.png';
 
   static const tools = 'assets/images/tools.jpg';
@@ -33,9 +35,9 @@ class AssetsData {
 
   static const chatBackground = 'assets/images/chat_background.png';
 
-  static const testProfileImage =
-      'https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg';
+  static const noUserImage =
+      'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04';
 
-  static const testPostImage =
-      'https://thumbs.dreamstime.com/b/agriculture-vegetable-field-landscape-view-freshly-growing-84090367.jpg';
+  static const noImage =
+      'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/noImage.jpg?alt=media&token=a6f9a0db-ab6f-417f-b813-a33acdc5d045';
 }

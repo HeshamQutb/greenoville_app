@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/market_farm_model.dart';
 import '../../view_model/market_cubit/market_cubit.dart';
-import 'market_list_view.dart';
+import 'market_view_list_view_items.dart';
 
-class MarketFarmListViewBuilder extends StatelessWidget {
-  const MarketFarmListViewBuilder({
+class MarketFarmListViewItemsBuilder extends StatelessWidget {
+  const MarketFarmListViewItemsBuilder({
     super.key,
     required this.futureFarms,
     required this.marketCubit,
@@ -39,7 +39,7 @@ class MarketFarmListViewBuilder extends StatelessWidget {
             ),
           );
         } else {
-          return MarketListView(
+          return MarketViewListViewItems(
             farms: snapshot.data!,
             marketCubit: marketCubit,
           );

@@ -23,12 +23,17 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("About"),
+        "addAnotherProduct":
+            MessageLookupByLibrary.simpleMessage("Add Another Product"),
         "addPhoto": MessageLookupByLibrary.simpleMessage("Add Photo"),
         "addPost": MessageLookupByLibrary.simpleMessage("Add Post"),
         "addProduct": MessageLookupByLibrary.simpleMessage("Add Product"),
+        "addProducts": MessageLookupByLibrary.simpleMessage("Add Products"),
         "appName": MessageLookupByLibrary.simpleMessage("GreeNoville"),
         "appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "bio": MessageLookupByLibrary.simpleMessage("Bio"),
+        "by": MessageLookupByLibrary.simpleMessage("By"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "chooseFromGallery":
             MessageLookupByLibrary.simpleMessage("Choose from gallery"),
@@ -36,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "collapseText": MessageLookupByLibrary.simpleMessage("Show less"),
         "comment": MessageLookupByLibrary.simpleMessage("Comment"),
         "communityTitle": MessageLookupByLibrary.simpleMessage("Community"),
+        "contact": MessageLookupByLibrary.simpleMessage("Contact"),
         "createFarm": MessageLookupByLibrary.simpleMessage("Create Farm"),
         "cropper": MessageLookupByLibrary.simpleMessage("Cropper"),
         "dark": MessageLookupByLibrary.simpleMessage("Dark"),
@@ -71,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "itsPost": MessageLookupByLibrary.simpleMessage("Post"),
         "joinGreeNovilleCommunity":
             MessageLookupByLibrary.simpleMessage("Join GreeNoville Community"),
+        "kg": MessageLookupByLibrary.simpleMessage("Kg"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "latestNews": MessageLookupByLibrary.simpleMessage("Latest News"),
         "learnTitle": MessageLookupByLibrary.simpleMessage("Learn"),
@@ -85,13 +92,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newAccount": MessageLookupByLibrary.simpleMessage("New Account"),
         "noComments": MessageLookupByLibrary.simpleMessage("No comments yet."),
+        "noFarmsAvailable":
+            MessageLookupByLibrary.simpleMessage("No Farms Available"),
         "noLikes": MessageLookupByLibrary.simpleMessage("No likes yet."),
         "noPostsAvailable":
             MessageLookupByLibrary.simpleMessage("No posts available."),
+        "noProductsAvailable":
+            MessageLookupByLibrary.simpleMessage("No products available."),
         "noReplies": MessageLookupByLibrary.simpleMessage("No replies yet."),
         "noThing": MessageLookupByLibrary.simpleMessage("No thing to share!"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "Empower Your Harvest, Empower Your Future"),
+        "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "ownerName": MessageLookupByLibrary.simpleMessage("Owner Name"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordIsTooShort":
@@ -110,13 +122,29 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please Enter Owner Name"),
         "pleaseEnterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Please Enter Phone Number"),
+        "pleaseEnterProductDescription": MessageLookupByLibrary.simpleMessage(
+            "Please Enter Product Description"),
+        "pleaseEnterProductName":
+            MessageLookupByLibrary.simpleMessage("Please Enter ProductName"),
+        "pleaseEnterProductPrice":
+            MessageLookupByLibrary.simpleMessage("Please Enter Product Price"),
         "pleaseEnterYourName":
             MessageLookupByLibrary.simpleMessage("Please Enter Your Name"),
+        "pleaseFillAllFields":
+            MessageLookupByLibrary.simpleMessage("Please Fill All Fields"),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
+        "price": MessageLookupByLibrary.simpleMessage("Price"),
         "privacySecurity":
             MessageLookupByLibrary.simpleMessage("Privacy & Security"),
+        "productDescription":
+            MessageLookupByLibrary.simpleMessage("Product Description"),
+        "productImage": MessageLookupByLibrary.simpleMessage("Product Image"),
+        "productName": MessageLookupByLibrary.simpleMessage("Product Name"),
+        "productPrice": MessageLookupByLibrary.simpleMessage("Product Price"),
+        "productQuantity": MessageLookupByLibrary.simpleMessage("Quantity"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "public": MessageLookupByLibrary.simpleMessage("Public"),
+        "quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
         "quickActionAskExpert":
             MessageLookupByLibrary.simpleMessage("Ask Expert"),
         "quickActionLearnTips":
@@ -129,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sandySoil": MessageLookupByLibrary.simpleMessage("SandySoil"),
         "searchNow": MessageLookupByLibrary.simpleMessage("Search now"),
         "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
+        "seeMore": MessageLookupByLibrary.simpleMessage("See More"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
         "signUp": MessageLookupByLibrary.simpleMessage("sign up"),
@@ -146,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Successfully Post"),
         "takePhoto": MessageLookupByLibrary.simpleMessage("Take a photo"),
         "tips": MessageLookupByLibrary.simpleMessage("Tips"),
+        "ton": MessageLookupByLibrary.simpleMessage("Ton"),
         "tools": MessageLookupByLibrary.simpleMessage("Tools"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(
             "Your account has been disabled. Please contact support."),

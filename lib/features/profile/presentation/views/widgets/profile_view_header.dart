@@ -2,15 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../community/data/models/community_post_model.dart';
+import '../../../../auth/data/models/user_model.dart';
 
 class ProfileViewHeader extends StatelessWidget {
   const ProfileViewHeader({
     super.key,
-    required this.post,
+    required this.userModel,
   });
 
-  final CommunityPostModel post;
+  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class ProfileViewHeader extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   image: CachedNetworkImageProvider(
-                    post.coverImage,
+                    userModel.coverImage,
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -44,7 +44,7 @@ class ProfileViewHeader extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 60,
                   backgroundImage: CachedNetworkImageProvider(
-                    post.userImage,
+                    userModel.userImage,
                   ),
                 ),
               ),
@@ -58,17 +58,17 @@ class ProfileViewHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              post.userName,
+              userModel.userName,
               style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            if (post.isVerified == true)
+            if (userModel.isVerified == true)
               const SizedBox(
                 width: 5,
               ),
-            if (post.isVerified == true)
+            if (userModel.isVerified == true)
               const Icon(
                 Icons.check_circle_sharp,
                 color: Colors.blueAccent,
@@ -87,7 +87,7 @@ class ProfileViewHeader extends StatelessWidget {
             horizontal: 16,
           ),
           child: ExpandableText(
-            post.bio,
+            userModel.bio,
             style: Theme.of(context).textTheme.labelMedium,
             textAlign: TextAlign.center,
             maxLines: 2,

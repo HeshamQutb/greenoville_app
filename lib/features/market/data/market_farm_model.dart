@@ -1,59 +1,51 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:greenoville_app/features/community/data/models/community_comment_model.dart';
-import 'community_like_model.dart';
 
-class CommunityPostModel {
-  final bool isVerified;
-  final String userRole;
+import 'package:greenoville_app/features/market/data/product_model.dart';
+
+class MarketFarmModel {
   final String userName;
-  final String uId;
-  final String bio;
-  final String coverImage;
   final String userImage;
-  final String? postImage;
-  final Timestamp timestamp;
-  final String? description;
-  final String postId;
-  final List<CommunityLikeModel> likes;
-  final List<CommunityCommentModel> comments;
+  final String coverImage;
+  final String userRole;
+  final String bio;
+  final bool isVerified;
+  final String uId;
+  final String farmImage;
+  final String farmName;
+  final String farmOwnerName;
+  final String farmLocation;
+  final List<ProductModel> products;
 
-  CommunityPostModel({
-    required this.isVerified,
-    required this.userRole,
+  MarketFarmModel({
     required this.userName,
-    required this.uId,
-    required this.bio,
-    required this.coverImage,
     required this.userImage,
-    this.postImage,
-    required this.timestamp,
-    this.description,
-    required this.postId,
-    required this.likes,
-    required this.comments,
+    required this.coverImage,
+    required this.userRole,
+    required this.bio,
+    required this.isVerified,
+    required this.uId,
+    required this.farmImage,
+    required this.farmName,
+    required this.farmOwnerName,
+    required this.farmLocation,
+    required this.products,
   });
 
-  factory CommunityPostModel.fromJson(Map<String, dynamic>? json) {
-    return CommunityPostModel(
-      isVerified: json?['isVerified'],
-      userRole: json?['userRole'],
+  factory MarketFarmModel.fromJson(Map<String, dynamic>? json) {
+    return MarketFarmModel(
       userName: json?['userName'],
-      uId: json?['uId'],
-      bio: json?['bio'],
-      coverImage: json?['coverImage'],
       userImage: json?['userImage'],
-      postImage: json?['postImage'],
-      timestamp: json?['timestamp'],
-      description: json?['description'],
-      postId: json?['postId'],
-      likes: (json?['likes'] as List<dynamic>?)
-              ?.map((likeJson) =>
-                  CommunityLikeModel.fromJson(likeJson as Map<String, dynamic>))
-              .toList() ??
-          [],
-      comments: (json?['comments'] as List<dynamic>?)
-              ?.map((commentJson) => CommunityCommentModel.fromJson(
-                  commentJson as Map<String, dynamic>))
+      coverImage: json?['coverImage'],
+      userRole: json?['userRole'],
+      bio: json?['bio'],
+      isVerified: json?['isVerified'],
+      uId: json?['uId'],
+      farmImage: json?['farmImage'],
+      farmName: json?['farmName'],
+      farmOwnerName: json?['farmOwnerName'],
+      farmLocation: json?['farmLocation'],
+      products: (json?['products'] as List<dynamic>?)
+              ?.map((productJson) =>
+                  ProductModel.fromJson(productJson as Map<String, dynamic>))
               .toList() ??
           [],
     );
@@ -61,19 +53,18 @@ class CommunityPostModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'isVerified': isVerified,
-      'userRole': userRole,
       'userName': userName,
-      'uId': uId,
-      'bio': bio,
-      'coverImage': coverImage,
       'userImage': userImage,
-      'postImage': postImage,
-      'timestamp': timestamp,
-      'description': description,
-      'postId': postId,
-      'likes': likes.map((like) => like.toMap()).toList(),
-      'comments': comments.map((comment) => comment.toMap()).toList()
+      'coverImage': coverImage,
+      'userRole': userRole,
+      'bio': bio,
+      'isVerified': isVerified,
+      'uId': uId,
+      'farmImage': farmImage,
+      'farmName': farmName,
+      'farmOwnerName': farmOwnerName,
+      'farmLocation': farmLocation,
+      'products': products.map((product) => product.toMap()).toList(),
     };
   }
 }

@@ -9,7 +9,8 @@ class DefaultTextFormField extends StatelessWidget {
     required this.validate,
     this.onChanged,
     this.onFieldSubmitted,
-    required this.label,
+    this.label,
+    this.hintText,
     this.prefixIcon,
     this.suffix,
     this.onPressedSuffix,
@@ -17,6 +18,8 @@ class DefaultTextFormField extends StatelessWidget {
     this.radius = 30.0,
     this.length,
     this.focusNode,
+    this.maxLines,
+    this.helperText,
   });
 
   final TextEditingController? controller;
@@ -26,13 +29,16 @@ class DefaultTextFormField extends StatelessWidget {
   final String? Function(String?)? validate;
   final Function(String)? onChanged;
   final Function(String)? onFieldSubmitted;
-  final String label;
+  final String? label;
+  final String? hintText;
+  final String? helperText;
   final IconData? prefixIcon;
   final IconData? suffix;
   final Function()? onPressedSuffix;
   final bool? isPassword;
   final double radius;
   final int? length;
+  final int? maxLines;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -45,17 +51,31 @@ class DefaultTextFormField extends StatelessWidget {
       onFieldSubmitted: onFieldSubmitted,
       onChanged: (value) {},
       decoration: InputDecoration(
-        prefixIcon: Icon(prefixIcon),
-        label: Text(label),
+        hintText: hintText,
+        prefixIcon: Icon(
+          prefixIcon,
+        ),
+        label: Text(
+          label ?? '',
+        ),
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius)
+          borderRadius: BorderRadius.circular(
+            radius,
+          ),
         ),
         suffixIcon: IconButton(
           onPressed: onPressedSuffix,
-          icon: Icon(suffix),
+          icon: Icon(
+            suffix,
+          ),
         ),
+        helperText: helperText ?? '',
+        helperStyle: const TextStyle(
+          height: 0.0
+        )
       ),
       maxLength: length,
+      maxLines: maxLines ?? 1,
     );
   }
 }

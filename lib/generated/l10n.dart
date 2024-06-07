@@ -120,6 +120,16 @@ class S {
     );
   }
 
+  /// `See More`
+  String get seeMore {
+    return Intl.message(
+      'See More',
+      name: 'seeMore',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Latest News`
   String get latestNews {
     return Intl.message(
@@ -610,6 +620,16 @@ class S {
     );
   }
 
+  /// `Bio`
+  String get bio {
+    return Intl.message(
+      'Bio',
+      name: 'bio',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please Enter Your Name`
   String get pleaseEnterYourName {
     return Intl.message(
@@ -1000,6 +1020,166 @@ class S {
     );
   }
 
+  /// `Product Image`
+  String get productImage {
+    return Intl.message(
+      'Product Image',
+      name: 'productImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product Name`
+  String get productName {
+    return Intl.message(
+      'Product Name',
+      name: 'productName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter ProductName`
+  String get pleaseEnterProductName {
+    return Intl.message(
+      'Please Enter ProductName',
+      name: 'pleaseEnterProductName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product Price`
+  String get productPrice {
+    return Intl.message(
+      'Product Price',
+      name: 'productPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Product Price`
+  String get pleaseEnterProductPrice {
+    return Intl.message(
+      'Please Enter Product Price',
+      name: 'pleaseEnterProductPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kg`
+  String get kg {
+    return Intl.message(
+      'Kg',
+      name: 'kg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ton`
+  String get ton {
+    return Intl.message(
+      'Ton',
+      name: 'ton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get productQuantity {
+    return Intl.message(
+      'Quantity',
+      name: 'productQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get quantity {
+    return Intl.message(
+      'Quantity',
+      name: 'quantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product Description`
+  String get productDescription {
+    return Intl.message(
+      'Product Description',
+      name: 'productDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Product Description`
+  String get pleaseEnterProductDescription {
+    return Intl.message(
+      'Please Enter Product Description',
+      name: 'pleaseEnterProductDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Another Product`
+  String get addAnotherProduct {
+    return Intl.message(
+      'Add Another Product',
+      name: 'addAnotherProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Products`
+  String get addProducts {
+    return Intl.message(
+      'Add Products',
+      name: 'addProducts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Optional`
+  String get optional {
+    return Intl.message(
+      'Optional',
+      name: 'optional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Fill All Fields`
+  String get pleaseFillAllFields {
+    return Intl.message(
+      'Please Fill All Fields',
+      name: 'pleaseFillAllFields',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Successfully Add Product`
   String get successfullyAddProduct {
     return Intl.message(
@@ -1085,6 +1265,46 @@ class S {
     return Intl.message(
       'Please Enter Farm Location',
       name: 'pleaseEnterFarmLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No products available.`
+  String get noProductsAvailable {
+    return Intl.message(
+      'No products available.',
+      name: 'noProductsAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Farms Available`
+  String get noFarmsAvailable {
+    return Intl.message(
+      'No Farms Available',
+      name: 'noFarmsAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By`
+  String get by {
+    return Intl.message(
+      'By',
+      name: 'by',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get contact {
+    return Intl.message(
+      'Contact',
+      name: 'contact',
       desc: '',
       args: [],
     );

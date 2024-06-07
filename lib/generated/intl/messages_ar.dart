@@ -23,12 +23,17 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("حول"),
+        "addAnotherProduct":
+            MessageLookupByLibrary.simpleMessage("أضف منتج آخر"),
         "addPhoto": MessageLookupByLibrary.simpleMessage("اختر صورة"),
         "addPost": MessageLookupByLibrary.simpleMessage("اضافة منشور"),
         "addProduct": MessageLookupByLibrary.simpleMessage("إضافة منتج"),
+        "addProducts": MessageLookupByLibrary.simpleMessage("إضافة المنتجات"),
         "appName": MessageLookupByLibrary.simpleMessage("جرينوڤيل"),
         "appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "bio": MessageLookupByLibrary.simpleMessage("نبذة مختصرة"),
+        "by": MessageLookupByLibrary.simpleMessage("بواسطة"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "chooseFromGallery":
             MessageLookupByLibrary.simpleMessage("اختر من المعرض"),
@@ -36,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "collapseText": MessageLookupByLibrary.simpleMessage("عرض أقل"),
         "comment": MessageLookupByLibrary.simpleMessage("تعليق"),
         "communityTitle": MessageLookupByLibrary.simpleMessage("المجتمع"),
+        "contact": MessageLookupByLibrary.simpleMessage("تواصل مع"),
         "createFarm": MessageLookupByLibrary.simpleMessage("إنشاء المزرعة"),
         "cropper": MessageLookupByLibrary.simpleMessage("قص الصورة"),
         "dark": MessageLookupByLibrary.simpleMessage("مضئ"),
@@ -71,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "itsPost": MessageLookupByLibrary.simpleMessage("منشور"),
         "joinGreeNovilleCommunity":
             MessageLookupByLibrary.simpleMessage("انضم إلى مجتمع جرينوڤيل"),
+        "kg": MessageLookupByLibrary.simpleMessage("كجم"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "latestNews": MessageLookupByLibrary.simpleMessage("أخـر الأخبـار"),
         "learnTitle": MessageLookupByLibrary.simpleMessage("التعلم"),
@@ -86,13 +93,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "newAccount": MessageLookupByLibrary.simpleMessage("حساب جديد"),
         "noComments":
             MessageLookupByLibrary.simpleMessage("لا توجد تعليقات بعد."),
+        "noFarmsAvailable":
+            MessageLookupByLibrary.simpleMessage("لا توجد مزارع."),
         "noLikes": MessageLookupByLibrary.simpleMessage("لا توجد اعجابات بعد."),
         "noPostsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد منشورات."),
+        "noProductsAvailable":
+            MessageLookupByLibrary.simpleMessage("لا توجد منتجات."),
         "noReplies": MessageLookupByLibrary.simpleMessage("لا توجد ردود بعد."),
         "noThing": MessageLookupByLibrary.simpleMessage("لا يوجد شئ لنشرّه"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "أعط قوة لحصادك، وأطلق العنان لمستقبلك"),
+        "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
         "ownerName": MessageLookupByLibrary.simpleMessage("اسم المالك"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordIsTooShort":
@@ -111,13 +123,29 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسم المالك"),
         "pleaseEnterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم الهاتف"),
+        "pleaseEnterProductDescription":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال وصف المنتج"),
+        "pleaseEnterProductName":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسم المنتج"),
+        "pleaseEnterProductPrice":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال سعر المنتج"),
         "pleaseEnterYourName":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسمك"),
+        "pleaseFillAllFields": MessageLookupByLibrary.simpleMessage(
+            "الرجاء إدخال البيانات لكل منتج بشكل صحيح"),
         "post": MessageLookupByLibrary.simpleMessage("نشر"),
+        "price": MessageLookupByLibrary.simpleMessage("السعر"),
         "privacySecurity":
             MessageLookupByLibrary.simpleMessage("الخصوصية والأمان"),
+        "productDescription":
+            MessageLookupByLibrary.simpleMessage("وصف المنتج"),
+        "productImage": MessageLookupByLibrary.simpleMessage("صورة المنتج"),
+        "productName": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
+        "productPrice": MessageLookupByLibrary.simpleMessage("سعر المنتج"),
+        "productQuantity": MessageLookupByLibrary.simpleMessage("كمية المنتج"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "public": MessageLookupByLibrary.simpleMessage("العامة"),
+        "quantity": MessageLookupByLibrary.simpleMessage("الكمية"),
         "quickActionAskExpert":
             MessageLookupByLibrary.simpleMessage("استشر خبير"),
         "quickActionLearnTips":
@@ -130,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sandySoil": MessageLookupByLibrary.simpleMessage("التربــة الرملية"),
         "searchNow": MessageLookupByLibrary.simpleMessage("ابحث الأن"),
         "seeAll": MessageLookupByLibrary.simpleMessage("المزيـد"),
+        "seeMore": MessageLookupByLibrary.simpleMessage("عرض المزيـد"),
         "share": MessageLookupByLibrary.simpleMessage("مشاركة"),
         "signOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "signUp": MessageLookupByLibrary.simpleMessage("التسجل"),
@@ -147,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم النشر بنجاح"),
         "takePhoto": MessageLookupByLibrary.simpleMessage("قم بالتقاط صورة"),
         "tips": MessageLookupByLibrary.simpleMessage("النصائح"),
+        "ton": MessageLookupByLibrary.simpleMessage("طن"),
         "tools": MessageLookupByLibrary.simpleMessage("الأدوات"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(
             "تم تعطيل حسابك. الرجاء الاتصال بالدعم."),

@@ -8,8 +8,8 @@ import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/market_farm_model.dart';
 import '../../view_model/market_cubit/market_cubit.dart';
 
-class MarketViewFarmInformation extends StatelessWidget {
-  const MarketViewFarmInformation({
+class FarmInformationSection extends StatelessWidget {
+  const FarmInformationSection({
     super.key,
     required this.marketCubit,
     required this.farm,

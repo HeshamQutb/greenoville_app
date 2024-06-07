@@ -25,7 +25,7 @@ class CommunityPostHeadingSection extends StatelessWidget {
               post.uId == uId
                   ? const AccountView()
                   : ProfileView(
-                      post: post,
+                      uId: post.uId,
                     ),
             );
           },
@@ -47,7 +47,7 @@ class CommunityPostHeadingSection extends StatelessWidget {
                 post.uId == uId
                     ? const AccountView()
                     : ProfileView(
-                        post: post,
+                        uId: post.uId,
                       ),
               );
             },

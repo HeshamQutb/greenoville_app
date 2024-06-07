@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:greenoville_app/features/profile/presentation/views/widgets/profile_view_header.dart';
 
 import '../../../../../constants.dart';
+import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../core/widgets/default_button.dart';
 import '../../../../../core/widgets/posts_tap_bar_view.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/data/models/user_model.dart';
 import '../../../../community/data/models/community_post_model.dart';
 import '../../../../market/data/market_farm_model.dart';
-import 'account_view_header.dart';
-import 'no_farm_section.dart';
 
-class AccountViewBuilder extends StatelessWidget {
-  const AccountViewBuilder({
+class ProfileViewBuilder extends StatelessWidget {
+  const ProfileViewBuilder({
     super.key,
     required this.futureUser,
     required this.tabController,
@@ -47,14 +47,14 @@ class AccountViewBuilder extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        AccountViewHeader(
+                        ProfileViewHeader(
                           userModel: snapshot.data!,
                         ),
                         const SizedBox(height: 16),
                         const DefaultButton(
                           iconColor: Colors.white,
-                          icon: Icons.edit,
-                          text: 'edit profile',
+                          icon: IconBroken.Message,
+                          text: 'Message',
                         ),
                         const SizedBox(height: 16),
                         TabBar(
@@ -63,13 +63,13 @@ class AccountViewBuilder extends StatelessWidget {
                           controller: tabController,
                           tabs: snapshot.data!.userRole == S.of(context).farmer
                               ? const [
-                            Tab(text: 'Posts'),
-                            Tab(text: 'Farm'),
-                          ]
+                                  Tab(text: 'Posts'),
+                                  Tab(text: 'Farm'),
+                                ]
                               : const [
-                            Tab(text: 'Posts'),
-                            Tab(text: 'Tips'),
-                          ],
+                                  Tab(text: 'Posts'),
+                                  Tab(text: 'Tips'),
+                                ],
                         ),
                       ],
                     ),
@@ -86,21 +86,25 @@ class AccountViewBuilder extends StatelessWidget {
                 controller: tabController,
                 children: snapshot.data!.userRole == S.of(context).farmer
                     ? [
-                  PostsTapBarView(
-                    future: futurePosts,
-                  ),
-                  const NoFarmSection(),
-                ]
+                        PostsTapBarView(
+                          future: futurePosts,
+                        ),
+                        const Center(
+                          child: Text(
+                            'Farm Information',
+                          ),
+                        ),
+                      ]
                     : [
-                  PostsTapBarView(
-                    future: futurePosts,
-                  ),
-                  const Center(
-                    child: Text(
-                      'Expert Tips',
-                    ),
-                  ),
-                ],
+                        PostsTapBarView(
+                          future: futurePosts,
+                        ),
+                        const Center(
+                          child: Text(
+                            'Expert Tips',
+                          ),
+                        ),
+                      ],
               ),
             ),
           );

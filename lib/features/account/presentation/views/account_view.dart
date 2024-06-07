@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/widgets/custom_app_bar.dart';
-import 'package:greenoville_app/features/account/presentation/views/widgets/account_view_header.dart';
-import 'package:greenoville_app/features/account/presentation/views/widgets/no_farm_section.dart';
-import '../../../../core/widgets/default_button.dart';
-import '../../../../core/widgets/posts_tap_bar_view.dart';
-import '../../../../generated/l10n.dart';
+import 'package:greenoville_app/features/account/presentation/view_model/account_cubit/account_states.dart';
+import 'package:greenoville_app/features/account/presentation/views/widgets/account_view_builder.dart';
+import 'package:greenoville_app/features/auth/data/models/user_model.dart';
 import '../../../community/data/models/community_post_model.dart';
+import '../../../market/data/market_farm_model.dart';
+import '../view_model/account_cubit/account_cubit.dart';
 
 class AccountView extends StatefulWidget {
   const AccountView({
@@ -18,100 +19,46 @@ class AccountView extends StatefulWidget {
 
 class _AccountViewState extends State<AccountView>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  late Future<List<CommunityPostModel>> future;
+  late TabController tabController;
+  late Future<UserModel> futureUser;
+  late Future<List<CommunityPostModel>> futurePosts;
+  late Future<List<MarketFarmModel>> futureFarms;
   @override
   void initState() {
     super.initState();
-    // future = AppCubit.get(context).getPosts(uid: uId);
-    _tabController = TabController(length: 2, vsync: this);
+    futureUser = AccountCubit.get(context).getUserData(context: context);
+    futurePosts = AccountCubit.get(context).getPosts(uid: uId);
+    futureFarms = AccountCubit.get(context).getFarms(uid: uId);
+    tabController = TabController(length: 2, vsync: this);
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
+    tabController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        leadingAction: () {
-          Navigator.pop(context);
-        },
-      ),
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kHorizontalPadding,
-                ),
-                child: Column(
-                  children: [
-                    AccountViewHeader(
-                      coverPictureUrl: kUserModel!.coverImage,
-                      profilePictureUrl: kUserModel!.userImage,
-                      name: kUserModel!.userName,
-                      isVerified: kUserModel!.isVerified,
-                      bio: kUserModel!.bio,
-                    ),
-                    const SizedBox(height: 16),
-                    const DefaultButton(
-                      iconColor: Colors.white,
-                      icon: Icons.edit,
-                      text: 'edit profile',
-                    ),
-                    const SizedBox(height: 16),
-                    TabBar(
-                      labelColor: kPrimaryColor,
-                      indicatorColor: kPrimaryColor,
-                      controller: _tabController,
-                      tabs: kUserModel!.userRole == S.of(context).farmer
-                          ? const [
-                              Tab(text: 'Posts'),
-                              Tab(text: 'Farm'),
-                            ]
-                          : const [
-                              Tab(text: 'Posts'),
-                              Tab(text: 'Tips'),
-                            ],
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ];
-        },
-        body: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 8.0,
-            horizontal: kHorizontalPadding,
+    return BlocConsumer<AccountCubit, AccountStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Scaffold(
+          appBar: CustomAppBar(
+            leadingAction: () {
+              Navigator.pop(context);
+            },
           ),
-          child: TabBarView(
-            controller: _tabController,
-            children: kUserModel!.userRole == S.of(context).farmer
-                ? [
-                    PostsTapBarView(
-                      future: future,
-                    ),
-                    const NoFarmSection(),
-                  ]
-                : [
-                    PostsTapBarView(
-                      future: future,
-                    ),
-                    const Center(
-                      child: Text(
-                        'Expert Tips',
-                      ),
-                    ),
-                  ],
+          body: AccountViewBuilder(
+            futureUser: futureUser,
+            tabController: tabController,
+            futurePosts: futurePosts,
+            futureFarms: futureFarms,
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
+
+

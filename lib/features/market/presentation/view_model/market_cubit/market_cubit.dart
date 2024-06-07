@@ -1,29 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:greenoville_app/features/market/data/product_model.dart';
+import 'package:greenoville_app/features/market/data/market_farm_model.dart';
+import 'market_states.dart';
 
-import '../../../../community/data/models/community_post_model.dart';
-import 'account_states.dart';
+class MarketCubit extends Cubit<MarketStates> {
+  MarketCubit() : super(MarketInitState());
 
-class AccountCubit extends Cubit<AccountStates> {
-  AccountCubit() : super(AccountInitState());
+  static MarketCubit get(context) => BlocProvider.of(context);
 
-  static AccountCubit get(context) => BlocProvider.of(context);
-
-  // Get Posts
-  Future<List<CommunityPostModel>> getPosts({String? uid}) async {
-    emit(AccountGetPostLoadingState());
+  // Get Farms
+  Future<List<MarketFarmModel>> getFarms({String? uid}) async {
+    emit(MarketGetFarmLoadingState());
     try {
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('posts')
-          .orderBy('timestamp', descending: true)
-          .get();
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('farms').get();
 
       if (querySnapshot.docs.isEmpty) {
         // Return an empty list if there are no documents in the collection
-        emit(AccountGetPostSuccessState([]));
-        return <CommunityPostModel>[];
+        emit(MarketGetFarmSuccessState([]));
+        return <MarketFarmModel>[];
       } else {
-        List<CommunityPostModel> posts = [];
+        List<MarketFarmModel> farms = [];
         for (var doc in querySnapshot.docs) {
           var data = doc.data() as Map<String, dynamic>;
           var userDoc = await FirebaseFirestore.instance
@@ -32,27 +30,54 @@ class AccountCubit extends Cubit<AccountStates> {
               .get();
           if (userDoc.data() != null) {
             var userData = userDoc.data() as Map<String, dynamic>;
-            var post = CommunityPostModel.fromJson({
+            var farm = MarketFarmModel.fromJson({
               ...data,
-              'isVerified': userData['isVerified'],
-              'bio': userData['bio'],
-              'coverImage': userData['coverImage'],
-              'userRole': userData['userRole'],
               'userName': userData['userName'],
               'userImage': userData['userImage'],
+              'coverImage': userData['coverImage'],
+              'userRole': userData['userRole'],
+              'bio': userData['bio'],
+              'isVerified': userData['isVerified'],
             });
 
-            // Filter posts based on uid (if provided)
+            // Filter farms based on uid (if provided)
             if (uid == null || data['uId'] == uid) {
-              posts.add(post);
+              farms.add(farm);
             }
           }
         }
-        emit(AccountGetPostSuccessState(posts));
-        return posts;
+        emit(MarketGetFarmSuccessState(farms));
+        return farms;
       }
     } catch (error) {
-      emit(AccountGetPostErrorState(error.toString()));
+      emit(MarketGetFarmErrorState(error.toString()));
+      rethrow;
+    }
+  }
+
+  // Get Products
+  Future<List<ProductModel>> getProducts({String? uid}) async {
+    emit(MarketGetFarmProductsLoadingState());
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('farms')
+          .doc(uid)
+          .collection('products')
+          .get();
+      if (querySnapshot.docs.isEmpty) {
+        emit(MarketGetFarmProductsEmptyState([]));
+        return <ProductModel>[];
+      } else {
+        List<ProductModel> products = querySnapshot.docs.map((doc) {
+          var data = doc.data() as Map<String, dynamic>;
+          return ProductModel.fromJson(data);
+        }).toList();
+
+        emit(MarketGetFarmProductsSuccessState(products));
+        return products;
+      }
+    } catch (error) {
+      emit(MarketGetFarmProductsErrorState(error.toString()));
       rethrow;
     }
   }

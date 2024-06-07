@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/network/local/cache_helper.dart';
-import 'app_states.dart';
+import 'language_states.dart';
 
 
 class LanguageCubit extends Cubit<LanguageStates> {

@@ -45,18 +45,14 @@ class AddPostBottomSection extends StatelessWidget {
                     timestamp: Timestamp.now(),
                     description: textController.text,
                     context: context,
-                    // userName: userModel?.name,
                     uId: userModel!.uId,
-                    // userImage: userModel?.image,
                   );
                 } else {
                   AddPostCubit.get(context).uploadPostImage(
                     timestamp: Timestamp.now(),
                     description: textController.text,
                     context: context,
-                    // userName: userModel?.name,
                     uId: userModel!.uId,
-                    // userImage: userModel?.image,
                   );
                 }
               } else if (AddPostCubit.get(context).postImage != null) {
@@ -65,18 +61,14 @@ class AddPostBottomSection extends StatelessWidget {
                     timestamp: Timestamp.now(),
                     description: textController.text,
                     context: context,
-                    // userName: userModel?.name,
                     uId: userModel!.uId,
-                    // userImage: userModel?.image,
                   );
                 } else {
                   AddPostCubit.get(context).uploadPostImage(
                     timestamp: Timestamp.now(),
                     description: textController.text,
                     context: context,
-                    // userName: userModel?.name,
                     uId: userModel!.uId,
-                    // userImage: userModel?.image,
                   );
                 }
               } else {

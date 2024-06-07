@@ -1,122 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:greenoville_app/constants.dart';
-import 'package:greenoville_app/core/utils/icon_broken.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/core/widgets/custom_app_bar.dart';
-import 'package:greenoville_app/core/widgets/default_button.dart';
-import 'package:greenoville_app/features/profile/presentation/views/widgets/profile_view_header.dart';
-
-import '../../../../core/app_cubit/app_cubit.dart';
-import '../../../../core/widgets/posts_tap_bar_view.dart';
-import '../../../../generated/l10n.dart';
+import 'package:greenoville_app/features/profile/presentation/view_model/profile_cubit/profile_states.dart';
+import 'package:greenoville_app/features/profile/presentation/views/widgets/profile_view_builder.dart';
+import '../../../auth/data/models/user_model.dart';
 import '../../../community/data/models/community_post_model.dart';
+import '../../../market/data/market_farm_model.dart';
+import '../view_model/profile_cubit/profile_cubit.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({
     super.key,
-    required this.post,
+    required this.uId,
   });
-  final CommunityPostModel post;
+  final String uId;
   @override
   State<ProfileView> createState() => _ProfileViewState();
 }
 
 class _ProfileViewState extends State<ProfileView>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  late Future<List<CommunityPostModel>> future;
-
+  late TabController tabController;
+  late Future<UserModel> futureUser;
+  late Future<List<CommunityPostModel>> futurePosts;
+  late Future<List<MarketFarmModel>> futureFarms;
   @override
   void initState() {
     super.initState();
-    // future = AppCubit.get(context).getPosts(uid: widget.post.uId);
-    _tabController = TabController(length: 2, vsync: this);
+    futureUser = ProfileCubit.get(context)
+        .getUserData(context: context, uId: widget.uId);
+    futurePosts = ProfileCubit.get(context).getPosts(uId: widget.uId);
+    futureFarms = ProfileCubit.get(context).getFarms(uId: widget.uId);
+    tabController = TabController(length: 2, vsync: this);
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
+    tabController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        leadingAction: () {
-          Navigator.pop(context);
-        },
-      ),
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kHorizontalPadding,
-                ),
-                child: Column(
-                  children: [
-                    ProfileViewHeader(
-                      post: widget.post,
-                    ),
-                    const SizedBox(height: 16),
-                    const DefaultButton(
-                      iconColor: Colors.white,
-                      icon: IconBroken.Message,
-                      text: 'Message',
-                    ),
-                    const SizedBox(height: 16),
-                    TabBar(
-                      labelColor: kPrimaryColor,
-                      indicatorColor: kPrimaryColor,
-                      controller: _tabController,
-                      tabs: widget.post.userRole == S.of(context).farmer
-                          ? const [
-                              Tab(text: 'Posts'),
-                              Tab(text: 'Farm'),
-                            ]
-                          : const [
-                              Tab(text: 'Posts'),
-                              Tab(text: 'Tips'),
-                            ],
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ];
-        },
-        body: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 8.0,
-            horizontal: kHorizontalPadding,
+    return BlocConsumer<ProfileCubit, ProfileStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Scaffold(
+          appBar: CustomAppBar(
+            leadingAction: () {
+              Navigator.pop(context);
+            },
           ),
-          child: TabBarView(
-            controller: _tabController,
-            children: widget.post.userRole == S.of(context).farmer
-                ? [
-                    PostsTapBarView(
-                      future: future,
-                    ),
-                    const Center(
-                      child: Text(
-                        'Farm Information',
-                      ),
-                    ),
-                  ]
-                : [
-                    PostsTapBarView(
-                      future: future,
-                    ),
-                    const Center(
-                      child: Text(
-                        'Expert Tips',
-                      ),
-                    ),
-                  ],
+          body: ProfileViewBuilder(
+            futureUser: futureUser,
+            tabController: tabController,
+            futurePosts: futurePosts,
+            futureFarms: futureFarms,
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

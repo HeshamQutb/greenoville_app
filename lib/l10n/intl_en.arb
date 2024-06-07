@@ -6,6 +6,7 @@
   "quickActionAskExpert": "Ask Expert",
   "quickActionSellProduce": "Sell Produce",
   "seeAll": "See all",
+  "seeMore": "See More",
   "latestNews": "Latest News",
   "marketPrices": "Market Prices",
   "soilsTitle": "Soils",
@@ -58,6 +59,7 @@
   "cancel": "Cancel",
   "removeImage": "Remove Image",
   "name": "Name",
+  "bio":"Bio",
   "pleaseEnterYourName": "Please Enter Your Name",
   "phone": "Phone",
   "pleaseEnterPhoneNumber": "Please Enter Phone Number",
@@ -101,6 +103,22 @@
   "peopleWhoReacted": "People Who Reacted",
 
   "addProduct": "Add Product",
+  "productImage": "Product Image",
+  "productName": "Product Name",
+  "pleaseEnterProductName": "Please Enter ProductName",
+  "productPrice": "Product Price",
+  "pleaseEnterProductPrice": "Please Enter Product Price",
+  "kg": "Kg",
+  "ton": "Ton",
+  "productQuantity": "Quantity",
+  "quantity": "Quantity",
+  "price":"Price",
+  "productDescription": "Product Description",
+  "pleaseEnterProductDescription": "Please Enter Product Description",
+  "addAnotherProduct": "Add Another Product",
+  "addProducts": "Add Products",
+  "optional": "Optional",
+  "pleaseFillAllFields": "Please Fill All Fields",
   "successfullyAddProduct": "Successfully Add Product",
 
   "successfullyCreateFarm": "Successfully Create Farm",
@@ -110,7 +128,13 @@
   "farmLocation": "Farm Location",
   "pleaseEnterFarmName": "Please Enter Farm Name",
   "pleaseEnterOwnerName": "Please Enter Owner Name",
-  "pleaseEnterFarmLocation": "Please Enter Farm Location"
+  "pleaseEnterFarmLocation": "Please Enter Farm Location",
+
+
+  "noProductsAvailable": "No products available.",
+  "noFarmsAvailable": "No Farms Available",
+  "by":"By",
+  "contact": "Contact"
 
 
 

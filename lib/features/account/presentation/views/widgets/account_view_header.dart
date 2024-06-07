@@ -1,23 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
+import '../../../../auth/data/models/user_model.dart';
 
 class AccountViewHeader extends StatelessWidget {
   const AccountViewHeader({
     super.key,
-    required this.coverPictureUrl,
-    required this.profilePictureUrl,
-    required this.name,
-    required this.isVerified,
-    required this.bio,
+    required this.userModel,
   });
 
-  final String coverPictureUrl;
-  final String profilePictureUrl;
-  final String name;
-  final bool isVerified;
-  final String bio;
-
+  final UserModel userModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +27,9 @@ class AccountViewHeader extends StatelessWidget {
                   bottomRight: Radius.circular(8),
                 ),
                 image: DecorationImage(
-                  image: CachedNetworkImageProvider(coverPictureUrl,),
+                  image: CachedNetworkImageProvider(
+                    userModel.coverImage,
+                  ),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -47,8 +41,9 @@ class AccountViewHeader extends StatelessWidget {
                 radius: 62,
                 child: CircleAvatar(
                   radius: 60,
-                  backgroundImage:
-                      CachedNetworkImageProvider(profilePictureUrl,),
+                  backgroundImage: CachedNetworkImageProvider(
+                    userModel.userImage,
+                  ),
                 ),
               ),
             ),
@@ -61,17 +56,17 @@ class AccountViewHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              name,
+              userModel.userName,
               style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            if (isVerified == true)
+            if (userModel.isVerified == true)
               const SizedBox(
                 width: 5,
               ),
-            if (isVerified == true)
+            if (userModel.isVerified == true)
               const Icon(
                 Icons.check_circle_sharp,
                 color: Colors.blueAccent,
@@ -90,7 +85,7 @@ class AccountViewHeader extends StatelessWidget {
             horizontal: 16,
           ),
           child: ExpandableText(
-            bio,
+            userModel.bio,
             style: Theme.of(context).textTheme.labelMedium,
             textAlign: TextAlign.center,
             maxLines: 2,

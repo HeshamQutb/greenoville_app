@@ -25,47 +25,44 @@ class _CommunityViewState extends State<CommunityView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CommunityCubit()..getPosts(),
-      child: BlocConsumer<CommunityCubit, CommunityStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          var communityCubit = CommunityCubit.get(context);
-          return Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: kHorizontalPadding,
-                ),
-                child: CommunityViewCustomAppBar(),
+    return BlocConsumer<CommunityCubit, CommunityStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var communityCubit = CommunityCubit.get(context);
+        return Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: kHorizontalPadding,
               ),
-              Expanded(
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    setState(() {
-                      future = communityCubit.getPosts();
-                    });
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: kHorizontalPadding,
-                    ),
-                    child: CustomScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      slivers: [
-                        CommunityViewBody(
-                          communityCubit: communityCubit,
-                          future: future,
-                        ),
-                      ],
-                    ),
+              child: CommunityViewCustomAppBar(),
+            ),
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  setState(() {
+                    future = communityCubit.getPosts();
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: kHorizontalPadding,
+                  ),
+                  child: CustomScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    slivers: [
+                      CommunityViewBody(
+                        communityCubit: communityCubit,
+                        future: future,
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ],
-          );
-        },
-      ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

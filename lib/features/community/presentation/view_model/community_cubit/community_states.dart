@@ -4,7 +4,7 @@ abstract class CommunityStates {}
 
 class CommunityInitState extends CommunityStates {}
 
-// Community States
+// Get Post states
 class CommunityGetPostLoadingState extends CommunityStates {}
 
 class CommunityGetPostSuccessState extends CommunityStates {

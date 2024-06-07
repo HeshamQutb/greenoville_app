@@ -52,34 +52,6 @@ class AppCubit extends Cubit<AppStates> {
     }
   }
 
-  // Get User Data
-  UserModel? userModel;
-  Future<void> getUserData(context) async {
-    if (uId != null) {
-      emit(AppGetUserLoadingState());
-      try {
-        final DocumentSnapshot<Map<String, dynamic>> snapshot =
-            await FirebaseFirestore.instance.collection('users').doc(uId).get();
-        if (snapshot.exists) {
-          var userData = snapshot.data();
-          print(uId);
-          print(userData);
-          userModel = UserModel.fromJson(userData!);
-          kUserModel = userModel;
-          emit(AppGetUserSuccessState());
-        } else {
-          signOut(context);
-          emit(AppGetUserErrorState("User data not found"));
-        }
-      } catch (error) {
-        print("Error fetching user data: $error");
-        emit(AppGetUserErrorState(error.toString()));
-      }
-    } else {
-      emit(AppGetUserNullState("User ID is null"));
-    }
-  }
-
   int currentIndex = 0;
   List<Widget> screens = [
     const HomeView(),
@@ -103,4 +75,37 @@ class AppCubit extends Cubit<AppStates> {
       curve: Curves.easeInOut,
     );
   }
+
+
+  // Get User Data
+  Future<UserModel> getUserData({required BuildContext context}) async {
+    if (uId != null) {
+      emit(AppGetUserLoadingState());
+      try {
+        final DocumentSnapshot<Map<String, dynamic>> snapshot =
+        await FirebaseFirestore.instance.collection('users').doc(uId).get();
+        if (snapshot.exists) {
+          UserModel userModel;
+          var userData = snapshot.data();
+          print(uId);
+          print(userData);
+          userModel = UserModel.fromJson(userData!);
+          kUserModel = userModel;
+          emit(AppGetUserSuccessState());
+          return userModel; // Return the userModel here
+        } else {
+          signOut(context);
+          emit(AppGetUserErrorState("User data not found"));
+          return Future.error("User data not found"); // Return an error future
+        }
+      } catch (error) {
+        emit(AppGetUserErrorState(error.toString()));
+        return Future.error(error.toString()); // Return an error future
+      }
+    } else {
+      emit(AppGetUserNullState("User ID is null"));
+      return Future.error("User ID is null"); // Return an error future
+    }
+  }
+
 }

@@ -8,10 +8,13 @@ import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
+import 'package:greenoville_app/features/account/presentation/view_model/account_cubit/account_cubit.dart';
 import 'package:greenoville_app/features/community/presentation/view_model/community_cubit/community_cubit.dart';
+import 'package:greenoville_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
 import 'package:greenoville_app/features/welcome/presentation/views/splash_view.dart';
 import 'bloc_observer.dart';
 import 'core/network/local/cache_helper.dart';
+import 'features/market/presentation/view_model/market_cubit/market_cubit.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
@@ -37,10 +40,19 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AppCubit()
             ..getSplashNextScreen()
-            ..getUserData(context),
+            ..getUserData(context: context),
         ),
         BlocProvider(
           create: (context) => CommunityCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AccountCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ProfileCubit(),
+        ),
+        BlocProvider(
+          create: (context) => MarketCubit(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(

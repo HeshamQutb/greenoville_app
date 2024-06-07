@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:greenoville_app/features/market/presentation/views/widgets/market_view_body.dart';
+import 'package:greenoville_app/features/market/presentation/views/widgets/market_view_custom_app_bar.dart';
+import '../../../../constants.dart';
+import '../../data/market_farm_model.dart';
+import '../view_model/market_cubit/market_cubit.dart';
+import '../view_model/market_cubit/market_states.dart';
 
 class MarketView extends StatefulWidget {
   const MarketView({super.key});
@@ -8,211 +15,59 @@ class MarketView extends StatefulWidget {
 }
 
 class _MarketViewState extends State<MarketView> {
+  late Future<List<MarketFarmModel>> futureFarms;
+
   @override
-  Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Search TextField
-          Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: SearchBar()),
-          // Farm List
-          FarmCard(
-            farmName: 'Green Acres Farm',
-            farmerName: 'Hassan Ali', // Real example name
-            distance: '2.5 km',
-            contactNumber: '+1 123-456-7890', // Real example number
-            produceItems: [
-              ProduceItem(
-                name: 'Tomatoes',
-                price: '\$2.50/kg',
-                image: 'assets/images/Tomato.png',
-              ),
-              ProduceItem(
-                name: 'Apples',
-                price: '\$2.80/kg',
-                image: 'assets/images/apples.png',
-              ),
-              ProduceItem(
-                name: 'Carrots',
-                price: '\$4.00/kg',
-                image: 'assets/images/Carrots.png',
-              ),
-              ProduceItem(
-                name: 'Onion',
-                price: '\$1.50/kg',
-                image: 'assets/images/onion.png',
-              ),
-              // Add more produce items as needed
-            ],
-          ),
-        ],
-      ),
-    );
+  void initState() {
+    super.initState();
+    futureFarms = MarketCubit.get(context).getFarms();
   }
-}
-
-class FarmCard extends StatelessWidget {
-  final String farmName;
-  final String farmerName;
-  final String distance;
-  final String contactNumber;
-  final List<ProduceItem> produceItems;
-
-  const FarmCard({
-    super.key,
-    required this.farmName,
-    required this.farmerName,
-    required this.distance,
-    required this.contactNumber,
-    required this.produceItems,
-  });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(16),
-      elevation: 3,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Farm Information
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 24,
-                      backgroundImage: AssetImage('assets/images/farmer.jpg'),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          farmName,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text('By $farmerName'),
-                        Text(distance),
-                      ],
-                    ),
-                  ],
-                ),
-                // Contact Button
-                ElevatedButton(
-                  onPressed: () {
-                    // Implement contact farm action
-                  },
-                  child: Text(
-                    'Contact $farmerName',
-                    style: const TextStyle(color: Colors.green),
+    return BlocConsumer<MarketCubit, MarketStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var marketCubit = MarketCubit.get(context);
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // AppBar
+            const Padding(
+              padding: EdgeInsets.only(
+                left: kDefaultPadding,
+                right: kDefaultPadding,
+                bottom: kDefaultPadding,
+              ),
+              child: MarketViewCustomAppBar(),
+            ),
+            // Farm
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  setState(() {
+                    futureFarms = marketCubit.getFarms();
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: kHorizontalPadding,
+                  ),
+                  child: CustomScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    slivers: [
+                      MarketViewBody(
+                        futureFarms: futureFarms,
+                        marketCubit: marketCubit,
+                      ),
+                    ],
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
-          // Produce Preview
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-            ),
-            itemCount: produceItems.length,
-            itemBuilder: (context, index) {
-              return produceItems[index];
-            },
-          ),
-          // See More Button
-          TextButton(
-            onPressed: () {
-              // Implement see more action
-            },
-            child: const Text(
-              'See More',
-              style: TextStyle(color: Colors.green),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: const TextField(
-        decoration: InputDecoration(
-          hintText: 'Search by produce type, farm name, or location',
-          border: InputBorder.none,
-          suffixIcon: Icon(Icons.search),
-        ),
-      ),
-    );
-  }
-}
-
-class ProduceItem extends StatelessWidget {
-  final String name;
-  final String price;
-  final String image;
-
-  const ProduceItem({
-    super.key,
-    required this.name,
-    required this.price,
-    required this.image,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Image.asset(
-            image,
-            height: 80,
-            fit: BoxFit.fill,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Text(price),
-              ],
-            ),
-          ),
-        ],
-      ),
+          ],
+        );
+      },
     );
   }
 }

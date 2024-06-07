@@ -51,25 +51,28 @@ class AddPostCubit extends Cubit<AddPostStates> {
 
     if (pickedFile != null) {
       try {
-        final croppedFile = await ImageCropper.platform
-            .cropImage(sourcePath: pickedFile.path, aspectRatioPresets: [
-          CropAspectRatioPreset.square,
-          CropAspectRatioPreset.ratio3x2,
-          CropAspectRatioPreset.original,
-          CropAspectRatioPreset.ratio4x3,
-          CropAspectRatioPreset.ratio16x9,
-        ], uiSettings: [
-          AndroidUiSettings(
-            toolbarTitle: S.of(context).cropper,
-            toolbarColor: kPrimaryColor,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
-          ),
-          IOSUiSettings(
-            minimumAspectRatio: 1.0,
-          ),
-        ]);
+        final croppedFile = await ImageCropper.platform.cropImage(
+          sourcePath: pickedFile.path,
+          uiSettings: [
+            AndroidUiSettings(
+              toolbarTitle: S.of(context).cropper,
+              toolbarColor: kPrimaryColor,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false,
+              aspectRatioPresets: [
+                CropAspectRatioPreset.square,
+                CropAspectRatioPreset.ratio3x2,
+                CropAspectRatioPreset.original,
+                CropAspectRatioPreset.ratio4x3,
+                CropAspectRatioPreset.ratio16x9,
+              ],
+            ),
+            IOSUiSettings(
+              minimumAspectRatio: 1.0,
+            ),
+          ],
+        );
 
         if (croppedFile != null) {
           postImage = File(croppedFile.path);
@@ -121,5 +124,4 @@ class AddPostCubit extends Cubit<AddPostStates> {
     postImage = null;
     emit(RemovePostImageSuccessState());
   }
-
 }

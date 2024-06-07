@@ -42,7 +42,7 @@ class RepliesListViewItem extends StatelessWidget {
                     replay.uId == uId
                         ? const AccountView()
                         : ProfileView(
-                            post: post,
+                            uId: replay.uId,
                           ),
                   );
                 },

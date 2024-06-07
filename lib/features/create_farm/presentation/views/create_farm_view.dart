@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/core/services/toast_services.dart';
+import 'package:greenoville_app/features/add_product/presentation/views/add_product_view.dart';
 
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../generated/l10n.dart';
@@ -18,10 +20,13 @@ class CreateFarmView extends StatelessWidget {
       child: BlocConsumer<CreateFarmCubit, CreateFarmStates>(
         listener: (context, state) {
           if (state is CreateFarmSuccessState) {
-            // Navigator.pop(context);
             showToast(
               message: S.of(context).successfullyCreateFarm,
               state: ToastState.success,
+            );
+            navigateTo(
+              context,
+              const AddProductView(),
             );
           }
         },

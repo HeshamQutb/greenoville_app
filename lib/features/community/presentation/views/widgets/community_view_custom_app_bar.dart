@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/constants.dart';
-import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/core/utils/icon_broken.dart';
 import '../../../../../core/widgets/gradient_text.dart';

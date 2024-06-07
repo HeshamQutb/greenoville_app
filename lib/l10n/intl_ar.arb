@@ -6,6 +6,7 @@
   "quickActionAskExpert": "استشر خبير",
   "quickActionSellProduce": "تسوق منتجاتك",
   "seeAll": "المزيـد",
+  "seeMore": "عرض المزيـد",
   "latestNews": "أخـر الأخبـار",
   "marketPrices": "أسعـار السـوق",
   "soilsTitle": "التربـة",
@@ -58,6 +59,7 @@
   "cancel": "إلغاء",
   "removeImage": "حذف الصورة",
   "name": "الاسم",
+  "bio":"نبذة مختصرة",
   "pleaseEnterYourName": "الرجاء إدخال اسمك",
   "phone": "الهاتف",
   "pleaseEnterPhoneNumber": "الرجاء إدخال رقم الهاتف",
@@ -101,6 +103,22 @@
   "peopleWhoReacted": "الأشخاص الذين تفاعلوا",
 
   "addProduct": "إضافة منتج",
+  "productImage": "صورة المنتج",
+  "productName": "اسم المنتج",
+  "pleaseEnterProductName": "الرجاء إدخال اسم المنتج",
+  "productPrice": "سعر المنتج",
+  "pleaseEnterProductPrice": "الرجاء إدخال سعر المنتج",
+  "kg": "كجم",
+  "ton": "طن",
+  "productQuantity": "كمية المنتج",
+  "quantity": "الكمية",
+  "price":"السعر",
+  "productDescription": "وصف المنتج",
+  "pleaseEnterProductDescription": "الرجاء إدخال وصف المنتج",
+  "addAnotherProduct": "أضف منتج آخر",
+  "addProducts": "إضافة المنتجات",
+  "optional": "اختياري",
+  "pleaseFillAllFields": "الرجاء إدخال البيانات لكل منتج بشكل صحيح",
   "successfullyAddProduct": "تم إضافة المنتج بنجاح",
 
   "successfullyCreateFarm": "تم إنشاء المزرعة بنجاح",
@@ -110,6 +128,10 @@
   "farmLocation": "عنوان المزرعة",
   "pleaseEnterFarmName": "الرجاء إدخال اسم المزرعة",
   "pleaseEnterOwnerName": "الرجاء إدخال اسم المالك",
-  "pleaseEnterFarmLocation": "الرجاء إدخال عنوان المزرعة"
+  "pleaseEnterFarmLocation": "الرجاء إدخال عنوان المزرعة",
 
+  "noProductsAvailable": "لا توجد منتجات.",
+  "noFarmsAvailable": "لا توجد مزارع.",
+  "by":"بواسطة",
+  "contact": "تواصل مع"
 }

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/constants.dart';
-import 'package:greenoville_app/features/market/data/product_model.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/market_farm_model.dart';
 import '../../view_model/market_cubit/market_cubit.dart';
-import 'farm_products_section.dart';
-import 'market_view_farm_information.dart';
+import 'farm_information_section.dart';
+import 'farm_products_section_builder.dart';
 
-class MarketFarmListViewItem extends StatelessWidget {
-  const MarketFarmListViewItem({
+class MarketViewListViewItem extends StatelessWidget {
+  const MarketViewListViewItem({
     super.key,
     required this.farm,
     required this.marketCubit,
   });
   final MarketCubit marketCubit;
   final MarketFarmModel farm;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,13 +32,13 @@ class MarketFarmListViewItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Farm Information
-            MarketViewFarmInformation(
+            FarmInformationSection(
               marketCubit: marketCubit,
               farm: farm,
             ),
             // Produce Preview
-            FarmProductsSection(
-              products: [],
+            FarmProductSectionBuilder(
+              uid: farm.uId,
             ),
             TextButton(
               onPressed: () {

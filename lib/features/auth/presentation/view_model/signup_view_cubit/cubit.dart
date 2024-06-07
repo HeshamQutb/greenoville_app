@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:greenoville_app/core/utils/assets.dart';
 import 'package:greenoville_app/features/auth/presentation/view_model/signup_view_cubit/states.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -42,21 +43,21 @@ class SignUpCubit extends Cubit<SignUpStates> {
       try {
         final croppedFile = await ImageCropper.platform.cropImage(
           sourcePath: pickedFile.path,
-          cropStyle: CropStyle.circle,
-          aspectRatioPresets: [
-            CropAspectRatioPreset.square,
-            CropAspectRatioPreset.ratio3x2,
-            CropAspectRatioPreset.original,
-            CropAspectRatioPreset.ratio4x3,
-            CropAspectRatioPreset.ratio16x9,
-          ],
           uiSettings: [
             AndroidUiSettings(
+              cropStyle: CropStyle.circle,
               toolbarTitle: cropper,
               toolbarColor: kPrimaryColor,
               toolbarWidgetColor: Colors.white,
               initAspectRatio: CropAspectRatioPreset.original,
               lockAspectRatio: false,
+              aspectRatioPresets: [
+                CropAspectRatioPreset.square,
+                CropAspectRatioPreset.ratio3x2,
+                CropAspectRatioPreset.original,
+                CropAspectRatioPreset.ratio4x3,
+                CropAspectRatioPreset.ratio16x9,
+              ],
             ),
             IOSUiSettings(
               minimumAspectRatio: 1.0,
@@ -124,13 +125,11 @@ class SignUpCubit extends Cubit<SignUpStates> {
         userPhone: userPhone,
         userEmail: userEmail,
         uId: userCredential.user!.uid,
-        userImage: imageURL ??
-            'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04',
+        userImage: imageURL ?? AssetsData.noUserImage,
         userRole: userRole,
         isVerified: false,
         password: password,
-        coverImage:
-            'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/noImage.jpg?alt=media&token=a6f9a0db-ab6f-417f-b813-a33acdc5d045',
+        coverImage: AssetsData.noImage,
       );
       CacheHelper.setData(
         key: 'uId',

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../../../data/market_farm_model.dart';
 import '../../view_model/market_cubit/market_cubit.dart';
-import 'market_farm_list_view_item.dart';
+import 'market_view_list_view_item.dart';
 
-class MarketListView extends StatelessWidget {
-  const MarketListView({
+class MarketViewListViewItems extends StatelessWidget {
+  const MarketViewListViewItems({
     super.key,
     required this.farms,
     required this.marketCubit,
@@ -16,8 +15,8 @@ class MarketListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-            (context, index) {
-          return MarketFarmListViewItem(
+        (context, index) {
+          return MarketViewListViewItem(
             marketCubit: marketCubit,
             farm: farms[index],
           );
