@@ -4,7 +4,6 @@ class FarmModel {
   final String farmName;
   final String farmOwnerName;
   final String farmLocation;
-  final bool hasProducts;
 
   FarmModel({
     required this.uId,
@@ -12,7 +11,6 @@ class FarmModel {
     required this.farmName,
     required this.farmOwnerName,
     required this.farmLocation,
-    required this.hasProducts,
   });
 
   factory FarmModel.fromJson(Map<String, dynamic>? json) {
@@ -22,7 +20,6 @@ class FarmModel {
       farmName: json?['farmName'],
       farmOwnerName: json?['farmOwnerName'],
       farmLocation: json?['farmLocation'],
-      hasProducts: json?['hasProducts'],
     );
   }
 
@@ -33,7 +30,6 @@ class FarmModel {
       'farmName': farmName,
       'farmOwnerName': farmOwnerName,
       'farmLocation': farmLocation,
-      'hasProducts': hasProducts,
     };
   }
 }

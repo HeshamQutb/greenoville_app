@@ -1,27 +1,26 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
-import 'package:greenoville_app/features/add_product/presentation/view_model/add_post_cubit/add_product_cubit.dart';
+import 'package:image_picker/image_picker.dart';
 
-class AddProductImageSection extends StatelessWidget {
-  const AddProductImageSection({
+class ProductImageSection extends StatelessWidget {
+  const ProductImageSection({
     super.key,
-    required this.addProductCubit,
-    this.productImage,
+    this.image,
     required this.onImageSelected,
   });
-  final AddProductCubit addProductCubit;
-  final File? productImage;
+  final File? image;
   final Function(File) onImageSelected;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        final image =
-            await AddProductCubit.get(context).getProductImageGallery(context);
-        if (image != null) {
-          onImageSelected(image);
+        final pickedFile =
+            await ImagePicker().pickImage(source: ImageSource.gallery);
+        if (pickedFile != null) {
+          final imageFile = File(pickedFile.path);
+          onImageSelected(imageFile);
         }
       },
       child: Stack(
@@ -34,25 +33,23 @@ class AddProductImageSection extends StatelessWidget {
               border: Border.all(),
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
-                image: productImage != null
-                    ? FileImage(productImage!)
+                image: image != null
+                    ? FileImage(image!)
                     : const AssetImage(AssetsData.addImage) as ImageProvider,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          if (productImage != null)
+          if (image != null)
             Padding(
               padding: const EdgeInsets.all(5),
               child: CircleAvatar(
-                radius: 15,
-                child: InkWell(
-                  onTap: () {
-                    AddProductCubit.get(context).removeProductImage();
-                  },
-                  child: const Icon(
+                backgroundColor: Colors.grey[100],
+                child: IconButton(
+                  onPressed: () => onImageSelected(File('')),
+                  icon: const Icon(
                     Icons.close,
-                    size: 15,
+                    color: Colors.black,
                   ),
                 ),
               ),

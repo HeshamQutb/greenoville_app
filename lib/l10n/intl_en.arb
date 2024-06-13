@@ -67,6 +67,7 @@
   "farmer": "Farmer",
   "expert": "Expert",
 
+
   "profile": "Profile",
   "myAddress": "My Address",
   "appearance": "Appearance",
@@ -134,7 +135,20 @@
   "noProductsAvailable": "No products available.",
   "noFarmsAvailable": "No Farms Available",
   "by":"By",
-  "contact": "Contact"
+  "contact": "Contact",
+  "message": "Message",
+
+
+  "farm": "Farm",
+  "edit": "Edit",
+  "editFarm": "Edit Farm",
+  "editProfile": "Edit Profile",
+
+
+  "posts": "Posts",
+  "doNotHaveAFarm": "You don\\'t have a farm create one and share your products"
+
+
 
 
 

@@ -1,5 +1,5 @@
 
-class ProductModel {
+class FarmProductModel {
   final String? productImage;
   final String productName;
   final String? productDescription;
@@ -8,7 +8,7 @@ class ProductModel {
   final String productUnit;
   final int productQuantity;
 
-  ProductModel({
+  FarmProductModel({
     this.productImage,
     required this.productName,
     this.productDescription,
@@ -18,8 +18,8 @@ class ProductModel {
     required this.productQuantity,
   });
 
-  factory ProductModel.fromJson(Map<String, dynamic>? json) {
-    return ProductModel(
+  factory FarmProductModel.fromJson(Map<String, dynamic>? json) {
+    return FarmProductModel(
       productImage: json?['productImage'],
       productName: json?['productName'],
       productDescription: json?['productDescription'],

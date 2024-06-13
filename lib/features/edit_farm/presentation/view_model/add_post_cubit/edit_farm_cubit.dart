@@ -4,17 +4,16 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
-import 'package:greenoville_app/core/utils/assets.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/farm_model.dart';
-import 'create_farm_states.dart';
+import 'edit_farm_states.dart';
 
-class CreateFarmCubit extends Cubit<CreateFarmStates> {
-  CreateFarmCubit() : super(CreateFarmInitialState());
+class EditFarmCubit extends Cubit<EditFarmStates> {
+  EditFarmCubit() : super(EditFarmInitialState());
 
-  static CreateFarmCubit get(context) => BlocProvider.of(context);
+  static EditFarmCubit get(context) => BlocProvider.of(context);
 
   void createFarm({
     required BuildContext context,
@@ -24,31 +23,23 @@ class CreateFarmCubit extends Cubit<CreateFarmStates> {
     required String farmOwnerName,
     required String farmLocation,
   }) {
-    emit(CreateFarmLoadingState());
+    emit(EditFarmLoadingState());
     FarmModel farmModel = FarmModel(
       uId: uId,
-      farmImage: farmImage ?? AssetsData.noUserImage,
+      farmImage: farmImage ??
+          'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04',
       farmName: farmName,
       farmOwnerName: farmOwnerName,
       farmLocation: farmLocation,
-      hasProducts: false,
     );
     FirebaseFirestore.instance
         .collection('farms')
         .doc(uId)
         .set(farmModel.toMap())
         .then((value) {
-      // Update hasFarm field in the users collection
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(uId)
-          .update({'hasFarm': true}).then((_) {
-        emit(CreateFarmSuccessState());
-      }).catchError((error) {
-        emit(CreateFarmErrorState(error.toString()));
-      });
+      emit(EditFarmSuccessState());
     }).catchError((error) {
-      emit(CreateFarmErrorState(error.toString()));
+      emit(EditFarmErrorState(error.toString()));
     });
   }
 
@@ -110,7 +101,7 @@ class CreateFarmCubit extends Cubit<CreateFarmStates> {
     required String farmLocation,
     required String farmId,
   }) {
-    emit(CreateFarmLoadingState());
+    emit(EditFarmLoadingState());
     FirebaseStorage.instance
         .ref()
         .child('farms/${Uri.file(farmImage!.path).pathSegments.last}')
@@ -126,10 +117,10 @@ class CreateFarmCubit extends Cubit<CreateFarmStates> {
           farmLocation: farmLocation,
         );
       }).catchError((error) {
-        emit(CreateFarmErrorState(error.toString()));
+        emit(EditFarmErrorState(error.toString()));
       });
     }).catchError((error) {
-      emit(CreateFarmErrorState(error.toString()));
+      emit(EditFarmErrorState(error.toString()));
     });
   }
 

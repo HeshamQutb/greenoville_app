@@ -1,18 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:greenoville_app/core/services/navigate_services.dart';
+import 'package:greenoville_app/core/utils/icon_broken.dart';
+import 'package:greenoville_app/features/edit_farm/presentation/views/edit_farm_view.dart';
 import '../../../../../constants.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../data/market_farm_model.dart';
-import '../../view_model/market_cubit/market_cubit.dart';
+import '../../../../create_farm/data/models/farm_model.dart';
+import '../../view_model/farm_cubit.dart';
 
 class FarmInformationSection extends StatelessWidget {
   const FarmInformationSection({
     super.key,
-    required this.marketCubit,
+    required this.farmCubit,
     required this.farm,
   });
-  final MarketCubit marketCubit;
-  final MarketFarmModel farm;
+  final FarmCubit farmCubit;
+  final FarmModel farm;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,13 +26,14 @@ class FarmInformationSection extends StatelessWidget {
             CircleAvatar(
               radius: 26,
               backgroundImage: CachedNetworkImageProvider(
-                farm.farmImage,
+                farm.farmImage!,
               ),
             ),
             const SizedBox(
               width: 16,
             ),
             Expanded(
+              flex: 3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -57,6 +61,20 @@ class FarmInformationSection extends StatelessWidget {
                 ],
               ),
             ),
+            if (farm.uId == uId)
+              IconButton(
+                onPressed: () {
+                  navigateTo(
+                    context,
+                    const EditFarmView(),
+                  );
+                },
+                icon: const Icon(
+                  IconBroken.Edit,
+                  color: kPrimaryColor,
+                  size: 30,
+                ),
+              )
           ],
         ),
         // Contact Button

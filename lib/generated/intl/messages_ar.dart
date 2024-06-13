@@ -49,8 +49,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "فشلت عملية المصادقة. يرجى المحاولة مرة أخرى في وقت لاحق."),
         "defaultSignUpFailed": MessageLookupByLibrary.simpleMessage(
             "فشل التسجيل. يرجى المحاولة مرة أخرى في وقت لاحق."),
+        "doNotHaveAFarm": MessageLookupByLibrary.simpleMessage(
+            "ليس لديك مزرعة قم بإنشاء واحدة وشارك منتجاتك مع الأخرين"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب!"),
+        "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
+        "editFarm": MessageLookupByLibrary.simpleMessage("تعديل المزرعة"),
+        "editProfile":
+            MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "emailAddress":
             MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
@@ -61,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("خطأ:"),
         "expandText": MessageLookupByLibrary.simpleMessage("اقرأ المزيد"),
         "expert": MessageLookupByLibrary.simpleMessage("خبير"),
+        "farm": MessageLookupByLibrary.simpleMessage("المزرعة"),
         "farmLocation": MessageLookupByLibrary.simpleMessage("عنوان المزرعة"),
         "farmName": MessageLookupByLibrary.simpleMessage("اسم المزرعة"),
         "farmer": MessageLookupByLibrary.simpleMessage("مزارع"),
@@ -88,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "marketPrices": MessageLookupByLibrary.simpleMessage("أسعـار السـوق"),
         "marketTitle": MessageLookupByLibrary.simpleMessage("السوق"),
+        "message": MessageLookupByLibrary.simpleMessage("مراسلة"),
         "myAddress": MessageLookupByLibrary.simpleMessage("عنواني"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "newAccount": MessageLookupByLibrary.simpleMessage("حساب جديد"),
@@ -134,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseFillAllFields": MessageLookupByLibrary.simpleMessage(
             "الرجاء إدخال البيانات لكل منتج بشكل صحيح"),
         "post": MessageLookupByLibrary.simpleMessage("نشر"),
+        "posts": MessageLookupByLibrary.simpleMessage("المنشورات"),
         "price": MessageLookupByLibrary.simpleMessage("السعر"),
         "privacySecurity":
             MessageLookupByLibrary.simpleMessage("الخصوصية والأمان"),

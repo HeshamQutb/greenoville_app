@@ -19,6 +19,7 @@ class CommunityPostListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      surfaceTintColor: Colors.grey[700],
       color: Colors.white,
       margin: const EdgeInsets.only(bottom: 10),
       elevation: 5,

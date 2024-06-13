@@ -6,7 +6,7 @@ import 'package:greenoville_app/features/account/presentation/view_model/account
 import 'package:greenoville_app/features/account/presentation/views/widgets/account_view_builder.dart';
 import 'package:greenoville_app/features/auth/data/models/user_model.dart';
 import '../../../community/data/models/community_post_model.dart';
-import '../../../market/data/market_farm_model.dart';
+import '../../../create_farm/data/models/farm_model.dart';
 import '../view_model/account_cubit/account_cubit.dart';
 
 class AccountView extends StatefulWidget {
@@ -22,13 +22,13 @@ class _AccountViewState extends State<AccountView>
   late TabController tabController;
   late Future<UserModel> futureUser;
   late Future<List<CommunityPostModel>> futurePosts;
-  late Future<List<MarketFarmModel>> futureFarms;
+  late Future<FarmModel?> futureFarm;
   @override
   void initState() {
     super.initState();
     futureUser = AccountCubit.get(context).getUserData(context: context);
     futurePosts = AccountCubit.get(context).getPosts(uid: uId);
-    futureFarms = AccountCubit.get(context).getFarms(uid: uId);
+    futureFarm = AccountCubit.get(context).getFarm(uid: uId!);
     tabController = TabController(length: 2, vsync: this);
   }
 
@@ -53,7 +53,7 @@ class _AccountViewState extends State<AccountView>
             futureUser: futureUser,
             tabController: tabController,
             futurePosts: futurePosts,
-            futureFarms: futureFarms,
+            futureFarm: futureFarm,
           ),
         );
       },

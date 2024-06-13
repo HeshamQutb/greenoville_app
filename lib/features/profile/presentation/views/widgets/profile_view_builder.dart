@@ -8,6 +8,7 @@ import '../../../../../core/widgets/posts_tap_bar_view.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/data/models/user_model.dart';
 import '../../../../community/data/models/community_post_model.dart';
+import '../../../../farm/presentation/views/farm_view.dart';
 import '../../../../market/data/market_farm_model.dart';
 
 class ProfileViewBuilder extends StatelessWidget {
@@ -51,10 +52,10 @@ class ProfileViewBuilder extends StatelessWidget {
                           userModel: snapshot.data!,
                         ),
                         const SizedBox(height: 16),
-                        const DefaultButton(
+                        DefaultButton(
                           iconColor: Colors.white,
                           icon: IconBroken.Message,
-                          text: 'Message',
+                          text: S.of(context).message,
                         ),
                         const SizedBox(height: 16),
                         TabBar(
@@ -62,13 +63,13 @@ class ProfileViewBuilder extends StatelessWidget {
                           indicatorColor: kPrimaryColor,
                           controller: tabController,
                           tabs: snapshot.data!.userRole == S.of(context).farmer
-                              ? const [
-                                  Tab(text: 'Posts'),
-                                  Tab(text: 'Farm'),
+                              ? [
+                                  Tab(text: S.of(context).posts),
+                                  Tab(text: S.of(context).farm),
                                 ]
-                              : const [
-                                  Tab(text: 'Posts'),
-                                  Tab(text: 'Tips'),
+                              : [
+                                  Tab(text: S.of(context).posts),
+                                  Tab(text: S.of(context).tips),
                                 ],
                         ),
                       ],
@@ -89,11 +90,16 @@ class ProfileViewBuilder extends StatelessWidget {
                         PostsTapBarView(
                           future: futurePosts,
                         ),
-                        const Center(
-                          child: Text(
-                            'Farm Information',
-                          ),
-                        ),
+                        snapshot.data!.userRole == S.of(context).farmer
+                            ? FarmView(
+                                uid: snapshot.data!.uId,
+                                showAppBar: false,
+                              )
+                            :  Center(
+                                child: Text(
+                                  S.of(context).noFarmsAvailable,
+                                ),
+                              ),
                       ]
                     : [
                         PostsTapBarView(

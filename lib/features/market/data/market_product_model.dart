@@ -1,14 +1,14 @@
 
-class ProductModel {
-  late final String? productImage;
+class MarketProductModel {
+  final String? productImage;
   final String productName;
   final String? productDescription;
   final String productId;
   final double productPrice;
   final String productUnit;
-  late final int productQuantity;
+  final int productQuantity;
 
-  ProductModel({
+  MarketProductModel({
     this.productImage,
     required this.productName,
     this.productDescription,
@@ -18,8 +18,8 @@ class ProductModel {
     required this.productQuantity,
   });
 
-  factory ProductModel.fromJson(Map<String, dynamic>? json) {
-    return ProductModel(
+  factory MarketProductModel.fromJson(Map<String, dynamic>? json) {
+    return MarketProductModel(
       productImage: json?['productImage'],
       productName: json?['productName'],
       productDescription: json?['productDescription'],

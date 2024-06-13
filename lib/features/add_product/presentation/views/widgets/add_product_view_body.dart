@@ -1,253 +1,106 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/widgets/default_button.dart';
-import 'package:greenoville_app/core/widgets/default_text_form_field.dart';
 import 'package:greenoville_app/features/add_product/presentation/view_model/add_post_cubit/add_product_cubit.dart';
-import '../../../../../constants.dart';
-import '../../../../../generated/l10n.dart';
-import '../../view_model/add_post_cubit/add_product_states.dart';
-import 'add_product_view_image_section.dart';
-import 'add_product_view_quantity_section.dart';
+import 'package:greenoville_app/features/add_product/presentation/view_model/add_post_cubit/add_product_states.dart';
+import 'package:greenoville_app/features/add_product/presentation/views/widgets/product_loading_section.dart';
+import 'package:greenoville_app/features/add_product/presentation/views/widgets/product_form.dart';
+import 'package:greenoville_app/generated/l10n.dart';
 
 class AddProductViewBody extends StatefulWidget {
-  const AddProductViewBody({
-    super.key,
-    required this.state,
-    required this.addProductCubit,
-    required this.productFormKeys,
-    required this.productNameControllers,
-    required this.productPriceControllers,
-    required this.productQuantityControllers,
-    required this.productDescriptionControllers,
-    required this.productImages,
-  });
-  final AddProductCubit addProductCubit;
-  final AddProductStates state;
-  final List<GlobalKey<FormState>> productFormKeys;
-
-  final List<TextEditingController> productNameControllers;
-
-  final List<File?> productImages;
-
-  final List<TextEditingController> productPriceControllers;
-
-  final List<int> productQuantityControllers;
-
-  final List<TextEditingController> productDescriptionControllers;
+  const AddProductViewBody({super.key});
 
   @override
   State<AddProductViewBody> createState() => _AddProductViewBodyState();
 }
 
 class _AddProductViewBodyState extends State<AddProductViewBody> {
+  final List<GlobalKey<FormState>> formKeys = [GlobalKey<FormState>()];
+  final List<TextEditingController> nameControllers = [TextEditingController()];
+  final List<TextEditingController> priceControllers = [TextEditingController()];
+  final List<TextEditingController> descriptionControllers = [TextEditingController()];
+  final List<File?> images = [null];
+  final List<int> quantities = [1];
+
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<AddProductCubit>(context);
     return Padding(
-      padding: const EdgeInsets.only(
-        bottom: kDefaultPadding,
-        left: kDefaultPadding,
-        right: kDefaultPadding,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Column(
         children: [
-          if (widget.state is AddProductLoadingState)
-            const LinearProgressIndicator(),
-          if (widget.state is AddProductLoadingState)
-            const SizedBox(
-              height: 8,
-            ),
+          if (cubit.state is AddProductLoadingState)
+            const ProductLoadingSection(),
           Expanded(
             child: ListView.builder(
-              itemCount: widget.productFormKeys.length,
+              itemCount: formKeys.length,
               itemBuilder: (context, index) {
-                return Form(
-                  key: widget.productFormKeys[index],
-                  child: Card(
-                    color: Colors.white,
-                    elevation: 5,
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 8,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(
-                        16.0,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            S.of(context).productImage,
-                            style: Theme.of(context).textTheme.labelLarge,
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          AddProductImageSection(
-                            addProductCubit: widget.addProductCubit,
-                            productImage: widget.productImages[index],
-                            onImageSelected: (image) {
-                              setState(() {
-                                widget.productImages[index] = image;
-                              });
-                            },
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          DefaultTextFormField(
-                            radius: 12,
-                            controller: widget.productNameControllers[index],
-                            type: TextInputType.text,
-                            validate: (value) {
-                              if (value == null || value.isEmpty) {
-                                return S.of(context).pleaseEnterProductName;
-                              }
-                              return null;
-                            },
-                            label: S.of(context).productName,
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          DefaultTextFormField(
-                            radius: 12,
-                            controller:
-                                widget.productDescriptionControllers[index],
-                            type: TextInputType.multiline,
-                            validate: (value) {
-                              return null;
-                            },
-                            label: S.of(context).productDescription,
-                            maxLines: 4,
-                            helperText: '(${S.of(context).optional})*',
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          DefaultTextFormField(
-                            prefixIcon: Icons.attach_money,
-                            radius: 12,
-                            controller: widget.productPriceControllers[index],
-                            type: TextInputType.number,
-                            validate: (value) {
-                              if (value == null || value.isEmpty) {
-                                return S.of(context).pleaseEnterProductPrice;
-                              }
-                              return null;
-                            },
-                            label:
-                                '${S.of(context).productPrice} (${S.of(context).kg})',
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          AddProductViewQuantitySection(
-                            quantityController:
-                                widget.productQuantityControllers[index],
-                            onQuantityChanged: (value) {
-                              setState(() {
-                                widget.productQuantityControllers[index] =
-                                    value;
-                              });
-                            },
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          if (index > 0)
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: IconButton(
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    widget.productFormKeys.removeAt(index);
-                                    widget.productNameControllers
-                                        .removeAt(index);
-                                    widget.productImages.removeAt(index);
-                                    widget.productPriceControllers
-                                        .removeAt(index);
-                                    widget.productQuantityControllers
-                                        .removeAt(index);
-                                    widget.productDescriptionControllers
-                                        .removeAt(index);
-                                  });
-                                },
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
+                return ProductForm(
+                  formKey: formKeys[index],
+                  nameController: nameControllers[index],
+                  priceController: priceControllers[index],
+                  descriptionController: descriptionControllers[index],
+                  image: images[index],
+                  quantity: quantities[index],
+                  onImageSelected: (image) =>
+                      setState(() => images[index] = image),
+                  onQuantityChanged: (quantity) =>
+                      setState(() => quantities[index] = quantity),
+                  onRemove: index > 0
+                      ? () {
+                          setState(() {
+                            formKeys.removeAt(index);
+                            nameControllers.removeAt(index);
+                            priceControllers.removeAt(index);
+                            descriptionControllers.removeAt(index);
+                            images.removeAt(index);
+                            quantities.removeAt(index);
+                          });
+                        }
+                      : null,
                 );
               },
             ),
           ),
           DefaultButton(
+            text: S.of(context).addAnotherProduct,
             onPressed: () {
               setState(() {
-                widget.productFormKeys.add(GlobalKey<FormState>());
-                widget.productNameControllers.add(TextEditingController());
-                widget.productImages.add(null);
-                widget.productPriceControllers.add(TextEditingController());
-                widget.productQuantityControllers.add(1);
-                widget.productDescriptionControllers
-                    .add(TextEditingController());
+                formKeys.add(GlobalKey<FormState>());
+                nameControllers.add(TextEditingController());
+                priceControllers.add(TextEditingController());
+                descriptionControllers.add(TextEditingController());
+                images.add(null);
+                quantities.add(1);
               });
             },
-            text: S.of(context).addAnotherProduct,
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           DefaultButton(
+            text: S.of(context).addProducts,
             onPressed: () {
               bool allValid = true;
-
-              // Validate all form keys
-              for (var formKey in widget.productFormKeys) {
+              for (var formKey in formKeys) {
                 if (!(formKey.currentState?.validate() ?? false)) {
                   allValid = false;
                 }
               }
-
               if (allValid) {
-                // Process form data if all validations pass
-                for (int i = 0; i < widget.productFormKeys.length; i++) {
-                  if (widget.productImages[i] != null) {
-                    widget.addProductCubit.uploadProductImage(
-                      context: context,
-                      uId: uId!,
-                      productName: widget.productNameControllers[i].text,
-                      productImage: widget.productImages[i]!,
-                      productDescription:
-                          widget.productDescriptionControllers[i].text,
-                      productPrice:
-                          double.parse(widget.productPriceControllers[i].text),
-                      productUnit: S.of(context).kg,
-                      productQuantity: widget.productQuantityControllers[i],
-                    );
-                  } else {
-                    widget.addProductCubit.addNewProduct(
-                      context: context,
-                      uId: uId!,
-                      productName: widget.productNameControllers[i].text,
-                      productDescription:
-                          widget.productDescriptionControllers[i].text,
-                      productPrice:
-                          double.parse(widget.productPriceControllers[i].text),
-                      productUnit: S.of(context).kg,
-                      productQuantity: widget.productQuantityControllers[i],
-                    );
-                  }
+                for (int i = 0; i < formKeys.length; i++) {
+                  cubit.addNewProduct(
+                    context: context,
+                    uId: uId!,
+                    productName: nameControllers[i].text,
+                    productDescription: descriptionControllers[i].text,
+                    productPrice: double.parse(priceControllers[i].text),
+                    productUnit: S.of(context).kg,
+                    productQuantity: quantities[i],
+                  );
                 }
               }
             },
-            text: S.of(context).addProducts,
           ),
         ],
       ),

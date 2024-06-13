@@ -10,6 +10,7 @@ import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
 import 'package:greenoville_app/features/account/presentation/view_model/account_cubit/account_cubit.dart';
 import 'package:greenoville_app/features/community/presentation/view_model/community_cubit/community_cubit.dart';
+import 'package:greenoville_app/features/farm/presentation/view_model/farm_cubit.dart';
 import 'package:greenoville_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
 import 'package:greenoville_app/features/welcome/presentation/views/splash_view.dart';
 import 'bloc_observer.dart';
@@ -53,6 +54,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => MarketCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FarmCubit(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(

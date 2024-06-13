@@ -1,7 +1,7 @@
 
 import 'package:greenoville_app/features/market/data/market_product_model.dart';
 
-class MarketFarmModel {
+class FarmModel {
   final String userName;
   final String userImage;
   final String coverImage;
@@ -13,10 +13,9 @@ class MarketFarmModel {
   final String farmName;
   final String farmOwnerName;
   final String farmLocation;
-  final bool hasProducts;
   final List<MarketProductModel> products;
 
-  MarketFarmModel({
+  FarmModel({
     required this.userName,
     required this.userImage,
     required this.coverImage,
@@ -28,12 +27,11 @@ class MarketFarmModel {
     required this.farmName,
     required this.farmOwnerName,
     required this.farmLocation,
-    required this.hasProducts,
     required this.products,
   });
 
-  factory MarketFarmModel.fromJson(Map<String, dynamic>? json) {
-    return MarketFarmModel(
+  factory FarmModel.fromJson(Map<String, dynamic>? json) {
+    return FarmModel(
       userName: json?['userName'],
       userImage: json?['userImage'],
       coverImage: json?['coverImage'],
@@ -45,7 +43,6 @@ class MarketFarmModel {
       farmName: json?['farmName'],
       farmOwnerName: json?['farmOwnerName'],
       farmLocation: json?['farmLocation'],
-      hasProducts: json?['hasProducts'],
       products: (json?['products'] as List<dynamic>?)
               ?.map((productJson) =>
                   MarketProductModel.fromJson(productJson as Map<String, dynamic>))
@@ -67,7 +64,6 @@ class MarketFarmModel {
       'farmName': farmName,
       'farmOwnerName': farmOwnerName,
       'farmLocation': farmLocation,
-      'hasProducts': hasProducts,
       'products': products.map((product) => product.toMap()).toList(),
     };
   }

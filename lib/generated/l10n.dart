@@ -1309,6 +1309,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Message`
+  String get message {
+    return Intl.message(
+      'Message',
+      name: 'message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Farm`
+  String get farm {
+    return Intl.message(
+      'Farm',
+      name: 'farm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Farm`
+  String get editFarm {
+    return Intl.message(
+      'Edit Farm',
+      name: 'editFarm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Posts`
+  String get posts {
+    return Intl.message(
+      'Posts',
+      name: 'posts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don\'t have a farm create one and share your products`
+  String get doNotHaveAFarm {
+    return Intl.message(
+      'You don\\\'t have a farm create one and share your products',
+      name: 'doNotHaveAFarm',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -3,6 +3,7 @@ import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/features/create_farm/presentation/views/create_farm_view.dart';
 
 import '../../../../../core/widgets/default_button.dart';
+import '../../../../../generated/l10n.dart';
 
 class NoFarmSection extends StatelessWidget {
   const NoFarmSection({
@@ -13,8 +14,8 @@ class NoFarmSection extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
-          'You don\'t have a farm create one and share your products',
+         Text(
+          S.of(context).doNotHaveAFarm,
           textAlign: TextAlign.center,
         ),
         const SizedBox(
@@ -27,7 +28,7 @@ class NoFarmSection extends StatelessWidget {
               const CreateFarmView(),
             );
           },
-          text: 'Create farm',
+          text: S.of(context).createFarm,
         ),
       ],
     );

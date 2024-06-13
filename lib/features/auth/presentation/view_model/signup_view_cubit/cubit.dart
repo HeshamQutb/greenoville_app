@@ -180,6 +180,8 @@ class SignUpCubit extends Cubit<SignUpStates> {
       userRole: userRole,
       isVerified: isVerified,
       bio: '',
+      hasFarm: false,
+      hasTips: false,
     );
 
     FirebaseFirestore.instance

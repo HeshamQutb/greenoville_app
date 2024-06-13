@@ -1,23 +1,42 @@
 import 'package:flutter/material.dart';
-import '../../../../../generated/l10n.dart';
+import 'package:greenoville_app/generated/l10n.dart';
 
-class AddProductViewQuantitySection extends StatefulWidget {
-  const AddProductViewQuantitySection({
+class QuantitySection extends StatelessWidget {
+  const QuantitySection({
     super.key,
-    required this.quantityController,
+    required this.quantity,
     required this.onQuantityChanged,
   });
-  final int quantityController;
+  final int quantity;
   final Function(int) onQuantityChanged;
-  @override
-  State<AddProductViewQuantitySection> createState() =>
-      _AddProductViewQuantitySectionState();
-}
 
-class _AddProductViewQuantitySectionState
-    extends State<AddProductViewQuantitySection> {
   @override
   Widget build(BuildContext context) {
+    // return Row(
+    //   mainAxisAlignment: MainAxisAlignment.start,
+    //   children: [
+    //     Text('${S.of(context).quantity}: $quantity'),
+    //     const SizedBox(width: 10),
+    //     Row(
+    //       children: [
+    //         IconButton(
+    //           onPressed: () {
+    //             if (quantity > 1) onQuantityChanged(quantity - 1);
+    //           },
+    //           icon: const Icon(Icons.remove_circle_outline),
+    //         ),
+    //         Text(
+    //           quantity.toString(),
+    //           style: Theme.of(context).textTheme.headlineMedium,
+    //         ),
+    //         IconButton(
+    //           onPressed: () => onQuantityChanged(quantity + 1),
+    //           icon: const Icon(Icons.add_circle_outline),
+    //         ),
+    //       ],
+    //     ),
+    //   ],
+    // );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -46,12 +65,7 @@ class _AddProductViewQuantitySectionState
                     children: [
                       InkWell(
                         onTap: () {
-                          if (widget.quantityController > 1) {
-                            setState(() {
-                              widget.onQuantityChanged(
-                                  widget.quantityController - 1);
-                            });
-                          }
+                          if (quantity > 1) onQuantityChanged(quantity - 1);
                         },
                         child: Container(
                           height: 25,
@@ -67,7 +81,7 @@ class _AddProductViewQuantitySectionState
                         ),
                       ),
                       Text(
-                        '${widget.quantityController}',
+                        quantity.toString(),
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -75,10 +89,7 @@ class _AddProductViewQuantitySectionState
                       ),
                       InkWell(
                         onTap: () {
-                          setState(() {
-                            widget.onQuantityChanged(
-                                widget.quantityController + 1);
-                          });
+                          onQuantityChanged(quantity + 1);
                         },
                         child: Container(
                           height: 25,
@@ -104,3 +115,4 @@ class _AddProductViewQuantitySectionState
     );
   }
 }
+

@@ -49,8 +49,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Authentication failed. Please try again later."),
         "defaultSignUpFailed": MessageLookupByLibrary.simpleMessage(
             "Sign up failed. Please try again later."),
+        "doNotHaveAFarm": MessageLookupByLibrary.simpleMessage(
+            "You don\\\'t have a farm create one and share your products"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account!"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "editFarm": MessageLookupByLibrary.simpleMessage("Edit Farm"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
             "The account already exists for that email."),
@@ -60,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Error:"),
         "expandText": MessageLookupByLibrary.simpleMessage("Read more"),
         "expert": MessageLookupByLibrary.simpleMessage("Expert"),
+        "farm": MessageLookupByLibrary.simpleMessage("Farm"),
         "farmLocation": MessageLookupByLibrary.simpleMessage("Farm Location"),
         "farmName": MessageLookupByLibrary.simpleMessage("Farm Name"),
         "farmer": MessageLookupByLibrary.simpleMessage("Farmer"),
@@ -88,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "marketPrices": MessageLookupByLibrary.simpleMessage("Market Prices"),
         "marketTitle": MessageLookupByLibrary.simpleMessage("Market"),
+        "message": MessageLookupByLibrary.simpleMessage("Message"),
         "myAddress": MessageLookupByLibrary.simpleMessage("My Address"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newAccount": MessageLookupByLibrary.simpleMessage("New Account"),
@@ -133,6 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseFillAllFields":
             MessageLookupByLibrary.simpleMessage("Please Fill All Fields"),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
+        "posts": MessageLookupByLibrary.simpleMessage("Posts"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "privacySecurity":
             MessageLookupByLibrary.simpleMessage("Privacy & Security"),

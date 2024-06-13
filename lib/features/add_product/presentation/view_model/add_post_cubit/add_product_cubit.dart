@@ -17,7 +17,6 @@ class AddProductCubit extends Cubit<AddProductStates> {
 
   static AddProductCubit get(context) => BlocProvider.of(context);
 
-
   void addNewProduct({
     required BuildContext context,
     required String uId,
@@ -46,13 +45,18 @@ class AddProductCubit extends Cubit<AddProductStates> {
         .doc(productId)
         .set(productModel.toMap())
         .then((value) {
-      emit(AddProductSuccessState());
+      // Update hasProducts field in the farms collection
+      FirebaseFirestore.instance
+          .collection('farms')
+          .doc(uId)
+          .update({'hasProducts': true}).then((_) {
+        emit(AddProductSuccessState());
+      });
     }).catchError((error) {
       emit(AddProductErrorState(error.toString()));
     });
   }
 
-  File? productImage;
   Future<File?> getProductImageGallery(context) async {
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -92,7 +96,7 @@ class AddProductCubit extends Cubit<AddProductStates> {
     return null;
   }
 
-  void uploadProductImage({
+  void addProductWithImage({
     required BuildContext context,
     required String uId,
     required String productName,
@@ -126,10 +130,4 @@ class AddProductCubit extends Cubit<AddProductStates> {
       emit(AddProductErrorState(error.toString()));
     });
   }
-
-  void removeProductImage() {
-    productImage = null;
-    emit(RemoveProductImageSuccessState());
-  }
-
 }

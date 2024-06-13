@@ -8,6 +8,8 @@ class UserModel {
   final String coverImage;
   final String userRole;
   final bool isVerified;
+  final bool hasFarm;
+  final bool hasTips;
   UserModel({
     required this.userName,
     required this.userPhone,
@@ -18,6 +20,8 @@ class UserModel {
     required this.coverImage,
     required this.userRole,
     required this.isVerified,
+    required this.hasFarm,
+    required this.hasTips,
   });
 
   factory UserModel.fromJson(Map<String, dynamic>? json) {
@@ -33,6 +37,8 @@ class UserModel {
           'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/noImage.jpg?alt=media&token=a6f9a0db-ab6f-417f-b813-a33acdc5d045',
       userRole: json?['userRole'],
       isVerified: json?['isVerified'],
+      hasFarm: json?['hasFarm'],
+      hasTips: json?['hasTips'],
     );
   }
 
@@ -47,6 +53,8 @@ class UserModel {
       'coverImage': coverImage,
       'userRole': userRole,
       'isVerified': isVerified,
+      'hasFarm': hasFarm,
+      'hasTips': hasTips,
     };
   }
 }

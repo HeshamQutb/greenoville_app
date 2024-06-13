@@ -1,6 +1,5 @@
-import 'package:greenoville_app/features/market/data/market_farm_model.dart';
-
 import '../../../../community/data/models/community_post_model.dart';
+import '../../../../farm/data/farm_product_model.dart';
 
 abstract class AccountStates {}
 
@@ -23,7 +22,6 @@ class AccountGetUserNullState extends AccountStates {
   AccountGetUserNullState(this.error);
 }
 
-
 // Get Post states
 class AccountGetPostLoadingState extends AccountStates {}
 
@@ -38,17 +36,29 @@ class AccountGetPostErrorState extends AccountStates {
   AccountGetPostErrorState(this.error);
 }
 
-
-// Get Farms states
+// Get Farm states
 class AccountGetFarmLoadingState extends AccountStates {}
 
-class AccountGetFarmSuccessState extends AccountStates {
-  List<MarketFarmModel> posts;
-  AccountGetFarmSuccessState(this.posts);
-}
+class AccountGetFarmSuccessState extends AccountStates {}
 
 class AccountGetFarmErrorState extends AccountStates {
   final String error;
 
   AccountGetFarmErrorState(this.error);
+}
+
+// Get Farm Products states
+class AccountGetFarmProductsLoadingState extends AccountStates {}
+
+class AccountGetFarmProductsSuccessState extends AccountStates {}
+
+class AccountGetFarmProductsEmptyState extends AccountStates {
+  List<FarmProductModel> products;
+  AccountGetFarmProductsEmptyState(this.products);
+}
+
+class AccountGetFarmProductsErrorState extends AccountStates {
+  final String error;
+
+  AccountGetFarmProductsErrorState(this.error);
 }

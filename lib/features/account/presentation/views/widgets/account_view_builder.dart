@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greenoville_app/features/farm/presentation/views/farm_view.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/default_button.dart';
@@ -6,7 +7,7 @@ import '../../../../../core/widgets/posts_tap_bar_view.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/data/models/user_model.dart';
 import '../../../../community/data/models/community_post_model.dart';
-import '../../../../market/data/market_farm_model.dart';
+import '../../../../create_farm/data/models/farm_model.dart';
 import 'account_view_header.dart';
 import 'no_farm_section.dart';
 
@@ -16,12 +17,12 @@ class AccountViewBuilder extends StatelessWidget {
     required this.futureUser,
     required this.tabController,
     required this.futurePosts,
-    required this.futureFarms,
+    required this.futureFarm,
   });
   final TabController tabController;
   final Future<UserModel> futureUser;
   final Future<List<CommunityPostModel>> futurePosts;
-  final Future<List<MarketFarmModel>> futureFarms;
+  final Future<FarmModel?> futureFarm;
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<UserModel>(
@@ -51,10 +52,10 @@ class AccountViewBuilder extends StatelessWidget {
                           userModel: snapshot.data!,
                         ),
                         const SizedBox(height: 16),
-                        const DefaultButton(
+                        DefaultButton(
                           iconColor: Colors.white,
                           icon: Icons.edit,
-                          text: 'edit profile',
+                          text: S.of(context).editProfile,
                         ),
                         const SizedBox(height: 16),
                         TabBar(
@@ -62,14 +63,14 @@ class AccountViewBuilder extends StatelessWidget {
                           indicatorColor: kPrimaryColor,
                           controller: tabController,
                           tabs: snapshot.data!.userRole == S.of(context).farmer
-                              ? const [
-                            Tab(text: 'Posts'),
-                            Tab(text: 'Farm'),
-                          ]
-                              : const [
-                            Tab(text: 'Posts'),
-                            Tab(text: 'Tips'),
-                          ],
+                              ? [
+                                  Tab(text: S.of(context).posts),
+                                  Tab(text: S.of(context).farm),
+                                ]
+                              : [
+                                  Tab(text: S.of(context).posts),
+                                  Tab(text: S.of(context).tips),
+                                ],
                         ),
                       ],
                     ),
@@ -86,21 +87,26 @@ class AccountViewBuilder extends StatelessWidget {
                 controller: tabController,
                 children: snapshot.data!.userRole == S.of(context).farmer
                     ? [
-                  PostsTapBarView(
-                    future: futurePosts,
-                  ),
-                  const NoFarmSection(),
-                ]
+                        PostsTapBarView(
+                          future: futurePosts,
+                        ),
+                        snapshot.data!.hasFarm
+                            ? FarmView(
+                                uid: snapshot.data!.uId,
+                                showAppBar: false,
+                              )
+                            : const NoFarmSection(),
+                      ]
                     : [
-                  PostsTapBarView(
-                    future: futurePosts,
-                  ),
-                  const Center(
-                    child: Text(
-                      'Expert Tips',
-                    ),
-                  ),
-                ],
+                        PostsTapBarView(
+                          future: futurePosts,
+                        ),
+                        const Center(
+                          child: Text(
+                            'Expert Tips',
+                          ),
+                        ),
+                      ],
               ),
             ),
           );

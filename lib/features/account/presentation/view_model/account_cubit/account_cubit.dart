@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
 import '../../../../auth/data/models/user_model.dart';
 import '../../../../community/data/models/community_post_model.dart';
-import '../../../../market/data/market_farm_model.dart';
+import '../../../../create_farm/data/models/farm_model.dart';
+import '../../../../farm/data/farm_product_model.dart';
 import 'account_states.dart';
 
 class AccountCubit extends Cubit<AccountStates> {
@@ -91,48 +92,75 @@ class AccountCubit extends Cubit<AccountStates> {
     }
   }
 
-  // Get Farms
-  Future<List<MarketFarmModel>> getFarms({String? uid}) async {
+  // Get Farm
+  Future<FarmModel?> getFarm({required String uid}) async {
     emit(AccountGetFarmLoadingState());
     try {
-      QuerySnapshot querySnapshot =
-      await FirebaseFirestore.instance.collection('farms').get();
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('farms')
+          .where('uId', isEqualTo: uid)
+          .limit(1)
+          .get();
 
       if (querySnapshot.docs.isEmpty) {
-        // Return an empty list if there are no documents in the collection
-        emit(AccountGetFarmSuccessState([]));
-        return <MarketFarmModel>[];
+        // Return null if there are no documents in the collection
+        emit(AccountGetFarmSuccessState());
+        return null;
       } else {
-        List<MarketFarmModel> farms = [];
-        for (var doc in querySnapshot.docs) {
-          var data = doc.data() as Map<String, dynamic>;
-          var userDoc = await FirebaseFirestore.instance
-              .collection('users')
-              .doc(data['uId'])
-              .get();
-          if (userDoc.data() != null) {
-            var userData = userDoc.data() as Map<String, dynamic>;
-            var farm = MarketFarmModel.fromJson({
-              ...data,
-              'userName': userData['userName'],
-              'userImage': userData['userImage'],
-              'coverImage': userData['coverImage'],
-              'userRole': userData['userRole'],
-              'bio': userData['bio'],
-              'isVerified': userData['isVerified'],
-            });
+        var doc = querySnapshot.docs.first;
+        var data = doc.data() as Map<String, dynamic>;
+        var userDoc = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(data['uId'])
+            .get();
+        if (userDoc.data() != null) {
+          var userData = userDoc.data() as Map<String, dynamic>;
+          var farm = FarmModel.fromJson({
+            ...data,
+            'userName': userData['userName'],
+            'userImage': userData['userImage'],
+            'coverImage': userData['coverImage'],
+            'userRole': userData['userRole'],
+            'bio': userData['bio'],
+            'isVerified': userData['isVerified'],
+          });
 
-            // Filter farms based on uid (if provided)
-            if (uid == null || data['uId'] == uid) {
-              farms.add(farm);
-            }
-          }
+          emit(AccountGetFarmSuccessState());
+          return farm;
+        } else {
+          // If user data is not found, return null
+          emit(AccountGetFarmSuccessState());
+          return null;
         }
-        emit(AccountGetFarmSuccessState(farms));
-        return farms;
       }
     } catch (error) {
       emit(AccountGetFarmErrorState(error.toString()));
+      rethrow;
+    }
+  }
+
+  Future<List<FarmProductModel>> getProducts({String? uid}) async {
+    emit(AccountGetFarmProductsLoadingState());
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('farms')
+          .doc(uid)
+          .collection('products')
+          .get();
+      if (querySnapshot.docs.isEmpty) {
+        emit(AccountGetFarmProductsEmptyState([]));
+        return <FarmProductModel>[];
+      } else {
+        List<FarmProductModel> products = querySnapshot.docs.map((doc) {
+          var data = doc.data() as Map<String, dynamic>;
+          return FarmProductModel.fromJson(data);
+        }).toList();
+
+        emit(AccountGetFarmProductsSuccessState());
+        return products;
+      }
+    } catch (error) {
+      emit(AccountGetFarmProductsErrorState(error.toString()));
       rethrow;
     }
   }
