@@ -18,7 +18,7 @@ class AddPostView extends StatelessWidget {
       child: BlocConsumer<AddPostCubit, AddPostStates>(
         listener: (context, state) {
           if (state is AddPostSuccessState) {
-            Navigator.pop(context);
+            Navigator.pop(context, true);
             showToast(
               message: S.of(context).successfullyPost,
               state: ToastState.success,
@@ -30,7 +30,7 @@ class AddPostView extends StatelessWidget {
             appBar: CustomAppBar(
               title: S.of(context).addPost,
               leadingAction: () {
-                Navigator.pop(context);
+                Navigator.pop(context, false);
               },
             ),
             body: AddPostViewBody(

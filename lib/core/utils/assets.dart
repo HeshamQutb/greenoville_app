@@ -36,7 +36,7 @@ class AssetsData {
   static const chatBackground = 'assets/images/chat_background.png';
 
   static const noUserImage =
-      'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/users%2Funknown%20user.png?alt=media&token=3f02443f-1b9b-4c79-9d7d-e65cd4479f04';
+      'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/unknown%20user.png?alt=media&token=74300a2b-f397-4a61-a79f-fd2c71d9a2ae';
 
   static const noImage =
       'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/noImage.jpg?alt=media&token=a6f9a0db-ab6f-417f-b813-a33acdc5d045';

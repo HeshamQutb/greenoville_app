@@ -1320,6 +1320,36 @@ class S {
     );
   }
 
+  /// `Chat`
+  String get chat {
+    return Intl.message(
+      'Chat',
+      name: 'chat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Message`
+  String get sendMessage {
+    return Intl.message(
+      'Send Message',
+      name: 'sendMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Valid Message`
+  String get pleaseEnterValidMessage {
+    return Intl.message(
+      'Please Enter Valid Message',
+      name: 'pleaseEnterValidMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Farm`
   String get farm {
     return Intl.message(
@@ -1340,6 +1370,16 @@ class S {
     );
   }
 
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Edit Farm`
   String get editFarm {
     return Intl.message(
@@ -1355,6 +1395,16 @@ class S {
     return Intl.message(
       'Edit Profile',
       name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successfully Edit Profile`
+  String get successfullyEditProfile {
+    return Intl.message(
+      'Successfully Edit Profile',
+      name: 'successfullyEditProfile',
       desc: '',
       args: [],
     );

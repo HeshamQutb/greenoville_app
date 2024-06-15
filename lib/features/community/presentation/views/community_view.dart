@@ -22,7 +22,11 @@ class _CommunityViewState extends State<CommunityView> {
     super.initState();
     future = CommunityCubit.get(context).getPosts();
   }
-
+  Future<void> refreshPosts() async {
+    setState(() {
+      future = CommunityCubit.get(context).getPosts();
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CommunityCubit, CommunityStates>(
@@ -39,11 +43,7 @@ class _CommunityViewState extends State<CommunityView> {
             ),
             Expanded(
               child: RefreshIndicator(
-                onRefresh: () async {
-                  setState(() {
-                    future = communityCubit.getPosts();
-                  });
-                },
+                onRefresh: refreshPosts,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: kHorizontalPadding,

@@ -19,7 +19,6 @@ class LikesListView extends StatelessWidget {
           final like = likes[index];
           return LikesListViewItem(
             like: like,
-            post: post,
           );
         },
         childCount: likes.length,

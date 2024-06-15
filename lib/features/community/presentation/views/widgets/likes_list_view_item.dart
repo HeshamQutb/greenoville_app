@@ -6,26 +6,24 @@ import '../../../../../core/services/navigate_services.dart';
 import '../../../../../core/utils/icon_broken.dart';
 import '../../../../account/presentation/views/account_view.dart';
 import '../../../../profile/presentation/views/profile_view.dart';
-import '../../../data/models/community_post_model.dart';
 
 class LikesListViewItem extends StatelessWidget {
   const LikesListViewItem({
     super.key,
     required this.like,
-    required this.post,
   });
   final CommunityLikeModel like;
-  final CommunityPostModel post;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
         navigateTo(
           context,
-          post.uId == uId
+          like.uId == uId
               ? const AccountView()
               : ProfileView(
-            uId: post.uId,
+            uId: like.uId,
           ),
         );
       },

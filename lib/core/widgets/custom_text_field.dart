@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final IconData suffixIcon;
-  final String Function(String?) validator;
+  final String? Function(String?)? validator;
   final void Function(String?)? onFieldSubmitted;
   final int? maxLines;
   final TextInputType? keyboardType;

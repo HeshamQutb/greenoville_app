@@ -5,6 +5,7 @@ import 'package:greenoville_app/core/utils/icon_broken.dart';
 import 'package:greenoville_app/features/edit_farm/presentation/views/edit_farm_view.dart';
 import '../../../../../constants.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../chat/presentation/views/chat_view.dart';
 import '../../../../create_farm/data/models/farm_model.dart';
 import '../../view_model/farm_cubit.dart';
 
@@ -80,7 +81,12 @@ class FarmInformationSection extends StatelessWidget {
         // Contact Button
         if (farm.uId != uId)
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              navigateTo(
+                context,
+                ChatView(friendID: farm.uId),
+              );
+            },
             child: Text(
               '${S.of(context).contact} ${farm.farmOwnerName}',
               style: const TextStyle(

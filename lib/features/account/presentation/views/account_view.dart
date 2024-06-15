@@ -7,6 +7,7 @@ import 'package:greenoville_app/features/account/presentation/views/widgets/acco
 import 'package:greenoville_app/features/auth/data/models/user_model.dart';
 import '../../../community/data/models/community_post_model.dart';
 import '../../../create_farm/data/models/farm_model.dart';
+import '../../../edit_profile/presentation/views/edit_profile_view.dart';
 import '../view_model/account_cubit/account_cubit.dart';
 
 class AccountView extends StatefulWidget {
@@ -37,6 +38,19 @@ class _AccountViewState extends State<AccountView>
     tabController.dispose();
     super.dispose();
   }
+  void navigateToEditProfile(UserModel userModel) async {
+    final updatedUser = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EditProfileView(userModel: userModel),
+      ),
+    );
+    if (updatedUser != null) {
+      setState(() {
+        futureUser = Future.value(updatedUser);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +68,7 @@ class _AccountViewState extends State<AccountView>
             tabController: tabController,
             futurePosts: futurePosts,
             futureFarm: futureFarm,
+            onEditProfile: navigateToEditProfile,
           ),
         );
       },

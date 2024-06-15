@@ -18,11 +18,13 @@ class AccountViewBuilder extends StatelessWidget {
     required this.tabController,
     required this.futurePosts,
     required this.futureFarm,
+    required this.onEditProfile,
   });
   final TabController tabController;
   final Future<UserModel> futureUser;
   final Future<List<CommunityPostModel>> futurePosts;
   final Future<FarmModel?> futureFarm;
+  final void Function(UserModel) onEditProfile;
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<UserModel>(
@@ -53,6 +55,9 @@ class AccountViewBuilder extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         DefaultButton(
+                          onPressed: () {
+                            onEditProfile(snapshot.data!);
+                          },
                           iconColor: Colors.white,
                           icon: Icons.edit,
                           text: S.of(context).editProfile,

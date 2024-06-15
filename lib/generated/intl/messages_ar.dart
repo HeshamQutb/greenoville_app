@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("نبذة مختصرة"),
         "by": MessageLookupByLibrary.simpleMessage("بواسطة"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "chat": MessageLookupByLibrary.simpleMessage("الدردشة"),
         "chooseFromGallery":
             MessageLookupByLibrary.simpleMessage("اختر من المعرض"),
         "claySoil": MessageLookupByLibrary.simpleMessage("التربــة الطينية"),
@@ -137,6 +138,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسم المنتج"),
         "pleaseEnterProductPrice":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال سعر المنتج"),
+        "pleaseEnterValidMessage":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال رسالة صالحة"),
         "pleaseEnterYourName":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسمك"),
         "pleaseFillAllFields": MessageLookupByLibrary.simpleMessage(
@@ -165,9 +168,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "replay": MessageLookupByLibrary.simpleMessage("رد"),
         "replies": MessageLookupByLibrary.simpleMessage("الردود"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("التربــة الرملية"),
+        "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "searchNow": MessageLookupByLibrary.simpleMessage("ابحث الأن"),
         "seeAll": MessageLookupByLibrary.simpleMessage("المزيـد"),
         "seeMore": MessageLookupByLibrary.simpleMessage("عرض المزيـد"),
+        "sendMessage": MessageLookupByLibrary.simpleMessage("إرسال رسالة"),
         "share": MessageLookupByLibrary.simpleMessage("مشاركة"),
         "signOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "signUp": MessageLookupByLibrary.simpleMessage("التسجل"),
@@ -179,6 +184,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم إضافة المنتج بنجاح"),
         "successfullyCreateFarm":
             MessageLookupByLibrary.simpleMessage("تم إنشاء المزرعة بنجاح"),
+        "successfullyEditProfile":
+            MessageLookupByLibrary.simpleMessage("تم تعديل الملف الشخصي بنجاح"),
         "successfullyLogin":
             MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
         "successfullyPost":

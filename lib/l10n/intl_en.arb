@@ -137,12 +137,17 @@
   "by":"By",
   "contact": "Contact",
   "message": "Message",
+  "chat": "Chat",
+  "sendMessage": "Send Message",
+  "pleaseEnterValidMessage": "Please Enter Valid Message",
 
 
   "farm": "Farm",
   "edit": "Edit",
+  "save": "Save",
   "editFarm": "Edit Farm",
   "editProfile": "Edit Profile",
+  "successfullyEditProfile": "Successfully Edit Profile",
 
 
   "posts": "Posts",

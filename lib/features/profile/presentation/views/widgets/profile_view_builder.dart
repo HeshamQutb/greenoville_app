@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:greenoville_app/core/services/navigate_services.dart';
+import 'package:greenoville_app/features/chat/presentation/views/chat_view.dart';
 import 'package:greenoville_app/features/profile/presentation/views/widgets/profile_view_header.dart';
 
 import '../../../../../constants.dart';
@@ -52,10 +54,18 @@ class ProfileViewBuilder extends StatelessWidget {
                           userModel: snapshot.data!,
                         ),
                         const SizedBox(height: 16),
-                        DefaultButton(
-                          iconColor: Colors.white,
-                          icon: IconBroken.Message,
-                          text: S.of(context).message,
+                        InkWell(
+                          onTap: () {
+                            navigateTo(
+                              context,
+                              ChatView(friendID: snapshot.data!.uId),
+                            );
+                          },
+                          child: DefaultButton(
+                            iconColor: Colors.white,
+                            icon: IconBroken.Message,
+                            text: S.of(context).message,
+                          ),
                         ),
                         const SizedBox(height: 16),
                         TabBar(
@@ -95,7 +105,7 @@ class ProfileViewBuilder extends StatelessWidget {
                                 uid: snapshot.data!.uId,
                                 showAppBar: false,
                               )
-                            :  Center(
+                            : Center(
                                 child: Text(
                                   S.of(context).noFarmsAvailable,
                                 ),

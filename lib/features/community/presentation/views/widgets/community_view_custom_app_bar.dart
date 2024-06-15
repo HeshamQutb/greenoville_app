@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/constants.dart';
-import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/core/utils/icon_broken.dart';
 import '../../../../../core/widgets/gradient_text.dart';
 import '../../../../../generated/l10n.dart';
@@ -25,11 +24,17 @@ class CommunityViewCustomAppBar extends StatelessWidget {
           ),
           const Spacer(),
           GestureDetector(
-            onTap: () {
-              navigateTo(
+            onTap: () async {
+              final result = await Navigator.push(
                 context,
-                AddPostView(),
+                MaterialPageRoute(
+                  builder: (context) => AddPostView(),
+                ),
               );
+              if (result == true) {
+                // Refresh posts if a new post was added
+                (context as Element).markNeedsBuild();
+              }
             },
             child: Container(
               height: 35,

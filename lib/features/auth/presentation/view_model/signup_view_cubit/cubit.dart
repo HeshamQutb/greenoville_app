@@ -87,12 +87,12 @@ class SignUpCubit extends Cubit<SignUpStates> {
     emit(RemoveUserImageSuccessState());
   }
 
-  Future<String?> uploadProfileImage() async {
+  Future<String?> uploadProfileImage({required String uId}) async {
     if (profileImage != null) {
       try {
         final TaskSnapshot uploadSnapshot = await FirebaseStorage.instance
             .ref()
-            .child('users/${Uri.file(profileImage!.path).pathSegments.last}')
+            .child('profile_images/$uId')
             .putFile(profileImage!);
 
         final String imageURL = await uploadSnapshot.ref.getDownloadURL();
@@ -119,7 +119,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
     try {
       final UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: userEmail, password: password);
-      final imageURL = await uploadProfileImage();
+      final imageURL = await uploadProfileImage(uId: userCredential.user!.uid);
       userCreate(
         userName: userName,
         userPhone: userPhone,
@@ -179,7 +179,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
       coverImage: coverImage,
       userRole: userRole,
       isVerified: isVerified,
-      bio: '',
+      bio: 'bio',
       hasFarm: false,
       hasTips: false,
     );

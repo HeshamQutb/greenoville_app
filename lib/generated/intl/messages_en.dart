@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bio": MessageLookupByLibrary.simpleMessage("Bio"),
         "by": MessageLookupByLibrary.simpleMessage("By"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "chat": MessageLookupByLibrary.simpleMessage("Chat"),
         "chooseFromGallery":
             MessageLookupByLibrary.simpleMessage("Choose from gallery"),
         "claySoil": MessageLookupByLibrary.simpleMessage("ClaySoil"),
@@ -135,6 +136,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please Enter ProductName"),
         "pleaseEnterProductPrice":
             MessageLookupByLibrary.simpleMessage("Please Enter Product Price"),
+        "pleaseEnterValidMessage":
+            MessageLookupByLibrary.simpleMessage("Please Enter Valid Message"),
         "pleaseEnterYourName":
             MessageLookupByLibrary.simpleMessage("Please Enter Your Name"),
         "pleaseFillAllFields":
@@ -163,9 +166,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "replay": MessageLookupByLibrary.simpleMessage("Replay"),
         "replies": MessageLookupByLibrary.simpleMessage("Replies"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("SandySoil"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
         "searchNow": MessageLookupByLibrary.simpleMessage("Search now"),
         "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
         "seeMore": MessageLookupByLibrary.simpleMessage("See More"),
+        "sendMessage": MessageLookupByLibrary.simpleMessage("Send Message"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),
         "signUp": MessageLookupByLibrary.simpleMessage("sign up"),
@@ -177,6 +182,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Successfully Add Product"),
         "successfullyCreateFarm":
             MessageLookupByLibrary.simpleMessage("Successfully Create Farm"),
+        "successfullyEditProfile":
+            MessageLookupByLibrary.simpleMessage("Successfully Edit Profile"),
         "successfullyLogin":
             MessageLookupByLibrary.simpleMessage("Successfully Login"),
         "successfullyPost":
