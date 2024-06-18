@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 
-class LocationAndWeatherSection extends StatelessWidget {
-  const LocationAndWeatherSection({super.key});
+class HomeViewLocationAndWeatherSection extends StatelessWidget {
+  const HomeViewLocationAndWeatherSection({super.key});
 
   @override
   Widget build(BuildContext context) {

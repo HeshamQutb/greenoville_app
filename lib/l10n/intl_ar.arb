@@ -8,11 +8,15 @@
   "seeAll": "المزيـد",
   "seeMore": "عرض المزيـد",
   "latestNews": "أخـر الأخبـار",
+  "newsPage": "صفحة الخبر",
   "marketPrices": "أسعـار السـوق",
   "soilsTitle": "التربـة",
   "communityTitle": "المجتمع",
   "learnTitle": "التعلم",
   "marketTitle": "السوق",
+  "product": "المنتج",
+
+  "noNewsAvailable": "لا توجد أخبار متاحة",
 
   "claySoil": "التربــة الطينية",
   "sandySoil": "التربــة الرملية",
@@ -138,6 +142,7 @@
   "chat": "الدردشة",
   "sendMessage": "إرسال رسالة",
   "pleaseEnterValidMessage": "يرجى إدخال رسالة صالحة",
+  "noChatParticipantsFound": "لم يتم العثور على مشاركين في الدردشة.",
 
 
   "farm": "المزرعة",

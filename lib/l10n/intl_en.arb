@@ -8,11 +8,18 @@
   "seeAll": "See all",
   "seeMore": "See More",
   "latestNews": "Latest News",
+  "newsPage": "News Page",
   "marketPrices": "Market Prices",
   "soilsTitle": "Soils",
   "communityTitle": "Community",
   "learnTitle": "Learn",
   "marketTitle": "Market",
+  "product": "Product",
+
+  "noNewsAvailable": "No News Available",
+
+
+
 
   "claySoil": "ClaySoil",
   "sandySoil": "SandySoil",
@@ -140,6 +147,7 @@
   "chat": "Chat",
   "sendMessage": "Send Message",
   "pleaseEnterValidMessage": "Please Enter Valid Message",
+  "noChatParticipantsFound": "No chat participants found.",
 
 
   "farm": "Farm",

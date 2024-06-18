@@ -99,10 +99,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "myAddress": MessageLookupByLibrary.simpleMessage("My Address"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "newAccount": MessageLookupByLibrary.simpleMessage("New Account"),
+        "newsPage": MessageLookupByLibrary.simpleMessage("News Page"),
+        "noChatParticipantsFound":
+            MessageLookupByLibrary.simpleMessage("No chat participants found."),
         "noComments": MessageLookupByLibrary.simpleMessage("No comments yet."),
         "noFarmsAvailable":
             MessageLookupByLibrary.simpleMessage("No Farms Available"),
         "noLikes": MessageLookupByLibrary.simpleMessage("No likes yet."),
+        "noNewsAvailable":
+            MessageLookupByLibrary.simpleMessage("No News Available"),
         "noPostsAvailable":
             MessageLookupByLibrary.simpleMessage("No posts available."),
         "noProductsAvailable":
@@ -147,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "privacySecurity":
             MessageLookupByLibrary.simpleMessage("Privacy & Security"),
+        "product": MessageLookupByLibrary.simpleMessage("Product"),
         "productDescription":
             MessageLookupByLibrary.simpleMessage("Product Description"),
         "productImage": MessageLookupByLibrary.simpleMessage("Product Image"),

@@ -48,26 +48,33 @@ class ChatCubit extends Cubit<ChatStates> {
           .doc(currentUserID)
           .collection('messages')
           .add(messageData);
-    } catch (e) {
-      print(e.toString());
+      emit(SendMessageSuccessState());
+    } catch (error) {
+      print(error.toString());
+      emit(SendMessageErrorState(error.toString()));
     }
   }
 
   void getMessages(String friendID) {
-    FirebaseFirestore.instance
-        .collection('users')
-        .doc(currentUserID)
-        .collection('chats')
-        .doc(friendID)
-        .collection('messages')
-        .orderBy('createdAt', descending: true)
-        .snapshots()
-        .listen((event) {
-      messagesList.clear();
-      for (var doc in event.docs) {
-        messagesList.add(MessageModel.fromJson(doc.data()));
-      }
-      emit(ChatSuccess(messagesList: messagesList));
-    });
+    try {
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUserID)
+          .collection('chats')
+          .doc(friendID)
+          .collection('messages')
+          .orderBy('createdAt', descending: true)
+          .snapshots()
+          .listen((event) {
+        messagesList.clear();
+        for (var doc in event.docs) {
+          messagesList.add(MessageModel.fromJson(doc.data()));
+        }
+        emit(GetMessageSuccessState(messagesList: messagesList));
+      });
+    } catch (error) {
+      print(error.toString());
+      emit(GetMessageErrorState(error.toString()));
+    }
   }
 }

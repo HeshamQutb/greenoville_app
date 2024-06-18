@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/models/comment_model.dart';
-import '../../../../../core/models/ike_model.dart';
+import '../../../../../core/models/like_model.dart';
 import '../../../data/models/community_comment_model.dart';
 import '../../../data/models/community_like_model.dart';
 import '../../../data/models/community_post_model.dart';

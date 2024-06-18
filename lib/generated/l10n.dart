@@ -140,6 +140,16 @@ class S {
     );
   }
 
+  /// `News Page`
+  String get newsPage {
+    return Intl.message(
+      'News Page',
+      name: 'newsPage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Market Prices`
   String get marketPrices {
     return Intl.message(
@@ -185,6 +195,26 @@ class S {
     return Intl.message(
       'Market',
       name: 'marketTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product`
+  String get product {
+    return Intl.message(
+      'Product',
+      name: 'product',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No News Available`
+  String get noNewsAvailable {
+    return Intl.message(
+      'No News Available',
+      name: 'noNewsAvailable',
       desc: '',
       args: [],
     );
@@ -1345,6 +1375,16 @@ class S {
     return Intl.message(
       'Please Enter Valid Message',
       name: 'pleaseEnterValidMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No chat participants found.`
+  String get noChatParticipantsFound {
+    return Intl.message(
+      'No chat participants found.',
+      name: 'noChatParticipantsFound',
       desc: '',
       args: [],
     );

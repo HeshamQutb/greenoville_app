@@ -9,6 +9,7 @@ import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
 import 'package:greenoville_app/features/account/presentation/view_model/account_cubit/account_cubit.dart';
+import 'package:greenoville_app/features/chat/presentation/view_model/chat_users_cubit/chat_cubit.dart';
 import 'package:greenoville_app/features/community/presentation/view_model/community_cubit/community_cubit.dart';
 import 'package:greenoville_app/features/farm/presentation/view_model/farm_cubit.dart';
 import 'package:greenoville_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
@@ -16,6 +17,7 @@ import 'package:greenoville_app/features/welcome/presentation/views/splash_view.
 import 'bloc_observer.dart';
 import 'core/network/local/cache_helper.dart';
 import 'features/market/presentation/view_model/market_cubit/market_cubit.dart';
+import 'features/market_prices/presentation/view_model/market_prices_cubit/market_prices_cubit.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
@@ -57,6 +59,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => FarmCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ChatUsersCubit()..getChatUsers(uId: uId!),
+        ),
+        BlocProvider(
+          create: (context) => MarketPricesCubit(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(

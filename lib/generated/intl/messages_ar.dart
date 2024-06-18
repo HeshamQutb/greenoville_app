@@ -100,11 +100,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "myAddress": MessageLookupByLibrary.simpleMessage("عنواني"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "newAccount": MessageLookupByLibrary.simpleMessage("حساب جديد"),
+        "newsPage": MessageLookupByLibrary.simpleMessage("صفحة الخبر"),
+        "noChatParticipantsFound": MessageLookupByLibrary.simpleMessage(
+            "لم يتم العثور على مشاركين في الدردشة."),
         "noComments":
             MessageLookupByLibrary.simpleMessage("لا توجد تعليقات بعد."),
         "noFarmsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد مزارع."),
         "noLikes": MessageLookupByLibrary.simpleMessage("لا توجد اعجابات بعد."),
+        "noNewsAvailable":
+            MessageLookupByLibrary.simpleMessage("لا توجد أخبار متاحة"),
         "noPostsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد منشورات."),
         "noProductsAvailable":
@@ -149,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("السعر"),
         "privacySecurity":
             MessageLookupByLibrary.simpleMessage("الخصوصية والأمان"),
+        "product": MessageLookupByLibrary.simpleMessage("المنتج"),
         "productDescription":
             MessageLookupByLibrary.simpleMessage("وصف المنتج"),
         "productImage": MessageLookupByLibrary.simpleMessage("صورة المنتج"),

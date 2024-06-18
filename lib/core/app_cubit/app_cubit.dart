@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/core/services/sign_out.dart';
+import 'package:greenoville_app/features/market_prices/data/product_model.dart';
 import 'package:greenoville_app/features/root/presentation/views/root_view.dart';
 import 'package:intl/intl.dart';
 import '../../constants.dart';
@@ -14,6 +17,7 @@ import '../../features/soils/presentation/views/soils_view.dart';
 import '../../features/welcome/presentation/views/onboarding_view.dart';
 import '../../features/learn/presentation/views/learn_view.dart';
 import '../../features/market/presentation/views/market_view.dart';
+import '../models/articles_model.dart';
 import '../network/local/cache_helper.dart';
 
 class AppCubit extends Cubit<AppStates> {
@@ -108,4 +112,61 @@ class AppCubit extends Cubit<AppStates> {
     }
   }
 
+  // Get news
+  Future<List<ArticlesModel>> getNews({required Dio dio}) async {
+    emit(AppGetNewsLoadingState());
+    try {
+      final response = await dio.get(
+          'https://gnews.io/api/v4/search?country=eg&q=%D8%A7%D9%84%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AF%D8%A7%D9%85%D8%A9%20OR%20%D8%A7%D9%84%D8%B1%D9%8A&apikey=7ade9c8ce771581eb698a71ef64bb6f6');
+      Map<String, dynamic> jsonData = response.data;
+      List<dynamic> articles = jsonData['articles'];
+      List<ArticlesModel> articlesList = [];
+      for (var article in articles) {
+        ArticlesModel articlesModel = ArticlesModel.fromJson(article);
+        articlesList.add(articlesModel);
+      }
+      emit(AppGetNewsSuccessState());
+      return articlesList;
+    } catch (error) {
+      if (kDebugMode) {
+        print(error.toString());
+      }
+      emit(AppGetNewsErrorState(error.toString()));
+      return [];
+    }
+  }
+
+
+  // Get Products
+  Future<List<ProductModel>> getAllProducts() async {
+    emit(AppGetProductsLoadingState());
+    List<ProductModel> allProducts = [];
+
+    try {
+      // Fetch all farm documents
+      QuerySnapshot farmSnapshots =
+      await FirebaseFirestore.instance.collection('farms').get();
+
+      // For each farm, fetch the products from the subcollection
+      for (var farmDoc in farmSnapshots.docs) {
+        QuerySnapshot productSnapshots = await FirebaseFirestore.instance
+            .collection('farms')
+            .doc(farmDoc.id)
+            .collection('products')
+            .get();
+
+        // Add each product to the list
+        for (var productDoc in productSnapshots.docs) {
+          ProductModel product =
+          ProductModel.fromJson(productDoc.data() as Map<String, dynamic>);
+          allProducts.add(product);
+        }
+      }
+      emit(AppGetProductsSuccessState());
+    } catch (e) {
+      emit(AppGetProductsErrorState(e.toString()));
+    }
+
+    return allProducts;
+  }
 }

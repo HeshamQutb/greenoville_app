@@ -34,3 +34,27 @@ class AppGetUserNullState extends AppStates {
 
 
 
+// Get News States
+class AppGetNewsLoadingState extends AppStates {}
+
+class AppGetNewsSuccessState extends AppStates {}
+
+class AppGetNewsErrorState extends AppStates {
+  final String error;
+
+  AppGetNewsErrorState(this.error);
+}
+
+
+
+
+// Get Products States
+class AppGetProductsLoadingState extends AppStates {}
+
+class AppGetProductsSuccessState extends AppStates {}
+
+class AppGetProductsErrorState extends AppStates {
+  final String error;
+
+  AppGetProductsErrorState(this.error);
+}

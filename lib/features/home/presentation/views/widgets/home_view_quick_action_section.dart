@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
-import 'package:greenoville_app/features/home/presentation/views/widgets/quick_action_button.dart';
+import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_quick_action_button.dart';
 
 import '../../../../../generated/l10n.dart';
 
@@ -13,7 +13,7 @@ class HomeViewQuickActionSection extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          QuickActionButton(
+          HomeViewQuickActionButton(
             icon: Icons.lightbulb_outline,
             label: S.of(context).quickActionLearnTips,
             onPressed: () {
@@ -21,7 +21,7 @@ class HomeViewQuickActionSection extends StatelessWidget {
             },
           ),
           const SizedBox(width: 8),
-          QuickActionButton(
+          HomeViewQuickActionButton(
             icon: Icons.question_answer,
             label: S.of(context).quickActionAskExpert,
             onPressed: () {
@@ -29,7 +29,7 @@ class HomeViewQuickActionSection extends StatelessWidget {
             },
           ),
           const SizedBox(width: 8),
-          QuickActionButton(
+          HomeViewQuickActionButton(
             icon: Icons.shopping_cart,
             label: S.of(context).quickActionSellProduce,
             onPressed: () {

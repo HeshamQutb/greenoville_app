@@ -35,6 +35,10 @@ class AssetsData {
 
   static const chatBackground = 'assets/images/chat_background.png';
 
+  static const assetsNoUserImage = 'assets/images/assetsNoImage.jpg';
+
+  static const assetsNoImage = 'assets/images/unknown user.png';
+
   static const noUserImage =
       'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/unknown%20user.png?alt=media&token=74300a2b-f397-4a61-a79f-fd2c71d9a2ae';
 

@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/widgets/default_button.dart';
-import 'package:greenoville_app/features/add_product/presentation/view_model/add_post_cubit/add_product_cubit.dart';
-import 'package:greenoville_app/features/add_product/presentation/view_model/add_post_cubit/add_product_states.dart';
+import 'package:greenoville_app/features/add_product/presentation/view_model/add_product_cubit/add_product_cubit.dart';
+import 'package:greenoville_app/features/add_product/presentation/view_model/add_product_cubit/add_product_states.dart';
 import 'package:greenoville_app/features/add_product/presentation/views/widgets/product_loading_section.dart';
 import 'package:greenoville_app/features/add_product/presentation/views/widgets/product_form.dart';
 import 'package:greenoville_app/generated/l10n.dart';
+
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
