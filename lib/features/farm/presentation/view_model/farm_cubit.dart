@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:greenoville_app/features/market_prices/data/product_model.dart';
 import '../../../create_farm/data/models/farm_model.dart';
-import '../../data/farm_product_model.dart';
 import 'farm_states.dart';
 
 class FarmCubit extends Cubit<FarmStates> {
@@ -56,7 +56,7 @@ class FarmCubit extends Cubit<FarmStates> {
     }
   }
 
-  Future<List<FarmProductModel>> getProducts({String? uid}) async {
+  Future<List<ProductModel>> getProducts({String? uid}) async {
     emit(FarmGetFarmProductsLoadingState());
     try {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
@@ -66,11 +66,11 @@ class FarmCubit extends Cubit<FarmStates> {
           .get();
       if (querySnapshot.docs.isEmpty) {
         emit(FarmGetFarmProductsEmptyState([]));
-        return <FarmProductModel>[];
+        return <ProductModel>[];
       } else {
-        List<FarmProductModel> products = querySnapshot.docs.map((doc) {
+        List<ProductModel> products = querySnapshot.docs.map((doc) {
           var data = doc.data() as Map<String, dynamic>;
-          return FarmProductModel.fromJson(data);
+          return ProductModel.fromJson(data);
         }).toList();
 
         emit(FarmGetFarmProductsSuccessState(products));

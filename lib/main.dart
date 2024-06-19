@@ -12,12 +12,16 @@ import 'package:greenoville_app/features/account/presentation/view_model/account
 import 'package:greenoville_app/features/chat/presentation/view_model/chat_users_cubit/chat_cubit.dart';
 import 'package:greenoville_app/features/community/presentation/view_model/community_cubit/community_cubit.dart';
 import 'package:greenoville_app/features/farm/presentation/view_model/farm_cubit.dart';
+import 'package:greenoville_app/features/fertilizers/presentation/view_model/plants_cubit/fertilizers_cubit.dart';
 import 'package:greenoville_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
 import 'package:greenoville_app/features/welcome/presentation/views/splash_view.dart';
 import 'bloc_observer.dart';
 import 'core/network/local/cache_helper.dart';
+import 'features/edit_post/presentation/view_model/edit_post_cubit/edit_post_cubit.dart';
 import 'features/market/presentation/view_model/market_cubit/market_cubit.dart';
 import 'features/market_prices/presentation/view_model/market_prices_cubit/market_prices_cubit.dart';
+import 'features/plants/presentation/view_model/plants_cubit/plants_cubit.dart';
+import 'features/tools/presentation/view_model/tools_cubit/tools_cubit.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
@@ -40,11 +44,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => AppCubit()
-            ..getSplashNextScreen()
-            ..getUserData(context: context),
-        ),
+        BlocProvider(create: (context) => AppCubit()..getSplashNextScreen()),
         BlocProvider(
           create: (context) => CommunityCubit(),
         ),
@@ -65,6 +65,18 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => MarketPricesCubit(),
+        ),
+        BlocProvider(
+          create: (context) => PlantsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ToolsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FertilizersCubit(),
+        ),
+        BlocProvider(
+          create: (context) => EditPostCubit(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(

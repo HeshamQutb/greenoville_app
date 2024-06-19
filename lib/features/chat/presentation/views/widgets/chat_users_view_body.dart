@@ -5,7 +5,7 @@
 // import '../../../../../core/widgets/custom_text_field.dart';
 // import '../../../../../generated/l10n.dart';
 // import '../../../data/models/chat_users_model.dart';
-// import '../../view_model/chat_cubit/market_prices_cubit.dart';
+// import '../../view_model/chat_cubit/search_cubit.dart';
 // import 'chat_bubble_friend.dart';
 // import 'chat_bubble_user.dart';
 //

@@ -1,6 +1,6 @@
 
 class ProductModel {
-  late final String? productImage;
+  late final String productImage;
   final String productName;
   final String? productDescription;
   final String productId;
@@ -9,7 +9,7 @@ class ProductModel {
   late final int productQuantity;
 
   ProductModel({
-    this.productImage,
+    required this.productImage,
     required this.productName,
     this.productDescription,
     required this.productId,

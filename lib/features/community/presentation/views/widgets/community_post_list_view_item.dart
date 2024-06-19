@@ -31,6 +31,7 @@ class CommunityPostListViewItem extends StatelessWidget {
           children: [
             CommunityPostHeadingSection(
               post: post,
+              communityCubit: communityCubit,
             ),
             const CustomDivider(
               top: 12,

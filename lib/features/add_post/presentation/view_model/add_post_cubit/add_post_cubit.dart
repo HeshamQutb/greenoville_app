@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:uuid/uuid.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/post_model.dart';
 import 'add_post_states.dart';
@@ -22,9 +21,8 @@ class AddPostCubit extends Cubit<AddPostStates> {
     String? postImage,
     required Timestamp timestamp,
     String? description,
-    String? postId,
+    required String postId,
   }) {
-    String postId = const Uuid().v1();
     emit(AddPostLoadingState());
     PostModel postModel = PostModel(
       uId: uId,
@@ -94,13 +92,13 @@ class AddPostCubit extends Cubit<AddPostStates> {
     required String uId,
     required Timestamp timestamp,
     String? description,
-    String? postId,
+    required String postId,
   }) {
     emit(AddPostLoadingState());
-    String postId = const Uuid().v1();
+
     FirebaseStorage.instance
         .ref()
-        .child('posts/${Uri.file(postImage!.path).pathSegments.last}')
+        .child('posts_images/$postId')
         .putFile(postImage!)
         .then((value) {
       value.ref.getDownloadURL().then((imageUrl) {

@@ -12,8 +12,11 @@ import '../../constants.dart';
 import '../../features/auth/data/models/user_model.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/community/presentation/views/community_view.dart';
+import '../../features/fertilizers/data/fertilizer_model.dart';
 import '../../features/home/presentation/views/home_view.dart';
+import '../../features/plants/data/plant_model.dart';
 import '../../features/soils/presentation/views/soils_view.dart';
+import '../../features/tools/data/tool_model.dart';
 import '../../features/welcome/presentation/views/onboarding_view.dart';
 import '../../features/learn/presentation/views/learn_view.dart';
 import '../../features/market/presentation/views/market_view.dart';
@@ -80,14 +83,13 @@ class AppCubit extends Cubit<AppStates> {
     );
   }
 
-
   // Get User Data
   Future<UserModel> getUserData({required BuildContext context}) async {
     if (uId != null) {
       emit(AppGetUserLoadingState());
       try {
         final DocumentSnapshot<Map<String, dynamic>> snapshot =
-        await FirebaseFirestore.instance.collection('users').doc(uId).get();
+            await FirebaseFirestore.instance.collection('users').doc(uId).get();
         if (snapshot.exists) {
           UserModel userModel;
           var userData = snapshot.data();
@@ -136,7 +138,6 @@ class AppCubit extends Cubit<AppStates> {
     }
   }
 
-
   // Get Products
   Future<List<ProductModel>> getAllProducts() async {
     emit(AppGetProductsLoadingState());
@@ -145,7 +146,7 @@ class AppCubit extends Cubit<AppStates> {
     try {
       // Fetch all farm documents
       QuerySnapshot farmSnapshots =
-      await FirebaseFirestore.instance.collection('farms').get();
+          await FirebaseFirestore.instance.collection('farms').get();
 
       // For each farm, fetch the products from the subcollection
       for (var farmDoc in farmSnapshots.docs) {
@@ -158,7 +159,7 @@ class AppCubit extends Cubit<AppStates> {
         // Add each product to the list
         for (var productDoc in productSnapshots.docs) {
           ProductModel product =
-          ProductModel.fromJson(productDoc.data() as Map<String, dynamic>);
+              ProductModel.fromJson(productDoc.data() as Map<String, dynamic>);
           allProducts.add(product);
         }
       }
@@ -168,5 +169,61 @@ class AppCubit extends Cubit<AppStates> {
     }
 
     return allProducts;
+  }
+
+  // Search
+
+  Stream<List<dynamic>> searchAllCollections({required String query}) async* {
+    try {
+      final queryLower = query.toLowerCase(); // Convert query to lowercase
+
+      final plantsStream = FirebaseFirestore.instance
+          .collection('plants')
+          .orderBy('plantName')
+          .snapshots();
+
+      final toolsStream = FirebaseFirestore.instance
+          .collection('tools')
+          .orderBy('toolName')
+          .snapshots();
+
+      final fertilizersStream = FirebaseFirestore.instance
+          .collection('fertilizers')
+          .orderBy('fertilizerName')
+          .snapshots();
+
+      await for (var plantsSnapshot in plantsStream) {
+        var plants = plantsSnapshot.docs
+            .map((doc) => PlantModel.fromJson(doc.data()))
+            .where(
+                (plant) => plant.plantName.toLowerCase().contains(queryLower))
+            .toList();
+
+        await for (var toolsSnapshot in toolsStream) {
+          var tools = toolsSnapshot.docs
+              .map((doc) => ToolModel.fromJson(doc.data()))
+              .where((tool) => tool.toolName.toLowerCase().contains(queryLower))
+              .toList();
+
+          await for (var fertilizersSnapshot in fertilizersStream) {
+            var fertilizers = fertilizersSnapshot.docs
+                .map((doc) => FertilizerModel.fromJson(doc.data()))
+                .where((fertilizer) => fertilizer.fertilizerName
+                    .toLowerCase()
+                    .contains(queryLower))
+                .toList();
+
+            // Combine the results into a single list and yield it
+            yield [...plants, ...tools, ...fertilizers];
+            emit(AppSearchSuccessState());
+          }
+        }
+      }
+    } catch (error) {
+      emit(AppSearchErrorState(error.toString()));
+      if (kDebugMode) {
+        print(error.toString());
+      }
+    }
   }
 }

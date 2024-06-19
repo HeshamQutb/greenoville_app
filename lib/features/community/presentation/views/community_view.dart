@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
+import 'package:greenoville_app/core/services/toast_services.dart';
+import '../../../../generated/l10n.dart';
 import '../../data/models/community_post_model.dart';
 import '../view_model/community_cubit/community_cubit.dart';
 import '../view_model/community_cubit/community_states.dart';
@@ -22,15 +24,25 @@ class _CommunityViewState extends State<CommunityView> {
     super.initState();
     future = CommunityCubit.get(context).getPosts();
   }
+
   Future<void> refreshPosts() async {
     setState(() {
       future = CommunityCubit.get(context).getPosts();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CommunityCubit, CommunityStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is DeletePostSuccessState) {
+          showToast(
+            message: S.of(context).successfullyDeletePost,
+            state: ToastState.success,
+          );
+          refreshPosts();
+        }
+      },
       builder: (context, state) {
         var communityCubit = CommunityCubit.get(context);
         return Column(

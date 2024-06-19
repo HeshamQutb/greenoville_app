@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greenoville_app/features/market/data/market_product_model.dart';
+import 'package:greenoville_app/features/market_prices/data/product_model.dart';
 import '../../../../../generated/l10n.dart';
 import '../../view_model/market_cubit/market_cubit.dart';
 import 'farm_products_section.dart';
@@ -16,7 +16,7 @@ class FarmProductSectionBuilder extends StatefulWidget {
 }
 
 class _FarmProductSectionBuilderState extends State<FarmProductSectionBuilder> {
-  late Future<List<MarketProductModel>> futureProducts;
+  late Future<List<ProductModel>> futureProducts;
 
   @override
   void initState() {
@@ -26,7 +26,7 @@ class _FarmProductSectionBuilderState extends State<FarmProductSectionBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<MarketProductModel>>(
+    return FutureBuilder<List<ProductModel>>(
       future: futureProducts,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {

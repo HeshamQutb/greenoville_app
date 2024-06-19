@@ -6,11 +6,16 @@ import '../../../../../core/widgets/gradient_text.dart';
 import '../../../../../generated/l10n.dart';
 
 class SoilsViewCustomAppBar extends StatelessWidget {
-  const SoilsViewCustomAppBar({super.key, required this.appCubit});
+  const SoilsViewCustomAppBar({
+    super.key,
+    required this.appCubit,
+    required this.soilSearchController,
+  });
   final AppCubit appCubit;
+  final TextEditingController soilSearchController;
+
   @override
   Widget build(BuildContext context) {
-    var soilSearchController = TextEditingController();
     return Row(
       children: [
         GradientText(
@@ -28,7 +33,9 @@ class SoilsViewCustomAppBar extends StatelessWidget {
         Expanded(
           child: CustomTextField(
             maxLines: 1,
-            onFieldSubmitted: (value){},
+            onChanged: (value) {
+              // appCubit.updateSearchQuery(value);
+            },
             controller: soilSearchController,
             hintText: S.of(context).searchNow,
             suffixIcon: IconBroken.Search,

@@ -119,3 +119,13 @@ class CommunityGetReplayLikesErrorState extends CommunityStates {
 
   CommunityGetReplayLikesErrorState(this.error);
 }
+
+
+// Delete post
+class DeletePostSuccessState extends CommunityStates {}
+
+class DeletePostErrorState extends CommunityStates {
+  final String error;
+
+  DeletePostErrorState(this.error);
+}

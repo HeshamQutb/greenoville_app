@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import '../../../../../constants.dart';
@@ -425,4 +426,34 @@ class CommunityCubit extends Cubit<CommunityStates> {
       return commentsSnapshot.docs.length + totalReplies;
     });
   }
+
+  void deletePost({
+    required String postId,
+  }) async {
+    try {
+      // Try to delete the image associated with the post
+      try {
+        await FirebaseStorage.instance
+            .ref()
+            .child('posts_images/$postId')
+            .delete();
+      } catch (error) {
+        if (error is FirebaseException && error.code == 'object-not-found') {
+          // The image does not exist, proceed to delete the post document
+          print('Image not found, proceeding to delete post document.');
+        } else {
+          // Re-throw the error if it's not the 'object-not-found' error
+          rethrow;
+        }
+      }
+
+      // Delete the post document from Firestore
+      await FirebaseFirestore.instance.collection('posts').doc(postId).delete();
+
+      emit(DeletePostSuccessState());
+    } catch (error) {
+      emit(DeletePostErrorState(error.toString()));
+    }
+  }
+
 }

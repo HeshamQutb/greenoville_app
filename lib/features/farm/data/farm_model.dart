@@ -1,5 +1,4 @@
-
-import 'package:greenoville_app/features/market/data/market_product_model.dart';
+import 'package:greenoville_app/features/market_prices/data/product_model.dart';
 
 class FarmModel {
   final String userName;
@@ -13,7 +12,7 @@ class FarmModel {
   final String farmName;
   final String farmOwnerName;
   final String farmLocation;
-  final List<MarketProductModel> products;
+  final List<ProductModel> products;
 
   FarmModel({
     required this.userName,
@@ -45,7 +44,7 @@ class FarmModel {
       farmLocation: json?['farmLocation'],
       products: (json?['products'] as List<dynamic>?)
               ?.map((productJson) =>
-                  MarketProductModel.fromJson(productJson as Map<String, dynamic>))
+                  ProductModel.fromJson(productJson as Map<String, dynamic>))
               .toList() ??
           [],
     );

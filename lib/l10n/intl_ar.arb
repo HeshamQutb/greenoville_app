@@ -26,6 +26,7 @@
   "tips": "النصائح",
   "tools": "الأدوات",
   "fertilizers": "الأسمدة",
+  "noResultFound": "لا توجد نتائج بالاسم المدخل",
 
   "searchNow": "ابحث الأن",
   "addPost": "اضافة منشور",
@@ -107,6 +108,7 @@
   "peopleWhoReacted": "الأشخاص الذين تفاعلوا",
 
   "addProduct": "إضافة منتج",
+  "productInfo": "معلومات المنتج",
   "productImage": "صورة المنتج",
   "productName": "اسم المنتج",
   "pleaseEnterProductName": "الرجاء إدخال اسم المنتج",
@@ -117,8 +119,9 @@
   "productQuantity": "كمية المنتج",
   "quantity": "الكمية",
   "price":"السعر",
+  "pound":"جنيه",
   "productDescription": "وصف المنتج",
-  "pleaseEnterProductDescription": "الرجاء إدخال وصف المنتج",
+  "noDescriptionAvailable": "لا يوجد وصف للمنتج",
   "addAnotherProduct": "أضف منتج آخر",
   "addProducts": "إضافة المنتجات",
   "optional": "اختياري",
@@ -153,5 +156,31 @@
   "successfullyEditProfile": "تم تعديل الملف الشخصي بنجاح",
 
   "posts": "المنشورات",
-  "doNotHaveAFarm": "ليس لديك مزرعة قم بإنشاء واحدة وشارك منتجاتك مع الأخرين"
+  "doNotHaveAFarm": "ليس لديك مزرعة قم بإنشاء واحدة وشارك منتجاتك مع الأخرين",
+
+  "noPlants": "لا توجد نباتات",
+  "noTools": "لا توجد أدوات",
+  "noFertilizers": "لا توجد أسمدة",
+
+  "plantInfo": "معلومات النبات",
+  "plantName": "اسم النبات",
+  "plantDescription": "وصف النبات",
+  "plantUsage": "استخدام النبات",
+
+  "toolInfo": "معلومات الأداة",
+  "toolName": "اسم الأداة",
+  "toolDescription": "وصف الأداة",
+  "toolUsage": "استخدام الأداة",
+
+  "fertilizerInfo": "معلومات السماد",
+  "fertilizerName": "اسم السماد",
+  "fertilizerDescription": "وصف السماد",
+  "fertilizerUsage": "استخدام السماد",
+
+  "search": "البحث",
+
+  "editPost": "تعديل المنشور",
+  "deletePost": "حذف المنشور",
+  "successfullyEditPost": "تم تعديل المنشور بنجاح",
+  "successfullyDeletePost": "تم حذف المنشور بنجاح"
 }

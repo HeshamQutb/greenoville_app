@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/features/market/presentation/views/widgets/farm_product_item.dart';
-import '../../../data/market_product_model.dart';
+import 'package:greenoville_app/features/market_prices/data/product_model.dart';
 
 class FarmProductsSection extends StatelessWidget {
   const FarmProductsSection({
     super.key,
     required this.products,
   });
-  final List<MarketProductModel> products;
+  final List<ProductModel> products;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,7 @@ class FarmProductsSection extends StatelessWidget {
       itemBuilder: (context, index) {
         final product = products[index];
         return FarmProductItem(
-          image: product.productImage!,
-          name: product.productName,
-          price: product.productPrice,
-          quantity: product.productQuantity,
-          unit: product.productUnit,
+          productModel: product,
         );
       },
     );

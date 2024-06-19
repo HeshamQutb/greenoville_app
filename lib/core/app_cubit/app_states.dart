@@ -1,4 +1,3 @@
-
 abstract class AppStates {}
 
 class AppInitState extends AppStates {}
@@ -32,8 +31,6 @@ class AppGetUserNullState extends AppStates {
   AppGetUserNullState(this.error);
 }
 
-
-
 // Get News States
 class AppGetNewsLoadingState extends AppStates {}
 
@@ -45,9 +42,6 @@ class AppGetNewsErrorState extends AppStates {
   AppGetNewsErrorState(this.error);
 }
 
-
-
-
 // Get Products States
 class AppGetProductsLoadingState extends AppStates {}
 
@@ -57,4 +51,17 @@ class AppGetProductsErrorState extends AppStates {
   final String error;
 
   AppGetProductsErrorState(this.error);
+}
+
+
+
+// Soil search States
+class AppSearchLoadingState extends AppStates {}
+
+class AppSearchSuccessState extends AppStates {}
+
+class AppSearchErrorState extends AppStates {
+  final String error;
+
+  AppSearchErrorState(this.error);
 }

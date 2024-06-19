@@ -1,4 +1,5 @@
-import '../../data/farm_product_model.dart';
+import 'package:greenoville_app/features/market_prices/data/product_model.dart';
+
 
 abstract class FarmStates {}
 
@@ -19,12 +20,12 @@ class FarmGetFarmErrorState extends FarmStates {
 class FarmGetFarmProductsLoadingState extends FarmStates {}
 
 class FarmGetFarmProductsSuccessState extends FarmStates {
-  List<FarmProductModel> products;
+  List<ProductModel> products;
   FarmGetFarmProductsSuccessState(this.products);
 }
 
 class FarmGetFarmProductsEmptyState extends FarmStates {
-  List<FarmProductModel> products;
+  List<ProductModel> products;
   FarmGetFarmProductsEmptyState(this.products);
 }
 

@@ -15,6 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.textAlignVertical,
     this.onPressedSuffix,
     this.suffixColor,
+    this.onChanged,
   });
 
   final TextEditingController controller;
@@ -22,6 +23,7 @@ class CustomTextField extends StatelessWidget {
   final IconData suffixIcon;
   final String? Function(String?)? validator;
   final void Function(String?)? onFieldSubmitted;
+  final void Function(String?)? onChanged;
   final int? maxLines;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
@@ -54,6 +56,7 @@ class CustomTextField extends StatelessWidget {
             keyboardType: keyboardType,
             validator: validator,
             onFieldSubmitted: onFieldSubmitted,
+            onChanged: onChanged,
             maxLines: maxLines,
             autofocus: autofocus,
             textAlignVertical:

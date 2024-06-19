@@ -5,6 +5,7 @@ import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/core/models/articles_model.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_custom_app_bar.dart';
 import 'package:greenoville_app/features/market_prices/data/product_model.dart';
 
 import '../../../../constants.dart';
@@ -43,19 +44,31 @@ class _HomeViewState extends State<HomeView> {
       listener: (context, state) {},
       builder: (context, state) {
         var appCubit = AppCubit.get(context);
-        return RefreshIndicator(
-          onRefresh: refreshHome,
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-              child: HomeViewBody(
+        return Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: kDefaultPadding,
+          ),
+          child: Column(
+            children: [
+              HomeViewCustomAppBar(
                 appCubit: appCubit,
                 futureUser: futureUser,
-                futureNews: futureNews,
-                futureProduct: futureProduct,
               ),
-            ),
+              Expanded(
+                child: RefreshIndicator(
+                  onRefresh: refreshHome,
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: HomeViewBody(
+                      appCubit: appCubit,
+                      futureUser: futureUser,
+                      futureNews: futureNews,
+                      futureProduct: futureProduct,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },

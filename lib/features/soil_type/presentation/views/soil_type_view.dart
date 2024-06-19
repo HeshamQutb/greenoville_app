@@ -6,12 +6,15 @@ import 'package:greenoville_app/features/soil_type/presentation/views/widgets/so
 import '../view_model/soil_type_list_items.dart';
 
 class SoilTypeView extends StatelessWidget {
-  const SoilTypeView(
-      {super.key,
-      required this.soilTypeName,
-      required this.soilImage,
-      required this.appCubit});
+  const SoilTypeView({
+    super.key,
+    required this.soilTypeName,
+    required this.soilType,
+    required this.soilImage,
+    required this.appCubit,
+  });
   final String soilTypeName;
+  final String soilType;
   final String soilImage;
   final AppCubit appCubit;
   @override
@@ -24,7 +27,7 @@ class SoilTypeView extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back_ios,
-            color: kPrimaryColor, // Assuming kPrimaryColor is defined somewhere
+            color: kPrimaryColor,
           ),
         ),
       ),
@@ -33,7 +36,10 @@ class SoilTypeView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(kDefaultPadding),
           child: SoilTypeViewBody(
-            items: soilTypeListItems(context),
+            items: soilTypeListItems(
+              context: context,
+              soilType: soilType,
+            ),
             soilTypeName: soilTypeName,
             soilTypeImage: soilImage,
             appCubit: appCubit,

@@ -300,6 +300,16 @@ class S {
     );
   }
 
+  /// `No result found with the name`
+  String get noResultFound {
+    return Intl.message(
+      'No result found with the name',
+      name: 'noResultFound',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Search now`
   String get searchNow {
     return Intl.message(
@@ -1050,6 +1060,16 @@ class S {
     );
   }
 
+  /// `Product Info`
+  String get productInfo {
+    return Intl.message(
+      'Product Info',
+      name: 'productInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Product Image`
   String get productImage {
     return Intl.message(
@@ -1150,6 +1170,16 @@ class S {
     );
   }
 
+  /// `E£`
+  String get pound {
+    return Intl.message(
+      'E£',
+      name: 'pound',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Product Description`
   String get productDescription {
     return Intl.message(
@@ -1160,11 +1190,11 @@ class S {
     );
   }
 
-  /// `Please Enter Product Description`
-  String get pleaseEnterProductDescription {
+  /// `No description available`
+  String get noDescriptionAvailable {
     return Intl.message(
-      'Please Enter Product Description',
-      name: 'pleaseEnterProductDescription',
+      'No description available',
+      name: 'noDescriptionAvailable',
       desc: '',
       args: [],
     );
@@ -1465,6 +1495,206 @@ class S {
     return Intl.message(
       'You don\\\'t have a farm create one and share your products',
       name: 'doNotHaveAFarm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Plants`
+  String get noPlants {
+    return Intl.message(
+      'No Plants',
+      name: 'noPlants',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Tools`
+  String get noTools {
+    return Intl.message(
+      'No Tools',
+      name: 'noTools',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Fertilizers`
+  String get noFertilizers {
+    return Intl.message(
+      'No Fertilizers',
+      name: 'noFertilizers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plant Info`
+  String get plantInfo {
+    return Intl.message(
+      'Plant Info',
+      name: 'plantInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plant Name`
+  String get plantName {
+    return Intl.message(
+      'Plant Name',
+      name: 'plantName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plant Description`
+  String get plantDescription {
+    return Intl.message(
+      'Plant Description',
+      name: 'plantDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plant Usage`
+  String get plantUsage {
+    return Intl.message(
+      'Plant Usage',
+      name: 'plantUsage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tool Info`
+  String get toolInfo {
+    return Intl.message(
+      'Tool Info',
+      name: 'toolInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tool Name`
+  String get toolName {
+    return Intl.message(
+      'Tool Name',
+      name: 'toolName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tool Description`
+  String get toolDescription {
+    return Intl.message(
+      'Tool Description',
+      name: 'toolDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tool Usage`
+  String get toolUsage {
+    return Intl.message(
+      'Tool Usage',
+      name: 'toolUsage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fertilizer Info`
+  String get fertilizerInfo {
+    return Intl.message(
+      'Fertilizer Info',
+      name: 'fertilizerInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fertilizer Name`
+  String get fertilizerName {
+    return Intl.message(
+      'Fertilizer Name',
+      name: 'fertilizerName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fertilizer Description`
+  String get fertilizerDescription {
+    return Intl.message(
+      'Fertilizer Description',
+      name: 'fertilizerDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fertilizer Usage`
+  String get fertilizerUsage {
+    return Intl.message(
+      'Fertilizer Usage',
+      name: 'fertilizerUsage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Post`
+  String get editPost {
+    return Intl.message(
+      'Edit Post',
+      name: 'editPost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Post`
+  String get deletePost {
+    return Intl.message(
+      'Delete Post',
+      name: 'deletePost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successfully Edit Post`
+  String get successfullyEditPost {
+    return Intl.message(
+      'Successfully Edit Post',
+      name: 'successfullyEditPost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Successfully Delete Post`
+  String get successfullyDeletePost {
+    return Intl.message(
+      'Successfully Delete Post',
+      name: 'successfullyDeletePost',
       desc: '',
       args: [],
     );

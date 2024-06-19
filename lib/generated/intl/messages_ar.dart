@@ -50,12 +50,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "فشلت عملية المصادقة. يرجى المحاولة مرة أخرى في وقت لاحق."),
         "defaultSignUpFailed": MessageLookupByLibrary.simpleMessage(
             "فشل التسجيل. يرجى المحاولة مرة أخرى في وقت لاحق."),
+        "deletePost": MessageLookupByLibrary.simpleMessage("حذف المنشور"),
         "doNotHaveAFarm": MessageLookupByLibrary.simpleMessage(
             "ليس لديك مزرعة قم بإنشاء واحدة وشارك منتجاتك مع الأخرين"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب!"),
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "editFarm": MessageLookupByLibrary.simpleMessage("تعديل المزرعة"),
+        "editPost": MessageLookupByLibrary.simpleMessage("تعديل المنشور"),
         "editProfile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "emailAddress":
@@ -74,6 +76,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "farmer": MessageLookupByLibrary.simpleMessage("مزارع"),
         "farmingPractices": MessageLookupByLibrary.simpleMessage(
             "واكتشف ممارسات الزراعة المستدامة"),
+        "fertilizerDescription":
+            MessageLookupByLibrary.simpleMessage("وصف السماد"),
+        "fertilizerInfo":
+            MessageLookupByLibrary.simpleMessage("معلومات السماد"),
+        "fertilizerName": MessageLookupByLibrary.simpleMessage("اسم السماد"),
+        "fertilizerUsage":
+            MessageLookupByLibrary.simpleMessage("استخدام السماد"),
         "fertilizers": MessageLookupByLibrary.simpleMessage("الأسمدة"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
@@ -105,17 +114,24 @@ class MessageLookup extends MessageLookupByLibrary {
             "لم يتم العثور على مشاركين في الدردشة."),
         "noComments":
             MessageLookupByLibrary.simpleMessage("لا توجد تعليقات بعد."),
+        "noDescriptionAvailable":
+            MessageLookupByLibrary.simpleMessage("لا يوجد وصف للمنتج"),
         "noFarmsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد مزارع."),
+        "noFertilizers": MessageLookupByLibrary.simpleMessage("لا توجد أسمدة"),
         "noLikes": MessageLookupByLibrary.simpleMessage("لا توجد اعجابات بعد."),
         "noNewsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد أخبار متاحة"),
+        "noPlants": MessageLookupByLibrary.simpleMessage("لا توجد نباتات"),
         "noPostsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد منشورات."),
         "noProductsAvailable":
             MessageLookupByLibrary.simpleMessage("لا توجد منتجات."),
         "noReplies": MessageLookupByLibrary.simpleMessage("لا توجد ردود بعد."),
+        "noResultFound":
+            MessageLookupByLibrary.simpleMessage("لا توجد نتائج بالاسم المدخل"),
         "noThing": MessageLookupByLibrary.simpleMessage("لا يوجد شئ لنشرّه"),
+        "noTools": MessageLookupByLibrary.simpleMessage("لا توجد أدوات"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "أعط قوة لحصادك، وأطلق العنان لمستقبلك"),
         "optional": MessageLookupByLibrary.simpleMessage("اختياري"),
@@ -126,6 +142,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "peopleWhoReacted":
             MessageLookupByLibrary.simpleMessage("الأشخاص الذين تفاعلوا"),
         "phone": MessageLookupByLibrary.simpleMessage("الهاتف"),
+        "plantDescription": MessageLookupByLibrary.simpleMessage("وصف النبات"),
+        "plantInfo": MessageLookupByLibrary.simpleMessage("معلومات النبات"),
+        "plantName": MessageLookupByLibrary.simpleMessage("اسم النبات"),
+        "plantUsage": MessageLookupByLibrary.simpleMessage("استخدام النبات"),
         "plants": MessageLookupByLibrary.simpleMessage("النباتات"),
         "pleaseEnterEmailAddress": MessageLookupByLibrary.simpleMessage(
             "الرجاء إدخال عنوان البريد الإلكتروني"),
@@ -137,8 +157,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسم المالك"),
         "pleaseEnterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم الهاتف"),
-        "pleaseEnterProductDescription":
-            MessageLookupByLibrary.simpleMessage("الرجاء إدخال وصف المنتج"),
         "pleaseEnterProductName":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسم المنتج"),
         "pleaseEnterProductPrice":
@@ -151,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "الرجاء إدخال البيانات لكل منتج بشكل صحيح"),
         "post": MessageLookupByLibrary.simpleMessage("نشر"),
         "posts": MessageLookupByLibrary.simpleMessage("المنشورات"),
+        "pound": MessageLookupByLibrary.simpleMessage("جنيه"),
         "price": MessageLookupByLibrary.simpleMessage("السعر"),
         "privacySecurity":
             MessageLookupByLibrary.simpleMessage("الخصوصية والأمان"),
@@ -158,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "productDescription":
             MessageLookupByLibrary.simpleMessage("وصف المنتج"),
         "productImage": MessageLookupByLibrary.simpleMessage("صورة المنتج"),
+        "productInfo": MessageLookupByLibrary.simpleMessage("معلومات المنتج"),
         "productName": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
         "productPrice": MessageLookupByLibrary.simpleMessage("سعر المنتج"),
         "productQuantity": MessageLookupByLibrary.simpleMessage("كمية المنتج"),
@@ -175,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "replies": MessageLookupByLibrary.simpleMessage("الردود"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("التربــة الرملية"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+        "search": MessageLookupByLibrary.simpleMessage("البحث"),
         "searchNow": MessageLookupByLibrary.simpleMessage("ابحث الأن"),
         "seeAll": MessageLookupByLibrary.simpleMessage("المزيـد"),
         "seeMore": MessageLookupByLibrary.simpleMessage("عرض المزيـد"),
@@ -190,6 +211,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم إضافة المنتج بنجاح"),
         "successfullyCreateFarm":
             MessageLookupByLibrary.simpleMessage("تم إنشاء المزرعة بنجاح"),
+        "successfullyDeletePost":
+            MessageLookupByLibrary.simpleMessage("تم حذف المنشور بنجاح"),
+        "successfullyEditPost":
+            MessageLookupByLibrary.simpleMessage("تم تعديل المنشور بنجاح"),
         "successfullyEditProfile":
             MessageLookupByLibrary.simpleMessage("تم تعديل الملف الشخصي بنجاح"),
         "successfullyLogin":
@@ -199,6 +224,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("قم بالتقاط صورة"),
         "tips": MessageLookupByLibrary.simpleMessage("النصائح"),
         "ton": MessageLookupByLibrary.simpleMessage("طن"),
+        "toolDescription": MessageLookupByLibrary.simpleMessage("وصف الأداة"),
+        "toolInfo": MessageLookupByLibrary.simpleMessage("معلومات الأداة"),
+        "toolName": MessageLookupByLibrary.simpleMessage("اسم الأداة"),
+        "toolUsage": MessageLookupByLibrary.simpleMessage("استخدام الأداة"),
         "tools": MessageLookupByLibrary.simpleMessage("الأدوات"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(
             "تم تعطيل حسابك. الرجاء الاتصال بالدعم."),

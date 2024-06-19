@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/services/toast_services.dart';
+import 'package:uuid/uuid.dart';
 import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/data/models/user_model.dart';
@@ -46,6 +47,7 @@ class AddPostBottomSection extends StatelessWidget {
                     description: textController.text,
                     context: context,
                     uId: userModel!.uId,
+                    postId: const Uuid().v1(),
                   );
                 } else {
                   AddPostCubit.get(context).uploadPostImage(
@@ -53,6 +55,7 @@ class AddPostBottomSection extends StatelessWidget {
                     description: textController.text,
                     context: context,
                     uId: userModel!.uId,
+                    postId: const Uuid().v1(),
                   );
                 }
               } else if (AddPostCubit.get(context).postImage != null) {
@@ -62,6 +65,7 @@ class AddPostBottomSection extends StatelessWidget {
                     description: textController.text,
                     context: context,
                     uId: userModel!.uId,
+                    postId: const Uuid().v1(),
                   );
                 } else {
                   AddPostCubit.get(context).uploadPostImage(
@@ -69,6 +73,7 @@ class AddPostBottomSection extends StatelessWidget {
                     description: textController.text,
                     context: context,
                     uId: userModel!.uId,
+                    postId: const Uuid().v1(),
                   );
                 }
               } else {

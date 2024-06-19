@@ -6,15 +6,15 @@ import '../../../plants/presentation/views/plants_view.dart';
 import '../../../tips/presentation/views/tips_view.dart';
 import '../../../tools/presentation/views/tools_view.dart';
 
-
-
-
-List<Map<String, dynamic>> soilTypeListItems(BuildContext context) {
+List<Map<String, dynamic>> soilTypeListItems(
+    {required BuildContext context, required String soilType}) {
   return [
     {
       'itemName': S.of(context).plants,
       'itemImage': AssetsData.plants,
-      'screen': const PlantsView(),
+      'screen': PlantsView(
+        soilType: soilType,
+      ),
     },
     {
       'itemName': S.of(context).tips,
@@ -24,12 +24,16 @@ List<Map<String, dynamic>> soilTypeListItems(BuildContext context) {
     {
       'itemName': S.of(context).fertilizers,
       'itemImage': AssetsData.fertilizers,
-      'screen': const FertilizersView(),
+      'screen': FertilizersView(
+        soilType: soilType,
+      ),
     },
     {
       'itemName': S.of(context).tools,
       'itemImage': AssetsData.tools,
-      'screen': const ToolsView(),
+      'screen': ToolsView(
+        soilType: soilType,
+      ),
     },
   ];
 }

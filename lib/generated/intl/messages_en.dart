@@ -50,12 +50,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Authentication failed. Please try again later."),
         "defaultSignUpFailed": MessageLookupByLibrary.simpleMessage(
             "Sign up failed. Please try again later."),
+        "deletePost": MessageLookupByLibrary.simpleMessage("Delete Post"),
         "doNotHaveAFarm": MessageLookupByLibrary.simpleMessage(
             "You don\\\'t have a farm create one and share your products"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account!"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "editFarm": MessageLookupByLibrary.simpleMessage("Edit Farm"),
+        "editPost": MessageLookupByLibrary.simpleMessage("Edit Post"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
@@ -72,6 +74,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "farmer": MessageLookupByLibrary.simpleMessage("Farmer"),
         "farmingPractices": MessageLookupByLibrary.simpleMessage(
             "Discover Sustainable Farming Practices"),
+        "fertilizerDescription":
+            MessageLookupByLibrary.simpleMessage("Fertilizer Description"),
+        "fertilizerInfo":
+            MessageLookupByLibrary.simpleMessage("Fertilizer Info"),
+        "fertilizerName":
+            MessageLookupByLibrary.simpleMessage("Fertilizer Name"),
+        "fertilizerUsage":
+            MessageLookupByLibrary.simpleMessage("Fertilizer Usage"),
         "fertilizers": MessageLookupByLibrary.simpleMessage("Fertilizers"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
@@ -103,17 +113,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "noChatParticipantsFound":
             MessageLookupByLibrary.simpleMessage("No chat participants found."),
         "noComments": MessageLookupByLibrary.simpleMessage("No comments yet."),
+        "noDescriptionAvailable":
+            MessageLookupByLibrary.simpleMessage("No description available"),
         "noFarmsAvailable":
             MessageLookupByLibrary.simpleMessage("No Farms Available"),
+        "noFertilizers": MessageLookupByLibrary.simpleMessage("No Fertilizers"),
         "noLikes": MessageLookupByLibrary.simpleMessage("No likes yet."),
         "noNewsAvailable":
             MessageLookupByLibrary.simpleMessage("No News Available"),
+        "noPlants": MessageLookupByLibrary.simpleMessage("No Plants"),
         "noPostsAvailable":
             MessageLookupByLibrary.simpleMessage("No posts available."),
         "noProductsAvailable":
             MessageLookupByLibrary.simpleMessage("No products available."),
         "noReplies": MessageLookupByLibrary.simpleMessage("No replies yet."),
+        "noResultFound": MessageLookupByLibrary.simpleMessage(
+            "No result found with the name"),
         "noThing": MessageLookupByLibrary.simpleMessage("No thing to share!"),
+        "noTools": MessageLookupByLibrary.simpleMessage("No Tools"),
         "onBoardingText": MessageLookupByLibrary.simpleMessage(
             "Empower Your Harvest, Empower Your Future"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
@@ -124,6 +141,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "peopleWhoReacted":
             MessageLookupByLibrary.simpleMessage("People Who Reacted"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "plantDescription":
+            MessageLookupByLibrary.simpleMessage("Plant Description"),
+        "plantInfo": MessageLookupByLibrary.simpleMessage("Plant Info"),
+        "plantName": MessageLookupByLibrary.simpleMessage("Plant Name"),
+        "plantUsage": MessageLookupByLibrary.simpleMessage("Plant Usage"),
         "plants": MessageLookupByLibrary.simpleMessage("Plants"),
         "pleaseEnterEmailAddress":
             MessageLookupByLibrary.simpleMessage("Please Enter Email Address"),
@@ -135,8 +157,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please Enter Owner Name"),
         "pleaseEnterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Please Enter Phone Number"),
-        "pleaseEnterProductDescription": MessageLookupByLibrary.simpleMessage(
-            "Please Enter Product Description"),
         "pleaseEnterProductName":
             MessageLookupByLibrary.simpleMessage("Please Enter ProductName"),
         "pleaseEnterProductPrice":
@@ -149,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please Fill All Fields"),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
         "posts": MessageLookupByLibrary.simpleMessage("Posts"),
+        "pound": MessageLookupByLibrary.simpleMessage("E£"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "privacySecurity":
             MessageLookupByLibrary.simpleMessage("Privacy & Security"),
@@ -156,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "productDescription":
             MessageLookupByLibrary.simpleMessage("Product Description"),
         "productImage": MessageLookupByLibrary.simpleMessage("Product Image"),
+        "productInfo": MessageLookupByLibrary.simpleMessage("Product Info"),
         "productName": MessageLookupByLibrary.simpleMessage("Product Name"),
         "productPrice": MessageLookupByLibrary.simpleMessage("Product Price"),
         "productQuantity": MessageLookupByLibrary.simpleMessage("Quantity"),
@@ -173,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "replies": MessageLookupByLibrary.simpleMessage("Replies"),
         "sandySoil": MessageLookupByLibrary.simpleMessage("SandySoil"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "searchNow": MessageLookupByLibrary.simpleMessage("Search now"),
         "seeAll": MessageLookupByLibrary.simpleMessage("See all"),
         "seeMore": MessageLookupByLibrary.simpleMessage("See More"),
@@ -188,6 +211,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Successfully Add Product"),
         "successfullyCreateFarm":
             MessageLookupByLibrary.simpleMessage("Successfully Create Farm"),
+        "successfullyDeletePost":
+            MessageLookupByLibrary.simpleMessage("Successfully Delete Post"),
+        "successfullyEditPost":
+            MessageLookupByLibrary.simpleMessage("Successfully Edit Post"),
         "successfullyEditProfile":
             MessageLookupByLibrary.simpleMessage("Successfully Edit Profile"),
         "successfullyLogin":
@@ -197,6 +224,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "takePhoto": MessageLookupByLibrary.simpleMessage("Take a photo"),
         "tips": MessageLookupByLibrary.simpleMessage("Tips"),
         "ton": MessageLookupByLibrary.simpleMessage("Ton"),
+        "toolDescription":
+            MessageLookupByLibrary.simpleMessage("Tool Description"),
+        "toolInfo": MessageLookupByLibrary.simpleMessage("Tool Info"),
+        "toolName": MessageLookupByLibrary.simpleMessage("Tool Name"),
+        "toolUsage": MessageLookupByLibrary.simpleMessage("Tool Usage"),
         "tools": MessageLookupByLibrary.simpleMessage("Tools"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(
             "Your account has been disabled. Please contact support."),

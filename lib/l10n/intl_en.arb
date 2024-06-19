@@ -29,6 +29,7 @@
   "tips": "Tips",
   "tools": "Tools",
   "fertilizers": "Fertilizers",
+  "noResultFound": "No result found with the name",
 
   "searchNow": "Search now",
   "addPost": "Add Post",
@@ -111,6 +112,7 @@
   "peopleWhoReacted": "People Who Reacted",
 
   "addProduct": "Add Product",
+  "productInfo": "Product Info",
   "productImage": "Product Image",
   "productName": "Product Name",
   "pleaseEnterProductName": "Please Enter ProductName",
@@ -121,8 +123,9 @@
   "productQuantity": "Quantity",
   "quantity": "Quantity",
   "price":"Price",
+  "pound":"E£",
   "productDescription": "Product Description",
-  "pleaseEnterProductDescription": "Please Enter Product Description",
+  "noDescriptionAvailable": "No description available",
   "addAnotherProduct": "Add Another Product",
   "addProducts": "Add Products",
   "optional": "Optional",
@@ -159,7 +162,38 @@
 
 
   "posts": "Posts",
-  "doNotHaveAFarm": "You don\\'t have a farm create one and share your products"
+  "doNotHaveAFarm": "You don\\'t have a farm create one and share your products",
+
+  "noPlants": "No Plants",
+  "noTools": "No Tools",
+  "noFertilizers": "No Fertilizers",
+
+
+  "plantInfo": "Plant Info",
+  "plantName": "Plant Name",
+  "plantDescription": "Plant Description",
+  "plantUsage": "Plant Usage",
+
+  "toolInfo": "Tool Info",
+  "toolName": "Tool Name",
+  "toolDescription": "Tool Description",
+  "toolUsage": "Tool Usage",
+
+  "fertilizerInfo": "Fertilizer Info",
+  "fertilizerName": "Fertilizer Name",
+  "fertilizerDescription": "Fertilizer Description",
+  "fertilizerUsage": "Fertilizer Usage",
+
+  "search": "Search",
+
+
+  "editPost": "Edit Post",
+  "deletePost": "Delete Post",
+  "successfullyEditPost": "Successfully Edit Post",
+  "successfullyDeletePost": "Successfully Delete Post"
+
+
+
 
 
 
