@@ -52,12 +52,16 @@ class FarmInformationSection extends StatelessWidget {
                   ),
                   Text(
                     '${S.of(context).by} ${farm.farmOwnerName}',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(
                     width: 8,
                   ),
                   Text(
                     farm.farmLocation,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
@@ -67,7 +71,9 @@ class FarmInformationSection extends StatelessWidget {
                 onPressed: () {
                   navigateTo(
                     context,
-                    const EditFarmView(),
+                    EditFarmView(
+                      farm: farm,
+                    ),
                   );
                 },
                 icon: const Icon(

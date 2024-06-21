@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
 import 'package:greenoville_app/features/chat/presentation/views/chat_view.dart';
 import 'package:greenoville_app/features/profile/presentation/views/widgets/profile_view_header.dart';
+import 'package:greenoville_app/features/tips_view/data/models/tips_model.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/icon_broken.dart';
@@ -11,7 +12,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../auth/data/models/user_model.dart';
 import '../../../../community/data/models/community_post_model.dart';
 import '../../../../farm/presentation/views/farm_view.dart';
-import '../../../../market/data/market_farm_model.dart';
+import '../../../../tips_view/presentation/views/tips_view.dart';
 
 class ProfileViewBuilder extends StatelessWidget {
   const ProfileViewBuilder({
@@ -19,12 +20,12 @@ class ProfileViewBuilder extends StatelessWidget {
     required this.futureUser,
     required this.tabController,
     required this.futurePosts,
-    required this.futureFarms,
+    required this.futureTips,
   });
   final TabController tabController;
   final Future<UserModel> futureUser;
   final Future<List<CommunityPostModel>> futurePosts;
-  final Future<List<MarketFarmModel>> futureFarms;
+  final Future<List<TipsModel>> futureTips;
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<UserModel>(
@@ -100,26 +101,19 @@ class ProfileViewBuilder extends StatelessWidget {
                         PostsTapBarView(
                           future: futurePosts,
                         ),
-                        snapshot.data!.userRole == S.of(context).farmer
-                            ? FarmView(
-                                uid: snapshot.data!.uId,
-                                showAppBar: false,
-                              )
-                            : Center(
-                                child: Text(
-                                  S.of(context).noFarmsAvailable,
-                                ),
-                              ),
+                        FarmView(
+                          uid: snapshot.data!.uId,
+                          showAppBar: false,
+                        )
                       ]
                     : [
                         PostsTapBarView(
                           future: futurePosts,
                         ),
-                        const Center(
-                          child: Text(
-                            'Expert Tips',
-                          ),
-                        ),
+                        TipsView(
+                          uid: snapshot.data!.uId,
+                          showAppBar: false,
+                        )
                       ],
               ),
             ),

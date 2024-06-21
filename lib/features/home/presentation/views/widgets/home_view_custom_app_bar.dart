@@ -7,7 +7,7 @@ import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../core/widgets/gradient_text.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../account/presentation/views/account_view.dart';
-import '../../../../chat/presentation/views/chat_users_view.dart';
+import '../../../../tips_view/presentation/views/tips_view.dart';
 
 class HomeViewCustomAppBar extends StatelessWidget {
   const HomeViewCustomAppBar({
@@ -120,7 +120,9 @@ class HomeViewCustomAppBar extends StatelessWidget {
                 onTap: () {
                   navigateTo(
                     context,
-                    const ChatUsersScreen(),
+                    const TipsView(
+                      showAppBar: true,
+                    ),
                   );
                 },
                 child: const Icon(

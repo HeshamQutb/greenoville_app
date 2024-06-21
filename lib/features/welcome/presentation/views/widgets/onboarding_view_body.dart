@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/features/welcome/presentation/view_model/onboarding_view_cubit/onboarding_view_cubit.dart';
 import '../../../../../constants.dart';
+import '../../../../../core/utils/assets.dart';
 import '../../../../../core/widgets/default_button.dart';
 import '../../../../../generated/l10n.dart';
 import '../../view_model/onboarding_view_cubit/onboarding_view_state.dart';
@@ -26,7 +27,7 @@ class OnBoardingViewBody extends StatelessWidget {
               ),
               fit: BoxFit.cover,
               image: const AssetImage(
-                'assets/images/agricultural-workers.jpg',
+                AssetsData.onBoarding,
               ),
             ),
           ),

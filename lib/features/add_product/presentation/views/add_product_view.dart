@@ -21,6 +21,7 @@ class AddProductView extends StatelessWidget {
               message: S.of(context).successfullyAddProduct,
               state: ToastState.success,
             );
+            Navigator.pop(context);
           }
         },
         builder: (context, state) {

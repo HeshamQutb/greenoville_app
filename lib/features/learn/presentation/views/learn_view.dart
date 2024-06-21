@@ -43,7 +43,6 @@ class LearnView extends StatelessWidget {
   }
 }
 
-
 class CategoryTabs extends StatelessWidget {
   const CategoryTabs({super.key});
 

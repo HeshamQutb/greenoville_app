@@ -4,17 +4,25 @@ import 'package:greenoville_app/core/widgets/default_text_form_field.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/default_button.dart';
 import '../../../../../generated/l10n.dart';
-import '../../view_model/add_post_cubit/edit_farm_cubit.dart';
-import '../../view_model/add_post_cubit/edit_farm_states.dart';
-import 'create_farm_pick_image_section.dart';
+import '../../../../create_farm/data/models/farm_model.dart';
+import '../../view_model/edit_farm_cubit/edit_farm_cubit.dart';
+import '../../view_model/edit_farm_cubit/edit_farm_states.dart';
+import 'edit_farm_pick_image_section.dart';
 
 class EditFarmViewBody extends StatefulWidget {
   const EditFarmViewBody({
     super.key,
     required this.state,
+    required this.farm,
+    required this.farmNameController,
+    required this.farmOwnerNameController,
+    required this.farmLocationController,
   });
   final EditFarmStates state;
-
+  final FarmModel farm;
+  final TextEditingController farmNameController;
+  final TextEditingController farmOwnerNameController;
+  final TextEditingController farmLocationController;
   @override
   State<EditFarmViewBody> createState() => _EditFarmViewBodyState();
 }
@@ -22,24 +30,31 @@ class EditFarmViewBody extends StatefulWidget {
 class _EditFarmViewBodyState extends State<EditFarmViewBody> {
   final formKey = GlobalKey<FormState>();
 
-  final farmNameController = TextEditingController();
-  final farmOwnerNameController = TextEditingController();
-  final farmLocationController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    widget.farmNameController.text = widget.farm.farmName;
+    widget.farmOwnerNameController.text = widget.farm.farmOwnerName;
+    widget.farmLocationController.text = widget.farm.farmLocation;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EditFarmCubit, EditFarmStates>(
       builder: (context, state) {
-        var createFarmCubit = EditFarmCubit.get(context);
+        var editFarmCubit = EditFarmCubit.get(context);
         return Padding(
           padding: const EdgeInsets.all(
             kDefaultPadding,
           ),
           child: Column(
             children: [
-              if(state is EditFarmLoadingState)
+              if (state is EditFarmLoadingState)
                 const LinearProgressIndicator(),
-              if(state is EditFarmLoadingState)
-                const SizedBox(height: 8,),
+              if (state is EditFarmLoadingState)
+                const SizedBox(
+                  height: 8,
+                ),
               Flexible(
                 child: SingleChildScrollView(
                   child: Form(
@@ -48,13 +63,14 @@ class _EditFarmViewBodyState extends State<EditFarmViewBody> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         EditFarmPickImageSection(
-                          createFarmCubit: createFarmCubit,
+                          editFarmCubit: editFarmCubit,
+                          farm: widget.farm,
                         ),
                         const SizedBox(
                           height: 24,
                         ),
                         DefaultTextFormField(
-                          controller: farmNameController,
+                          controller: widget.farmNameController,
                           type: TextInputType.text,
                           validate: (value) {
                             if (value == null || value.isEmpty) {
@@ -68,7 +84,7 @@ class _EditFarmViewBodyState extends State<EditFarmViewBody> {
                           height: 24,
                         ),
                         DefaultTextFormField(
-                          controller: farmOwnerNameController,
+                          controller: widget.farmOwnerNameController,
                           type: TextInputType.text,
                           validate: (value) {
                             if (value == null || value.isEmpty) {
@@ -82,7 +98,7 @@ class _EditFarmViewBodyState extends State<EditFarmViewBody> {
                           height: 24,
                         ),
                         DefaultTextFormField(
-                          controller: farmLocationController,
+                          controller: widget.farmLocationController,
                           type: TextInputType.text,
                           validate: (value) {
                             if (value == null || value.isEmpty) {
@@ -90,26 +106,20 @@ class _EditFarmViewBodyState extends State<EditFarmViewBody> {
                             }
                             return null;
                           },
-                          onFieldSubmitted: (String value){
+                          onFieldSubmitted: (String value) {
                             if (formKey.currentState!.validate()) {
-                              if (createFarmCubit.farmImage != null) {
-                                createFarmCubit.uploadFarmImage(
+                              editFarmCubit.uploadFarmImage(
                                   context: context,
-                                  uId: kUserModel!.uId,
-                                  farmName: farmNameController.text,
-                                  farmOwnerName: farmOwnerNameController.text,
-                                  farmLocation: farmLocationController.text,
-                                  farmId: kUserModel!.uId,
-                                );
-                              } else {
-                                createFarmCubit.createFarm(
-                                  context: context,
-                                  uId: kUserModel!.uId,
-                                  farmName: farmNameController.text,
-                                  farmOwnerName: farmOwnerNameController.text,
-                                  farmLocation: farmLocationController.text,
-                                );
-                              }
+                                  uId: widget.farm.uId,
+                                  farmName: widget.farmNameController.text,
+                                  farmOwnerName:
+                                      widget.farmOwnerNameController.text,
+                                  farmLocation:
+                                      widget.farmLocationController.text,
+                                  farmId: widget.farm.uId,
+                                  hasProducts: widget.farm.hasProducts,
+                                  currentFarmImageUrl: widget.farm.farmImage!
+                                  );
                             }
                           },
                           label: S.of(context).farmLocation,
@@ -129,24 +139,18 @@ class _EditFarmViewBodyState extends State<EditFarmViewBody> {
                   : DefaultButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          if (createFarmCubit.farmImage != null) {
-                            createFarmCubit.uploadFarmImage(
+                          editFarmCubit.uploadFarmImage(
                               context: context,
-                              uId: kUserModel!.uId,
-                              farmName: farmNameController.text,
-                              farmOwnerName: farmOwnerNameController.text,
-                              farmLocation: farmLocationController.text,
-                              farmId: kUserModel!.uId,
-                            );
-                          } else {
-                            createFarmCubit.createFarm(
-                              context: context,
-                              uId: kUserModel!.uId,
-                              farmName: farmNameController.text,
-                              farmOwnerName: farmOwnerNameController.text,
-                              farmLocation: farmLocationController.text,
-                            );
-                          }
+                              uId: widget.farm.uId,
+                              farmName: widget.farmNameController.text,
+                              farmOwnerName:
+                              widget.farmOwnerNameController.text,
+                              farmLocation:
+                              widget.farmLocationController.text,
+                              farmId: widget.farm.uId,
+                              hasProducts: widget.farm.hasProducts,
+                              currentFarmImageUrl: widget.farm.farmImage!
+                          );
                         }
                       },
                       text: S.of(context).editFarm,

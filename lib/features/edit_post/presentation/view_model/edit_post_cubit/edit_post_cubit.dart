@@ -123,11 +123,21 @@ class EditPostCubit extends Cubit<EditPostStates> {
   void deletePostImage({
     required String postId,
   }) {
-    try {
-      FirebaseStorage.instance.ref().child('posts_images/$postId').delete();
+    FirebaseStorage.instance
+        .ref()
+        .child('posts_images/$postId')
+        .delete()
+        .then((_) {
       emit(DeletePostImageSuccessState());
-    } catch (error) {
-      emit(DeletePostImageErrorState('Failed to delete image: $error'));
-    }
+    })
+        .catchError((error) {
+      if (error is FirebaseException && error.code == 'object-not-found') {
+        // Handle the case where the image does not exist
+        emit(DeletePostImageSuccessState()); // Consider it a success
+      } else {
+        emit(DeletePostImageErrorState('Failed to delete image: $error'));
+      }
+    });
   }
+
 }

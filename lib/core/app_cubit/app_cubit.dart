@@ -172,7 +172,6 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   // Search
-
   Stream<List<dynamic>> searchAllCollections({required String query}) async* {
     try {
       final queryLower = query.toLowerCase(); // Convert query to lowercase

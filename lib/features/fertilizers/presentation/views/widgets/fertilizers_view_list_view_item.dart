@@ -1,7 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../../../../constants.dart';
-import '../../../../../core/services/navigate_services.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:greenoville_app/constants.dart';
+import 'package:greenoville_app/core/services/navigate_services.dart';
+
 import '../../../data/fertilizer_model.dart';
 import '../fertilizer_item_view.dart';
 
@@ -12,10 +13,11 @@ class FertilizersListViewItem extends StatelessWidget {
   });
 
   final FertilizerModel fertilizerModel;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         navigateTo(
           context,
           FertilizerItemView(
@@ -25,46 +27,54 @@ class FertilizersListViewItem extends StatelessWidget {
       },
       child: Card(
         elevation: 3,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Row(
-              children: [
-                SizedBox(
-                  height: 120,
+        child: Container(
+          height: 100,
+          padding: const EdgeInsets.all(8),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 100,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
                   child: CachedNetworkImage(
                     imageUrl: fertilizerModel.fertilizerImage,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    fertilizerModel.fertilizerName,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(),
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    navigateTo(
-                      context,
-                      FertilizerItemView(
-                        fertilizerModel: fertilizerModel,
-                      ),
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: kPrimaryColor,
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  fertilizerModel.fertilizerName,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ],
-            ),
-          ],
+              ),
+              IconButton(
+                onPressed: () {
+                  navigateTo(
+                    context,
+                    FertilizerItemView(
+                      fertilizerModel: fertilizerModel,
+                    ),
+                  );
+                },
+                icon: const Icon(
+                  Icons.arrow_forward_ios,
+                  color: kPrimaryColor,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

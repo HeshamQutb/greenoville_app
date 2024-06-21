@@ -12,31 +12,6 @@ class QuantitySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Row(
-    //   mainAxisAlignment: MainAxisAlignment.start,
-    //   children: [
-    //     Text('${S.of(context).quantity}: $quantity'),
-    //     const SizedBox(width: 10),
-    //     Row(
-    //       children: [
-    //         IconButton(
-    //           onPressed: () {
-    //             if (quantity > 1) onQuantityChanged(quantity - 1);
-    //           },
-    //           icon: const Icon(Icons.remove_circle_outline),
-    //         ),
-    //         Text(
-    //           quantity.toString(),
-    //           style: Theme.of(context).textTheme.headlineMedium,
-    //         ),
-    //         IconButton(
-    //           onPressed: () => onQuantityChanged(quantity + 1),
-    //           icon: const Icon(Icons.add_circle_outline),
-    //         ),
-    //       ],
-    //     ),
-    //   ],
-    // );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

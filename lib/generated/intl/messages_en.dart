@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addPost": MessageLookupByLibrary.simpleMessage("Add Post"),
         "addProduct": MessageLookupByLibrary.simpleMessage("Add Product"),
         "addProducts": MessageLookupByLibrary.simpleMessage("Add Products"),
+        "addTips": MessageLookupByLibrary.simpleMessage("Add Tips"),
         "appName": MessageLookupByLibrary.simpleMessage("GreeNoville"),
         "appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
@@ -36,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "by": MessageLookupByLibrary.simpleMessage("By"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "chat": MessageLookupByLibrary.simpleMessage("Chat"),
+        "chatBot": MessageLookupByLibrary.simpleMessage("chat-Bot"),
         "chooseFromGallery":
             MessageLookupByLibrary.simpleMessage("Choose from gallery"),
         "claySoil": MessageLookupByLibrary.simpleMessage("ClaySoil"),
@@ -53,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deletePost": MessageLookupByLibrary.simpleMessage("Delete Post"),
         "doNotHaveAFarm": MessageLookupByLibrary.simpleMessage(
             "You don\\\'t have a farm create one and share your products"),
+        "doNotHaveTips": MessageLookupByLibrary.simpleMessage(
+            "You don\'t have any tips yet. Create and share your valuable tips with the community!"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account!"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
@@ -213,6 +217,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Successfully Create Farm"),
         "successfullyDeletePost":
             MessageLookupByLibrary.simpleMessage("Successfully Delete Post"),
+        "successfullyEditFarm":
+            MessageLookupByLibrary.simpleMessage("Successfully Edit Farm"),
         "successfullyEditPost":
             MessageLookupByLibrary.simpleMessage("Successfully Edit Post"),
         "successfullyEditProfile":

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:greenoville_app/features/account/presentation/views/widgets/no_tips_section.dart';
 import 'package:greenoville_app/features/farm/presentation/views/farm_view.dart';
+import 'package:greenoville_app/features/tips_view/data/models/tips_model.dart';
+import 'package:greenoville_app/features/tips_view/presentation/views/tips_view.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/default_button.dart';
@@ -7,7 +10,6 @@ import '../../../../../core/widgets/posts_tap_bar_view.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/data/models/user_model.dart';
 import '../../../../community/data/models/community_post_model.dart';
-import '../../../../create_farm/data/models/farm_model.dart';
 import 'account_view_header.dart';
 import 'no_farm_section.dart';
 
@@ -17,14 +19,15 @@ class AccountViewBuilder extends StatelessWidget {
     required this.futureUser,
     required this.tabController,
     required this.futurePosts,
-    required this.futureFarm,
     required this.onEditProfile,
+    required this.futureTips,
   });
   final TabController tabController;
   final Future<UserModel> futureUser;
   final Future<List<CommunityPostModel>> futurePosts;
-  final Future<FarmModel?> futureFarm;
+  final Future<List<TipsModel>> futureTips;
   final void Function(UserModel) onEditProfile;
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<UserModel>(
@@ -106,11 +109,12 @@ class AccountViewBuilder extends StatelessWidget {
                         PostsTapBarView(
                           future: futurePosts,
                         ),
-                        const Center(
-                          child: Text(
-                            'Expert Tips',
-                          ),
-                        ),
+                        snapshot.data!.hasTips
+                            ? TipsView(
+                                uid: snapshot.data!.uId,
+                                showAppBar: false,
+                              )
+                            : const NoTipsSection(),
                       ],
               ),
             ),

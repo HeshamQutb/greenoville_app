@@ -7,7 +7,6 @@ import 'package:greenoville_app/constants.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:uuid/uuid.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/product_model.dart';
 import 'add_product_states.dart';
@@ -25,9 +24,9 @@ class AddProductCubit extends Cubit<AddProductStates> {
     String? productDescription,
     required double productPrice,
     required String productUnit,
+    required String productId,
     required int productQuantity,
   }) {
-    String productId = const Uuid().v1();
     emit(AddProductLoadingState());
     ProductModel productModel = ProductModel(
       productImage: productImage ?? AssetsData.noImage,
@@ -104,12 +103,13 @@ class AddProductCubit extends Cubit<AddProductStates> {
     String? productDescription,
     required double productPrice,
     required String productUnit,
+    required String productId,
     required int productQuantity,
   }) {
     emit(AddProductLoadingState());
     FirebaseStorage.instance
         .ref()
-        .child('products/${Uri.file(productImage.path).pathSegments.last}')
+        .child('products/$productId')
         .putFile(productImage)
         .then((value) {
       value.ref.getDownloadURL().then((imageUrl) {
@@ -121,7 +121,7 @@ class AddProductCubit extends Cubit<AddProductStates> {
           productDescription: productDescription ?? '',
           productPrice: productPrice,
           productUnit: productUnit,
-          productQuantity: productQuantity,
+          productQuantity: productQuantity, productId: productId,
         );
       }).catchError((error) {
         emit(AddProductErrorState(error.toString()));

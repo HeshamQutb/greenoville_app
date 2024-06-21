@@ -4,7 +4,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/widgets/default_text_button.dart';
 import '../../../../../generated/l10n.dart';
-import '../../view_model/add_post_cubit/create_farm_cubit.dart';
+import '../../view_model/add_farm_cubit/create_farm_cubit.dart';
 
 class CreateFarmPickImageSection extends StatelessWidget {
   const CreateFarmPickImageSection({

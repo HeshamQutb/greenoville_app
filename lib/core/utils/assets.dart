@@ -7,6 +7,9 @@ class AssetsData {
   static const arefRuqaaFont = 'ArefRuqaa';
 
   static const logo = 'assets/images/logo.png';
+  static const onBoarding = 'assets/images/agricultural-workers.jpg';
+
+  static const chatBotIcon = 'assets/images/chatbot.png';
 
   static const login = 'assets/images/login.jpg';
 
@@ -33,7 +36,6 @@ class AssetsData {
   static const tips = 'assets/images/tips.jpg';
   static const fertilizers = 'assets/images/fertilizer.jpeg';
 
-  static const chatBackground = 'assets/images/chat_background.png';
 
   static const assetsNoUserImage = 'assets/images/assetsNoImage.jpg';
 

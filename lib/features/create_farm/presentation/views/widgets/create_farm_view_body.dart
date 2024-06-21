@@ -4,8 +4,8 @@ import 'package:greenoville_app/core/widgets/default_text_form_field.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/default_button.dart';
 import '../../../../../generated/l10n.dart';
-import '../../view_model/add_post_cubit/create_farm_cubit.dart';
-import '../../view_model/add_post_cubit/create_farm_states.dart';
+import '../../view_model/add_farm_cubit/create_farm_cubit.dart';
+import '../../view_model/add_farm_cubit/create_farm_states.dart';
 import 'create_farm_pick_image_section.dart';
 
 class CreateFarmViewBody extends StatefulWidget {

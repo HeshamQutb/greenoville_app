@@ -2,8 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/widgets/default_text_form_field.dart';
 import 'package:greenoville_app/generated/l10n.dart';
-
-import 'product_mage_section.dart';
+import 'product_image_section.dart';
 import 'product_quantity_section.dart';
 
 class ProductForm extends StatelessWidget {
@@ -25,7 +24,7 @@ class ProductForm extends StatelessWidget {
   final TextEditingController descriptionController;
   final File? image;
   final int quantity;
-  final Function(File) onImageSelected;
+  final Function(File?) onImageSelected;
   final Function(int) onQuantityChanged;
   final VoidCallback? onRemove;
 

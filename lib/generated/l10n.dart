@@ -1260,6 +1260,16 @@ class S {
     );
   }
 
+  /// `Successfully Edit Farm`
+  String get successfullyEditFarm {
+    return Intl.message(
+      'Successfully Edit Farm',
+      name: 'successfullyEditFarm',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create Farm`
   String get createFarm {
     return Intl.message(
@@ -1385,6 +1395,16 @@ class S {
     return Intl.message(
       'Chat',
       name: 'chat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `chat-Bot`
+  String get chatBot {
+    return Intl.message(
+      'chat-Bot',
+      name: 'chatBot',
       desc: '',
       args: [],
     );
@@ -1695,6 +1715,26 @@ class S {
     return Intl.message(
       'Successfully Delete Post',
       name: 'successfullyDeletePost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Tips`
+  String get addTips {
+    return Intl.message(
+      'Add Tips',
+      name: 'addTips',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have any tips yet. Create and share your valuable tips with the community!`
+  String get doNotHaveTips {
+    return Intl.message(
+      'You don\'t have any tips yet. Create and share your valuable tips with the community!',
+      name: 'doNotHaveTips',
       desc: '',
       args: [],
     );

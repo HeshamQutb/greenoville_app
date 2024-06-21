@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
-import 'package:greenoville_app/features/appearance/presentation/views/appearance_view.dart';
 import 'package:greenoville_app/features/language/presentation/views/language_view.dart';
 
 import '../../../../../core/services/sign_out.dart';
@@ -33,19 +32,6 @@ class DrawerBody extends StatelessWidget {
               context,
               const AccountView(),
             );
-          },
-        ),
-        DrawerItem(
-          leadingIcon: Icons.location_on_outlined,
-          title: S.of(context).myAddress,
-          onTap: () {},
-        ),
-        DrawerItem(
-          leadingIcon: Icons.visibility_outlined,
-          title: S.of(context).appearance,
-          onTap: () {
-            Navigator.pop(context);
-            navigateTo(context, const AppearanceView());
           },
         ),
         DrawerItem(

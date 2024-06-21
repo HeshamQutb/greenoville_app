@@ -129,6 +129,7 @@
   "successfullyAddProduct": "تم إضافة المنتج بنجاح",
 
   "successfullyCreateFarm": "تم إنشاء المزرعة بنجاح",
+  "successfullyEditFarm": "تم تعديل المزرعة بنجاح",
   "createFarm": "إنشاء المزرعة",
   "farmName": "اسم المزرعة",
   "ownerName": "اسم المالك",
@@ -143,6 +144,7 @@
   "contact": "تواصل مع",
   "message": "مراسلة",
   "chat": "الدردشة",
+  "chatBot": "بوت الدردشة",
   "sendMessage": "إرسال رسالة",
   "pleaseEnterValidMessage": "يرجى إدخال رسالة صالحة",
   "noChatParticipantsFound": "لم يتم العثور على مشاركين في الدردشة.",
@@ -182,5 +184,8 @@
   "editPost": "تعديل المنشور",
   "deletePost": "حذف المنشور",
   "successfullyEditPost": "تم تعديل المنشور بنجاح",
-  "successfullyDeletePost": "تم حذف المنشور بنجاح"
+  "successfullyDeletePost": "تم حذف المنشور بنجاح",
+
+  "addTips": "اضافة نصيحة",
+  "doNotHaveTips": "ليس لديك أي نصائح حتى الآن. قم بإنشاء ومشاركة نصائحك القيمة مع المجتمع!"
 }

@@ -8,7 +8,7 @@ import 'package:greenoville_app/features/add_product/presentation/view_model/add
 import 'package:greenoville_app/features/add_product/presentation/views/widgets/product_loading_section.dart';
 import 'package:greenoville_app/features/add_product/presentation/views/widgets/product_form.dart';
 import 'package:greenoville_app/generated/l10n.dart';
-
+import 'package:uuid/uuid.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
@@ -20,8 +20,12 @@ class AddProductViewBody extends StatefulWidget {
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   final List<GlobalKey<FormState>> formKeys = [GlobalKey<FormState>()];
   final List<TextEditingController> nameControllers = [TextEditingController()];
-  final List<TextEditingController> priceControllers = [TextEditingController()];
-  final List<TextEditingController> descriptionControllers = [TextEditingController()];
+  final List<TextEditingController> priceControllers = [
+    TextEditingController()
+  ];
+  final List<TextEditingController> descriptionControllers = [
+    TextEditingController()
+  ];
   final List<File?> images = [null];
   final List<int> quantities = [1];
 
@@ -51,15 +55,15 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                       setState(() => quantities[index] = quantity),
                   onRemove: index > 0
                       ? () {
-                          setState(() {
-                            formKeys.removeAt(index);
-                            nameControllers.removeAt(index);
-                            priceControllers.removeAt(index);
-                            descriptionControllers.removeAt(index);
-                            images.removeAt(index);
-                            quantities.removeAt(index);
-                          });
-                        }
+                    setState(() {
+                      formKeys.removeAt(index);
+                      nameControllers.removeAt(index);
+                      priceControllers.removeAt(index);
+                      descriptionControllers.removeAt(index);
+                      images.removeAt(index);
+                      quantities.removeAt(index);
+                    });
+                  }
                       : null,
                 );
               },
@@ -90,15 +94,30 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               }
               if (allValid) {
                 for (int i = 0; i < formKeys.length; i++) {
-                  cubit.addNewProduct(
-                    context: context,
-                    uId: uId!,
-                    productName: nameControllers[i].text,
-                    productDescription: descriptionControllers[i].text,
-                    productPrice: double.parse(priceControllers[i].text),
-                    productUnit: S.of(context).kg,
-                    productQuantity: quantities[i],
-                  );
+                  if (images[i] != null) {
+                    cubit.addProductWithImage(
+                      context: context,
+                      uId: uId!,
+                      productName: nameControllers[i].text,
+                      productImage: images[i]!,
+                      productDescription: descriptionControllers[i].text,
+                      productPrice: double.parse(priceControllers[i].text),
+                      productUnit: S.of(context).kg,
+                      productQuantity: quantities[i],
+                      productId: const Uuid().v1(),
+                    );
+                  } else {
+                    cubit.addNewProduct(
+                      context: context,
+                      uId: uId!,
+                      productName: nameControllers[i].text,
+                      productDescription: descriptionControllers[i].text,
+                      productPrice: double.parse(priceControllers[i].text),
+                      productUnit: S.of(context).kg,
+                      productQuantity: quantities[i],
+                      productId: const Uuid().v1(),
+                    );
+                  }
                 }
               }
             },

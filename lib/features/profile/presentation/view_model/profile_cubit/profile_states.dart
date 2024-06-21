@@ -1,3 +1,5 @@
+import 'package:greenoville_app/features/tips_view/data/models/tips_model.dart';
+
 import '../../../../community/data/models/community_post_model.dart';
 import '../../../../market/data/market_farm_model.dart';
 
@@ -50,4 +52,19 @@ class ProfileGetFarmErrorState extends ProfileStates {
   final String error;
 
   ProfileGetFarmErrorState(this.error);
+}
+
+
+// Get Tips states
+class ProfileGetTipsLoadingState extends ProfileStates {}
+
+class ProfileGetTipsSuccessState extends ProfileStates {
+  List<TipsModel> posts;
+  ProfileGetTipsSuccessState(this.posts);
+}
+
+class ProfileGetTipsErrorState extends ProfileStates {
+  final String error;
+
+  ProfileGetTipsErrorState(this.error);
 }

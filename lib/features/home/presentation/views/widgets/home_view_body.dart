@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_banner_section.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_latest_news_builder.dart';
-import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_location_and_weather_section.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_quick_action_section.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_latest_news_title_section.dart';
 import 'package:greenoville_app/features/latest_news/presentation/views/latest_news_view.dart';
@@ -32,13 +31,12 @@ class HomeViewBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         const SizedBox(height: 16),
         HomeViewBannerSection(
           appCubit: appCubit,
         ),
-        const SizedBox(height: 16),
-        const HomeViewLocationAndWeatherSection(),
+        // const SizedBox(height: 16),
+        // const HomeViewLocationAndWeatherSection(),
         const SizedBox(height: 16),
         HomeViewQuickActionSection(
           appCubit: appCubit,

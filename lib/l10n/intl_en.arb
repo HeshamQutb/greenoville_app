@@ -133,6 +133,7 @@
   "successfullyAddProduct": "Successfully Add Product",
 
   "successfullyCreateFarm": "Successfully Create Farm",
+  "successfullyEditFarm": "Successfully Edit Farm",
   "createFarm": "Create Farm",
   "farmName": "Farm Name",
   "ownerName": "Owner Name",
@@ -148,6 +149,7 @@
   "contact": "Contact",
   "message": "Message",
   "chat": "Chat",
+  "chatBot": "chat-Bot",
   "sendMessage": "Send Message",
   "pleaseEnterValidMessage": "Please Enter Valid Message",
   "noChatParticipantsFound": "No chat participants found.",
@@ -190,17 +192,9 @@
   "editPost": "Edit Post",
   "deletePost": "Delete Post",
   "successfullyEditPost": "Successfully Edit Post",
-  "successfullyDeletePost": "Successfully Delete Post"
+  "successfullyDeletePost": "Successfully Delete Post",
 
 
-
-
-
-
-
-
-
-
-
-
+  "addTips": "Add Tips",
+  "doNotHaveTips": "You don't have any tips yet. Create and share your valuable tips with the community!"
 }

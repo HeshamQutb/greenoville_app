@@ -14,9 +14,11 @@ import 'package:greenoville_app/features/community/presentation/view_model/commu
 import 'package:greenoville_app/features/farm/presentation/view_model/farm_cubit.dart';
 import 'package:greenoville_app/features/fertilizers/presentation/view_model/plants_cubit/fertilizers_cubit.dart';
 import 'package:greenoville_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
+import 'package:greenoville_app/features/tips_view/presentation/view_model/tips_cubit/tips_cubit.dart';
 import 'package:greenoville_app/features/welcome/presentation/views/splash_view.dart';
 import 'bloc_observer.dart';
 import 'core/network/local/cache_helper.dart';
+import 'features/add_tips/presentation/view_model/add_tips_cubit/add_tips_cubit.dart';
 import 'features/edit_post/presentation/view_model/edit_post_cubit/edit_post_cubit.dart';
 import 'features/market/presentation/view_model/market_cubit/market_cubit.dart';
 import 'features/market_prices/presentation/view_model/market_prices_cubit/market_prices_cubit.dart';
@@ -44,7 +46,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AppCubit()..getSplashNextScreen()),
+        BlocProvider(
+          create: (context) => AppCubit()..getSplashNextScreen(),
+        ),
         BlocProvider(
           create: (context) => CommunityCubit(),
         ),
@@ -77,6 +81,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => EditPostCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AddTipsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => TipsCubit(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(

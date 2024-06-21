@@ -6,8 +6,8 @@ import 'package:greenoville_app/features/add_product/presentation/views/add_prod
 
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../generated/l10n.dart';
-import '../view_model/add_post_cubit/create_farm_cubit.dart';
-import '../view_model/add_post_cubit/create_farm_states.dart';
+import '../view_model/add_farm_cubit/create_farm_cubit.dart';
+import '../view_model/add_farm_cubit/create_farm_states.dart';
 import 'widgets/create_farm_view_body.dart';
 
 class CreateFarmView extends StatelessWidget {
@@ -24,6 +24,7 @@ class CreateFarmView extends StatelessWidget {
               message: S.of(context).successfullyCreateFarm,
               state: ToastState.success,
             );
+            Navigator.pop(context);
             navigateTo(
               context,
               const AddProductView(),

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
-import 'package:greenoville_app/core/utils/assets.dart';
+import 'package:greenoville_app/core/widgets/custom_app_bar.dart';
 import 'package:intl/intl.dart';
+import '../../../../generated/l10n.dart';
 
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+class ChatBotView extends StatefulWidget {
+  const ChatBotView({super.key});
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<ChatBotView> createState() => _ChatBotViewState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatBotViewState extends State<ChatBotView> {
   final TextEditingController userInput = TextEditingController();
   final controller = ScrollController();
 
@@ -18,6 +19,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final model = GenerativeModel(model: 'gemini-pro', apiKey: apiKey);
 
   final List<Message> messages = [];
+
   Future<void> sendMessage() async {
     final message = userInput.text;
     setState(() {
@@ -28,6 +30,8 @@ class _ChatScreenState extends State<ChatScreen> {
           date: DateTime.now(),
         ),
       );
+      userInput.clear();
+      _scrollToBottom();
     });
 
     final content = [
@@ -43,84 +47,78 @@ class _ChatScreenState extends State<ChatScreen> {
           date: DateTime.now(),
         ),
       );
+      _scrollToBottom();
     });
+  }
+
+  void _scrollToBottom() {
+    controller.animateTo(
+      controller.position.maxScrollExtent,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.8),
-              BlendMode.dstATop,
+      appBar: CustomAppBar(
+        title: S.of(context).chatBot,
+        centerTitle: true,
+        leadingAction: (){
+          Navigator.pop(context);
+        },
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Expanded(
+            child: ListView.builder(
+              controller: controller,
+              itemCount: messages.length,
+              itemBuilder: (context, index) {
+                final message = messages[index];
+                return Messages(
+                  isUser: message.isUser,
+                  message: message.message,
+                  date: DateFormat('HH:mm').format(message.date),
+                );
+              },
             ),
-            image: const AssetImage(
-              AssetsData.chatBackground,
-            ),
-            fit: BoxFit.cover,
           ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Expanded(
-              child: ListView.builder(
-                controller: controller,
-                itemCount: messages.length,
-                itemBuilder: (context, index) {
-                  final message = messages[index];
-                  return Messages(
-                    isUser: message.isUser,
-                    message: message.message,
-                    date: DateFormat('HH:mm').format(message.date),
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 15,
-                    child: TextFormField(
-                      style: const TextStyle(color: Colors.white),
-                      controller: userInput,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        label: const Text('Enter Your Message'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 15,
+                  child: TextFormField(
+                    style: const TextStyle(color: Colors.black),
+                    controller: userInput,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
                       ),
+                      label:  Text(S.of(context).sendMessage),
                     ),
                   ),
-                  const Spacer(),
-                  IconButton(
-                    padding: const EdgeInsets.all(12),
-                    iconSize: 30,
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all(Colors.black),
-                      foregroundColor: WidgetStateProperty.all(Colors.white),
-                      shape: WidgetStateProperty.all(const CircleBorder()),
-                    ),
-                    onPressed: () {
-                      sendMessage();
-                      userInput.clear();
-                      controller.animateTo(
-                        controller.position.maxScrollExtent,
-                        duration: const Duration(seconds: 1),
-                        curve: Curves.fastOutSlowIn,
-                      );
-                    },
-                    icon: const Icon(Icons.send),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
+                ),
+                const Spacer(),
+                IconButton(
+                  padding: const EdgeInsets.all(12),
+                  iconSize: 30,
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(Colors.black),
+                    foregroundColor: WidgetStateProperty.all(Colors.white),
+                    shape: WidgetStateProperty.all(const CircleBorder()),
+                  ),
+                  onPressed: sendMessage,
+                  icon: const Icon(Icons.send),
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

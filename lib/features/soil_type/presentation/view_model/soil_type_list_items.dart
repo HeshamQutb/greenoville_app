@@ -3,7 +3,7 @@ import '../../../../core/utils/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../../../fertilizers/presentation/views/fertilizers_view.dart';
 import '../../../plants/presentation/views/plants_view.dart';
-import '../../../tips/presentation/views/tips_view.dart';
+import '../../../soil_tips/presentation/views/soil_tips_view.dart';
 import '../../../tools/presentation/views/tools_view.dart';
 
 List<Map<String, dynamic>> soilTypeListItems(
@@ -19,7 +19,7 @@ List<Map<String, dynamic>> soilTypeListItems(
     {
       'itemName': S.of(context).tips,
       'itemImage': AssetsData.tips,
-      'screen': const TipsView(),
+      'screen': const SoilTipsView(),
     },
     {
       'itemName': S.of(context).fertilizers,

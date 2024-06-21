@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/services/format_time_stamp.dart';
 import '../../../../../core/services/navigate_services.dart';
+import '../../../../../core/widgets/default_text_button.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../account/presentation/views/account_view.dart';
+import '../../../../edit_post/presentation/views/edit_post_view.dart';
 import '../../../../profile/presentation/views/profile_view.dart';
 import '../../../data/models/community_post_model.dart';
 import '../../view_model/community_cubit/community_cubit.dart';
@@ -76,11 +79,70 @@ class PostHeadingSection extends StatelessWidget {
             ],
           ),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.more_horiz),
-          color: Theme.of(context).iconTheme.color,
-        )
+        if (post.uId == uId)
+          IconButton(
+            onPressed: () {
+              showModalBottomSheet(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                context: context,
+                builder: (BuildContext context) {
+                  return SizedBox(
+                    height: 140,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListTile(
+                          visualDensity:
+                          const VisualDensity(horizontal: 0, vertical: -2),
+                          leading: const Icon(Icons.edit),
+                          title: Text(S.of(context).editPost),
+                          onTap: () {
+                            Navigator.pop(context);
+                            navigateTo(
+                              context,
+                              EditPostView(
+                                postId: post.postId,
+                                timestamp: post.timestamp,
+                                postImage: post.postImage,
+                                description: post.description,
+                              ),
+                            );
+                          },
+                        ),
+                        const Divider(
+                          height: 1.0,
+                        ),
+                        ListTile(
+                          visualDensity:
+                          const VisualDensity(horizontal: 0, vertical: -4),
+                          leading: const Icon(Icons.delete),
+                          title: Text(S.of(context).deletePost),
+                          onTap: () {
+                            Navigator.pop(context);
+                            communityCubit.deletePost(postId: post.postId);
+                          },
+                        ),
+                        const Divider(
+                          height: 1.0,
+                        ),
+                        DefaultTextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          text: S.of(context).cancel,
+                          size: 15,
+                        )
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+            icon: const Icon(Icons.more_horiz),
+            color: Theme.of(context).iconTheme.color,
+          )
       ],
     );
   }

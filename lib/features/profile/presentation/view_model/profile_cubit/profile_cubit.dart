@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:greenoville_app/features/tips_view/data/models/tips_model.dart';
 
 import '../../../../auth/data/models/user_model.dart';
 import '../../../../community/data/models/community_post_model.dart';
-import '../../../../market/data/market_farm_model.dart';
 import 'profile_states.dart';
 
 class ProfileCubit extends Cubit<ProfileStates> {
@@ -87,19 +87,20 @@ class ProfileCubit extends Cubit<ProfileStates> {
     }
   }
 
-  // Get Farms
-  Future<List<MarketFarmModel>> getFarms({String? uId}) async {
-    emit(ProfileGetFarmLoadingState());
+
+  // Get Tips
+  Future<List<TipsModel>> getTips({String? uid}) async {
+    emit(ProfileGetTipsLoadingState());
     try {
       QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('farms').get();
+      await FirebaseFirestore.instance.collection('tips').get();
 
       if (querySnapshot.docs.isEmpty) {
         // Return an empty list if there are no documents in the collection
-        emit(ProfileGetFarmSuccessState([]));
-        return <MarketFarmModel>[];
+        emit(ProfileGetTipsSuccessState([]));
+        return <TipsModel>[];
       } else {
-        List<MarketFarmModel> farms = [];
+        List<TipsModel> tips = [];
         for (var doc in querySnapshot.docs) {
           var data = doc.data() as Map<String, dynamic>;
           var userDoc = await FirebaseFirestore.instance
@@ -108,28 +109,29 @@ class ProfileCubit extends Cubit<ProfileStates> {
               .get();
           if (userDoc.data() != null) {
             var userData = userDoc.data() as Map<String, dynamic>;
-            var farm = MarketFarmModel.fromJson({
+            var tip = TipsModel.fromJson({
               ...data,
-              'userName': userData['userName'],
-              'userImage': userData['userImage'],
+              'isVerified': userData['isVerified'],
+              'bio': userData['bio'],
               'coverImage': userData['coverImage'],
               'userRole': userData['userRole'],
-              'bio': userData['bio'],
-              'isVerified': userData['isVerified'],
+              'userName': userData['userName'],
+              'userImage': userData['userImage'],
             });
 
-            // Filter farms based on uid (if provided)
-            if (uId == null || data['uId'] == uId) {
-              farms.add(farm);
+            // Filter tips based on uid (if provided)
+            if (uid == null || data['uId'] == uid) {
+              tips.add(tip);
             }
           }
         }
-        emit(ProfileGetFarmSuccessState(farms));
-        return farms;
+        emit(ProfileGetTipsSuccessState(tips));
+        return tips;
       }
     } catch (error) {
-      emit(ProfileGetFarmErrorState(error.toString()));
+      emit(ProfileGetTipsErrorState(error.toString()));
       rethrow;
     }
   }
+
 }

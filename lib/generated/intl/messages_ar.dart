@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addPost": MessageLookupByLibrary.simpleMessage("اضافة منشور"),
         "addProduct": MessageLookupByLibrary.simpleMessage("إضافة منتج"),
         "addProducts": MessageLookupByLibrary.simpleMessage("إضافة المنتجات"),
+        "addTips": MessageLookupByLibrary.simpleMessage("اضافة نصيحة"),
         "appName": MessageLookupByLibrary.simpleMessage("جرينوڤيل"),
         "appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
@@ -36,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "by": MessageLookupByLibrary.simpleMessage("بواسطة"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "chat": MessageLookupByLibrary.simpleMessage("الدردشة"),
+        "chatBot": MessageLookupByLibrary.simpleMessage("بوت الدردشة"),
         "chooseFromGallery":
             MessageLookupByLibrary.simpleMessage("اختر من المعرض"),
         "claySoil": MessageLookupByLibrary.simpleMessage("التربــة الطينية"),
@@ -53,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deletePost": MessageLookupByLibrary.simpleMessage("حذف المنشور"),
         "doNotHaveAFarm": MessageLookupByLibrary.simpleMessage(
             "ليس لديك مزرعة قم بإنشاء واحدة وشارك منتجاتك مع الأخرين"),
+        "doNotHaveTips": MessageLookupByLibrary.simpleMessage(
+            "ليس لديك أي نصائح حتى الآن. قم بإنشاء ومشاركة نصائحك القيمة مع المجتمع!"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب!"),
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
@@ -213,6 +217,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم إنشاء المزرعة بنجاح"),
         "successfullyDeletePost":
             MessageLookupByLibrary.simpleMessage("تم حذف المنشور بنجاح"),
+        "successfullyEditFarm":
+            MessageLookupByLibrary.simpleMessage("تم تعديل المزرعة بنجاح"),
         "successfullyEditPost":
             MessageLookupByLibrary.simpleMessage("تم تعديل المنشور بنجاح"),
         "successfullyEditProfile":
