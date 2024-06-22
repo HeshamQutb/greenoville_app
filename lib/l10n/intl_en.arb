@@ -196,5 +196,14 @@
 
 
   "addTips": "Add Tips",
-  "doNotHaveTips": "You don't have any tips yet. Create and share your valuable tips with the community!"
+  "doNotHaveTips": "You don't have any tips yet. Create and share your valuable tips with the community!",
+
+
+  "featuredArticles": "Featured Articles and Tutorials",
+  "videoTutorials": "Video Tutorials",
+  "expertInsights": "Expert Insights and Tips"
+
+
+
+
 }

@@ -9,7 +9,8 @@ import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/app_cubit/app_states.dart';
 import 'package:greenoville_app/core/utils/assets.dart';
 import 'package:greenoville_app/features/account/presentation/view_model/account_cubit/account_cubit.dart';
-import 'package:greenoville_app/features/chat/presentation/view_model/chat_users_cubit/chat_cubit.dart';
+import 'package:greenoville_app/features/chat/presentation/view_model/chat_cubit/chat_cubit.dart';
+import 'package:greenoville_app/features/chat/presentation/view_model/chat_users_cubit/chat_users_cubit.dart';
 import 'package:greenoville_app/features/community/presentation/view_model/community_cubit/community_cubit.dart';
 import 'package:greenoville_app/features/farm/presentation/view_model/farm_cubit.dart';
 import 'package:greenoville_app/features/fertilizers/presentation/view_model/plants_cubit/fertilizers_cubit.dart';
@@ -87,6 +88,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => TipsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ChatCubit(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(

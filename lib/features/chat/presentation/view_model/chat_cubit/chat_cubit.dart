@@ -11,6 +11,7 @@ class ChatCubit extends Cubit<ChatStates> {
 
   List<MessageModel> messagesList = [];
 
+
   late String currentUserID;
   late String currentFriendID;
 
@@ -77,4 +78,7 @@ class ChatCubit extends Cubit<ChatStates> {
       emit(GetMessageErrorState(error.toString()));
     }
   }
+
+
+
 }

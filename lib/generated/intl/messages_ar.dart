@@ -74,12 +74,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("خطأ:"),
         "expandText": MessageLookupByLibrary.simpleMessage("اقرأ المزيد"),
         "expert": MessageLookupByLibrary.simpleMessage("خبير"),
+        "expertInsights":
+            MessageLookupByLibrary.simpleMessage("النصائح والتحليلات الخبيرة"),
         "farm": MessageLookupByLibrary.simpleMessage("المزرعة"),
         "farmLocation": MessageLookupByLibrary.simpleMessage("عنوان المزرعة"),
         "farmName": MessageLookupByLibrary.simpleMessage("اسم المزرعة"),
         "farmer": MessageLookupByLibrary.simpleMessage("مزارع"),
         "farmingPractices": MessageLookupByLibrary.simpleMessage(
             "واكتشف ممارسات الزراعة المستدامة"),
+        "featuredArticles":
+            MessageLookupByLibrary.simpleMessage("المقالات والدروس التعليمية"),
         "fertilizerDescription":
             MessageLookupByLibrary.simpleMessage("وصف السماد"),
         "fertilizerInfo":
@@ -239,6 +243,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "تم تعطيل حسابك. الرجاء الاتصال بالدعم."),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "عنوان البريد الإلكتروني غير مسجل."),
+        "videoTutorials":
+            MessageLookupByLibrary.simpleMessage("الدروس التعليمية بالفيديو"),
         "weakPassword": MessageLookupByLibrary.simpleMessage(
             "كلمة المرور التي أدخلتها ضعيفة جدًا."),
         "weather": MessageLookupByLibrary.simpleMessage("مشمس"),

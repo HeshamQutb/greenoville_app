@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../auth/data/models/user_model.dart';
 
-part 'chat_states.dart';
+part 'chat_users_states.dart';
 
 class ChatUsersCubit extends Cubit<ChatUsersStates> {
   ChatUsersCubit() : super(ChatUsersInitialState());

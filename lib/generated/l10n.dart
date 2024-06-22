@@ -1739,6 +1739,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Featured Articles and Tutorials`
+  String get featuredArticles {
+    return Intl.message(
+      'Featured Articles and Tutorials',
+      name: 'featuredArticles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Video Tutorials`
+  String get videoTutorials {
+    return Intl.message(
+      'Video Tutorials',
+      name: 'videoTutorials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expert Insights and Tips`
+  String get expertInsights {
+    return Intl.message(
+      'Expert Insights and Tips',
+      name: 'expertInsights',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

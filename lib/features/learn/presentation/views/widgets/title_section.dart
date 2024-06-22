@@ -1,29 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/core/services/navigate_services.dart';
-import 'package:greenoville_app/features/market_prices/presentation/views/market_prices_view.dart';
+
 import '../../../../../generated/l10n.dart';
 
-class HomeViewMarketPricesTitleSection extends StatelessWidget {
-  const HomeViewMarketPricesTitleSection(
-      {super.key, required this.title, required this.appCubit});
+class TitleSection extends StatelessWidget {
+  const TitleSection({
+    super.key,
+    required this.title,
+    required this.widget,
+    required this.appCubit,
+  });
   final String title;
+  final Widget widget;
   final AppCubit appCubit;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         InkWell(
           onTap: () {
-            navigateTo(context, const MarketPricesView());
+            navigateTo(context, widget);
           },
           child: Text(
             S.of(context).seeAll,

@@ -115,11 +115,13 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   // Get news
-  Future<List<ArticlesModel>> getNews({required Dio dio}) async {
+  Future<List<ArticlesModel>> getNews({required Dio dio, String? url}) async {
     emit(AppGetNewsLoadingState());
     try {
       final response = await dio.get(
-          'https://gnews.io/api/v4/search?country=eg&q=%D8%A7%D9%84%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AF%D8%A7%D9%85%D8%A9%20OR%20%D8%A7%D9%84%D8%B1%D9%8A&apikey=7ade9c8ce771581eb698a71ef64bb6f6');
+        url ??
+            'https://gnews.io/api/v4/search?country=eg&q=%D8%A7%D9%84%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AF%D8%A7%D9%85%D8%A9%20OR%20%D8%A7%D9%84%D8%B1%D9%8A&apikey=7ade9c8ce771581eb698a71ef64bb6f6',
+      );
       Map<String, dynamic> jsonData = response.data;
       List<dynamic> articles = jsonData['articles'];
       List<ArticlesModel> articlesList = [];

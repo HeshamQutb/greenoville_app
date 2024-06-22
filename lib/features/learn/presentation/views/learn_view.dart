@@ -1,85 +1,55 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenoville_app/constants.dart';
+import 'package:greenoville_app/features/learn/presentation/views/widgets/learn_view_body.dart';
 import 'package:greenoville_app/features/learn/presentation/views/widgets/learn_view_custom_app_bar.dart';
+import '../../../../core/app_cubit/app_cubit.dart';
+import '../../../../core/app_cubit/app_states.dart';
+import '../../../../core/models/articles_model.dart';
 
-class LearnView extends StatelessWidget {
+class LearnView extends StatefulWidget {
   const LearnView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          LearnViewCustomAppBar(),
-          SizedBox(height: 20),
-          CategoryTabs(),
-          SizedBox(height: 30),
-          Text(
-            'Featured Articles and Tutorials',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 20),
-          FeaturedContentList(),
-          SizedBox(height: 30),
-          Text(
-            'Video Tutorials',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 20),
-          VideoTutorialList(),
-          SizedBox(height: 30),
-          Text(
-            'Expert Insights and Tips',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 20),
-          ExpertInsightList(),
-          SizedBox(height: 30),
-        ],
-      ),
-    );
-  }
+  State<LearnView> createState() => _LearnViewState();
 }
 
-class CategoryTabs extends StatelessWidget {
-  const CategoryTabs({super.key});
+class _LearnViewState extends State<LearnView> {
+  late Future<List<ArticlesModel>> futureNews;
+
+  @override
+  void initState() {
+    super.initState();
+    futureNews = AppCubit.get(context).getNews(
+        dio: Dio(),
+        url:
+            'https://gnews.io/api/v4/search?country=eg&q=%D8%B7%D8%B1%D9%8A%D9%82%D8%A9%20%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9&apikey=7ade9c8ce771581eb698a71ef64bb6f6');
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          CategoryTab(label: 'Soil Health'),
-          CategoryTab(label: 'Organic Practices'),
-          CategoryTab(label: 'Pest Control'),
-          // Add more CategoryTab widgets for additional categories
-        ],
-      ),
-    );
-  }
-}
-
-class CategoryTab extends StatelessWidget {
-  final String label;
-
-  const CategoryTab({super.key, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(right: 12),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.green,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        label,
-        style: const TextStyle(color: Colors.white),
-      ),
+    return BlocConsumer<AppCubit, AppStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var appCubit = AppCubit.get(context);
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const LearnViewCustomAppBar(),
+              Expanded(
+                child: LearnViewBody(
+                  appCubit: appCubit,
+                  futureNews: futureNews,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -251,17 +221,19 @@ class ExpertInsightList extends StatelessWidget {
     return const Column(
       children: [
         ExpertInsightItem(
-          expertName: 'Expert 1',
-          quote: 'Quote 1 from Expert 1',
-          imagePath: 'https://via.placeholder.com/100',
-          credentials: 'Credentials of Expert 1',
+          expertName: 'Hesham Qutb',
+          quote:
+              'اعتمد على التنوع الحيوي في المزرعة: زراعة مجموعة متنوعة من المحاصيل والنباتات تساعد في الحفاظ على التربة وتقليل احتمالية الأمراض والآفات.',
+          imagePath:
+              'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/unknown%20user.png?alt=media&token=74300a2b-f397-4a61-a79f-fd2c71d9a2ae',
         ),
         SizedBox(height: 20),
         ExpertInsightItem(
-          expertName: 'Expert 2',
-          quote: 'Quote 2 from Expert 2',
-          imagePath: 'https://via.placeholder.com/100',
-          credentials: 'Credentials of Expert 2',
+          expertName: 'م / مصطفى الصادق',
+          quote:
+              'نظرا لوجود الكثير من المشاكل المتعلقه بحضراتكم  ، اليكم بعض الخطوات الاساسيه لتجنب اى مشاكل مع النبات .١-اثناء تجهيز التربة التأكد من خلوها من المسببات المرضية.٢- التاكد من عدم وجود مستوى ماء أرضي مرتفع.٣- التاكدمن انخفاض نسبة ملوحة التربه٣- وضع سماد سوبر فوسفات مع الأسمدة العضوية أثناء تجهيز التربة.٤- فى  الأراضي الجديدة، يتم توزيع المقررات السمادية لأطول فترة ممكنة. ',
+          imagePath:
+              'https://firebasestorage.googleapis.com/v0/b/greenoville-8f9c1.appspot.com/o/profile_images%2FRhzTFVYF2kQWAKLIXj0DAAYXsu93?alt=media&token=251f2a09-2052-4d13-a7b7-83dc1791d82b',
         ),
         // Add more expert insights here
       ],
@@ -273,14 +245,12 @@ class ExpertInsightItem extends StatelessWidget {
   final String expertName;
   final String quote;
   final String imagePath;
-  final String credentials;
 
   const ExpertInsightItem({
     super.key,
     required this.expertName,
     required this.quote,
     required this.imagePath,
-    required this.credentials,
   });
 
   @override
@@ -302,7 +272,7 @@ class ExpertInsightItem extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage(imagePath),
+            backgroundImage: CachedNetworkImageProvider(imagePath),
             radius: 30,
           ),
           const SizedBox(width: 20),
@@ -310,21 +280,31 @@ class ExpertInsightItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  expertName,
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    Text(
+                      expertName,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Icon(
+                      Icons.check_circle_sharp,
+                      color: Colors.blueAccent,
+                      size: 13,
+                    )
+                  ],
                 ),
                 const SizedBox(height: 10),
                 Text(
                   quote,
                   style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  credentials,
-                  style: const TextStyle(
-                      fontSize: 14, fontStyle: FontStyle.italic),
+                  maxLines: 6,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

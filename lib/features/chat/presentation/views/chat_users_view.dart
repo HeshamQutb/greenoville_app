@@ -5,7 +5,7 @@ import '../../../../constants.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../generated/l10n.dart';
 import '../../../auth/data/models/user_model.dart';
-import '../view_model/chat_users_cubit/chat_cubit.dart';
+import '../view_model/chat_users_cubit/chat_users_cubit.dart';
 
 class ChatUsersScreen extends StatefulWidget {
   const ChatUsersScreen({super.key});

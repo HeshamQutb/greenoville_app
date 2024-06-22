@@ -1,4 +1,4 @@
-part of 'chat_cubit.dart';
+part of 'chat_users_cubit.dart';
 
 abstract class ChatUsersStates {
   const ChatUsersStates();

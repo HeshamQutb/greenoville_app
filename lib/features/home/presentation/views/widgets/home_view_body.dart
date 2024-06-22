@@ -3,14 +3,14 @@ import 'package:greenoville_app/core/app_cubit/app_cubit.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_banner_section.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_latest_news_builder.dart';
 import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_quick_action_section.dart';
-import 'package:greenoville_app/features/home/presentation/views/widgets/home_view_latest_news_title_section.dart';
+import 'package:greenoville_app/features/home/presentation/views/widgets/title_section.dart';
 import 'package:greenoville_app/features/latest_news/presentation/views/latest_news_view.dart';
 import 'package:greenoville_app/features/market_prices/data/product_model.dart';
 
 import '../../../../../core/models/articles_model.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/data/models/user_model.dart';
-import 'home_view_market_prices_title_section.dart';
+import '../../../../market_prices/presentation/views/market_prices_view.dart';
 import 'home_view_market_products_builder.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -42,7 +42,7 @@ class HomeViewBody extends StatelessWidget {
           appCubit: appCubit,
         ),
         const SizedBox(height: 16),
-        HomeViewLatestNewsTitleSection(
+        TitleSection(
           appCubit: appCubit,
           title: S.of(context).latestNews,
           widget: const LatestNewsView(),
@@ -53,9 +53,9 @@ class HomeViewBody extends StatelessWidget {
           futureNews: futureNews,
         ),
         const SizedBox(height: 16),
-        HomeViewMarketPricesTitleSection(
+        TitleSection(
           title: S.of(context).marketPrices,
-          appCubit: appCubit,
+          appCubit: appCubit, widget: const MarketPricesView(),
         ),
         const SizedBox(height: 16),
         HomeViewMarketPricesBuilder(

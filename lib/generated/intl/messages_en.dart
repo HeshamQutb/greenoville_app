@@ -72,12 +72,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Error:"),
         "expandText": MessageLookupByLibrary.simpleMessage("Read more"),
         "expert": MessageLookupByLibrary.simpleMessage("Expert"),
+        "expertInsights":
+            MessageLookupByLibrary.simpleMessage("Expert Insights and Tips"),
         "farm": MessageLookupByLibrary.simpleMessage("Farm"),
         "farmLocation": MessageLookupByLibrary.simpleMessage("Farm Location"),
         "farmName": MessageLookupByLibrary.simpleMessage("Farm Name"),
         "farmer": MessageLookupByLibrary.simpleMessage("Farmer"),
         "farmingPractices": MessageLookupByLibrary.simpleMessage(
             "Discover Sustainable Farming Practices"),
+        "featuredArticles": MessageLookupByLibrary.simpleMessage(
+            "Featured Articles and Tutorials"),
         "fertilizerDescription":
             MessageLookupByLibrary.simpleMessage("Fertilizer Description"),
         "fertilizerInfo":
@@ -240,6 +244,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Your account has been disabled. Please contact support."),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "Email address is not registered."),
+        "videoTutorials":
+            MessageLookupByLibrary.simpleMessage("Video Tutorials"),
         "weakPassword": MessageLookupByLibrary.simpleMessage(
             "The password provided is too weak."),
         "weather": MessageLookupByLibrary.simpleMessage("Sunny"),
