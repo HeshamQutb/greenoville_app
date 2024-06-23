@@ -24,7 +24,7 @@ class _FertilizersViewState extends State<FertilizersView> {
   void initState() {
     super.initState();
     future = FertilizersCubit.get(context).getFertilizers(
-      soilType: widget.soilType,
+      soilType: 'loam',
     );
   }
 

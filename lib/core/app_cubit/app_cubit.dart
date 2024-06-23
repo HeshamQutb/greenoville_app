@@ -120,7 +120,7 @@ class AppCubit extends Cubit<AppStates> {
     try {
       final response = await dio.get(
         url ??
-            'https://gnews.io/api/v4/search?country=eg&q=%D8%A7%D9%84%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AF%D8%A7%D9%85%D8%A9%20OR%20%D8%A7%D9%84%D8%B1%D9%8A&apikey=7ade9c8ce771581eb698a71ef64bb6f6',
+            'https://gnews.io/api/v4/search?country=eg&q=%D8%A7%D9%84%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AF%D8%A7%D9%85%D8%A9%20OR%20%D8%A7%D9%84%D8%B1%D9%8A&apikey=3b7338bfb5474fa4a9956530932ede74',
       );
       Map<String, dynamic> jsonData = response.data;
       List<dynamic> articles = jsonData['articles'];

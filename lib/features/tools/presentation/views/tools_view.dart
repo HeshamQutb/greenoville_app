@@ -24,7 +24,7 @@ class _ToolsViewState extends State<ToolsView> {
   void initState() {
     super.initState();
     future = ToolsCubit.get(context).getTools(
-      soilType: widget.soilType,
+      soilType: 'loam',
     );
   }
 

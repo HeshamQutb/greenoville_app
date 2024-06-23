@@ -25,7 +25,7 @@ class _LearnViewState extends State<LearnView> {
     futureNews = AppCubit.get(context).getNews(
         dio: Dio(),
         url:
-            'https://gnews.io/api/v4/search?country=eg&q=%D8%B7%D8%B1%D9%8A%D9%82%D8%A9%20%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9&apikey=7ade9c8ce771581eb698a71ef64bb6f6');
+            'https://gnews.io/api/v4/search?country=eg&q=%D8%B7%D8%B1%D9%8A%D9%82%D8%A9%20%D8%B2%D8%B1%D8%A7%D8%B9%D8%A9&apikey=3b7338bfb5474fa4a9956530932ede74');
   }
 
   @override
@@ -39,7 +39,7 @@ class _LearnViewState extends State<LearnView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const LearnViewCustomAppBar(),
+              const Center(child: LearnViewCustomAppBar(),),
               Expanded(
                 child: LearnViewBody(
                   appCubit: appCubit,
